@@ -1,0 +1,25 @@
+{
+  "name": "cli-html",
+  "version": "0.0.1",
+  "description": "There will be cli module who render HTML to Terminal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grigorii Horos",
+  "license": "GPL3",
+  "keywords": [
+    "html",
+    "render",
+    "terminal",
+    "cli",
+    "html-to-cli",
+    "html-to-terminal"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/horosgrisa/cli-html.git"
+  },
+  "homepage": "https://github.com/horosgrisa/cli-html",
+  "dependencies": {}
+}
