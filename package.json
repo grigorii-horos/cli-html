@@ -4,7 +4,13 @@
   "description": "There will be cli module who render HTML to Terminal",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fix": "eslint --fix index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-test": "babel-node src/index.ts",
+    "tsc": "tsc"
+  },
+  "bin": {
+    "html": "./bin/html.js"
   },
   "author": "Grigorii Horos",
   "license": "GPL3",
@@ -20,6 +26,46 @@
     "type": "git",
     "url": "https://github.com/horosgrisa/cli-html.git"
   },
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.12.0"
+  },
   "homepage": "https://github.com/horosgrisa/cli-html",
-  "dependencies": {}
+  "dependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-typescript": "^7.7.2",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
+    "ansi-colors": "^4.1.1",
+    "babel-node": "0.0.1-security",
+    "compose-function": "^3.0.3",
+    "concat-stream": "^2.0.0",
+    "confusing-browser-globals": "^1.0.9",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-es": "^3.14.0",
+    "eslint-config-standard-jsdoc": "^9.2.0",
+    "eslint-plugin-async-await": "0.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jquery": "^1.5.1",
+    "eslint-plugin-jsdoc": "^15.9.8",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prefer-object-spread": "^1.2.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-simple-import-sort": "^4.0.0",
+    "eslint-plugin-you-dont-need-lodash-underscore": "^6.8.0",
+    "mocha": "^6.2.1",
+    "normalize-html-whitespace": "^1.0.0",
+    "parse5": "^5.1.0",
+    "typescript": "^3.7.1-rc",
+    "wrap-ansi": "^6.2.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-json": "^2.0.1"
+  }
 }
