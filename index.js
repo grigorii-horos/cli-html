@@ -8,7 +8,7 @@ const htmlToCli = (rawHTML) => {
 
   const body = document.childNodes[0].childNodes[1];
 
-  console.dir(filterAst(body), { depth: null });
+  console.dir(filterAst(body).childNodes, { depth: null });
 
   console.log('------');
   console.log(bodyTag(body, { pre: false, lineWidth: 80 }).value);
