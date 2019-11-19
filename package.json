@@ -34,7 +34,6 @@
   "dependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.6.2",
-    "boxen": "github:horosgrisa/fieldset",
     "@babel/node": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-typescript": "^7.7.2",
@@ -43,7 +42,9 @@
     "ansi-colors": "^4.1.1",
     "ansi-escapes": "^4.3.0",
     "babel-node": "0.0.1-security",
+    "boxen": "github:horosgrisa/fieldset",
     "cli-highlight": "^2.1.4",
+    "cli-table3": "^0.5.1",
     "compose-function": "^3.0.3",
     "concat-stream": "^2.0.0",
     "confusing-browser-globals": "^1.0.9",
