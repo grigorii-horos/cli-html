@@ -12,7 +12,7 @@ const htmlToCli = (rawHTML) => {
 
 
   // console.dir(
-  //   filterAst(document.childNodes[0].childNodes[1].childNodes[0]),
+  //   filterAst(document.childNodes[0].childNodes[1]),
   //   { depth: null },
   // );
 
