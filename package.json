@@ -4,7 +4,7 @@
   "description": "There will be cli module who render HTML to Terminal",
   "main": "index.js",
   "scripts": {
-    "fix": "eslint --fix index.js",
+    "fix": "eslint --fix index.js lib/*.js lib/*/*.js",
     "test": "echo \"Error: no test specified\" && exit 0",
     "run-test": "babel-node src/index.ts",
     "tsc": "tsc"
