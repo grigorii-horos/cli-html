@@ -32,22 +32,22 @@
   },
   "homepage": "https://github.com/horosgrisa/cli-html",
   "dependencies": {
-    "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.6.2",
-    "@babel/node": "^7.7.0",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/preset-typescript": "^7.7.2",
-    "@typescript-eslint/eslint-plugin": "^2.3.2",
-    "@typescript-eslint/parser": "^2.3.2",
     "ansi-align": "^3.0.0",
     "ansi-colors": "^4.1.1",
     "ansi-escapes": "^4.3.0",
-    "babel-node": "0.0.1-security",
     "boxen": "github:horosgrisa/fieldset",
     "cli-highlight": "^2.1.4",
     "cli-table3": "^0.5.1",
     "compose-function": "^3.0.3",
     "concat-stream": "^2.0.0",
+    "languages-aliases": "^2.0.5",
+    "normalize-html-whitespace": "^1.0.0",
+    "parse5": "^5.1.0",
+    "supports-hyperlinks": "^2.0.0",
+    "wrap-ansi": "^6.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.1",
     "confusing-browser-globals": "^1.0.9",
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -64,15 +64,6 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-simple-import-sort": "^4.0.0",
     "eslint-plugin-you-dont-need-lodash-underscore": "^6.8.0",
-    "languages-aliases": "^2.0.5",
-    "mocha": "^6.2.1",
-    "normalize-html-whitespace": "^1.0.0",
-    "parse5": "^5.1.0",
-    "supports-hyperlinks": "^2.0.0",
-    "typescript": "^3.7.1-rc",
-    "wrap-ansi": "^6.2.0"
-  },
-  "devDependencies": {
     "eslint-plugin-json": "^2.0.1"
   }
 }
