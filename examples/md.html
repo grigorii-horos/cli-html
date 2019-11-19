@@ -1,38 +1,89 @@
+<blockquote>
+  <p>Custom Renderer for https://github.com/chjj/marked marked allowing for printing Markdown to the
+    Terminal. Supports pretty tables and syntax highlighting.</p>
+</blockquote>
+<h1 id="header---level-1">Header - level 1</h1>
+<h2 id="header---level-2">Header - level 2</h2>
+<h3 id="header---level-3">Header - level 3</h3>
+<h4 id="header---level-4">Header - level 4</h4>
+<h5 id="header---level-5">Header - level 5</h5>
+<h6 id="header---level-6">Header - level 6</h6>
+<p>Emphasis, aka italics, with <em>asterisks</em> or <em>underscores</em>.</p>
+<p>Strong emphasis, aka bold, with <strong>asterisks</strong> or <strong>underscores</strong>.</p>
+<p>Combined emphasis with <strong>asterisks and <em>underscores</em></strong>.</p>
+<p>Strikethrough uses two tildes. <del>Scratch this.</del></p>
+<h3 id="unordered-list">Unordered list</h3>
+<ul>
+  <li>Bullet list item</li>
+  <li>Bullet list item</li>
+  <li>Bullet list item Bullet list item Bullet list item Bullet list item Bullet list item Bullet list item Bullet list
+    item Bullet list item<ul>
+      <li>Use a two-space indent for nested lists</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="ordered-list">Ordered list</h3>
+<ol>
+  <li>Bullet list item</li>
+  <li>Bullet list item</li>
+  <li>Bullet list item<ol>
+      <li>Ordered lists can also be nested</li>
+    </ol>
+  </li>
+</ol>
+<h3 id="list-with-checkboxes">List with checkboxes</h3>
+<ul>
+  <li><input checked="" disabled="" type="checkbox"> First </li>
+  <li><input checked="" disabled="" type="checkbox"> Second</li>
+  <li><input disabled="" type="checkbox"> Third</li>
+</ul>
+<p><a href="https://www.google.com">I&#39;m an link</a>
+  <a href="https://www.google.com" title="Google&#39;s Homepage">I&#39;m an link with title</a></p>
+<p><img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" alt="I&#39;m an image"
+    title="Title Text"></p>
+    
 <table>
-  <caption>Monthly savings</caption>
+  <caption>Hello</caption>
   <thead>
     <tr>
-      <th>Month</th>
-      <th>Savings</th>
+      <th align="left">Fist</th>
+      <th align="center">Second</th>
+      <th align="right">Third</th>
     </tr>
   </thead>
-
   <tbody>
     <tr>
-      <td>January</td>
-      <td>$100</td>
+      <td align="left">Left Align</td>
+      <td align="center">Center Align</td>
+      <td align="right">Right Align</td>
     </tr>
     <tr>
-      <td>February</td>
-      <td>
-        <table>
-          <tr>
-            <td>January</td>
-            <td>$100</td>
-          </tr>
-          <tr>
-            <td>February</td>
-            <td>$80</td>
-          </tr>
-        </table>
-      </td>
+      <td align="left">Long Long Long Text</td>
+      <td align="center">Long Long Long Text</td>
+      <td align="right">Long Long Long Text</td>
     </tr>
   </tbody>
-
-  <tfoot>
-    <tr>
-      <td>Sum</td>
-      <td>$180444</td>
-    </tr>
-  </tfoot>
 </table>
+<blockquote>
+  <p>Blockquotes are very handy in email to emulate reply text.
+    This line is part of the same quote.</p>
+</blockquote>
+<p>Quote break.</p>
+<blockquote>
+  <p>Oh, you can put <strong>Markdown</strong> into a blockquote. </p>
+</blockquote>
+<p>Horisontal Line <code>&lt;hr&gt;</code></p>
+<hr>
+<p><code>This is inline code</code></p>
+<pre><code class="language-js">function listitem(text, checkboxes) {
+  const transform = compose(this.transform);
+  const isNested = text.includes(&#39;\n&#39;);
+  if (isNested) { text = text.trim(); }
+  if (checkboxes) {
+    return `\n${transform(text)}`;
+  }
+  return `\n${this.o.listitem(BULLET_POINT)}${transform(text)}`;
+}</code></pre>
+<blockquote>  <p>Long line. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur sapien et volutpat molestie.
+    Curabitur facilisis rutrum luctus. Ut nec justo dui.</p>
+</blockquote>
