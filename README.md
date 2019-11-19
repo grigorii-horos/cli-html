@@ -1,17 +1,51 @@
-# Welcome to cli-html 👋
-![Version](https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000)
+Welcome to cli-html
+===
+
+![Version](https://img.shields.io/github/package-json/v/horosgrisa/cli-html.svg)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/horosgrisa/cli-html#readme)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/horosgrisa/cli-html/graphs/commit-activity)
-[![License: GPL3](https://img.shields.io/badge/License-GPL3-yellow.svg)](https://github.com/horosgrisa/cli-html/blob/master/LICENSE)
+[![Maintenance](https://img.shields.io/maintenance/yes/2019.svg)](https://github.com/horosgrisa/cli-html/graphs/commit-activity)
+[![License: GPL-3.0](https://img.shields.io/github/license/horosgrisa/cli-html.svg)](https://github.com/horosgrisa/cli-html/blob/master/LICENSE)
+![Downloads](https://img.shields.io/npm/dw/cli-html.svg)
 
-> There will be cli module who render HTML to Terminal
 
-### 🏠 [Homepage](https://github.com/horosgrisa/cli-html)
+> Renderer HTML in the Terminal.  
+> Supports pretty tables and syntax highlighting
+
+
 
 ## Install
 
 ```sh
-npm install
+npm i -g cli-html
+```
+
+## Example
+
+```sh
+html demo.html
+```
+
+This will produce the following:
+
+![Screenshot of cli-html](./images/1.png)
+
+![Screenshot of cli-html](./images/2.png)
+
+
+## Usage as module
+
+```sh
+npm i cli-html
+```
+
+```js
+const cliHtml = require('cli-htm');
+
+const html = `
+<h1>Hello World</h1>
+`
+
+console.log(cliHtml(html));
 ```
 
 ## Run tests
@@ -22,11 +56,11 @@ npm run test
 
 ## Author
 
-👤 **Grigorii Horos**
+👤**Grigorii Horos**
 
 * Github: [@horosgrisa](https://github.com/horosgrisa)
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues and feature requests are welcome!
 
@@ -37,11 +71,9 @@ Feel free to check [issues page](https://github.com/horosgrisa/cli-html/issues).
 Give a ⭐️ if this project helped you!
 
 
-## 📝 License
+## License
 
 Copyright © 2019 [Grigorii Horos](https://github.com/horosgrisa).
 
-This project is [GPL3](https://github.com/horosgrisa/cli-html/blob/master/LICENSE) licensed.
+This project is [GPL-3.0-or-later](https://github.com/horosgrisa/cli-html/blob/master/LICENSE) licensed.
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

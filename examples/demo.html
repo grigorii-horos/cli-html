@@ -1,0 +1,105 @@
+<blockquote>
+  <p>Update module version in either one or all of package.json,
+    component.json, bower.json, manifest.json and *.jquery.json.</p>
+  <blockquote>
+    <p>Sub quote</p>
+    <blockquote>
+      <p>Sub sub quote</p>
+    </blockquote>
+    <p>Another sub quote</p>
+  </blockquote>
+  <p>Other text</p>
+</blockquote>
+<p><strong>Run without arguments to get current version.</strong></p>
+<h2 id="semver-summary">Semver Summary</h2>
+<p>Given a version number <code>MAJOR.MINOR.PATCH</code> increment the:</p>
+<ul>
+  <li><code>MAJOR</code> version when you make incompatible API changes,,</li>
+  <li><code>MINOR</code> version when you add functionality in a backwards-compatible manner, and,</li>
+  <li><code>PATCH</code> version when you make backwards-compatible bug fixes.,</li>
+</ul>
+<p>Additional labels for pre-release and build metadata are available as extensions to the
+  <code>MAJOR.MINOR.PATCH</code> format.</p>
+<h2 id="update-version">Update version</h2>
+<p>Update version by defining new semver valid version
+  or a release string (<code>major</code>, <code>minor</code>, <code>patch</code>, <code>build</code>).</p>
+<h3 id="examples">Examples</h3>
+<pre><code>$ mversion minor
+$ mversion 1.0.1-beta</code></pre>
+<h2 id="git">Git</h2>
+<p>Use <code>-m</code> to auto commit and tag. Apply optional message and use <code>%s</code>
+  as placeholder for the updated version. Default message is <code>v%s</code> where <code>%s</code>
+  is replaced with new version.</p>
+<p><code>--tag</code> (or <code>-t</code> for short) allows for overriding the tag name used.
+  This does not change behaviour of the message, just the tag name.</p>
+<p>As with <code>-m</code>, all occurances of <code>%s</code> are replaced with the newly bumped version.</p>
+<p><code>--no-prefix</code> (or <code>-n</code> for short) is a short hand for setting
+  a tag name without <code>v</code> as prefix. This does not change behaviour of
+  the message, just the tag name.</p>
+<h3 id="examples-1">Examples</h3>
+<pre><code>$ mversion minor -m
+$ mversion minor -m &#39;Bumped to v%s&#39; --tag &#39;v%s-src&#39;</code></pre>
+<h2 id="and-just-a-table-to-show-it-off">And just a table to show it off</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Lorem</th>
+      <th>Ipsum</th>
+      <th>Sit amet</th>
+      <th>Dolar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Row 1</td>
+      <td>Value</td>
+      <td>Value</td>
+      <td>Value</td>
+    </tr>
+    <tr>
+      <td>Row 2</td>
+      <td>Value</td>
+      <td>Value</td>
+      <td>Value</td>
+    </tr>
+    <tr>
+      <td>Row 3</td>
+      <td>Value</td>
+      <td>Value</td>
+      <td>Value</td>
+    </tr>
+    <tr>
+      <td>Row 4</td>
+      <td>Value</td>
+      <td>Value</td>
+      <td>Value</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="and-a-nested-list">And a nested list</h2>
+<ul>
+  <li>out A</li>
+  <li>out B</li>
+  <li>out C</li>
+  <li>out 1</li>
+  <li>out 2<ul>
+      <li>out 2.1</li>
+      <li>out 2.2<ul>
+          <li>out 2.2.1</li>
+          <li>out 2.2.2</li>
+          <li>out 2.2.3</li>
+        </ul>
+      </li>
+      <li>out 2.3</li>
+    </ul>
+  </li>
+  <li>out 3<ul>
+      <li>out 2.1</li>
+      <li>out 2.2</li>
+    </ul>
+  </li>
+</ul>
+<p>Here are some <code>emojis</code> :heart: <code>some thing :smiley:</code> :someundefined:
+  And here are some proper emojis: 😀</p>
+<p>Inside code blocks:</p>
+<pre><code>var str = &#39;Some text :cake:&#39;;</code></pre>
