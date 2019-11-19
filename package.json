@@ -41,6 +41,7 @@
     "compose-function": "^3.0.3",
     "concat-stream": "^2.0.0",
     "languages-aliases": "^2.0.5",
+    "longest-line": "0.0.3",
     "normalize-html-whitespace": "^1.0.0",
     "parse5": "^5.1.0",
     "parse5-htmlparser2-tree-adapter": "^5.1.1",

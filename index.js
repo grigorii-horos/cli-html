@@ -10,10 +10,11 @@ const htmlToCli = (rawHTML) => {
 
   const document = parse5.parse(rawHTML);
 
-  // console.dir(
-  //   filterAst(document.childNodes[0].childNodes[1]).childNodes,
-  //   { depth: null },
-  // );
+
+  console.dir(
+    filterAst(document.childNodes[0].childNodes[1].childNodes[0]),
+    { depth: null },
+  );
 
   return `${(html(document, { pre: false, lineWidth: 80 }) || { value: '' }).value}\n`;
 };
