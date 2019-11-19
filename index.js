@@ -5,13 +5,10 @@ const { textNode, body: bodyTag, i } = require('./lib/tags');
 const htmlToCli = (rawHTML) => {
   // @type Object
   const document = parse5.parse(rawHTML);
+  // console.log('___-----', document);
 
-  const body = document.childNodes[0].childNodes[1];
 
-  console.dir(filterAst(body).childNodes, { depth: null });
-
-  console.log('------');
-  console.log(bodyTag(body, { pre: false, lineWidth: 80 }).value);
+  console.log(bodyTag(document, { pre: false, lineWidth: 80 }).value || '');
 
   return '';
 };

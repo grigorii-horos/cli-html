@@ -33,35 +33,57 @@ const { concatTwoInlineTags } = require('./lib/concat');
 // }));
 
 
-console.log('-------');
+// console.log('-------');
 
-console.log({
-  pre: ' ',
-  value: null,
-  post: null,
-  type: 'inline',
-  nodeName: '#text',
-},
-{
-  pre: ' ',
-  value: 'fsdfsd',
-  post: null,
-  type: 'inline',
-  nodeName: '#text',
-},
-concatTwoInlineTags(
-  {
-    pre: ' ',
-    value: null,
-    post: null,
-    type: 'inline',
-    nodeName: '#text',
-  },
-  {
-    pre: ' ',
-    value: 'fsdfsd',
-    post: null,
-    type: 'inline',
-    nodeName: '#text',
-  },
-));
+// console.log({
+//   pre: ' ',
+//   value: null,
+//   post: null,
+//   type: 'inline',
+//   nodeName: '#text',
+// },
+// {
+//   pre: ' ',
+//   value: 'fsdfsd',
+//   post: null,
+//   type: 'inline',
+//   nodeName: '#text',
+// },
+// concatTwoInlineTags(
+//   {
+//     pre: ' ',
+//     value: null,
+//     post: null,
+//     type: 'inline',
+//     nodeName: '#text',
+//   },
+//   {
+//     pre: ' ',
+//     value: 'fsdfsd',
+//     post: null,
+//     type: 'inline',
+//     nodeName: '#text',
+//   },
+// ));
+
+
+a = {
+  nodeName: 'a',
+  tagName: 'a',
+  attrs: [
+    { name: 'href', value: 'https://www.google.com' },
+    { name: 'title', value: "Google's Homepage" },
+  ],
+  namespaceURI: 'http://www.w3.org/1999/xhtml',
+  childNodes: [
+    {
+      nodeName: '#text',
+      value: "I'm an link with title",
+
+    },
+  ],
+};
+
+console.log(
+  a.attrs.find((attribute) => attribute.name === 'href').value,
+);
