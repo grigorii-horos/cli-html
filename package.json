@@ -1,6 +1,6 @@
 {
   "name": "cli-html",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "There will be cli module who render HTML to Terminal",
   "main": "index.js",
   "scripts": {
@@ -60,7 +60,7 @@
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jquery": "^1.5.1",
-    "eslint-plugin-jsdoc": "^18.1.2",
+    "eslint-plugin-jsdoc": "^18.1.4",
     "eslint-plugin-json": "^2.0.1",
     "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-node": "^10.0.0",
