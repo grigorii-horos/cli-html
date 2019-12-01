@@ -1,11 +1,11 @@
 // @ts-nocheck
-const  restrictedGlobals = require( 'confusing-browser-globals')
+const restrictedGlobals = require('confusing-browser-globals');
 
 module.exports = {
   root: true,
   parserOptions: {
     ecmaVersion: 2020,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   extends: [
     // Syntax and ~
@@ -13,6 +13,8 @@ module.exports = {
     'es/browser',
     'plugin:node/recommended',
     // 'plugin:react/recommended',
+
+    'plugin:ava/recommended',
     'plugin:promise/recommended',
     'standard-jsdoc',
     'plugin:json/recommended',
@@ -37,24 +39,22 @@ module.exports = {
     'prefer-object-spread',
     'promise',
     'security',
-    'simple-import-sort'
+    'simple-import-sort',
   ],
   env: {
     browser: true,
-    es6: true
+    es6: true,
   },
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    SharedArrayBuffer: 'readonly',
   },
   rules: {
-    'unicorn/filename-case': 2,
-    'unicorn/import-index': 0,
-    'import/extensions': 0,
     'prefer-object-spread/prefer-object-spread': 2,
-    'no-restricted-globals': ['error'].concat(restrictedGlobals),
-    'sort-imports': 'off',
-    'import/order': 'off',
-    'simple-import-sort/sort': 'error'
-  }
+    'no-restricted-globals': [2].concat(restrictedGlobals),
+
+    'mocha/handle-done-callback': 0,
+    'mocha/no-global-tests': 0,
+    'mocha/valid-test-description': 0,
+  },
 };
