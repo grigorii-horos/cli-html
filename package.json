@@ -41,7 +41,7 @@
     "concat-stream": "^2.0.0",
     "fieldset": "github:horosgrisa/fieldset",
     "he": "^1.2.0",
-    "languages-aliases": "^2.0.5",
+    "languages-aliases": "^3.0.0",
     "longest-line": "0.0.3",
     "normalize-html-whitespace": "^1.0.0",
     "number-to-alphabet": "^1.0.0",
@@ -51,7 +51,7 @@
     "wrap-ansi": "^7.0.0"
   },
   "devDependencies": {
-    "ava": "^3.7.1",
+    "ava": "^3.8.0",
     "confusing-browser-globals": "^1.0.9",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
