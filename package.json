@@ -1,6 +1,6 @@
 {
   "name": "cli-html",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "description": "There will be cli module who render HTML to Terminal",
   "main": "index.js",
   "type": "commonjs",
@@ -9,7 +9,7 @@
     "test": "true"
   },
   "bin": {
-    "html": "./bin/html.js"
+    "html": "bin/html.js"
   },
   "author": "Grigorii Horos",
   "license": "GPL3",
