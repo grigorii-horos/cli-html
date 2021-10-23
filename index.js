@@ -1,7 +1,7 @@
-const parse5 = require('parse5');
+import parse5 from 'parse5';
 
-const { filterAst } = require('./lib/utils');
-const { html } = require('./lib/tags');
+import { filterAst } from './lib/utils.js';
+import { html } from './lib/tags/document.js';
 
 const htmlToCli = (rawHTML) => {
   // @type Object
@@ -16,4 +16,4 @@ const htmlToCli = (rawHTML) => {
   return `${(html(document, { pre: false, lineWidth: 80 }) || { value: '' }).value}\n`;
 };
 
-module.exports = htmlToCli;
+export default htmlToCli;

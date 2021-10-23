@@ -3,7 +3,7 @@
   "version": "1.8.4",
   "description": "There will be cli module who render HTML to Terminal",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "fix": "eslint --fix index.js lib/*.js lib/*/*.js test/*.js",
     "test": "true"
@@ -26,49 +26,47 @@
     "url": "https://github.com/horosgrisa/cli-html.git"
   },
   "engines": {
-    "node": ">=12.0.0",
-    "npm": ">=6.12.0"
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
   },
   "homepage": "https://github.com/horosgrisa/cli-html",
   "dependencies": {
-    "ansi-align": "^3.0.0",
+    "ansi-align": "^3.0.1",
     "ansi-colors": "^4.1.1",
-    "ansi-escapes": "^4.3.1",
+    "ansi-escapes": "^5.0.0",
     "boxen": "github:horosgrisa/fieldset",
-    "cli-highlight": "^2.1.10",
+    "cli-highlight": "^2.1.11",
     "cli-table3": "^0.6.0",
     "compose-function": "^3.0.3",
     "concat-stream": "^2.0.0",
+    "eslint-config-airbnb-base": "^14.2.1",
     "fieldset": "github:horosgrisa/fieldset",
     "he": "^1.2.0",
     "languages-aliases": "^3.0.0",
     "longest-line": "0.0.3",
     "normalize-html-whitespace": "^1.0.0",
     "number-to-alphabet": "^1.0.0",
-    "parse5": "^6.0.0",
+    "parse5": "^6.0.1",
     "romanize": "^1.1.1",
-    "supports-hyperlinks": "^2.1.0",
-    "wrap-ansi": "^7.0.0"
+    "supports-hyperlinks": "^2.2.0",
+    "wrap-ansi": "^8.0.1"
   },
   "devDependencies": {
     "ava": "^3.8.0",
     "confusing-browser-globals": "^1.0.9",
-    "eslint": "^7.20.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-config-es": "^3.28.8",
+    "eslint": "8",
+    "eslint-config-es": "^3.30.15",
     "eslint-config-standard-jsdoc": "^9.3.0",
     "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-ava": "^11.0.0",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-ava": "^13.0.0",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jquery": "^1.5.1",
-    "eslint-plugin-jsdoc": "^32.0.2",
-    "eslint-plugin-json": "^2.1.1",
+    "eslint-plugin-jsdoc": "37",
+    "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-object-spread": "^1.2.1",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-you-dont-need-lodash-underscore": "^6.10.0"
+    "eslint-plugin-you-dont-need-lodash-underscore": "^6.12.0"
   }
 }
