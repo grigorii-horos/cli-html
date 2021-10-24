@@ -13,7 +13,7 @@ const htmlToCli = (rawHTML) => {
   //   { depth: null },
   // );
 
-  return `${(html(document, { pre: false, lineWidth: 80 }) || { value: '' }).value}\n`;
+  return `${(html(document, { pre: false, lineWidth: +(process.env.CLI_HTML_LINE_WIDTH || '120') }) || { value: '' }).value}\n`;
 };
 
 export default htmlToCli;
