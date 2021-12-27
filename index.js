@@ -13,9 +13,9 @@ const htmlToCli = (rawHTML) => {
   //   { depth: null },
   // );
 
-  return `\n${indentify('  ')(
+  return `\n${indentify(' ')(
     (html(document, { pre: false, lineWidth: 80 }) || { value: '' }).value,
-  )}\n`;
+  )}\n\n`;
 };
 
 export default htmlToCli;
