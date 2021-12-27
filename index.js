@@ -1,6 +1,6 @@
 import parse5 from 'parse5';
 
-import { filterAst } from './lib/utils.js';
+import { filterAst, indentify } from './lib/utils.js';
 import { html } from './lib/tags/document.js';
 
 const htmlToCli = (rawHTML) => {
@@ -13,9 +13,9 @@ const htmlToCli = (rawHTML) => {
   //   { depth: null },
   // );
 
-  return `${
-    (html(document, { pre: false, lineWidth: 80 }) || { value: '' }).value
-  }\n`;
+  return `\n${indentify('  ')(
+    (html(document, { pre: false, lineWidth: 80 }) || { value: '' }).value,
+  )}\n`;
 };
 
 export default htmlToCli;

@@ -38,7 +38,6 @@
     "cli-table3": "^0.6.0",
     "compose-function": "^3.0.3",
     "concat-stream": "^2.0.0",
-    "eslint-config-airbnb-base": "^15.0.0",
     "fieldset": "github:horosgrisa/fieldset",
     "he": "^1.2.0",
     "inline-style-parser": "^0.1.1",
@@ -54,7 +53,7 @@
   "devDependencies": {
     "ava": "^3.8.0",
     "confusing-browser-globals": "^1.0.11",
-    "eslint": "^8.5.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-es": "^4.1.0",
     "eslint-config-standard-jsdoc": "^9.3.0",
     "eslint-plugin-async-await": "0.0.0",
@@ -66,6 +65,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-object-spread": "^1.2.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-you-dont-need-lodash-underscore": "^6.12.0"
+    "eslint-plugin-you-dont-need-lodash-underscore": "^6.12.0",
+    "eslint": "^8.5.0"
   }
 }
