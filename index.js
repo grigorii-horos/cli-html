@@ -18,7 +18,7 @@ const htmlToCli = (rawHTML) => {
     (
       html(document, {
         pre: false,
-        lineWidth: Math.min(120, terminalSize().columns),
+        lineWidth: Math.min(120, terminalSize().columns - 2),
       }) || { value: '' }
     ).value,
   )}\n\n`;
