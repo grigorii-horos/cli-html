@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { createReadStream } from 'fs';
+import { createReadStream } from 'node:fs';
 import concat from 'concat-stream';
 
 import cliHtml from '../index.js';
