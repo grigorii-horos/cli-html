@@ -48,11 +48,13 @@
     "parse5": "^6.0.1",
     "romanize": "^1.1.1",
     "supports-hyperlinks": "^2.2.0",
+    "term-size": "^3.0.1",
     "wrap-ansi": "^8.0.1"
   },
   "devDependencies": {
     "ava": "^3.8.0",
     "confusing-browser-globals": "^1.0.11",
+    "eslint": "^8.5.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-es": "^4.1.0",
     "eslint-config-standard-jsdoc": "^9.3.0",
@@ -65,7 +67,6 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-object-spread": "^1.2.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-you-dont-need-lodash-underscore": "^6.12.0",
-    "eslint": "^8.5.0"
+    "eslint-plugin-you-dont-need-lodash-underscore": "^6.12.0"
   }
 }

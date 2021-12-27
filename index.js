@@ -1,5 +1,6 @@
 import parse5 from 'parse5';
 
+import terminalSize from 'term-size';
 import { filterAst, indentify } from './lib/utils.js';
 import { html } from './lib/tags/document.js';
 
@@ -14,7 +15,12 @@ const htmlToCli = (rawHTML) => {
   // );
 
   return `\n${indentify(' ')(
-    (html(document, { pre: false, lineWidth: 80 }) || { value: '' }).value,
+    (
+      html(document, {
+        pre: false,
+        lineWidth: Math.min(120, terminalSize().columns),
+      }) || { value: '' }
+    ).value,
   )}\n\n`;
 };
 
