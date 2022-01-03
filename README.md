@@ -34,7 +34,7 @@ npm i cli-html
 ```
 
 ```js
-const cliHtml = require('cli-html');
+import cliHtml from 'cli-html';
 
 const html = `
 <h1>Hello World</h1>
