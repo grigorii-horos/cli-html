@@ -1,6 +1,6 @@
 {
   "name": "cli-html",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "There will be cli module who render HTML to Terminal",
   "main": "index.js",
   "type": "module",
