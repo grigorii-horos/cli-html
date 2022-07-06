@@ -1,4 +1,4 @@
-import parse5 from 'parse5';
+import { parse } from 'parse5';
 
 import terminalSize from 'term-size';
 import { filterAst, indentify } from './lib/utils.js';
@@ -7,7 +7,7 @@ import { html } from './lib/tags/document.js';
 const htmlToCli = (rawHTML) => {
   // @type Object
 
-  const document = parse5.parse(rawHTML);
+  const document = parse(rawHTML);
 
   // console.dir(
   //   filterAst(document.childNodes[0].childNodes[1]),

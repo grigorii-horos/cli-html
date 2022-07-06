@@ -10,7 +10,6 @@ module.exports = {
   extends: [
     // Syntax and ~
     'eslint:recommended',
-    'es/browser',
     'plugin:node/recommended',
 
     'plugin:ava/recommended',
@@ -55,5 +54,7 @@ module.exports = {
     'no-underscore-dangle': 0,
     'unicorn/no-array-reduce': 0,
     'unicorn/no-array-callback-reference': 0,
+    'max-len': 0,
+    'import/no-unresolved': 0,
   },
 };
