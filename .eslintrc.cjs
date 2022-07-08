@@ -56,5 +56,11 @@ module.exports = {
     'unicorn/no-array-callback-reference': 0,
     'max-len': 0,
     'import/no-unresolved': 0,
+
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
   },
 };

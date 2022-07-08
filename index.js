@@ -1,25 +1,22 @@
 import { parse } from 'parse5';
 
-import terminalSize from 'term-size';
-import { filterAst, indentify } from './lib/utils.js';
-import { html } from './lib/tags/document.js';
+import { indentify } from './lib/utils.js';
+import { getGlobalConfig } from './lib/utils/get-clobal-config.js';
+import { renderTag } from './lib/utils/render-tag.js';
 
 const htmlToCli = (rawHTML) => {
-  // @type Object
-
   const document = parse(rawHTML);
 
   // console.dir(
-  //   filterAst(document.childNodes[0].childNodes[1]),
+  //   filterAst(document),
   //   { depth: null },
   // );
 
+  const clobalConfig = getGlobalConfig(document);
+
   return `\n${indentify(' ')(
     (
-      html(document, {
-        pre: false,
-        lineWidth: Math.min(120, terminalSize().columns - 2),
-      }) || { value: '' }
+      renderTag(document, clobalConfig) || { value: '' }
     ).value,
   )}\n\n`;
 };
