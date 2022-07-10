@@ -12,12 +12,10 @@ module.exports = {
     'eslint:recommended',
     'plugin:node/recommended',
 
-    'plugin:ava/recommended',
     'standard-jsdoc',
     'plugin:json/recommended',
 
     // Funny
-    'plugin:you-dont-need-lodash-underscore/compatible',
     'plugin:unicorn/recommended',
 
     // Global config

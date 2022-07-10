@@ -26,13 +26,14 @@
     "url": "https://github.com/horosgrisa/cli-html.git"
   },
   "engines": {
-    "node": ">=14.16",
-    "npm": ">=7.0.0"
+    "node": ">=16",
+    "npm": ">=8"
   },
   "homepage": "https://github.com/horosgrisa/cli-html",
   "dependencies": {
     "ansi-align": "^3.0.1",
     "ansi-escapes": "^5.0.0",
+    "boxen": "^7.0.0",
     "chalk": "^5.0.0",
     "change-case": "^4.1.2",
     "cli-highlight": "^2.1.11",
@@ -40,7 +41,6 @@
     "color-namer": "^1.4.0",
     "compose-function": "^3.0.3",
     "concat-stream": "^2.0.0",
-    "fieldset": "github:horosgrisa/fieldset",
     "he": "^1.2.0",
     "inline-style-parser": "^0.1.1",
     "languages-aliases": "^3.0.0",
@@ -54,20 +54,17 @@
     "wrap-ansi": "^8.0.1"
   },
   "devDependencies": {
-    "ava": "^4.3.0",
     "confusing-browser-globals": "^1.0.11",
     "eslint": "^8.5.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-standard-jsdoc": "^9.3.0",
     "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-ava": "^13.0.0",
     "eslint-plugin-jsdoc": "^39.3.3",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-object-spread": "^1.2.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-unicorn": "^43.0.0",
-    "eslint-plugin-you-dont-need-lodash-underscore": "^6.12.0"
+    "eslint-plugin-unicorn": "^43.0.0"
   }
 }
