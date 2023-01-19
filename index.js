@@ -15,9 +15,7 @@ const htmlToCli = (rawHTML) => {
   const clobalConfig = getGlobalConfig(document);
 
   return `\n${indentify(' ')(
-    (
-      renderTag(document, clobalConfig) || { value: '' }
-    ).value,
+    (renderTag(document, clobalConfig) || { value: '' }).value,
   )}\n\n`;
 };
 
