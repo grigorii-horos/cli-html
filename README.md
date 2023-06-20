@@ -23,7 +23,7 @@ html examples/demo.html
 
 This will produce the following:
 
-![Screenshot of cli-html](./images/1.png)
+![Screenshot of cli-html](./images/terminal.png)
 
 ## Usage as module
 
