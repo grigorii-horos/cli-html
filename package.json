@@ -35,12 +35,14 @@
     "ansi-escapes": "^6.2.0",
     "boxen": "^7.1.0",
     "chalk": "^5.2.0",
+    "chalk-string": "^2.0.0",
     "change-case": "^4.1.2",
     "cli-highlight": "^2.1.11",
     "cli-table3": "^0.6.3",
     "color-namer": "^1.4.0",
     "compose-function": "^3.0.3",
     "concat-stream": "^2.0.0",
+    "env-paths": "^3.0.0",
     "he": "^1.2.0",
     "inline-style-parser": "^0.1.1",
     "languages-aliases": "^3.0.0",
@@ -51,7 +53,8 @@
     "romanize": "^1.1.1",
     "supports-hyperlinks": "^3.0.0",
     "term-size": "^3.0.1",
-    "wrap-ansi": "^8.1.0"
+    "wrap-ansi": "^8.1.0",
+    "yaml": "^2.3.1"
   },
   "devDependencies": {
     "confusing-browser-globals": "^1.0.11",
