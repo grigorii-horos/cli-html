@@ -1,6 +1,6 @@
 {
   "name": "cli-html",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Render HTML to Terminal",
   "main": "index.js",
   "type": "module",
@@ -35,8 +35,8 @@
     "ansi-escapes": "^6.2.0",
     "boxen": "^7.1.1",
     "chalk": "^5.3.0",
-    "chalk-string": "^2.0.0",
-    "change-case": "^4.1.2",
+    "chalk-string": "^3.0.0",
+    "change-case": "^5.3.0",
     "cli-highlight": "^2.1.11",
     "cli-table3": "^0.6.3",
     "color-namer": "^1.4.0",
@@ -44,7 +44,7 @@
     "concat-stream": "^2.0.0",
     "env-paths": "^3.0.0",
     "he": "^1.2.0",
-    "inline-style-parser": "^0.1.1",
+    "inline-style-parser": "^0.2.2",
     "languages-aliases": "^3.0.0",
     "longest-line": "0.0.3",
     "normalize-html-whitespace": "^1.0.0",
@@ -52,22 +52,24 @@
     "parse5": "^7.1.1",
     "romanize": "^1.1.1",
     "supports-hyperlinks": "^3.0.0",
-    "term-size": "^3.0.1",
-    "wrap-ansi": "^8.1.0",
-    "yaml": "^2.3.1"
+    "term-size": "^4.0.0",
+    "wrap-ansi": "^9.0.0",
+    "yaml": "^2.3.4"
   },
   "devDependencies": {
     "confusing-browser-globals": "^1.0.11",
-    "eslint": "^8.44.0",
+    "eslint": "^8.55.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-standard-jsdoc": "^9.3.0",
     "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-jsdoc": "^46.4.3",
+    "eslint-plugin-jsdoc": "^46.9.0",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-perfectionist": "^2.5.0",
     "eslint-plugin-prefer-object-spread": "^1.2.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-unicorn": "^47.0.0"
+    "eslint-plugin-unicorn": "^48.0.1",
+    "globals": "^13.23.0"
   }
 }

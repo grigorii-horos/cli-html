@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
-import fs, { createReadStream } from "node:fs";
+import fs, { createReadStream } from 'node:fs';
 
 import concat from 'concat-stream';
-import envPaths from "env-paths";
-import { parse } from "yaml";
+import envPaths from 'env-paths';
+import { parse } from 'yaml';
 
 import cliHtml from '../index.js';
 
-const paths = envPaths("cli-html", {
-  suffix: "",
+const paths = envPaths('cli-html', {
+  suffix: '',
 });
-let fileContent = "";
+let fileContent = '';
 try {
-  fileContent = fs.readFileSync(`${paths.config}/theme.yml`, "utf8");
+  fileContent = fs.readFileSync(`${paths.config}/theme.yml`, 'utf8');
 } catch {}
 
 const theme = parse(fileContent) || {};
