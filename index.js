@@ -1,6 +1,6 @@
 import { parse } from 'parse5';
 
-import { indentify } from './lib/utils.js';
+import { filterAst, indentify } from './lib/utils.js';
 import { getGlobalConfig } from './lib/utils/get-clobal-config.js';
 import { renderTag } from './lib/utils/render-tag.js';
 
@@ -8,7 +8,7 @@ const htmlToCli = (rawHTML, theme = {}) => {
   const document = parse(rawHTML);
 
   // console.dir(
-  //   filterAst(document),
+  //   filterAst(document).childNodes[0].childNodes[1].childNodes,
   //   { depth: null },
   // );
 
