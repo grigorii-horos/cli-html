@@ -1,6 +1,6 @@
 import { parse } from 'parse5';
 
-import { filterAst, indentify } from './lib/utils.js';
+import { indentify } from './lib/utils.js';
 import { getGlobalConfig } from './lib/utils/get-clobal-config.js';
 import { renderTag } from './lib/utils/render-tag.js';
 
@@ -14,7 +14,7 @@ const htmlToCli = (rawHTML, theme = {}) => {
 
   const clobalConfig = getGlobalConfig(document, theme);
 
-  return `\n${indentify(' ')(
+  return `\n${indentify(' ', false)(
     (renderTag(document, clobalConfig) || { value: '' }).value,
   )}\n\n`;
 };

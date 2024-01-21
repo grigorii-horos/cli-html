@@ -54,6 +54,8 @@ module.exports = {
     'unicorn/no-array-callback-reference': 0,
     'max-len': 0,
     'import/no-unresolved': 0,
+    'jsdoc/require-returns-description': 0,
+    'jsdoc/require-param-description': 0,
 
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
