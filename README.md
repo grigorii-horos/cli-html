@@ -1,9 +1,9 @@
 # Welcome to cli-html
 
-![Version](https://img.shields.io/github/package-json/v/horosgrisa/cli-html.svg)
-[![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/horosgrisa/cli-html#readme)
-[![Maintenance](https://img.shields.io/maintenance/yes/2019.svg)](https://github.com/horosgrisa/cli-html/graphs/commit-activity)
-[![License: GPL-3.0](https://img.shields.io/github/license/horosgrisa/cli-html.svg)](https://github.com/horosgrisa/cli-html/blob/master/LICENSE)
+![Version](https://img.shields.io/github/package-json/v/grigorii-horos/cli-html.svg)
+[![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/grigorii-horos/cli-html#readme)
+[![Maintenance](https://img.shields.io/maintenance/yes/2019.svg)](https://github.com/grigorii-horos/cli-html/graphs/commit-activity)
+[![License: GPL-3.0](https://img.shields.io/github/license/horosgrisa/cli-html.svg)](https://github.com/grigorii-horos/cli-html/blob/master/LICENSE)
 ![Downloads](https://img.shields.io/npm/dw/cli-html.svg)
 
 > Renderer HTML in the Terminal.
