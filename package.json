@@ -1,6 +1,6 @@
 {
   "name": "cli-html",
-  "version": "4.0.7",
+  "version": "4.1.0",
   "description": "Render HTML to Terminal",
   "main": "index.js",
   "type": "module",
@@ -25,8 +25,7 @@
     "type": "git",
     "url": "https://github.com/horosgrisa/cli-html.git"
   },
-  "engines": {
-  },
+  "engines": {},
   "homepage": "https://github.com/horosgrisa/cli-html",
   "dependencies": {
     "ansi-align": "^3.0.1",
