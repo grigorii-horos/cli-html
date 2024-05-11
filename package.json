@@ -26,8 +26,6 @@
     "url": "https://github.com/horosgrisa/cli-html.git"
   },
   "engines": {
-    "node": ">=18",
-    "npm": ">=8"
   },
   "homepage": "https://github.com/horosgrisa/cli-html",
   "dependencies": {
