@@ -11,6 +11,10 @@
   "bin": {
     "html": "bin/html.js"
   },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
   "author": "Grigorii Horos",
   "license": "GPL3",
   "keywords": [
@@ -25,7 +29,6 @@
     "type": "git",
     "url": "https://github.com/horosgrisa/cli-html.git"
   },
-  "engines": {},
   "homepage": "https://github.com/horosgrisa/cli-html",
   "dependencies": {
     "ansi-align": "^3.0.1",
