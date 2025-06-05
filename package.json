@@ -27,9 +27,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/grigorii.horos/cli-html.git"
+    "url": "https://github.com/grigorii-horos/cli-html.git"
   },
-  "homepage": "https://github.com/grigorii.horos/cli-html",
+  "homepage": "https://github.com/grigorii-horos/cli-html",
   "dependencies": {
     "ansi-align": "^3.0.1",
     "ansi-escapes": "^7.0.0",
@@ -60,7 +60,6 @@
     "@eslint/js": "^9.28.0",
     "confusing-browser-globals": "^1.0.11",
     "eslint": "^9.28.0",
-    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-standard-jsdoc": "^9.3.0",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-import": "^2.31.0",
