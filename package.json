@@ -27,9 +27,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/horosgrisa/cli-html.git"
+    "url": "https://github.com/grigorii.horos/cli-html.git"
   },
-  "homepage": "https://github.com/horosgrisa/cli-html",
+  "homepage": "https://github.com/grigorii.horos/cli-html",
   "dependencies": {
     "ansi-align": "^3.0.1",
     "ansi-escapes": "^7.0.0",
