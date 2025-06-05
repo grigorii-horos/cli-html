@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "fix": "eslint --fix index.js lib/*.js lib/*/*.js",
-    "test": "true"
+    "test": "FORCE_COLOR=1 node --test"
   },
   "bin": {
     "html": "bin/html.js"
