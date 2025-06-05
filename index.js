@@ -1,7 +1,7 @@
 import { parse } from 'parse5';
 
 import { indentify } from './lib/utils.js';
-import { getGlobalConfig } from './lib/utils/get-clobal-config.js';
+import { getGlobalConfig } from './lib/utils/get-global-config.js';
 import { renderTag } from './lib/utils/render-tag.js';
 
 const htmlToCli = (rawHTML, theme = {}) => {
@@ -12,10 +12,10 @@ const htmlToCli = (rawHTML, theme = {}) => {
   //   { depth: null },
   // );
 
-  const clobalConfig = getGlobalConfig(document, theme);
+  const globalConfig = getGlobalConfig(document, theme);
 
   return `\n${indentify(' ', false)(
-    (renderTag(document, clobalConfig) || { value: '' }).value,
+    (renderTag(document, globalConfig) || { value: '' }).value,
   )}\n\n`;
 };
 
