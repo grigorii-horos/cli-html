@@ -57,10 +57,13 @@
     "yaml": "^2.8.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.28.0",
     "confusing-browser-globals": "^1.0.11",
     "eslint": "^9.28.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-standard-jsdoc": "^9.3.0",
     "eslint-plugin-async-await": "0.0.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsdoc": "^50.7.1",
     "eslint-plugin-json": "^4.0.1",
     "eslint-plugin-no-loops": "^0.4.0",
