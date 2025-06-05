@@ -59,7 +59,6 @@
   "devDependencies": {
     "confusing-browser-globals": "^1.0.11",
     "eslint": "^9.28.0",
-    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-standard-jsdoc": "^9.3.0",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-jsdoc": "^50.7.1",
