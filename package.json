@@ -1,6 +1,6 @@
 {
   "name": "cli-html",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "description": "Render HTML to Terminal",
   "main": "index.js",
   "type": "module",
