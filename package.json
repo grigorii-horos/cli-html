@@ -52,7 +52,7 @@
     "parse5": "^7.3.0",
     "romanize": "^1.1.1",
     "supports-hyperlinks": "^4.1.0",
-    "term-size": "^4.0.0",
+    "terminal-size": "^4.0.0",
     "wrap-ansi": "^9.0.0",
     "yaml": "^2.8.0"
   },
@@ -65,11 +65,11 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsdoc": "^50.7.1",
     "eslint-plugin-json": "^4.0.1",
-    "eslint-plugin-no-loops": "^0.4.0",
     "eslint-plugin-n": "^17.19.0",
-    "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-no-loops": "^0.4.0",
     "eslint-plugin-perfectionist": "^4.14.0",
     "eslint-plugin-prefer-object-spread": "^1.2.1",
+    "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unicorn": "^59.0.1",
     "globals": "^16.2.0"
