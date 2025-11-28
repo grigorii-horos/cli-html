@@ -1,6 +1,5 @@
 import { parse } from 'parse5';
 
-import { indentify } from './lib/utils.js';
 import { getGlobalConfig } from './lib/utils/get-global-config.js';
 import { renderTag } from './lib/utils/render-tag.js';
 
@@ -14,9 +13,9 @@ const htmlToCli = (rawHTML, theme = {}) => {
 
   const globalConfig = getGlobalConfig(document, theme);
 
-  return `\n${indentify(' ', false)(
-    (renderTag(document, globalConfig) || { value: '' }).value,
-  )}\n\n`;
+  return `\n${
+    (renderTag(document, globalConfig) || { value: '' }).value
+  }\n\n`;
 };
 
 export default htmlToCli;
