@@ -12,8 +12,8 @@
     "html": "bin/html.js"
   },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=7.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   },
   "author": "Grigorii Horos",
   "license": "GPL3",
@@ -32,9 +32,9 @@
   "homepage": "https://github.com/grigorii-horos/cli-html",
   "dependencies": {
     "ansi-align": "^3.0.1",
-    "ansi-escapes": "^7.0.0",
+    "ansi-escapes": "^7.2.0",
     "boxen": "^8.0.1",
-    "chalk": "^5.4.1",
+    "chalk": "^5.6.2",
     "chalk-string": "^4.0.0",
     "change-case": "^5.4.4",
     "cli-highlight": "^2.1.11",
@@ -44,17 +44,17 @@
     "concat-stream": "^2.0.0",
     "env-paths": "^3.0.0",
     "he": "^1.2.0",
-    "inline-style-parser": "^0.2.4",
+    "inline-style-parser": "^0.2.7",
     "languages-aliases": "^3.0.0",
     "longest-line": "0.0.3",
     "normalize-html-whitespace": "^1.0.0",
     "number-to-alphabet": "^1.0.0",
     "parse5": "^8.0.0",
     "romanize": "^1.1.1",
-    "supports-hyperlinks": "^4.1.0",
+    "supports-hyperlinks": "^4.3.0",
     "terminal-size": "^4.0.0",
-    "wrap-ansi": "^9.0.0",
-    "yaml": "^2.8.0"
+    "wrap-ansi": "^9.0.2",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
@@ -62,12 +62,12 @@
     "eslint": "^9.28.0",
     "eslint-config-standard-jsdoc": "^9.3.0",
     "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsdoc": "^61.4.1",
     "eslint-plugin-json": "^4.0.1",
-    "eslint-plugin-n": "^17.19.0",
+    "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-no-loops": "^0.4.0",
-    "eslint-plugin-perfectionist": "^4.14.0",
+    "eslint-plugin-perfectionist": "^4.15.1",
     "eslint-plugin-prefer-object-spread": "^1.2.1",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
