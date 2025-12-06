@@ -225,23 +225,51 @@ console.log(renderMarkdown(markdown));
 
 ### For CLI Usage
 
-Defaults live in `config.yaml` in this repository. CLI loads them, then applies your overrides from `config.yaml` in `env-paths('cli-html', { suffix: '' }).config` (typically `~/.config/cli-html` on Linux, `~/Library/Preferences/cli-html` on macOS, `%LOCALAPPDATA%\\cli-html\\Config` on Windows). To see the exact path, run:
+Defaults live in [`config.yaml`](config.yaml) in this repository. CLI loads them, then applies your overrides from `config.yaml` in the config directory.
+
+**Important:** Different commands use different configuration directories.
+
+**For `html` command:**
+- Linux: `~/.config/cli-html/config.yaml`
+- macOS: `~/Library/Preferences/cli-html/config.yaml`
+- Windows: `%LOCALAPPDATA%\cli-html\Config\config.yaml`
+
+**For `markdown` and `md` commands:**
+- Linux: `~/.config/cli-markdown/config.yaml`
+- macOS: `~/Library/Preferences/cli-markdown/config.yaml`
+- Windows: `%LOCALAPPDATA%\cli-markdown\Config\config.yaml`
+
+To see the exact path for each command, run:
 
 ```sh
+# For html command
 node -e "import('env-paths').then(({ default: envPaths }) => console.log(envPaths('cli-html', { suffix: '' }).config))"
+
+# For markdown/md commands
+node -e "import('env-paths').then(({ default: envPaths }) => console.log(envPaths('cli-markdown', { suffix: '' }).config))"
 ```
 
-1. Create the config directory if it does not exist (`mkdir -p ~/.config/cli-html` on Linux/macOS).
+1. Create the config directory if it does not exist:
+
+   **For `html` command:**
+   - Linux: `mkdir -p ~/.config/cli-html`
+   - macOS: `mkdir -p ~/Library/Preferences/cli-html`
+   - Windows: Create `%LOCALAPPDATA%\cli-html\Config` directory
+
+   **For `markdown`/`md` commands:**
+   - Linux: `mkdir -p ~/.config/cli-markdown`
+   - macOS: `mkdir -p ~/Library/Preferences/cli-markdown`
+   - Windows: Create `%LOCALAPPDATA%\cli-markdown\Config` directory
 2. Add a `config.yaml` file with styles written as [chalk-string](https://www.npmjs.com/package/chalk-string) values (colors/modifiers separated by spaces). For objects, only `color` is passed to `chalk-string`; other keys are used as extra config for components.
 
-   Available style keys: `h1`–`h6`, `span`, `a`, `figure.border.color`, `figure.border.style`, `figcaption`, `fieldset.border.color`, `fieldset.border.style`, `fieldset.title.color`, `details.border.color`, `details.border.style`, `blockquote`, `address`, `code.color`, `code.inline`, `code.numbers`, `table.header`, `table.caption`, `table.cell`, `dt`, `dd`, `dl`, `del`, `ins`, `strikethrough`, `underline`, `bold`, `samp`, `kbd`, `variableTag` (for `<var>`), `mark`, `time`, `italic`, `i`, `em`, `cite`, `abbr.color`, `abbr.title`, `abbr.parens`, `dfn`, `ol.color`, `ol.symbols`, `ul.color`, `ul.symbols`, `hr`, `progress.filled`, `progress.empty`.
+   Available style keys: `h1`–`h6`, `span`, `a`, `figure.border.color`, `figure.border.style`, `figcaption`, `fieldset.border.color`, `fieldset.border.style`, `fieldset.title.color`, `details.border.color`, `details.border.style`, `blockquote`, `address`, `code.color`, `code.inline`, `code.numbers`, `table.header`, `table.caption`, `table.cell`, `dt`, `dd`, `dl`, `del`, `ins`, `strikethrough`, `underline`, `bold`, `samp`, `kbd`, `variableTag` (for `<var>`), `mark`, `time`, `italic`, `i`, `em`, `cite`, `abbr.color`, `abbr.title`, `abbr.parens`, `dfn`, `ol.color`, `ol.markers`, `ul.color`, `ul.markers`, `hr`, `progress.filled`, `progress.empty`.
 
    Extra config:
    - `figure.border` supports `color` and `style` (e.g., `'single'`, `'double'`, `'round'`, `'bold'`) for configuring the border around figure elements.
    - `fieldset.border` supports `color` and `style`, and `fieldset.title.color` configures the legend text color.
    - `details.border` supports `color` and `style` for configuring the summary/details box border.
-   - `ol.symbols` (array) defines the numbering styles that rotate for nested ordered lists. Valid values: `'1'` (decimal), `'A'` (uppercase letters), `'a'` (lowercase letters), `'I'` (uppercase Roman), `'i'` (lowercase Roman). Default: `['1', 'I', 'i', 'A', 'a']`. HTML `type` attribute on `<ol>` tag overrides this setting. Legacy `ol.symbol` (single value) is still supported for backward compatibility.
-   - `ul.symbols` (array or object) controls markers for UL depth 1–3 (disc, square, circle). Example: `symbols: ["+", "-", ">"]` or `symbols: { disc: "+", square: "-", circle: ">" }`.
+   - `ol.markers` (array) defines the numbering styles that rotate for nested ordered lists. Valid values: `'1'` (decimal), `'A'` (uppercase letters), `'a'` (lowercase letters), `'I'` (uppercase Roman), `'i'` (lowercase Roman). Default: `['1', 'I', 'A', 'i', 'a']`. HTML `type` attribute on `<ol>` tag overrides this setting.
+   - `ul.markers` (array or object) controls markers for UL depth 1–3 (disc, square, circle). Example: `markers: ["+", "-", ">"]` or `markers: { disc: "+", square: "-", circle: ">" }`.
    - `code` can be configured as a string (applies to `color`) or an object with `color`, `inline`, and `numbers` properties. Supports fallback: `code.color` ← `code`, `code.inline` ← `inlineCode` (legacy), `code.numbers` ← `codeNumbers` (legacy).
    - `table` can be configured as nested object with `header`, `caption`, and `cell` properties. Supports fallback from legacy `tableHeader`, `tableCaption`, `tableCell`.
    - `abbr` can be configured as a string (applies to `color`) or an object with `color`, `title`, and `parens` properties. Supports fallback from legacy `abbr`, `abbrTitle`, `abbrParens`.
@@ -251,7 +279,7 @@ node -e "import('env-paths').then(({ default: envPaths }) => console.log(envPath
      - Both support `symbol` property to customize the progress bar character (default: `█`)
    - Legacy: `config.yml` or `theme.yml` will also be read if present.
 
-Example `~/.config/cli-html/config.yaml`:
+Example config file (paths vary by OS and command, see above):
 
 ```yml
 theme:
@@ -288,10 +316,10 @@ theme:
     parens: "gray"
   ol:
     color: "blueBright"
-    symbols: ["1", "I", "A",  "i", "a"]  # Rotates for nested lists
+    markers: ["1", "I", "A",  "i", "a"]  # Rotates for nested lists
   ul:
     color: "green"
-    symbols: ["+", "-", ">"]
+    markers: ["+", "-", ">"]
   hr: "gray"
   progress:
     filled:
@@ -317,7 +345,9 @@ progress:
     symbol: "░"
 ```
 
-3. Run `html your-file.html` — the custom styles will be applied automatically.
+3. Run the appropriate command — the custom styles will be applied automatically:
+   - `html your-file.html` loads config from the `cli-html` directory
+   - `markdown your-file.md` or `md your-file.md` loads config from the `cli-markdown` directory
 
 ### For Library Usage
 
@@ -343,11 +373,11 @@ const customTheme = {
   },
   ul: {
     color: "green",
-    symbols: ["+", "-", ">"]
+    markers: ["+", "-", ">"]
   },
   ol: {
     color: "blueBright",
-    symbols: ["1", "A", "a", "I", "i"]
+    markers: ["1", "A", "a", "I", "i"]
   },
   progress: {
     filled: {
@@ -378,7 +408,7 @@ The theme object uses the same structure and keys as the CLI `config.yaml` file.
 - **Links**: `a`, `span`
 - **Block elements**: `blockquote`, `address`, `hr`
 - **Code**: `code` (string or object with `color`, `inline`, `numbers`)
-- **Lists**: `ul` (with `color` and `symbols`), `ol` (with `color` and `symbols`), `dl`, `dt`, `dd`
+- **Lists**: `ul` (with `color` and `markers`), `ol` (with `color` and `markers`), `dl`, `dt`, `dd`
 - **Tables**: `table` (object with `header`, `caption`, `cell`)
 - **Borders**: `figure` (with `border.color`, `border.style`), `fieldset` (with `border.color`, `border.style`, `title.color`), `details` (with `border.color`, `border.style`)
 - **Progress bars**: `progress` (object with `filled` and `empty`, each having `color` and `symbol`)
