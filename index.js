@@ -2,8 +2,9 @@ import { parse } from 'parse5';
 
 import { getGlobalConfig } from './lib/utils/get-global-config.js';
 import { renderTag } from './lib/utils/render-tag.js';
+import { markdownToHtml } from './lib/markdown.js';
 
-const htmlToCli = (rawHTML, theme = {}) => {
+export const renderHTML = (rawHTML, theme = {}) => {
   const document = parse(rawHTML);
 
   // console.dir(
@@ -13,9 +14,20 @@ const htmlToCli = (rawHTML, theme = {}) => {
 
   const globalConfig = getGlobalConfig(document, theme);
 
-  return `\n${
+  return `${
     (renderTag(document, globalConfig) || { value: '' }).value
-  }\n\n`;
+  }\n`;
 };
 
-export default htmlToCli;
+/**
+ * Render markdown to terminal
+ * @param {string} markdown - Markdown content
+ * @param {object} theme - Optional theme configuration
+ * @returns {string} Formatted terminal output
+ */
+export const renderMarkdown = (markdown, theme = {}) => {
+  const html = markdownToHtml(markdown);
+  return renderHTML(html, theme);
+};
+
+export default renderHTML;

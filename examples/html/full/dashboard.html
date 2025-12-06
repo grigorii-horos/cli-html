@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>System Monitoring Dashboard</title>
+</head>
+<body>
+
+<h1>System Monitoring Dashboard</h1>
+
+<p>Last updated: <time datetime="2024-01-15T14:30:00">January 15, 2024 at 14:30 UTC</time> | Auto-refresh: <input type="checkbox" checked /> Enabled</p>
+
+<hr>
+
+<h2>Quick Stats</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Current</th>
+      <th>Target</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Active Users</td>
+      <td><strong>12,458</strong></td>
+      <td>10,000</td>
+      <td><mark>Above target</mark></td>
+    </tr>
+    <tr>
+      <td>Requests/sec</td>
+      <td><strong>1,847</strong></td>
+      <td>2,000</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <td>Avg Response Time</td>
+      <td><strong>142ms</strong></td>
+      <td>&lt; 200ms</td>
+      <td>Healthy</td>
+    </tr>
+    <tr>
+      <td>Error Rate</td>
+      <td><strong>0.03%</strong></td>
+      <td>&lt; 0.1%</td>
+      <td>Optimal</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Server Health</h2>
+
+<h3>Web Servers (4 instances)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Server</th>
+      <th>CPU</th>
+      <th>Memory</th>
+      <th>Disk</th>
+      <th>Network</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>web-01</code></td>
+      <td><meter value="45" min="0" max="100" low="50" high="80" optimum="30">45%</meter> 45%</td>
+      <td><meter value="62" min="0" max="100" low="50" high="80" optimum="30">62%</meter> 62%</td>
+      <td><meter value="38" min="0" max="100" low="70" high="85" optimum="30">38%</meter> 38%</td>
+      <td><meter value="55" min="0" max="100" low="50" high="80" optimum="30">55%</meter> 55 Mbps</td>
+      <td><input type="radio" name="web-01" checked /> Healthy</td>
+    </tr>
+    <tr>
+      <td><code>web-02</code></td>
+      <td><meter value="52" min="0" max="100" low="50" high="80" optimum="30">52%</meter> 52%</td>
+      <td><meter value="58" min="0" max="100" low="50" high="80" optimum="30">58%</meter> 58%</td>
+      <td><meter value="41" min="0" max="100" low="70" high="85" optimum="30">41%</meter> 41%</td>
+      <td><meter value="62" min="0" max="100" low="50" high="80" optimum="30">62%</meter> 62 Mbps</td>
+      <td><input type="radio" name="web-02" checked /> Healthy</td>
+    </tr>
+    <tr>
+      <td><code>web-03</code></td>
+      <td><meter value="48" min="0" max="100" low="50" high="80" optimum="30">48%</meter> 48%</td>
+      <td><meter value="65" min="0" max="100" low="50" high="80" optimum="30">65%</meter> 65%</td>
+      <td><meter value="35" min="0" max="100" low="70" high="85" optimum="30">35%</meter> 35%</td>
+      <td><meter value="51" min="0" max="100" low="50" high="80" optimum="30">51%</meter> 51 Mbps</td>
+      <td><input type="radio" name="web-03" checked /> Healthy</td>
+    </tr>
+    <tr>
+      <td><code>web-04</code></td>
+      <td><meter value="87" min="0" max="100" low="50" high="80" optimum="30">87%</meter> 87%</td>
+      <td><meter value="91" min="0" max="100" low="50" high="80" optimum="30">91%</meter> 91%</td>
+      <td><meter value="42" min="0" max="100" low="70" high="85" optimum="30">42%</meter> 42%</td>
+      <td><meter value="78" min="0" max="100" low="50" high="80" optimum="30">78%</meter> 78 Mbps</td>
+      <td><input type="radio" name="web-04" /> Warning</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Alert:</strong> Server <code>web-04</code> is experiencing high CPU and memory usage. Consider scaling or investigation.</p>
+</blockquote>
+
+<h3>Database Servers</h3>
+
+<dl>
+  <dt><code>db-primary</code> (PostgreSQL 14.5)</dt>
+  <dd>
+    CPU: <meter value="35" min="0" max="100" low="50" high="80" optimum="30">35%</meter> 35% |
+    Memory: <meter value="72" min="0" max="100" low="50" high="80" optimum="30">72%</meter> 72% |
+    Connections: <meter value="145" min="0" max="200" low="150" high="180" optimum="50">145</meter> 145/200 |
+    <input type="radio" checked /> Healthy
+  </dd>
+
+  <dt><code>db-replica-01</code> (PostgreSQL 14.5)</dt>
+  <dd>
+    CPU: <meter value="28" min="0" max="100" low="50" high="80" optimum="30">28%</meter> 28% |
+    Memory: <meter value="68" min="0" max="100" low="50" high="80" optimum="30">68%</meter> 68% |
+    Replication lag: <samp>1.2s</samp> |
+    <input type="radio" checked /> Healthy
+  </dd>
+
+  <dt><code>db-replica-02</code> (PostgreSQL 14.5)</dt>
+  <dd>
+    CPU: <meter value="31" min="0" max="100" low="50" high="80" optimum="30">31%</meter> 31% |
+    Memory: <meter value="65" min="0" max="100" low="50" high="80" optimum="30">65%</meter> 65% |
+    Replication lag: <samp>0.8s</samp> |
+    <input type="radio" checked /> Healthy
+  </dd>
+</dl>
+
+<h3>Cache Servers (Redis)</h3>
+
+<ul>
+  <li><code>cache-01</code>: <meter value="8.2" min="0" max="16">8.2 GB</meter> 8.2 GB / 16 GB | Hit rate: <meter value="94" min="0" max="100" low="80" high="90" optimum="95">94%</meter> 94% | <input type="checkbox" checked /> Healthy</li>
+  <li><code>cache-02</code>: <meter value="7.8" min="0" max="16">7.8 GB</meter> 7.8 GB / 16 GB | Hit rate: <meter value="92" min="0" max="100" low="80" high="90" optimum="95">92%</meter> 92% | <input type="checkbox" checked /> Healthy</li>
+  <li><code>cache-03</code>: <meter value="9.1" min="0" max="16">9.1 GB</meter> 9.1 GB / 16 GB | Hit rate: <meter value="96" min="0" max="100" low="80" high="90" optimum="95">96%</meter> 96% | <input type="checkbox" checked /> Healthy</li>
+</ul>
+
+<hr>
+
+<h2>Application Performance</h2>
+
+<h3>Response Time Percentiles</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Percentile</th>
+      <th>Value</th>
+      <th>Visualization</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>p50 (median)</td>
+      <td>85ms</td>
+      <td><progress value="85" max="200">42.5%</progress></td>
+      <td>Excellent</td>
+    </tr>
+    <tr>
+      <td>p75</td>
+      <td>125ms</td>
+      <td><progress value="125" max="200">62.5%</progress></td>
+      <td>Good</td>
+    </tr>
+    <tr>
+      <td>p90</td>
+      <td>178ms</td>
+      <td><progress value="178" max="200">89%</progress></td>
+      <td>Acceptable</td>
+    </tr>
+    <tr>
+      <td>p95</td>
+      <td>242ms</td>
+      <td><progress value="200" max="200">100%</progress></td>
+      <td>Warning</td>
+    </tr>
+    <tr>
+      <td>p99</td>
+      <td>385ms</td>
+      <td><progress value="200" max="200">100%</progress></td>
+      <td>Needs attention</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Endpoint Performance (Top 10)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Requests</th>
+      <th>Avg Time</th>
+      <th>p95</th>
+      <th>Error Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>GET /api/users</code></td>
+      <td>15,234</td>
+      <td>45ms</td>
+      <td>82ms</td>
+      <td><meter value="0.02" min="0" max="1" low="0.1" high="0.5" optimum="0">0.02%</meter></td>
+    </tr>
+    <tr>
+      <td><code>POST /api/auth</code></td>
+      <td>8,721</td>
+      <td>152ms</td>
+      <td>245ms</td>
+      <td><meter value="0.05" min="0" max="1" low="0.1" high="0.5" optimum="0">0.05%</meter></td>
+    </tr>
+    <tr>
+      <td><code>GET /api/products</code></td>
+      <td>12,458</td>
+      <td>38ms</td>
+      <td>71ms</td>
+      <td><meter value="0.01" min="0" max="1" low="0.1" high="0.5" optimum="0">0.01%</meter></td>
+    </tr>
+    <tr>
+      <td><code>GET /api/orders</code></td>
+      <td>6,892</td>
+      <td>95ms</td>
+      <td>168ms</td>
+      <td><meter value="0.08" min="0" max="1" low="0.1" high="0.5" optimum="0">0.08%</meter></td>
+    </tr>
+    <tr>
+      <td><code>POST /api/checkout</code></td>
+      <td>2,145</td>
+      <td>425ms</td>
+      <td>782ms</td>
+      <td><meter value="0.15" min="0" max="1" low="0.1" high="0.5" optimum="0">0.15%</meter></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Traffic Overview</h2>
+
+<h3>Requests per Hour (Last 24 hours)</h3>
+
+<pre><code> 14:00 │ ████████████████████████████████████ 3,245 req/s
+ 13:00 │ ██████████████████████████████ 2,892 req/s
+ 12:00 │ ███████████████████████████████████ 3,156 req/s
+ 11:00 │ ████████████████████████████ 2,745 req/s
+ 10:00 │ ██████████████████████████ 2,534 req/s
+ 09:00 │ █████████████████████ 2,012 req/s
+ 08:00 │ ████████████████ 1,567 req/s
+ 07:00 │ ██████████ 945 req/s
+ 06:00 │ ████████ 723 req/s
+ 05:00 │ ██████ 512 req/s</code></pre>
+
+<p>Peak traffic: <strong>3,245 req/s</strong> at 14:00 UTC</p>
+<p>Average traffic: <meter value="1847" min="0" max="3245">1,847 req/s</meter> 1,847 req/s</p>
+
+<h3>Geographic Distribution</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Region</th>
+      <th>Requests</th>
+      <th>Percentage</th>
+      <th>Avg Latency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>North America</td>
+      <td>456,234</td>
+      <td><progress value="42" max="100">42%</progress> 42%</td>
+      <td>85ms</td>
+    </tr>
+    <tr>
+      <td>Europe</td>
+      <td>324,567</td>
+      <td><progress value="30" max="100">30%</progress> 30%</td>
+      <td>92ms</td>
+    </tr>
+    <tr>
+      <td>Asia</td>
+      <td>215,432</td>
+      <td><progress value="20" max="100">20%</progress> 20%</td>
+      <td>145ms</td>
+    </tr>
+    <tr>
+      <td>South America</td>
+      <td>54,321</td>
+      <td><progress value="5" max="100">5%</progress> 5%</td>
+      <td>178ms</td>
+    </tr>
+    <tr>
+      <td>Other</td>
+      <td>32,458</td>
+      <td><progress value="3" max="100">3%</progress> 3%</td>
+      <td>205ms</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Active Background Jobs</h2>
+
+<h3>Job Queue Status</h3>
+
+<dl>
+  <dt>Email Queue</dt>
+  <dd>
+    Pending: <strong>1,245</strong> |
+    Processing: <strong>12</strong> |
+    Failed: <strong>3</strong> |
+    Progress: <progress value="92" max="100">92%</progress>
+  </dd>
+
+  <dt>Image Processing Queue</dt>
+  <dd>
+    Pending: <strong>458</strong> |
+    Processing: <strong>24</strong> |
+    Failed: <strong>1</strong> |
+    Progress: <progress value="95" max="100">95%</progress>
+  </dd>
+
+  <dt>Report Generation Queue</dt>
+  <dd>
+    Pending: <strong>89</strong> |
+    Processing: <strong>5</strong> |
+    Failed: <strong>0</strong> |
+    Progress: <progress value="98" max="100">98%</progress>
+  </dd>
+
+  <dt>Data Export Queue</dt>
+  <dd>
+    Pending: <strong>23</strong> |
+    Processing: <strong>2</strong> |
+    Failed: <strong>0</strong> |
+    Progress: <progress value="100" max="100">100%</progress>
+  </dd>
+</dl>
+
+<h3>Long-Running Jobs</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job ID</th>
+      <th>Type</th>
+      <th>Started</th>
+      <th>Duration</th>
+      <th>Progress</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>job-8472</code></td>
+      <td>Database Backup</td>
+      <td>13:45</td>
+      <td>45 minutes</td>
+      <td><progress value="78" max="100">78%</progress> 78%</td>
+    </tr>
+    <tr>
+      <td><code>job-8473</code></td>
+      <td>Analytics Report</td>
+      <td>14:12</td>
+      <td>18 minutes</td>
+      <td><progress value="55" max="100">55%</progress> 55%</td>
+    </tr>
+    <tr>
+      <td><code>job-8474</code></td>
+      <td>Log Archival</td>
+      <td>14:20</td>
+      <td>10 minutes</td>
+      <td><progress value="34" max="100">34%</progress> 34%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Error Tracking</h2>
+
+<h3>Error Distribution (Last Hour)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Error Type</th>
+      <th>Count</th>
+      <th>Percentage</th>
+      <th>Sample Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4xx Client Errors</td>
+      <td>245</td>
+      <td><progress value="65" max="100">65%</progress> 65%</td>
+      <td><samp>404 Not Found</samp></td>
+    </tr>
+    <tr>
+      <td>5xx Server Errors</td>
+      <td>89</td>
+      <td><progress value="24" max="100">24%</progress> 24%</td>
+      <td><samp>500 Internal Server Error</samp></td>
+    </tr>
+    <tr>
+      <td>Database Errors</td>
+      <td>28</td>
+      <td><progress value="7" max="100">7%</progress> 7%</td>
+      <td><samp>Connection timeout</samp></td>
+    </tr>
+    <tr>
+      <td>Cache Errors</td>
+      <td>15</td>
+      <td><progress value="4" max="100">4%</progress> 4%</td>
+      <td><samp>Cache miss</samp></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Recent Critical Errors</h3>
+
+<ol>
+  <li>
+    <strong>Database Connection Pool Exhausted</strong>
+    <br>
+    Time: <time>14:25:42</time> | Server: <code>web-04</code> | Severity: <mark>High</mark>
+    <br>
+    <samp>Error: connection pool exhausted - max connections (200) reached</samp>
+  </li>
+  <li>
+    <strong>Cache Server Timeout</strong>
+    <br>
+    Time: <time>14:18:15</time> | Server: <code>cache-02</code> | Severity: Medium
+    <br>
+    <samp>Error: operation timed out after 5000ms</samp>
+  </li>
+  <li>
+    <strong>API Rate Limit Exceeded</strong>
+    <br>
+    Time: <time>14:05:33</time> | Endpoint: <code>/api/search</code> | Severity: Low
+    <br>
+    <samp>Error: rate limit of 100 requests/minute exceeded</samp>
+  </li>
+</ol>
+
+<hr>
+
+<h2>Security Monitoring</h2>
+
+<h3>Failed Authentication Attempts</h3>
+
+<p>Last hour: <meter value="23" min="0" max="100" low="50" high="80" optimum="0">23</meter> 23 failed attempts (threshold: 100)</p>
+
+<h3>Suspicious Activity</h3>
+
+<ul>
+  <li><input type="checkbox" /> SQL Injection attempts: <strong>0</strong></li>
+  <li><input type="checkbox" /> XSS attempts: <strong>0</strong></li>
+  <li><input type="checkbox" checked /> Unusual traffic patterns: <strong>2</strong> detected</li>
+  <li><input type="checkbox" /> Brute force attempts: <strong>0</strong></li>
+</ul>
+
+<blockquote>
+  <p><strong>Security Alert:</strong> Unusual traffic patterns detected from <abbr title="Internet Protocol">IP</abbr> addresses: 192.168.1.45, 10.0.5.123. Investigation in progress.</p>
+</blockquote>
+
+<hr>
+
+<h2>Resource Utilization</h2>
+
+<h3>Storage Usage</h3>
+
+<dl>
+  <dt>Database Storage</dt>
+  <dd>
+    <meter value="456" min="0" max="1000">456 GB</meter> 456 GB / 1 TB used (46%)
+  </dd>
+
+  <dt>File Storage (S3)</dt>
+  <dd>
+    <meter value="2.3" min="0" max="5">2.3 TB</meter> 2.3 TB / 5 TB used (46%)
+  </dd>
+
+  <dt>Log Storage</dt>
+  <dd>
+    <meter value="128" min="0" max="200">128 GB</meter> 128 GB / 200 GB used (64%)
+  </dd>
+
+  <dt>Backup Storage</dt>
+  <dd>
+    <meter value="890" min="0" max="2000">890 GB</meter> 890 GB / 2 TB used (44%)
+  </dd>
+</dl>
+
+<h3>Bandwidth Usage</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Direction</th>
+      <th>Current</th>
+      <th>Daily Average</th>
+      <th>Monthly Quota</th>
+      <th>Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ingress</td>
+      <td>145 Mbps</td>
+      <td>128 Mbps</td>
+      <td>10 TB</td>
+      <td><meter value="3.2" min="0" max="10">3.2 TB</meter> 3.2 TB (32%)</td>
+    </tr>
+    <tr>
+      <td>Egress</td>
+      <td>892 Mbps</td>
+      <td>756 Mbps</td>
+      <td>50 TB</td>
+      <td><meter value="18.5" min="0" max="50">18.5 TB</meter> 18.5 TB (37%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Deployment Status</h2>
+
+<h3>Recent Deployments</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Version</th>
+      <th>Deployed</th>
+      <th>Status</th>
+      <th>Rollout</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>API Gateway</td>
+      <td><code>v2.5.3</code></td>
+      <td><time>Jan 15, 12:00</time></td>
+      <td><input type="checkbox" checked /> Success</td>
+      <td><progress value="100" max="100">100%</progress></td>
+    </tr>
+    <tr>
+      <td>User Service</td>
+      <td><code>v1.8.2</code></td>
+      <td><time>Jan 15, 11:30</time></td>
+      <td><input type="checkbox" checked /> Success</td>
+      <td><progress value="100" max="100">100%</progress></td>
+    </tr>
+    <tr>
+      <td>Payment Service</td>
+      <td><code>v3.2.1</code></td>
+      <td><time>Jan 15, 14:15</time></td>
+      <td>In Progress</td>
+      <td><progress value="60" max="100">60%</progress></td>
+    </tr>
+    <tr>
+      <td>Frontend</td>
+      <td><code>v4.1.0</code></td>
+      <td><time>Jan 14, 16:45</time></td>
+      <td><input type="checkbox" checked /> Success</td>
+      <td><progress value="100" max="100">100%</progress></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Pending Deployments</h3>
+
+<menu>
+  <li>Order Service <code>v2.3.0</code> - Scheduled for 16:00 UTC</li>
+  <li>Analytics Service <code>v1.5.1</code> - Scheduled for 18:00 UTC</li>
+  <li>Search Service <code>v3.0.0</code> - Scheduled for Jan 16, 02:00 UTC</li>
+</menu>
+
+<hr>
+
+<h2>Health Checks Summary</h2>
+
+<fieldset>
+  <legend>Infrastructure</legend>
+  <ul>
+    <li><input type="checkbox" checked /> Load Balancers (4/4 healthy)</li>
+    <li><input type="checkbox" checked /> Web Servers (3/4 healthy)</li>
+    <li><input type="checkbox" checked /> Database Cluster (3/3 healthy)</li>
+    <li><input type="checkbox" checked /> Cache Servers (3/3 healthy)</li>
+    <li><input type="checkbox" checked /> Message Queue (healthy)</li>
+  </ul>
+</fieldset>
+
+<fieldset>
+  <legend>Services</legend>
+  <ul>
+    <li><input type="checkbox" checked /> API Gateway (healthy)</li>
+    <li><input type="checkbox" checked /> Authentication Service (healthy)</li>
+    <li><input type="checkbox" checked /> User Service (healthy)</li>
+    <li><input type="checkbox" checked /> Order Service (healthy)</li>
+    <li><input type="checkbox" /> Payment Service (deploying)</li>
+    <li><input type="checkbox" checked /> Notification Service (healthy)</li>
+  </ul>
+</fieldset>
+
+<fieldset>
+  <legend>External Dependencies</legend>
+  <ul>
+    <li><input type="checkbox" checked /> Payment Gateway API (healthy)</li>
+    <li><input type="checkbox" checked /> Email Service API (healthy)</li>
+    <li><input type="checkbox" checked /> SMS Gateway API (healthy)</li>
+    <li><input type="checkbox" checked /> CDN (healthy)</li>
+    <li><input type="checkbox" checked /> DNS Providers (healthy)</li>
+  </ul>
+</fieldset>
+
+<hr>
+
+<h2>Alerts Configuration</h2>
+
+<p>Active alert rules: <strong>45</strong> | Triggered today: <strong>3</strong> | Silenced: <strong>2</strong></p>
+
+<h3>Alert Severity Distribution</h3>
+
+<ul>
+  <li>Critical: <meter value="0" min="0" max="10" low="1" high="5" optimum="0">0</meter> 0 active</li>
+  <li>High: <meter value="1" min="0" max="20" low="3" high="10" optimum="0">1</meter> 1 active</li>
+  <li>Medium: <meter value="2" min="0" max="30" low="5" high="15" optimum="0">2</meter> 2 active</li>
+  <li>Low: <meter value="5" min="0" max="50" low="10" high="25" optimum="0">5</meter> 5 active</li>
+</ul>
+
+<hr>
+
+<footer>
+  <p><small>Dashboard auto-refreshes every 30 seconds | <a href="#">View detailed logs</a> | <a href="#">Configure alerts</a> | <a href="#">Export metrics</a></small></p>
+  <p><small>System version: <code>v2.5.3</code> | Monitoring stack: Prometheus + Grafana + Elasticsearch</small></p>
+</footer>
+
+</body>
+</html>

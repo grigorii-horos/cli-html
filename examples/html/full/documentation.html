@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Documentation - User Authentication Module</title>
+</head>
+<body>
+
+<h1>User Authentication API</h1>
+
+<p>This document provides comprehensive documentation for the User Authentication module. The authentication system supports multiple authentication methods and provides secure session management.</p>
+
+<hr>
+
+<h2>Table of Contents</h2>
+
+<ol>
+  <li>Installation</li>
+  <li>Quick Start</li>
+  <li>API Reference</li>
+  <li>Configuration Options</li>
+  <li>Examples</li>
+  <li>Troubleshooting</li>
+</ol>
+
+<hr>
+
+<h2>Installation</h2>
+
+<p>Install the authentication module using npm:</p>
+
+<pre><code class="language-bash">npm install @example/auth --save</code></pre>
+
+<p>Or using yarn:</p>
+
+<pre><code class="language-bash">yarn add @example/auth</code></pre>
+
+<h3>System Requirements</h3>
+
+<ul>
+  <li>Node.js >= 16.0.0</li>
+  <li>npm >= 8.0.0</li>
+  <li>TypeScript >= 4.5 (optional)</li>
+</ul>
+
+<hr>
+
+<h2>Quick Start</h2>
+
+<p>Here's a minimal example to get you started:</p>
+
+<pre><code class="language-javascript">import { AuthManager } from '@example/auth';
+
+const auth = new AuthManager({
+  provider: 'jwt',
+  secret: process.env.JWT_SECRET
+});
+
+// Authenticate user
+const token = await auth.login({
+  email: 'user@example.com',
+  password: 'secure-password'
+});
+
+console.log('Token:', token);</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> Always store sensitive credentials in environment variables, never in source code.</p>
+</blockquote>
+
+<hr>
+
+<h2>API Reference</h2>
+
+<h3>AuthManager Class</h3>
+
+<p>The main class for managing authentication operations.</p>
+
+<h4>Constructor</h4>
+
+<dl>
+  <dt><code>new AuthManager(options)</code></dt>
+  <dd>Creates a new authentication manager instance.</dd>
+
+  <dt><strong>Parameters:</strong></dt>
+  <dd>
+    <code>options</code> <var>Object</var> - Configuration object
+  </dd>
+</dl>
+
+<h4>Methods</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Parameters</th>
+      <th>Returns</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>login(credentials)</code></td>
+      <td>Object</td>
+      <td>Promise&lt;string&gt;</td>
+      <td>Authenticates user and returns token</td>
+    </tr>
+    <tr>
+      <td><code>logout(token)</code></td>
+      <td>string</td>
+      <td>Promise&lt;void&gt;</td>
+      <td>Invalidates the given token</td>
+    </tr>
+    <tr>
+      <td><code>verify(token)</code></td>
+      <td>string</td>
+      <td>Promise&lt;User&gt;</td>
+      <td>Verifies token and returns user data</td>
+    </tr>
+    <tr>
+      <td><code>refresh(token)</code></td>
+      <td>string</td>
+      <td>Promise&lt;string&gt;</td>
+      <td>Refreshes an existing token</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Example Usage</h4>
+
+<pre><code class="language-javascript">// Login
+const token = await auth.login({
+  email: 'user@example.com',
+  password: 'password123'
+});
+
+// Verify token
+const user = await auth.verify(token);
+console.log('User ID:', user.id);
+
+// Refresh token
+const newToken = await auth.refresh(token);
+
+// Logout
+await auth.logout(newToken);</code></pre>
+
+<hr>
+
+<h2>Configuration Options</h2>
+
+<p>The authentication module supports the following configuration options:</p>
+
+<dl>
+  <dt><code>provider</code></dt>
+  <dd>
+    <p>Authentication provider type. Supported values:</p>
+    <ul>
+      <li><code>'jwt'</code> - JSON Web Tokens (recommended)</li>
+      <li><code>'session'</code> - Session-based authentication</li>
+      <li><code>'oauth'</code> - OAuth 2.0 provider</li>
+    </ul>
+  </dd>
+
+  <dt><code>secret</code></dt>
+  <dd>
+    Secret key for token signing. <strong>Required</strong> for JWT provider.
+    <br>
+    Type: <var>string</var>
+  </dd>
+
+  <dt><code>expiresIn</code></dt>
+  <dd>
+    Token expiration time. Default: <samp>24h</samp>
+    <br>
+    Type: <var>string</var> | <var>number</var>
+  </dd>
+
+  <dt><code>refreshTokenExpiry</code></dt>
+  <dd>
+    Refresh token expiration time. Default: <samp>7d</samp>
+    <br>
+    Type: <var>string</var>
+  </dd>
+</dl>
+
+<h3>Advanced Configuration</h3>
+
+<pre><code class="language-javascript">const auth = new AuthManager({
+  provider: 'jwt',
+  secret: process.env.JWT_SECRET,
+  expiresIn: '1h',
+  refreshTokenExpiry: '7d',
+
+  // Password hashing options
+  bcrypt: {
+    rounds: 12
+  },
+
+  // Rate limiting
+  rateLimit: {
+    maxAttempts: 5,
+    windowMs: 900000 // 15 minutes
+  },
+
+  // Custom validators
+  validators: {
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    password: {
+      minLength: 8,
+      requireUppercase: true,
+      requireNumbers: true,
+      requireSpecialChars: true
+    }
+  }
+});</code></pre>
+
+<hr>
+
+<h2>Examples</h2>
+
+<h3>User Registration</h3>
+
+<pre><code class="language-javascript">async function registerUser(userData) {
+  try {
+    const user = await auth.register({
+      email: userData.email,
+      password: userData.password,
+      name: userData.name
+    });
+
+    console.log('User registered:', user.id);
+    return user;
+  } catch (error) {
+    console.error('Registration failed:', error.message);
+    throw error;
+  }
+}</code></pre>
+
+<h3>Protected Route Middleware</h3>
+
+<pre><code class="language-javascript">function authMiddleware(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({
+      error: 'No token provided'
+    });
+  }
+
+  auth.verify(token)
+    .then(user => {
+      req.user = user;
+      next();
+    })
+    .catch(error => {
+      res.status(403).json({
+        error: 'Invalid token'
+      });
+    });
+}</code></pre>
+
+<h3>Password Reset Flow</h3>
+
+<pre><code class="language-javascript">// Step 1: Request password reset
+const resetToken = await auth.requestPasswordReset({
+  email: 'user@example.com'
+});
+
+// Step 2: Verify reset token (from email link)
+const isValid = await auth.verifyResetToken(resetToken);
+
+// Step 3: Set new password
+if (isValid) {
+  await auth.resetPassword({
+    token: resetToken,
+    newPassword: 'new-secure-password'
+  });
+}</code></pre>
+
+<hr>
+
+<h2>Troubleshooting</h2>
+
+<h3>Common Issues</h3>
+
+<dl>
+  <dt>Error: "Invalid token"</dt>
+  <dd>
+    <p>This error occurs when the token has expired or is malformed.</p>
+    <p><strong>Solution:</strong> Implement token refresh logic or prompt user to login again.</p>
+  </dd>
+
+  <dt>Error: "Secret key not provided"</dt>
+  <dd>
+    <p>The JWT secret is missing from configuration.</p>
+    <p><strong>Solution:</strong> Set the <code>JWT_SECRET</code> environment variable:</p>
+    <pre><code class="language-bash">export JWT_SECRET=your-secret-key-here</code></pre>
+  </dd>
+
+  <dt>Error: "Rate limit exceeded"</dt>
+  <dd>
+    <p>Too many authentication attempts from the same IP.</p>
+    <p><strong>Solution:</strong> Wait for the rate limit window to expire (default: 15 minutes) or adjust rate limit settings.</p>
+  </dd>
+</dl>
+
+<h3>Debug Mode</h3>
+
+<p>Enable debug logging to troubleshoot issues:</p>
+
+<pre><code class="language-javascript">const auth = new AuthManager({
+  provider: 'jwt',
+  secret: process.env.JWT_SECRET,
+  debug: true
+});</code></pre>
+
+<blockquote>
+  <p><strong>Warning:</strong> Never enable debug mode in production as it may expose sensitive information.</p>
+</blockquote>
+
+<hr>
+
+<h2>Performance Metrics</h2>
+
+<p>Typical performance characteristics:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Average Time</th>
+      <th>99th Percentile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Token Generation</td>
+      <td>5ms</td>
+      <td>12ms</td>
+    </tr>
+    <tr>
+      <td>Token Verification</td>
+      <td>2ms</td>
+      <td>8ms</td>
+    </tr>
+    <tr>
+      <td>Password Hashing</td>
+      <td>150ms</td>
+      <td>300ms</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Token verification: <meter value="98" min="0" max="100" low="90" high="95" optimum="100">98%</meter> success rate</p>
+
+<hr>
+
+<h2>Security Best Practices</h2>
+
+<ul>
+  <li><input type="checkbox" checked /> Use HTTPS for all authentication endpoints</li>
+  <li><input type="checkbox" checked /> Store secrets in environment variables</li>
+  <li><input type="checkbox" checked /> Implement rate limiting</li>
+  <li><input type="checkbox" /> Enable two-factor authentication</li>
+  <li><input type="checkbox" /> Regular security audits</li>
+  <li><input type="checkbox" /> Monitor for suspicious activity</li>
+</ul>
+
+<hr>
+
+<h2>Version History</h2>
+
+<dl>
+  <dt>v2.1.0</dt>
+  <dd>
+    <ins>Added OAuth 2.0 provider support</ins>
+    <br>
+    <ins>Improved token refresh mechanism</ins>
+  </dd>
+
+  <dt>v2.0.0</dt>
+  <dd>
+    <del>Removed legacy session support</del>
+    <br>
+    <ins>Added TypeScript definitions</ins>
+    <br>
+    Breaking change: Updated configuration schema
+  </dd>
+
+  <dt>v1.5.0</dt>
+  <dd>
+    <ins>Added rate limiting</ins>
+    <br>
+    <ins>Password validation improvements</ins>
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Support</h2>
+
+<p>For questions and support:</p>
+
+<ul>
+  <li>GitHub Issues: <a href="https://github.com/example/auth/issues">github.com/example/auth/issues</a></li>
+  <li>Documentation: <a href="https://docs.example.com/auth">docs.example.com/auth</a></li>
+  <li>Email: <a href="mailto:support@example.com">support@example.com</a></li>
+</ul>
+
+<p>License: <abbr title="Massachusetts Institute of Technology">MIT</abbr> | Copyright © 2024 Example Inc.</p>
+
+</body>
+</html>

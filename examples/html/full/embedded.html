@@ -1,0 +1,110 @@
+<h2>Embedded Content Examples</h2>
+
+<p><i>Examples of iframe, object, canvas, svg, and other embedded content elements.
+In CLI, these are typically rendered as void tags (hidden or with fallback content).</i></p>
+
+<h3>Iframe Examples</h3>
+
+<p>Embedded webpage:</p>
+<iframe src="https://example.com" width="600" height="400">
+  Your browser does not support iframes.
+  Please visit: https://example.com
+</iframe>
+
+<p>Embedded video:</p>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" width="560" height="315">
+  Video player not available
+</iframe>
+
+<p>Embedded map:</p>
+<iframe src="https://maps.google.com/embed" width="600" height="450">
+  Map not available. Visit Google Maps directly.
+</iframe>
+
+<h3>Object Examples</h3>
+
+<p>Embedded PDF:</p>
+<object data="document.pdf" type="application/pdf" width="600" height="400">
+  <p>PDF cannot be displayed. <a href="document.pdf">Download PDF</a></p>
+</object>
+
+<p>Embedded image:</p>
+<object data="image.jpg" type="image/jpeg" width="400" height="300">
+  Image not available
+</object>
+
+<p>Embedded SVG:</p>
+<object data="diagram.svg" type="image/svg+xml" width="400" height="300">
+  SVG diagram not available
+</object>
+
+<h3>Canvas Examples</h3>
+
+<p>Drawing canvas:</p>
+<canvas id="myCanvas" width="400" height="200">
+  Your browser does not support the canvas element.
+  This would display a 400x200 drawing area.
+</canvas>
+
+<p>Chart canvas:</p>
+<canvas id="chartCanvas" width="600" height="400">
+  Chart visualization not available in text mode.
+</canvas>
+
+<h3>SVG Examples</h3>
+
+<p>Inline SVG graphic:</p>
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="80" fill="blue" />
+  <text x="100" y="100" text-anchor="middle" fill="white">SVG</text>
+</svg>
+
+<p>SVG icon:</p>
+<svg width="24" height="24" viewBox="0 0 24 24">
+  <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+</svg>
+
+<h3>Math Examples</h3>
+
+<p>Mathematical formula:</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+    <mi>x</mi>
+    <mo>=</mo>
+    <mfrac>
+      <mrow><mo>-</mo><mi>b</mi><mo>±</mo><msqrt><msup><mi>b</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn><mi>a</mi><mi>c</mi></msqrt></mrow>
+      <mrow><mn>2</mn><mi>a</mi></mrow>
+    </mfrac>
+  </mrow>
+</math>
+
+<p>Simple equation:</p>
+<math>
+  <mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup>
+</math>
+
+<h3>Portal Example (experimental)</h3>
+
+<p>Portal to another page:</p>
+<portal src="https://example.com/page2">
+  Portal preview not available
+</portal>
+
+<h3>Slot Example (Web Components)</h3>
+
+<div>
+  <slot name="header">Default header content</slot>
+  <slot>Default main content</slot>
+  <slot name="footer">Default footer content</slot>
+</div>
+
+<h3>Template Example</h3>
+
+<template id="user-template">
+  <div class="user-card">
+    <h3 class="user-name"></h3>
+    <p class="user-email"></p>
+  </div>
+</template>
+
+<p>Template defined above (hidden until instantiated)</p>

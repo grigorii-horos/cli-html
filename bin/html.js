@@ -13,16 +13,22 @@ const paths = envPaths('cli-html', {
 });
 
 const loadTheme = () => {
-  const themePath = `${paths.config}/theme.yml`;
-  if (!fs.existsSync(themePath)) {
+  const candidateFiles = ['config.yaml', 'config.yml', 'theme.yml'].map(
+    (file) => `${paths.config}/${file}`,
+  );
+
+  const themePath = candidateFiles.find((filePath) => fs.existsSync(filePath));
+
+  if (!themePath) {
     return {};
   }
 
   try {
     const fileContent = fs.readFileSync(themePath, 'utf8');
-    return fileContent.trim() ? parse(fileContent) || {} : {};
+    const parsed = fileContent.trim() ? parse(fileContent) || {} : {};
+    return parsed.theme || parsed;
   } catch (error) {
-    console.error(`Failed to read theme config: ${error.message}`);
+    console.error(`Failed to read config: ${error.message}`);
     return {};
   }
 };

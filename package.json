@@ -1,7 +1,7 @@
 {
   "name": "cli-html",
   "version": "4.5.1",
-  "description": "Render HTML to Terminal",
+  "description": "Render HTML and Markdown to Terminal",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -9,7 +9,9 @@
     "test": "FORCE_COLOR=1 node --test"
   },
   "bin": {
-    "html": "bin/html.js"
+    "html": "bin/html.js",
+    "markdown": "bin/markdown.js",
+    "md": "bin/markdown.js"
   },
   "engines": {
     "node": ">=18.0.0",
@@ -19,11 +21,16 @@
   "license": "GPL3",
   "keywords": [
     "html",
+    "markdown",
     "render",
     "terminal",
     "cli",
     "html-to-cli",
-    "html-to-terminal"
+    "html-to-terminal",
+    "markdown-to-cli",
+    "markdown-to-terminal",
+    "gfm",
+    "github-flavored-markdown"
   ],
   "repository": {
     "type": "git",
@@ -47,6 +54,17 @@
     "inline-style-parser": "^0.2.7",
     "languages-aliases": "^3.0.0",
     "longest-line": "0.0.3",
+    "markdown-it": "^14.1.0",
+    "markdown-it-abbr": "^2.0.0",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-deflist": "^3.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-ins": "^4.0.0",
+    "markdown-it-mark": "^4.0.0",
+    "markdown-it-sub": "^2.0.0",
+    "markdown-it-sup": "^2.0.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "@mdit/plugin-alert": "^0.22.1",
     "normalize-html-whitespace": "^1.0.0",
     "number-to-alphabet": "^1.0.0",
     "parse5": "^8.0.0",
@@ -54,7 +72,7 @@
     "supports-hyperlinks": "^4.3.0",
     "terminal-size": "^4.0.0",
     "wrap-ansi": "^9.0.2",
-    "yaml": "^2.8.1"
+    "yaml": "^2.8.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",

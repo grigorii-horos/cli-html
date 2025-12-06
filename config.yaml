@@ -1,0 +1,215 @@
+lineWidth:
+  max: 120
+  # value: 80  # Uncomment to set fixed line width
+
+theme:
+  h1:
+    color: red bold
+    marker: '#'
+  h2:
+    color: blue bold
+    marker: '##'
+  h3:
+    color: blue bold
+    marker: '###'
+  h4:
+    color: cyan bold
+    marker: '####'
+  h5:
+    color: cyan
+    marker: '#####'
+  h6:
+    color: cyan
+    marker: '######'
+  span:
+    color: ''
+  a:
+    color: blue underline
+  figure:
+    color: gray
+    border:
+      color: gray
+      style: round
+      dim: false
+    padding:
+      top: 0
+      bottom: 0
+      left: 1
+      right: 1
+  figcaption:
+    color: bgGreen bold
+    prefix: ' '
+    suffix: ' '
+  fieldset:
+    color: gray
+    border:
+      color: gray
+      style: single
+      dim: false
+    title:
+      color: yellow
+    padding:
+      top: 0
+      bottom: 0
+      left: 1
+      right: 1
+  details:
+    color: gray
+    marker: '> '
+    border:
+      color: gray
+      style: single
+      dim: false
+    padding:
+      top: 0
+      bottom: 0
+      left: 1
+      right: 1
+  blockquote:
+    color: black
+    marker: '│ '
+  address:
+    color: italic
+  code:
+    inline:
+      color: bgBlack
+    block:
+      color: yellowBright
+      numbers:
+        color: blackBright dim
+        enabled: true
+      padding:
+        left: 1
+        lineWidth: 10
+  table:
+    header:
+      color: bold red
+    caption:
+      color: bold blue
+    cell:
+      color: ''
+  dt:
+    color: blue bold
+  dd:
+    color: cyan
+  dl:
+    color: ''
+  del:
+    color: bgRed black
+  ins:
+    color: bgGreen black
+  strikethrough:
+    color: strikethrough
+  underline:
+    color: underline
+  bold:
+    color: bold
+  samp:
+    color: yellowBright
+  kbd:
+    color: bgBlack
+  variableTag:
+    color: blue italic
+  mark:
+    color: bgYellow black
+  time:
+    color: cyan
+  abbr:
+    color: underline
+    parens:
+      color: gray
+    title:
+      color: cyan
+  dfn:
+    color: underline italic
+  italic:
+    color: italic
+  i:
+    color: italic
+  em:
+    color: italic
+  cite:
+    color: italic
+  ol:
+    color: blueBright
+    colors:
+      - blueBright
+      - cyanBright
+      - magentaBright
+    markers:
+      - '1'
+      - I
+      - A
+      - i
+      - a
+    decimal: '.'
+    indent: '   '
+  ul:
+    color: redBright
+    colors:
+      - redBright
+      - yellowBright
+      - cyanBright
+    markers:
+      - •
+      - '-'
+      - ‣
+    indent: '  '
+  hr:
+    color: gray
+    marker: ─
+  progress:
+    filled:
+      color: bgWhite green
+      marker: █
+    empty:
+      color: bgBlack gray
+      marker: █
+  input:
+    checkbox:
+      checked:
+        color: green bold
+        marker: ✓
+      unchecked:
+        color: gray
+        marker: ' '
+      open:
+        color: gray
+        marker: '['
+      close:
+        color: gray
+        marker: ']'
+    radio:
+      checked:
+        color: red bold
+        marker: •
+      unchecked:
+        color: red bold
+        marker: ' '
+      open:
+        color: gray
+        marker: (
+      close:
+        color: gray
+        marker: )
+    button:
+      open:
+        color: bgBlack gray
+        marker: '[ '
+      close:
+        color: bgBlack gray
+        marker: ' ]'
+      text:
+        color: bgBlack bold
+  img:
+    prefix:
+      color: cyan
+      marker: '!'
+    open:
+      color: gray
+      marker: '['
+    close:
+      color: gray
+      marker: ']'
+    text:
+      color: cyan

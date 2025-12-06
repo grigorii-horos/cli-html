@@ -1,0 +1,103 @@
+<h2>Text Formatting and Styles</h2>
+
+<h3>Basic Text Formatting</h3>
+
+<p>This is <b>bold text</b> and <strong>strong text</strong>.</p>
+<p>This is <i>italic text</i> and <em>emphasized text</em>.</p>
+<p>This is <u>underlined text</u>.</p>
+<p>This is <s>strikethrough text</s> and <strike>strike text</strike> and <del>deleted text</del>.</p>
+<p>This is <mark>highlighted text</mark>.</p>
+<p>This is <small>small text</small> and <big>big text</big>.</p>
+
+<h3>Subscript and Superscript</h3>
+
+<p>H<sub>2</sub>O is water.</p>
+<p>E = mc<sup>2</sup> is Einstein's formula.</p>
+<p>The 5<sup>th</sup> element.</p>
+<p>Chemical formula: C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></p>
+
+<h3>Code and Technical Text</h3>
+
+<p>Use <code>console.log()</code> to print output.</p>
+<p>Press <kbd>Ctrl+C</kbd> to copy.</p>
+<p>The output is: <samp>Hello, World!</samp></p>
+<p>The variable <var>x</var> equals <var>y</var> plus <var>z</var>.</p>
+<p>The HTML <code>&lt;pre&gt;</code> tag preserves whitespace.</p>
+
+<h3>Quotations and Citations</h3>
+
+<p>He said <q>Hello, World!</q> to everyone.</p>
+<p>The book <cite>1984</cite> by George Orwell.</p>
+<p>Time: <time>2024-01-15</time></p>
+
+<h3>Abbreviations and Definitions</h3>
+
+<p>The <abbr title="HyperText Markup Language">HTML</abbr> specification.</p>
+<p>Use <abbr title="Cascading Style Sheets">CSS</abbr> for styling.</p>
+<p><dfn>JavaScript</dfn> is a programming language.</p>
+<p><abbr title="Application Programming Interface">API</abbr> documentation.</p>
+
+<h3>Insertions and Deletions</h3>
+
+<p>The price is <del>$100</del> <ins>$80</ins>.</p>
+<p><del>Old text</del> <ins>New text</ins></p>
+<p>Updated: <del>Monday</del> <ins>Tuesday</ins></p>
+
+<h3>Bidirectional Text (BDI/BDO)</h3>
+
+<p><i>The bdi (Bidirectional Isolation) and bdo (Bidirectional Override) elements
+are used for handling text in different directions.</i></p>
+
+<h4>BDI - Bidirectional Isolation</h4>
+
+<p>User <bdi>مرحبا</bdi> posted a comment.</p>
+<p>Welcome to <bdi>العربية</bdi> language support!</p>
+<p>The user <bdi>שלום</bdi> has joined the chat.</p>
+
+<h4>BDI with Usernames</h4>
+
+<p>Comment by <bdi>alice123</bdi>: Great post!</p>
+<p>Comment by <bdi>محمد_أحمد</bdi>: شكراً لك</p>
+<p>Comment by <bdi>דוד_כהן</bdi>: תודה רבה</p>
+
+<h4>BDO - Bidirectional Override</h4>
+
+<p>Left-to-right (default): <bdo dir="ltr">Hello World</bdo></p>
+<p>Right-to-left override: <bdo dir="rtl">Hello World</bdo></p>
+
+<p>Normal order: <bdo dir="ltr">1234567890</bdo></p>
+<p>Reversed order: <bdo dir="rtl">1234567890</bdo></p>
+
+<h4>Mixed Content Examples</h4>
+
+<p>English with Arabic: The word <bdi>مرحبا</bdi> means "hello" in Arabic.</p>
+<p>English with Hebrew: The word <bdi>שלום</bdi> means "hello" in Hebrew.</p>
+
+<h4>Email Addresses with RTL Names</h4>
+
+<p>Email: <bdi>أحمد</bdi>@example.com</p>
+<p>Email: <bdi>דניאל</bdi>@example.com</p>
+<p>Email: <bdi>john.doe</bdi>@example.com</p>
+
+<h4>List with Mixed Directionality</h4>
+
+<ul>
+  <li>User: <bdi>Alice</bdi> - Score: 100</li>
+  <li>User: <bdi>محمد</bdi> - Score: 95</li>
+  <li>User: <bdi>Bob</bdi> - Score: 90</li>
+  <li>User: <bdi>דוד</bdi> - Score: 85</li>
+</ul>
+
+<h3>Obsolete Tags (Compatibility)</h3>
+
+<p>No break text: <nobr>This text will not break onto multiple lines even if it is very long</nobr></p>
+<p>Marquee (scrolling): <marquee>Scrolling text</marquee></p>
+<p>Centered: <center>This text is centered</center></p>
+
+<h3>Combined Example</h3>
+
+<p>
+  The <strong>quick</strong> <mark>brown</mark> <i>fox</i> jumps over the <u>lazy</u> dog.
+  Use <code>Array.map()</code> to transform data. The <abbr title="World Wide Web">WWW</abbr>
+  was invented in <time>1989</time>. Price: <del>$99</del> <ins>$79</ins>.
+</p>

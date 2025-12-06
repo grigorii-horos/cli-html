@@ -1,0 +1,69 @@
+<h2>Progress and Meter Examples</h2>
+
+<h3>Progress Element</h3>
+
+<p>Progress bars show completion of a task with unknown total duration.</p>
+
+<p>30% complete: <progress value="30" max="100">30%</progress></p>
+<p>40% complete: <progress value="40" max="100">40%</progress></p>
+<p>70% complete: <progress value="70" max="100">70%</progress></p>
+<p>Over max clamps to 100%: <progress value="150" max="100">100%</progress></p>
+<p>Missing max defaults to 1: <progress value="0.5">50%</progress></p>
+<p>Empty bar: <progress value="0" max="100">0%</progress></p>
+<p>Full bar: <progress value="100" max="100">100%</progress></p>
+
+<h3>File Upload Progress</h3>
+
+<p>Uploading file 1 of 3: <progress value="1" max="3">33%</progress></p>
+<p>Uploading file 2 of 3: <progress value="2" max="3">66%</progress></p>
+<p>Uploading file 3 of 3: <progress value="3" max="3">100%</progress></p>
+
+<h3>Meter Element</h3>
+
+<p>Meter shows a scalar measurement within a known range.</p>
+
+<h4>Basic Meter (0-1 range)</h4>
+
+<p>Disk usage: <meter value="0.6" min="0" max="1">60%</meter> (60%)</p>
+<p>Battery: <meter value="0.85" min="0" max="1">85%</meter> (85%)</p>
+<p>Almost empty: <meter value="0.15" min="0" max="1">15%</meter> (15%)</p>
+<p>Full: <meter value="1" min="0" max="1">100%</meter> (100%)</p>
+
+<h4>Meter with Custom Range</h4>
+
+<p>Temperature: <meter value="75" min="0" max="100">75°C</meter> (75°C out of 100°C)</p>
+<p>Score: <meter value="85" min="0" max="100">85/100</meter> (85 out of 100)</p>
+<p>Progress: <meter value="450" min="0" max="1000">450</meter> (450 of 1000 items)</p>
+
+<h4>Meter with Low/High/Optimum Values</h4>
+
+<p>CPU Usage (low is good): <meter value="30" min="0" max="100" low="30" high="80" optimum="20">30%</meter></p>
+<p>CPU Usage (medium): <meter value="55" min="0" max="100" low="30" high="80" optimum="20">55%</meter></p>
+<p>CPU Usage (high): <meter value="95" min="0" max="100" low="30" high="80" optimum="20">95%</meter></p>
+
+<h4>Storage Metrics</h4>
+
+<p>RAM: <meter value="6.4" min="0" max="16">6.4 GB</meter> of 16 GB used</p>
+<p>SSD: <meter value="240" min="0" max="512">240 GB</meter> of 512 GB used</p>
+<p>Network: <meter value="45" min="0" max="100">45 Mbps</meter> of 100 Mbps</p>
+
+<h4>Different Fill Levels</h4>
+
+<p>Empty: <meter value="0" min="0" max="100">0%</meter></p>
+<p>Quarter: <meter value="25" min="0" max="100">25%</meter></p>
+<p>Half: <meter value="50" min="0" max="100">50%</meter></p>
+<p>Three quarters: <meter value="75" min="0" max="100">75%</meter></p>
+<p>Full: <meter value="100" min="0" max="100">100%</meter></p>
+
+<h4>Custom Min Value</h4>
+
+<p>Rating (3-5 scale): <meter value="4.2" min="3" max="5">4.2 stars</meter></p>
+<p>Temperature (-20 to 40°C): <meter value="22" min="-20" max="40">22°C</meter></p>
+
+<h3>Progress vs Meter</h3>
+
+<p><b>Use Progress for:</b> Task completion (downloads, uploads, installations)</p>
+<p>Example: <progress value="75" max="100">75%</progress> Installation progress</p>
+
+<p><b>Use Meter for:</b> Measurements with context (disk space, ratings, temperature)</p>
+<p>Example: <meter value="75" min="0" max="100">75%</meter> Disk usage</p>
