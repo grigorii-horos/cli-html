@@ -155,11 +155,11 @@ theme:
     td:
       color: ''  # Specific td color (overrides cell)
     th:
-      color: ''  # Specific th color (overrides header)
+      color: 'bold red'  # Specific th color (overrides header)
     tr:
       color: ''  # Table row color
     thead:
-      color: ''  # Table head section color
+      color: 'bold red'  # Table head section color
     tbody:
       color: ''  # Table body section color
     tfoot:
