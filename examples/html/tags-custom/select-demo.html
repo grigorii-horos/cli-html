@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select, Option, and Optgroup Customization</title>
+</head>
+<body>
+  <h1>Select, Option, and Optgroup Customization</h1>
+
+  <h2>1. Basic Select (Default Theme)</h2>
+  <select name="basic">
+    <option>Option 1</option>
+    <option selected>Option 2</option>
+    <option>Option 3</option>
+  </select>
+
+  <h2>2. Custom Select Name Color</h2>
+  <select name="colored-name" data-cli-color="red bold">
+    <option>First</option>
+    <option selected>Second</option>
+  </select>
+
+  <h2>3. Custom Select Prefix</h2>
+  <select name="with-prefix" data-cli-prefix="→ " data-cli-prefix-color="yellow bold">
+    <option selected>Selected</option>
+    <option>Not selected</option>
+  </select>
+
+  <h2>4. Custom Select Suffix</h2>
+  <select name="with-suffix" data-cli-suffix=" →" data-cli-suffix-color="green">
+    <option selected>Item A</option>
+    <option>Item B</option>
+  </select>
+
+  <h2>5. Custom Select Prefix and Suffix</h2>
+  <select name="wrapped"
+    data-cli-prefix="[ "
+    data-cli-prefix-color="cyan"
+    data-cli-suffix=" ]"
+    data-cli-suffix-color="magenta">
+    <option selected>Wrapped</option>
+  </select>
+
+  <h2>6. Custom Option Text Colors</h2>
+  <select name="option-colors">
+    <option data-cli-color="yellow">Yellow option</option>
+    <option selected data-cli-color="magenta bold">Magenta bold option</option>
+    <option data-cli-color="cyan">Cyan option</option>
+  </select>
+
+  <h2>7. Custom Selected/Unselected Markers</h2>
+  <select name="custom-markers"
+    data-cli-selected-marker="✓"
+    data-cli-selected-color="green bold"
+    data-cli-unselected-marker="✗"
+    data-cli-unselected-color="red dim">
+    <option>Unchecked</option>
+    <option selected>Checked</option>
+    <option>Another unchecked</option>
+  </select>
+
+  <h2>8. Basic Optgroup</h2>
+  <select name="with-groups">
+    <optgroup label="Group A">
+      <option>A1</option>
+      <option selected>A2</option>
+    </optgroup>
+    <optgroup label="Group B">
+      <option>B1</option>
+      <option>B2</option>
+    </optgroup>
+  </select>
+
+  <h2>9. Optgroup with Custom Marker</h2>
+  <select name="custom-group-marker">
+    <optgroup label="Frontend"
+      data-cli-marker="→ "
+      data-cli-marker-color="blue bold">
+      <option>React</option>
+      <option selected>Vue</option>
+    </optgroup>
+    <optgroup label="Backend"
+      data-cli-marker="* "
+      data-cli-marker-color="green">
+      <option>Node.js</option>
+      <option>Django</option>
+    </optgroup>
+  </select>
+
+  <h2>10. Optgroup with Custom Label Color</h2>
+  <select name="colored-groups">
+    <optgroup label="Important" data-cli-color="red bold">
+      <option>Critical</option>
+      <option selected>High Priority</option>
+    </optgroup>
+    <optgroup label="Normal" data-cli-color="yellow">
+      <option>Medium</option>
+      <option>Low</option>
+    </optgroup>
+  </select>
+
+  <h2>11. All Features Combined</h2>
+  <select name="ultimate-select"
+    data-cli-color="blue bold"
+    data-cli-prefix=">> "
+    data-cli-prefix-color="red bold"
+    data-cli-suffix=" <<"
+    data-cli-suffix-color="green bold">
+    <optgroup label="First Group"
+      data-cli-marker="▸ "
+      data-cli-marker-color="yellow bold"
+      data-cli-color="cyan">
+      <option data-cli-color="white">White option</option>
+      <option selected data-cli-color="magenta bold">Magenta option</option>
+    </optgroup>
+    <optgroup label="Second Group"
+      data-cli-color="green bold">
+      <option>Normal option</option>
+      <option>Another option</option>
+    </optgroup>
+  </select>
+
+  <h2>12. Select with Custom Label Override</h2>
+  <select name="country" data-cli-select-label="Choose your country">
+    <option>USA</option>
+    <option selected>Canada</option>
+    <option>Mexico</option>
+  </select>
+
+</body>
+</html>

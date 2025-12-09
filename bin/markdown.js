@@ -12,7 +12,25 @@ const paths = envPaths('cli-markdown', {
   suffix: '',
 });
 
-const loadTheme = () => {
+const loadTheme = (customConfigPath) => {
+  // If custom config path is provided, use it
+  if (customConfigPath) {
+    if (!fs.existsSync(customConfigPath)) {
+      console.error(`Config file not found: ${customConfigPath}`);
+      process.exit(1);
+    }
+
+    try {
+      const fileContent = fs.readFileSync(customConfigPath, 'utf8');
+      const parsed = fileContent.trim() ? parse(fileContent) || {} : {};
+      return parsed.theme || parsed;
+    } catch (error) {
+      console.error(`Failed to read config: ${error.message}`);
+      process.exit(1);
+    }
+  }
+
+  // Otherwise, look for config in standard locations
   const candidateFiles = ['config.yaml', 'config.yml', 'theme.yml'].map(
     (file) => `${paths.config}/${file}`,
   );
@@ -33,10 +51,22 @@ const loadTheme = () => {
   }
 };
 
-const theme = loadTheme();
+// Parse command line arguments
+let inputPath = null;
+let configPath = null;
+
+for (let i = 2; i < process.argv.length; i++) {
+  if (process.argv[i] === '--config' && i + 1 < process.argv.length) {
+    configPath = process.argv[i + 1];
+    i++; // Skip next argument
+  } else if (!inputPath && !process.argv[i].startsWith('--')) {
+    inputPath = process.argv[i];
+  }
+}
+
+const theme = loadTheme(configPath);
 
 let input = process.stdin;
-const inputPath = process.argv[2];
 
 if (inputPath) {
   if (!fs.existsSync(inputPath)) {

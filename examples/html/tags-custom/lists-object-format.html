@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lists - Object Format Configuration Examples</title>
+</head>
+<body>
+  <h1>New Object-Based Configuration Format</h1>
+
+  <p>The new configuration format uses objects with explicit keys instead of arrays.</p>
+
+  <h2>Unordered Lists - Object Format</h2>
+
+  <h3>Configuration Structure</h3>
+  <pre>
+ul:
+  markers:
+    disc:
+      color: redBright
+      marker: •
+    square:
+      color: yellowBright
+      marker: ▪
+    circle:
+      color: cyanBright
+      marker: ⚬
+  </pre>
+
+  <h3>Using HTML type Attribute</h3>
+
+  <p>type="disc" - uses markers.disc configuration:</p>
+  <ul type="disc">
+    <li>Red bullet marker (•)</li>
+    <li>Default marker type</li>
+  </ul>
+
+  <p>type="square" - uses markers.square configuration:</p>
+  <ul type="square">
+    <li>Yellow square marker (▪)</li>
+    <li>Alternative marker type</li>
+  </ul>
+
+  <p>type="circle" - uses markers.circle configuration:</p>
+  <ul type="circle">
+    <li>Cyan circle marker (⚬)</li>
+    <li>Third marker type</li>
+  </ul>
+
+  <h3>Automatic Rotation in Nested Lists</h3>
+  <p>Without explicit type, lists rotate through: disc → square → circle → disc...</p>
+  
+  <ul>
+    <li>Level 1: disc (red •)
+      <ul>
+        <li>Level 2: square (yellow ▪)
+          <ul>
+            <li>Level 3: circle (cyan ⚬)
+              <ul>
+                <li>Level 4: back to disc (red •)
+                  <ul>
+                    <li>Level 5: square again (yellow ▪)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>Ordered Lists - Object Format</h2>
+
+  <h3>Configuration Structure</h3>
+  <pre>
+ol:
+  markers:
+    "1":
+      color: blueBright
+      marker: "1"
+      decimal: "."
+    I:
+      color: cyanBright
+      marker: "I"
+      decimal: "."
+    A:
+      color: magentaBright
+      marker: "A"
+      decimal: "."
+    i:
+      color: blueBright
+      marker: "i"
+      decimal: "."
+    a:
+      color: cyanBright
+      marker: "a"
+      decimal: "."
+  </pre>
+
+  <h3>Using HTML type Attribute</h3>
+
+  <p>type="1" - Decimal numbers (uses markers["1"]):</p>
+  <ol type="1">
+    <li>First item (blue 1.)</li>
+    <li>Second item (blue 2.)</li>
+    <li>Third item (blue 3.)</li>
+  </ol>
+
+  <p>type="A" - Uppercase letters (uses markers.A):</p>
+  <ol type="A">
+    <li>First item (magenta A.)</li>
+    <li>Second item (magenta B.)</li>
+    <li>Third item (magenta C.)</li>
+  </ol>
+
+  <p>type="a" - Lowercase letters (uses markers.a):</p>
+  <ol type="a">
+    <li>First item (cyan a.)</li>
+    <li>Second item (cyan b.)</li>
+    <li>Third item (cyan c.)</li>
+  </ol>
+
+  <p>type="I" - Uppercase Roman numerals (uses markers.I):</p>
+  <ol type="I">
+    <li>First item (cyan I.)</li>
+    <li>Second item (cyan II.)</li>
+    <li>Third item (cyan III.)</li>
+  </ol>
+
+  <p>type="i" - Lowercase Roman numerals (uses markers.i):</p>
+  <ol type="i">
+    <li>First item (blue i.)</li>
+    <li>Second item (blue ii.)</li>
+    <li>Third item (blue iii.)</li>
+  </ol>
+
+  <h3>Automatic Rotation in Nested Lists</h3>
+  <p>Without explicit type, lists rotate through: 1 → I → A → i → a → 1...</p>
+  
+  <ol>
+    <li>Level 1: decimal (blue 1.)
+      <ol>
+        <li>Level 2: Roman uppercase (cyan I.)
+          <ol>
+            <li>Level 3: Alphabetic uppercase (magenta A.)
+              <ol>
+                <li>Level 4: Roman lowercase (blue i.)
+                  <ol>
+                    <li>Level 5: Alphabetic lowercase (cyan a.)</li>
+                  </ol>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+
+  <h2>Benefits of Object Format</h2>
+
+  <ul>
+    <li>✓ Direct mapping to HTML type attribute</li>
+    <li>✓ Explicit configuration keys (disc/square/circle, 1/A/a/I/i)</li>
+    <li>✓ Easy to customize specific marker types</li>
+    <li>✓ Consistent structure between ul and ol</li>
+    <li>✓ Backward compatible with array format</li>
+  </ul>
+
+  <h2>Overriding with data-cli-* Attributes</h2>
+
+  <p>data-cli-marker overrides the type attribute:</p>
+  <ul type="square" data-cli-marker="→">
+    <li>Custom arrow instead of square</li>
+  </ul>
+
+  <p>data-cli-marker-color overrides theme color:</p>
+  <ol type="A" data-cli-marker-color="red bold">
+    <li>Red bold letters instead of magenta</li>
+    <li>Second item</li>
+  </ol>
+
+  <p>data-cli-decimal overrides decimal separator:</p>
+  <ol type="1" data-cli-decimal=")">
+    <li>Uses ) instead of .</li>
+    <li>Second item</li>
+  </ol>
+
+  <h2>Mixed Nested Lists</h2>
+
+  <ul>
+    <li>Unordered list (disc)
+      <ol>
+        <li>Nested ordered list (1.)
+          <ul>
+            <li>Back to unordered (disc)
+              <ol type="A">
+                <li>Ordered with explicit type="A"</li>
+              </ol>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </li>
+  </ul>
+
+</body>
+</html>

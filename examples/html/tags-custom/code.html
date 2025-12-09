@@ -1,0 +1,311 @@
+<h1>Custom Code Examples</h1>
+
+<h2>Inline Code with Custom Styles</h2>
+
+<p>Default inline code: <code>const x = 42;</code></p>
+
+<p>Custom color: <code data-cli-color="cyan">function greet() {}</code></p>
+
+<p>Red bold: <code data-cli-color="red bold">git commit -m "fix"</code></p>
+
+<p>Yellow background: <code data-cli-color="bgYellow black">process.env.NODE_ENV</code></p>
+
+<p>Green italic: <code data-cli-color="green italic">docker run</code></p>
+
+<h3>Multiple Inline Codes</h3>
+<p>
+  Install with <code data-cli-color="blue">npm install package</code> or
+  <code data-cli-color="magenta">yarn add package</code> or
+  <code data-cli-color="cyan">pnpm add package</code>
+</p>
+
+<h2>Code Blocks with Custom Colors</h2>
+
+<h3>Custom Code Text Color</h3>
+<pre data-cli-color="green">
+<code>function greenCode() {
+  console.log("Green code text");
+  return 42;
+}
+</code>
+</pre>
+
+<h3>Custom Line Numbers Color</h3>
+<pre data-cli-numbers-color="magenta bold">
+<code>function magentaNumbers() {
+  console.log("Magenta bold line numbers");
+  return true;
+}
+</code>
+</pre>
+
+<h3>Disable Line Numbers</h3>
+<pre data-cli-numbers-enabled="false">
+<code>function noLineNumbers() {
+  console.log("Code without line numbers");
+  return "clean";
+}
+</code>
+</pre>
+
+<h3>Combined Custom Attributes</h3>
+<pre data-cli-color="cyan" data-cli-numbers-color="red bold">
+<code>function combined() {
+  console.log("Cyan code with red bold numbers");
+  return {
+    code: "cyan",
+    numbers: "red bold"
+  };
+}
+</code>
+</pre>
+
+<h3>Yellow Code Without Numbers</h3>
+<pre data-cli-color="yellow" data-cli-numbers-enabled="false">
+<code>// Yellow code without numbers
+const greeting = "Hello World";
+console.log(greeting);
+</code>
+</pre>
+
+<h2>Syntax Highlighting with Custom Numbers</h2>
+
+<h3>JavaScript with Blue Bold Numbers</h3>
+<pre data-cli-numbers-color="blue bold">
+<code class="language-javascript">// JavaScript with custom number colors
+function factorial(n) {
+  if (n <= 1) return 1;
+  return n * factorial(n - 1);
+}
+
+console.log(factorial(5));
+</code>
+</pre>
+
+<h3>HTML with Green Numbers</h3>
+<pre data-cli-numbers-color="green">
+<code class="lang-html">&lt;section class="card"&gt;
+  &lt;h2&gt;Card title&lt;/h2&gt;
+  &lt;p&gt;Body&lt;/p&gt;
+&lt;/section&gt;
+</code>
+</pre>
+
+<h3>Default Syntax Highlighting (No Custom Attributes)</h3>
+<pre><code class="lang-js">/* eslint-disable no-nested-ternary */
+const ansiStyles = require('ansi-colors');
+const languages = require('languages-aliases');
+const { highlight } = require('cli-highlight');
+const boxen = require('boxen');
+</code></pre>
+
+
+<h2>Highlight Lines</h2>
+
+<h3>Single Line Highlight</h3>
+<pre data-cli-highlight-lines="2">
+<code class="lang-js">const config = {
+  port: 3000,
+  host: 'localhost'
+};
+</code>
+</pre>
+
+<h3>Multiple Lines Highlight</h3>
+<pre>
+<code data-cli-highlight-lines="1,3,5">Line 1: Highlighted
+Line 2: Normal
+Line 3: Highlighted
+Line 4: Normal
+Line 5: Highlighted
+</code>
+</pre>
+
+<h3>Range Highlight</h3>
+<pre data-cli-highlight-lines="2-4">
+<code class="language-javascript">function processData(data) {
+  const filtered = data.filter(item => item.active);
+  const mapped = filtered.map(item => item.value);
+  const sum = mapped.reduce((a, b) => a + b, 0);
+  return sum;
+}
+</code>
+</pre>
+
+<h3>Mixed Range and Single Lines</h3>
+<pre data-cli-highlight-lines="1,3-5,7">
+<code>Step 1: Initialize
+Step 2: Skip this
+Step 3: Process start
+Step 4: Process middle
+Step 5: Process end
+Step 6: Skip this too
+Step 7: Finalize
+Step 8: Done
+</code>
+</pre>
+
+<h2>Custom Gutter Separator</h2>
+
+<h3>Arrow Separator</h3>
+<pre data-cli-gutter-separator-marker=" → ">
+<code>First line
+Second line
+Third line
+</code>
+</pre>
+
+<h3>Pipe Separator with Color</h3>
+<pre>
+<code data-cli-gutter-separator-marker=" | " data-cli-gutter-separator-color="blue bold">import React from 'react';
+import { useState } from 'react';
+
+export default function App() {
+  return <div>Hello</div>;
+}
+</code>
+</pre>
+
+<h3>Custom Unicode Separator with Color</h3>
+<pre data-cli-gutter-separator-marker=" ▸ " data-cli-gutter-separator-color="magenta">
+<code class="lang-js">const multiply = (a, b) => a * b;
+const add = (a, b) => a + b;
+const result = multiply(5, add(2, 3));
+</code>
+</pre>
+
+<h2>Highlight Lines with Custom Colors</h2>
+
+<h3>Red Highlight</h3>
+<pre data-cli-highlight-lines="2,4" data-cli-highlight-color="bgRed white bold">
+<code>const a = 1;
+const b = 2; // highlighted in red
+const c = 3;
+const d = 4; // highlighted in red
+const e = 5;
+</code>
+</pre>
+
+<h3>Green Highlight</h3>
+<pre data-cli-highlight-lines="1,3" data-cli-highlight-color="bgGreen black bold">
+<code>// green highlight
+const x = 10;
+// green highlight again
+const y = 20;
+</code>
+</pre>
+
+<h3>Blue Highlight</h3>
+<pre data-cli-highlight-lines="2-4" data-cli-highlight-color="bgBlue white">
+<code>function example() {
+  console.log("Line 2 - highlighted");
+  console.log("Line 3 - highlighted");
+  console.log("Line 4 - highlighted");
+  return true;
+}
+</code>
+</pre>
+
+<h2>Combined Features</h2>
+
+<h3>Highlight + Custom Colors + Separator</h3>
+<pre data-cli-highlight-lines="2,4" data-cli-color="cyan" data-cli-numbers-color="magenta bold" data-cli-gutter-separator-marker=" • " data-cli-gutter-separator-color="magenta bold">
+<code>const x = 1;
+const y = 2;
+const z = 3;
+const sum = x + y + z;
+</code>
+</pre>
+
+<h3>All Features Combined</h3>
+<pre data-cli-highlight-lines="2,4,6" data-cli-gutter-separator-marker=" ▶ " data-cli-gutter-separator-color="blue bold" data-cli-color="yellow" data-cli-numbers-color="blue bold">
+<code class="language-javascript">function calculate(a, b) {
+  const sum = a + b;
+  const product = a * b;
+  const difference = a - b;
+  const quotient = a / b;
+  return { sum, product, difference, quotient };
+}
+</code>
+</pre>
+
+<h2>Language Labels</h2>
+
+<h3>Basic Language Label</h3>
+<pre data-cli-lang-label-enabled="true">
+<code class="language-javascript">function greet(name) {
+  return `Hello, ${name}!`;
+}
+</code>
+</pre>
+
+<h3>Bottom Position</h3>
+<pre data-cli-lang-label-enabled="true" data-cli-lang-label-position="bottom">
+<code class="lang-python">def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+</code>
+</pre>
+
+<h3>With Prefix and Suffix Markers</h3>
+<pre data-cli-lang-label-enabled="true" data-cli-lang-label-prefix-marker="[ " data-cli-lang-label-suffix-marker=" ]">
+<code class="lang-html">&lt;div class="card"&gt;
+  &lt;h2&gt;Title&lt;/h2&gt;
+  &lt;p&gt;Content&lt;/p&gt;
+&lt;/div&gt;
+</code>
+</pre>
+
+<h3>Custom Language Label Color</h3>
+<pre data-cli-lang-label-enabled="true"
+     data-cli-lang-label-color="magenta bold">
+<code class="lang-python">def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+</code>
+</pre>
+
+<h3>Custom Prefix/Suffix Colors</h3>
+<pre data-cli-lang-label-enabled="true"
+     data-cli-lang-label-color="yellowBright"
+     data-cli-lang-label-prefix-marker="→ "
+     data-cli-lang-label-prefix-color="cyan bold"
+     data-cli-lang-label-suffix-marker=" ←"
+     data-cli-lang-label-suffix-color="cyan bold">
+<code class="lang-css">.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</code>
+</pre>
+
+<h3>With Custom Gutter Separator</h3>
+<pre data-cli-gutter-separator-marker=" → " data-cli-gutter-separator-color="blue bold">
+<code class="lang-rust">fn main() {
+    let x = 42;
+    println!("Answer: {}", x);
+}
+</code>
+</pre>
+
+<h3>Combined: Label + Gutter + Highlights</h3>
+<pre data-cli-lang-label-enabled="true"
+     data-cli-lang-label-prefix-marker="「"
+     data-cli-lang-label-suffix-marker="」"
+     data-cli-lang-label-prefix-color="yellow bold"
+     data-cli-lang-label-suffix-color="yellow bold"
+     data-cli-gutter-separator-marker=" | "
+     data-cli-gutter-separator-color="magenta"
+     data-cli-highlight-lines="2,4">
+<code class="lang-go">package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello Go!")
+}
+</code>
+</pre>

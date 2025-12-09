@@ -1,0 +1,391 @@
+<!--
+  Form Input Elements Examples
+
+  The <input> tag creates various form controls.
+  Supported types: checkbox, radio, button, text, email, password, search, hidden
+
+  Customization for Checkboxes:
+  - data-cli-checked-color: Color for checked checkbox marker
+  - data-cli-unchecked-color: Color for unchecked checkbox marker
+  - data-cli-checked-marker: Custom marker for checked checkboxes (default: ✓)
+  - data-cli-unchecked-marker: Custom marker for unchecked checkboxes (default: space)
+
+  Customization for Radio Buttons:
+  - data-cli-radio-checked-color: Color for checked radio marker
+  - data-cli-radio-unchecked-color: Color for unchecked radio marker
+  - data-cli-radio-checked-marker: Custom marker for checked radios (default: •)
+  - data-cli-radio-unchecked-marker: Custom marker for unchecked radios (default: space)
+
+  Customization for Buttons:
+  - data-cli-button-open-marker: Opening marker (default: [ )
+  - data-cli-button-close-marker: Closing marker (default:  ])
+  - data-cli-button-open-color: Color for opening marker
+  - data-cli-button-close-color: Color for closing marker
+  - data-cli-button-text-color: Color for button text
+
+  Customization for Text Inputs (text, email, password, url, tel, etc.):
+  - data-cli-text-input-color: Color for text input value (default theme: cyan)
+
+  Customization for Textarea:
+  - data-cli-textarea-color: Color for textarea content (default theme: yellowBright bgBlack)
+-->
+
+<h2>Form Input Elements</h2>
+
+<h3>Default Checkbox Inputs</h3>
+
+<ul>
+  <li><input type="checkbox" checked /> Checked checkbox</li>
+  <li><input type="checkbox" /> Unchecked checkbox</li>
+  <li><input type="checkbox" checked /> I agree to terms</li>
+  <li><input type="checkbox" /> Subscribe to newsletter</li>
+</ul>
+
+<h3>Colored Checkboxes</h3>
+
+<ul>
+  <li><input type="checkbox" checked data-cli-checked-color="green" /> Green checked</li>
+  <li><input type="checkbox" checked data-cli-checked-color="blue bold" /> Blue bold checked</li>
+  <li><input type="checkbox" checked data-cli-checked-color="magenta" /> Magenta checked</li>
+  <li><input type="checkbox" data-cli-unchecked-color="red" /> Red unchecked</li>
+  <li><input type="checkbox" data-cli-unchecked-color="yellow" /> Yellow unchecked</li>
+</ul>
+
+<h3>Custom Checkbox Markers</h3>
+
+<ul>
+  <li><input type="checkbox" checked data-cli-checked-marker="✓" /> Custom check mark</li>
+  <li><input type="checkbox" checked data-cli-checked-marker="●" data-cli-unchecked-marker="○" /> Custom circles</li>
+  <li><input type="checkbox" checked data-cli-checked-marker="■" data-cli-unchecked-marker="□" /> Custom squares</li>
+  <li><input type="checkbox" checked data-cli-checked-color="green" data-cli-checked-marker="✔" /> Green with check</li>
+</ul>
+
+<h3>Combined Checkbox Customizations</h3>
+
+<ul>
+  <li><input type="checkbox" checked data-cli-checked-marker="★" data-cli-checked-color="yellow bold" /> Yellow star</li>
+  <li><input type="checkbox" checked data-cli-checked-marker="♥" data-cli-checked-color="red bold" /> Red heart</li>
+  <li><input type="checkbox" data-cli-unchecked-marker="○" data-cli-unchecked-color="gray dim" /> Gray circle</li>
+  <li><input type="checkbox" checked data-cli-checked-marker="✓" data-cli-checked-color="cyan bold" /> Cyan check</li>
+</ul>
+
+<h3>Default Radio Buttons</h3>
+
+<p>Select your favorite color:</p>
+<ul>
+  <li><input type="radio" name="color" checked /> Red</li>
+  <li><input type="radio" name="color" /> Blue</li>
+  <li><input type="radio" name="color" /> Green</li>
+</ul>
+
+<h3>Colored Radio Buttons</h3>
+
+<p>Choose a size:</p>
+<ul>
+  <li><input type="radio" name="size" checked data-cli-radio-checked-color="green" /> Small</li>
+  <li><input type="radio" name="size" data-cli-radio-unchecked-color="yellow" /> Medium</li>
+  <li><input type="radio" name="size" data-cli-radio-unchecked-color="red" /> Large</li>
+</ul>
+
+<h3>Custom Radio Markers</h3>
+
+<p>Select payment method:</p>
+<ul>
+  <li><input type="radio" name="payment" checked data-cli-radio-checked-marker="●" data-cli-radio-unchecked-marker="○" /> Credit Card</li>
+  <li><input type="radio" name="payment" data-cli-radio-checked-marker="●" data-cli-radio-unchecked-marker="○" /> PayPal</li>
+  <li><input type="radio" name="payment" data-cli-radio-checked-marker="●" data-cli-radio-unchecked-marker="○" /> Bank Transfer</li>
+</ul>
+
+<h3>Combined Radio Customizations</h3>
+
+<p>Priority level:</p>
+<ul>
+  <li><input type="radio" name="priority" checked data-cli-radio-checked-marker="●" data-cli-radio-checked-color="red bold" /> High</li>
+  <li><input type="radio" name="priority" data-cli-radio-unchecked-marker="○" data-cli-radio-unchecked-color="yellow" /> Medium</li>
+  <li><input type="radio" name="priority" data-cli-radio-unchecked-marker="○" data-cli-radio-unchecked-color="green" /> Low</li>
+</ul>
+
+<h3>Default Buttons</h3>
+
+<p><input type="button" value="Click Me" /></p>
+<p><button>Submit</button></p>
+<p><button>Cancel</button></p>
+<p><input type="button" value="Reset Form" /></p>
+
+<h3>Colored Button Text</h3>
+
+<p><input type="button" value="Success" data-cli-button-text-color="green bold" /></p>
+<p><button data-cli-button-text-color="red bold">Delete</button></p>
+<p><input type="button" value="Warning" data-cli-button-text-color="yellow" /></p>
+<p><button data-cli-button-text-color="cyan">Info</button></p>
+
+<h3>Custom Button Markers</h3>
+
+<p><input type="button" value="Download" data-cli-button-open-marker="⟨ " data-cli-button-close-marker=" ⟩" /></p>
+<p><button data-cli-button-open-marker="❮ " data-cli-button-close-marker=" ❯">Execute</button></p>
+<p><input type="button" value="Save" data-cli-button-open-marker="[ ◆ " data-cli-button-close-marker=" ◆ ]" /></p>
+
+<h3>Custom Button Marker Colors</h3>
+
+<p><input type="button" value="Confirm"
+   data-cli-button-open-color="blue"
+   data-cli-button-close-color="blue" /></p>
+<p><button
+   data-cli-button-open-color="green bold"
+   data-cli-button-close-color="green bold">Proceed</button></p>
+
+<h3>Combined Button Customizations</h3>
+
+<p><input type="button" value="✓ Accept"
+   data-cli-button-text-color="green bold"
+   data-cli-button-open-color="green"
+   data-cli-button-close-color="green"
+   data-cli-button-open-marker="〔 "
+   data-cli-button-close-marker=" 〕" /></p>
+
+<p><button
+   data-cli-button-text-color="red bold"
+   data-cli-button-open-color="red"
+   data-cli-button-close-color="red"
+   data-cli-button-open-marker="⟦ "
+   data-cli-button-close-marker=" ⟧">✗ Reject</button></p>
+
+<p><input type="button" value="⚡ Power"
+   data-cli-button-text-color="yellow bold"
+   data-cli-button-open-color="yellow"
+   data-cli-button-close-color="yellow" /></p>
+
+<p><button
+   data-cli-button-text-color="magenta bold"
+   data-cli-button-open-color="magenta dim"
+   data-cli-button-close-color="magenta dim"
+   data-cli-button-open-marker="▶ "
+   data-cli-button-close-marker=" ◀">⚙ Settings</button></p>
+
+<h3>Default Text Inputs</h3>
+
+<p><i>Note: Text inputs display their value with cyan color by default (theme setting).</i></p>
+
+<p>Name: <input type="text" value="John Doe" /></p>
+<p>Email: <input type="email" value="user@example.com" /></p>
+<p>Password: <input type="password" value="secret123" /></p>
+<p>Search: <input type="search" value="search query" /></p>
+<p>URL: <input type="url" value="https://example.com" /></p>
+<p>Tel: <input type="tel" value="+1-555-0123" /></p>
+<p>Number: <input type="number" value="42" /></p>
+<p>Date: <input type="date" value="2024-12-08" /></p>
+
+<h3>Colored Text Inputs</h3>
+
+<p>Green (success): <input type="text" value="Operation successful" data-cli-text-input-color="green bold" /></p>
+<p>Red (error): <input type="email" value="invalid@" data-cli-text-input-color="red bold" /></p>
+<p>Yellow (warning): <input type="text" value="Warning message" data-cli-text-input-color="yellow" /></p>
+<p>Magenta: <input type="url" value="https://special.com" data-cli-text-input-color="magenta bold" /></p>
+<p>Blue: <input type="tel" value="+1-800-EXAMPLE" data-cli-text-input-color="blue" /></p>
+
+<h3>Text Inputs with Background Colors</h3>
+
+<p>White on red: <input type="text" value="Critical error" data-cli-text-input-color="bgRed white bold" /></p>
+<p>Black on green: <input type="text" value="Success" data-cli-text-input-color="bgGreen black" /></p>
+<p>White on blue: <input type="text" value="Info" data-cli-text-input-color="bgBlue white" /></p>
+
+<h3>Hidden Input</h3>
+
+<p>The following input is hidden (should not display):</p>
+<p><input type="hidden" value="secret" /></p>
+
+<h3>Default Textarea</h3>
+
+<p><i>Note: Textarea renders with yellowBright on bgBlack by default (same as inline code).</i></p>
+
+<p>Enter your message:</p>
+<textarea>Default text in textarea</textarea>
+
+<p>Comments:</p>
+<textarea>User feedback goes here
+Multiple lines supported
+With preserved formatting</textarea>
+
+<p>Biography:</p>
+<textarea>John Doe is a software developer with 10 years of experience.
+He specializes in web development and CLI tools.
+Passionate about open source and clean code.</textarea>
+
+<h3>Colored Textareas</h3>
+
+<p>Green (success message):</p>
+<textarea data-cli-textarea-color="green">✓ All tests passed
+✓ Build completed successfully
+✓ Deployment finished</textarea>
+
+<p>Red (error log):</p>
+<textarea data-cli-textarea-color="red bold">✗ Error: Connection timeout
+✗ Failed to load resource
+✗ Build failed</textarea>
+
+<p>Cyan (info):</p>
+<textarea data-cli-textarea-color="cyan">Server started on port 3000
+Database connected
+Ready to accept connections</textarea>
+
+<p>Yellow (warning):</p>
+<textarea data-cli-textarea-color="yellow">⚠ High memory usage detected
+⚠ Deprecated API usage
+⚠ Security update available</textarea>
+
+<h3>Textarea with Background Colors</h3>
+
+<p>Magenta with bgBlack:</p>
+<textarea data-cli-textarea-color="magenta bgBlack">function hello() {
+  console.log("Hello, World!");
+  return true;
+}</textarea>
+
+<p>White on red background:</p>
+<textarea data-cli-textarea-color="bgRed white bold">CRITICAL ERROR
+System failure detected
+Immediate action required</textarea>
+
+<p>Black on green background:</p>
+<textarea data-cli-textarea-color="bgGreen black">{
+  "status": "success",
+  "message": "Operation completed"
+}</textarea>
+
+<h3>Datalist - Autocomplete Options</h3>
+
+<p>Choose a browser:</p>
+<label for="browser">Browser:</label>
+<input list="browsers" id="browser" name="browser" />
+<datalist id="browsers">
+  <option value="Chrome">
+  <option value="Firefox">
+  <option value="Safari">
+  <option value="Edge">
+  <option value="Opera">
+</datalist>
+
+<p>Select a programming language:</p>
+<label for="language">Language:</label>
+<input list="languages" id="language" name="language" />
+<datalist id="languages">
+  <option value="JavaScript">
+  <option value="Python">
+  <option value="Java">
+  <option value="C++">
+  <option value="Ruby">
+  <option value="Go">
+  <option value="Rust">
+  <option value="TypeScript">
+</datalist>
+
+<p>Choose your country:</p>
+<label for="country">Country:</label>
+<input list="countries" id="country" name="country" />
+<datalist id="countries">
+  <option value="United States">
+  <option value="United Kingdom">
+  <option value="Canada">
+  <option value="Australia">
+  <option value="Germany">
+  <option value="France">
+  <option value="Japan">
+  <option value="China">
+</datalist>
+
+<p>Email domain suggestions:</p>
+<label for="email-input">Email:</label>
+<input type="email" list="email-domains" id="email-input" name="email" />
+<datalist id="email-domains">
+  <option value="@gmail.com">
+  <option value="@yahoo.com">
+  <option value="@outlook.com">
+  <option value="@icloud.com">
+  <option value="@proton.me">
+</datalist>
+
+<p>Color picker with suggestions:</p>
+<label for="color">Color:</label>
+<input list="colors" id="color" name="color" />
+<datalist id="colors">
+  <option value="Red">
+  <option value="Blue">
+  <option value="Green">
+  <option value="Yellow">
+  <option value="Purple">
+  <option value="Orange">
+  <option value="Pink">
+  <option value="Black">
+  <option value="White">
+</datalist>
+
+<h3>Input type="range" - Sliders</h3>
+
+<p><i>Range inputs display as visual sliders with filled/empty bars and a thumb marker.</i></p>
+
+<p>Volume (50%): <input type="range" value="50" min="0" max="100" /></p>
+<p>Brightness (25%): <input type="range" value="25" min="0" max="100" /></p>
+<p>Quality (75%): <input type="range" value="75" min="0" max="100" /></p>
+<p>Rating (7/10): <input type="range" value="7" min="0" max="10" /></p>
+
+<h3>Custom Range Colors</h3>
+
+<p>Temperature: <input type="range" value="70" min="0" max="100"
+  data-cli-range-filled-color="red"
+  data-cli-range-empty-color="blue"
+  data-cli-range-thumb-color="yellow bold" /></p>
+
+<h3>Custom Range Markers</h3>
+
+<p>Progress: <input type="range" value="60" min="0" max="100"
+  data-cli-range-filled="="
+  data-cli-range-empty="-"
+  data-cli-range-thumb=">" /></p>
+
+<h3>Input type="color" - Color Picker</h3>
+
+<p><i>Color inputs display as a colored circle (or custom prefix).</i></p>
+
+<p>Favorite color: <input type="color" value="#000000" /></p>
+<p>Red: <input type="color" value="#ff0000" /></p>
+<p>Green: <input type="color" value="#00ff00" /></p>
+<p>Blue: <input type="color" value="#0000ff" /></p>
+
+<h3>Color with Hex Display</h3>
+
+<p>Brand color: <input type="color" value="#3498db" data-cli-show-hex="true" /></p>
+<p>Accent: <input type="color" value="#e74c3c" data-cli-color-prefix="●" data-cli-show-hex="true" /></p>
+
+<h3>Input type="file" - File Upload</h3>
+
+<p><i>File inputs show an attachment icon and filename or placeholder.</i></p>
+
+<p>Upload document: <input type="file" /></p>
+<p>Avatar: <input type="file" value="profile-photo.jpg" /></p>
+<p>Resume: <input type="file" data-cli-file-placeholder="Click to select file" /></p>
+
+<h3>Custom File Prefix</h3>
+
+<p>Attachment: <input type="file" value="document.pdf" data-cli-file-prefix="📄" /></p>
+<p>Image: <input type="file" value="vacation.png"
+  data-cli-file-prefix-color="yellow"
+  data-cli-file-text-color="green bold" /></p>
+
+<h3>Combined Form Example</h3>
+
+<form>
+  <p>Name: <input type="text" value="Alice" /></p>
+  <p>Email: <input type="email" value="alice@example.com" /></p>
+  <p>Subscribe: <input type="checkbox" checked /> Yes</p>
+  <p>
+    Gender:
+    <input type="radio" name="gender" checked /> Male
+    <input type="radio" name="gender" /> Female
+  </p>
+  <p>Volume: <input type="range" value="80" min="0" max="100" /></p>
+  <p>Theme color: <input type="color" value="#2ecc71" data-cli-show-hex="true" /></p>
+  <p>Profile picture: <input type="file" value="avatar.jpg" /></p>
+  <p>Message:</p>
+  <textarea>Hello, this is a test message.</textarea>
+  <p><button>Submit</button></p>
+</form>

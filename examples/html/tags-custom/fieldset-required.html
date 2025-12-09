@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fieldset Required Demo</title>
+</head>
+<body>
+  <h1>Fieldset Required Indicator</h1>
+
+  <h2>1. Basic Required Fieldset</h2>
+
+  <fieldset required>
+    <legend>Personal Information</legend>
+    <p>Name: <input type="text" value="John Doe" required></p>
+    <p>Email: <input type="email" value="john@example.com" required></p>
+  </fieldset>
+
+  <h2>2. Custom Required Marker</h2>
+
+  <fieldset required data-cli-required-marker="(required)" data-cli-required-color="yellow">
+    <legend>Contact Details</legend>
+    <p>Phone: <input type="tel" value="+1234567890"></p>
+    <p>Address: <input type="text" value="123 Main St"></p>
+  </fieldset>
+
+  <h2>3. Required Position: After</h2>
+
+  <fieldset required data-cli-required-marker="*" data-cli-required-color="red bold" data-cli-required-position="after">
+    <legend>Account Settings</legend>
+    <p>Username: <input type="text" value="johndoe" required></p>
+    <p>Password: <input type="password" value="secret123" required></p>
+  </fieldset>
+
+  <h2>4. Optional Fieldset (No Required)</h2>
+
+  <fieldset>
+    <legend>Additional Information</legend>
+    <p>Company: <input type="text" value="Acme Corp"></p>
+    <p>Website: <input type="url" value="https://example.com"></p>
+  </fieldset>
+
+  <h2>5. Disabled + Required</h2>
+
+  <fieldset required disabled>
+    <legend>System Information</legend>
+    <p>User ID: <input type="text" value="12345"></p>
+    <p>Created: <input type="date" value="2024-01-15"></p>
+  </fieldset>
+
+  <h2>6. With Custom Colors</h2>
+
+  <fieldset required data-cli-required-marker="⚠" data-cli-required-color="yellow" data-cli-border="cyan" data-cli-title-color="cyan bold">
+    <legend>Payment Information</legend>
+    <p>Card Number: <input type="text" placeholder="**** **** **** ****" data-cli-show-placeholder="true" required></p>
+    <p>CVV: <input type="text" placeholder="***" data-cli-show-placeholder="true" required></p>
+    <p>Expiry: <input type="text" placeholder="MM/YY" data-cli-show-placeholder="true" required></p>
+  </fieldset>
+
+  <h2>7. Different Border Styles</h2>
+
+  <fieldset required data-cli-border-style="double" data-cli-border="magenta">
+    <legend>Shipping Address</legend>
+    <p>Street: <input type="text" value="456 Oak Ave" required></p>
+    <p>City: <input type="text" value="New York" required></p>
+    <p>ZIP: <input type="text" value="10001" required></p>
+  </fieldset>
+
+  <fieldset required data-cli-border-style="round" data-cli-border="green" data-cli-required-marker="!" data-cli-required-color="green bold">
+    <legend>Preferences</legend>
+    <p>Language: <input type="text" value="English"></p>
+    <p>Timezone: <input type="text" value="UTC-5"></p>
+  </fieldset>
+
+</body>
+</html>

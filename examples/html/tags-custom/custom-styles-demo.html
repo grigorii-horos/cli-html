@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Styles Demo - data-cli-* Attributes</title>
+</head>
+<body>
+    <h1>Custom Style Attributes Demo</h1>
+    <p>This demo showcases inline customization using <code>data-cli-color</code> and <code>data-cli-marker</code> attributes.</p>
+
+    <h2>Headers with Custom Colors</h2>
+    <h1 data-cli-color="magenta">Magenta H1</h1>
+    <h2 data-cli-color="cyan">Cyan H2</h2>
+    <h3 data-cli-color="yellow">Yellow H3</h3>
+    <h4 data-cli-color="green">Green H4</h4>
+    <h5 data-cli-color="blue">Blue H5</h5>
+    <h6 data-cli-color="red">Red H6</h6>
+
+    <h2>Headers with Combined Color and Style</h2>
+    <h1 data-cli-color="magenta bold">Magenta Bold H1</h1>
+    <h2 data-cli-color="cyan underline">Cyan Underlined H2</h2>
+    <h3 data-cli-color="yellow italic">Yellow Italic H3</h3>
+    <h4 data-cli-color="green bold">Green Bold H4</h4>
+
+    <h2>Bright Colors</h2>
+    <h1 data-cli-color="magentaBright">Bright Magenta H1</h1>
+    <h2 data-cli-color="cyanBright">Bright Cyan H2</h2>
+    <h3 data-cli-color="yellowBright">Bright Yellow H3</h3>
+    <h4 data-cli-color="greenBright">Bright Green H4</h4>
+    <h5 data-cli-color="blueBright">Bright Blue H5</h5>
+    <h6 data-cli-color="redBright">Bright Red H6</h6>
+
+    <h2>Text Styles with Custom Colors</h2>
+    <p>
+        This paragraph contains:
+        <strong data-cli-color="red">red bold</strong>,
+        <em data-cli-color="blue">blue italic</em>,
+        <u data-cli-color="green">green underlined</u>,
+        <mark data-cli-color="yellowBright">bright yellow mark</mark>,
+        <del data-cli-color="red">red deleted</del>, and
+        <ins data-cli-color="green">green inserted</ins> text.
+    </p>
+
+    <h2>Span with Custom Styles</h2>
+    <p>
+        This is <span data-cli-color="magenta">magenta span</span>,
+        <span data-cli-color="cyan bold">cyan bold span</span>,
+        <span data-cli-color="yellow underline">yellow underlined span</span>, and
+        <span data-cli-color="greenBright italic">bright green italic span</span>.
+    </p>
+
+    <h2>Custom Markers</h2>
+    <h1 data-cli-marker="►">Custom Triangle Marker</h1>
+    <h2 data-cli-marker="•••">Triple Dot Marker</h2>
+    <h3 data-cli-marker="⚡" data-cli-color="yellow">Lightning Marker</h3>
+
+    <h2>Combined Attributes</h2>
+    <h1 data-cli-color="red bold" data-cli-marker="⚠">Warning Header</h1>
+    <h2 data-cli-color="cyan italic" data-cli-marker="→">Success Header</h2>
+
+    <h2>Blockquotes with Custom Markers</h2>
+    <blockquote data-cli-color="blue">
+        This is a blue blockquote with default marker.
+    </blockquote>
+
+    <blockquote data-cli-color="yellow" data-cli-marker="▌ ">
+        Yellow blockquote with custom block marker.
+    </blockquote>
+
+    <blockquote data-cli-color="magenta bold" data-cli-marker="» ">
+        Magenta bold blockquote with double angle marker.
+    </blockquote>
+
+    <h2>Technical Text with Custom Colors</h2>
+    <p>
+        Use <code data-cli-color="yellowBright">console.log()</code> for debugging.
+        Press <kbd data-cli-color="cyan">Ctrl+C</kbd> to copy.
+        The output is <samp data-cli-color="green">Success!</samp>.
+        The variable <var data-cli-color="magenta">x</var> equals 10.
+    </p>
+
+    <h2>Citations with Custom Styles</h2>
+    <p>
+        The book <cite data-cli-color="blue italic">1984</cite> by George Orwell.
+        Time: <time data-cli-color="green">2025-12-07</time>
+    </p>
+
+    <h2>Nested Custom Styles</h2>
+    <p>
+        This is <strong data-cli-color="red">bold red with <em data-cli-color="blue">blue italic</em> inside</strong> text.
+    </p>
+
+    <h2>All Available Colors</h2>
+    <p>Basic colors:</p>
+    <ul>
+        <li><span data-cli-color="black">black</span></li>
+        <li><span data-cli-color="red">red</span></li>
+        <li><span data-cli-color="green">green</span></li>
+        <li><span data-cli-color="yellow">yellow</span></li>
+        <li><span data-cli-color="blue">blue</span></li>
+        <li><span data-cli-color="magenta">magenta</span></li>
+        <li><span data-cli-color="cyan">cyan</span></li>
+        <li><span data-cli-color="white">white</span></li>
+        <li><span data-cli-color="gray">gray</span></li>
+    </ul>
+
+    <p>Bright colors:</p>
+    <ul>
+        <li><span data-cli-color="blackBright">blackBright</span></li>
+        <li><span data-cli-color="redBright">redBright</span></li>
+        <li><span data-cli-color="greenBright">greenBright</span></li>
+        <li><span data-cli-color="yellowBright">yellowBright</span></li>
+        <li><span data-cli-color="blueBright">blueBright</span></li>
+        <li><span data-cli-color="magentaBright">magentaBright</span></li>
+        <li><span data-cli-color="cyanBright">cyanBright</span></li>
+        <li><span data-cli-color="whiteBright">whiteBright</span></li>
+    </ul>
+
+    <h2>All Available Styles (in data-cli-color)</h2>
+    <ul>
+        <li><span data-cli-color="bold">bold</span></li>
+        <li><span data-cli-color="italic">italic</span></li>
+        <li><span data-cli-color="underline">underline</span></li>
+        <li><span data-cli-color="dim">dim</span></li>
+        <li><span data-cli-color="inverse">inverse</span></li>
+        <li><span data-cli-color="strikethrough">strikethrough</span></li>
+    </ul>
+
+    <h2>Combined Color and Styles</h2>
+    <ul>
+        <li><span data-cli-color="red bold">red bold</span></li>
+        <li><span data-cli-color="blue italic">blue italic</span></li>
+        <li><span data-cli-color="green underline">green underline</span></li>
+        <li><span data-cli-color="yellow dim">yellow dim</span></li>
+        <li><span data-cli-color="magenta bold italic">magenta bold italic</span></li>
+        <li><span data-cli-color="cyan underline bold">cyan underline bold</span></li>
+    </ul>
+
+    <h2>Background Colors</h2>
+    <p>You can also use background colors in <code>data-cli-color</code>:</p>
+    <ul>
+        <li><span data-cli-color="bgRed white">bgRed with white text</span></li>
+        <li><span data-cli-color="bgGreen black">bgGreen with black text</span></li>
+        <li><span data-cli-color="bgBlue white">bgBlue with white text</span></li>
+        <li><span data-cli-color="bgYellow black">bgYellow with black text</span></li>
+        <li><span data-cli-color="bgMagenta white bold">bgMagenta white bold</span></li>
+        <li><span data-cli-color="bgCyan black italic">bgCyan black italic</span></li>
+    </ul>
+</body>
+</html>

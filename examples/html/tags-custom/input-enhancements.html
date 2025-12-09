@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input Enhancements Demo</title>
+</head>
+<body>
+  <h1>Input Enhancements</h1>
+
+  <h2>1. Required Field Indicator</h2>
+
+  <p>Name: <input type="text" value="John Doe" required></p>
+  <p>Email: <input type="email" value="john@example.com" required></p>
+  <p>Password: <input type="password" value="secret123" required></p>
+
+  <h2>2. Custom Required Marker</h2>
+
+  <p>Username: <input type="text" value="johndoe" required data-cli-required-marker="(required)" data-cli-required-color="yellow"></p>
+  <p>Phone: <input type="tel" value="+1234567890" required data-cli-required-marker="!" data-cli-required-color="red bold"></p>
+
+  <h2>3. Placeholder Display</h2>
+
+  <p>First Name: <input type="text" placeholder="Enter your first name" data-cli-show-placeholder="true"></p>
+  <p>Last Name: <input type="text" placeholder="Enter your last name" data-cli-show-placeholder="true"></p>
+  <p>Email: <input type="email" placeholder="user@example.com" data-cli-show-placeholder="true"></p>
+
+  <h2>4. Custom Placeholder Color</h2>
+
+  <p>Search: <input type="search" placeholder="Type to search..." data-cli-show-placeholder="true" data-cli-placeholder-color="cyan"></p>
+  <p>URL: <input type="url" placeholder="https://example.com" data-cli-show-placeholder="true" data-cli-placeholder-color="blue dim"></p>
+
+  <h2>5. Combined: Placeholder + Required</h2>
+
+  <p>Username: <input type="text" placeholder="Choose a username" required data-cli-show-placeholder="true"></p>
+  <p>Password: <input type="password" placeholder="Min 8 characters" required data-cli-show-placeholder="true" data-cli-required-marker="⚠" data-cli-required-color="yellow"></p>
+
+  <h2>6. With Values (Required)</h2>
+
+  <p>Name: <input type="text" value="Alice Smith" required></p>
+  <p>Age: <input type="number" value="25" required data-cli-required-marker="*" data-cli-required-color="red"></p>
+  <p>Website: <input type="url" value="https://alice.dev" required></p>
+
+  <h2>7. Optional Fields (No Required)</h2>
+
+  <p>Middle Name: <input type="text" value="Marie"></p>
+  <p>Nickname: <input type="text" placeholder="Optional nickname" data-cli-show-placeholder="true"></p>
+
+  <h2>8. Disabled with Required</h2>
+
+  <p>Account ID: <input type="text" value="USER-12345" required disabled></p>
+  <p>Created Date: <input type="date" value="2024-01-15" required disabled></p>
+
+  <h2>9. Various Input Types</h2>
+
+  <fieldset>
+    <legend>User Registration Form</legend>
+    <p>Email: <input type="email" placeholder="your.email@example.com" required data-cli-show-placeholder="true"></p>
+    <p>Password: <input type="password" placeholder="Strong password" required data-cli-show-placeholder="true"></p>
+    <p>Confirm Password: <input type="password" placeholder="Re-enter password" required data-cli-show-placeholder="true"></p>
+    <p>Date of Birth: <input type="date" required></p>
+    <p>Phone: <input type="tel" placeholder="+1 (555) 123-4567" data-cli-show-placeholder="true"></p>
+    <p>Website: <input type="url" placeholder="https://your-site.com" data-cli-show-placeholder="true"></p>
+  </fieldset>
+
+</body>
+</html>

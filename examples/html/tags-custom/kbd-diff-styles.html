@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KBD and Diff Styles Demo</title>
+</head>
+<body>
+  <h1>Keyboard Shortcuts & Diff Styles</h1>
+
+  <h2>1. KBD - Simple Style (Default)</h2>
+
+  <p>Save file: <kbd>Ctrl+S</kbd></p>
+  <p>Copy: <kbd>Ctrl+C</kbd></p>
+  <p>Paste: <kbd>Ctrl+V</kbd></p>
+
+  <h2>2. KBD - Box Style</h2>
+
+  <p>Delete: <kbd data-cli-key-style="box">Ctrl+Alt+Delete</kbd></p>
+  <p>Screenshot: <kbd data-cli-key-style="box">Ctrl+Shift+S</kbd></p>
+  <p>Quit: <kbd data-cli-key-style="box">Ctrl+Q</kbd></p>
+
+  <h2>3. KBD - Custom Box Colors</h2>
+
+  <p>Undo: <kbd data-cli-key-style="box" data-cli-color="cyan" data-cli-prefix-color="blue" data-cli-suffix-color="blue">Ctrl+Z</kbd></p>
+  <p>Redo: <kbd data-cli-key-style="box" data-cli-color="yellow" data-cli-prefix-color="magenta" data-cli-suffix-color="magenta">Ctrl+Y</kbd></p>
+
+  <h2>4. KBD - Custom Separator</h2>
+
+  <p>Open file: <kbd data-cli-key-style="box" data-cli-key-separator="-">Ctrl-O</kbd></p>
+  <p>New window: <kbd data-cli-key-style="box" data-cli-key-separator=" + ">Ctrl + Shift + N</kbd></p>
+
+  <h2>5. KBD - Custom Box Markers</h2>
+
+  <p>Find: <kbd data-cli-key-style="box" data-cli-prefix="〈 " data-cli-suffix=" 〉">Ctrl+F</kbd></p>
+  <p>Replace: <kbd data-cli-key-style="box" data-cli-prefix="⟨" data-cli-suffix="⟩">Ctrl+H</kbd></p>
+
+  <h2>6. Del/Ins - Simple Style (Default)</h2>
+
+  <p>The quick <del>brown</del> <ins>red</ins> fox.</p>
+  <p>Price: <del>$100</del> <ins>$80</ins></p>
+
+  <h2>7. Del/Ins - Git Diff Style</h2>
+
+  <p><del data-cli-diff-style="git" data-cli-show-marker="true">Old line of text</del></p>
+  <p><ins data-cli-diff-style="git" data-cli-show-marker="true">New line of text</ins></p>
+
+  <h2>8. Del/Ins - Custom Markers</h2>
+
+  <p><del data-cli-diff-style="git" data-cli-show-marker="true" data-cli-del-marker="✗">Removed feature</del></p>
+  <p><ins data-cli-diff-style="git" data-cli-show-marker="true" data-cli-add-marker="✓">Added feature</ins></p>
+
+  <h2>9. Del/Ins - Custom Marker Colors</h2>
+
+  <p><del data-cli-diff-style="git" data-cli-show-marker="true" data-cli-del-marker-color="red bold">Critical error</del></p>
+  <p><ins data-cli-diff-style="git" data-cli-show-marker="true" data-cli-add-marker-color="green bold">Fixed!</ins></p>
+
+  <h2>10. Code Comparison</h2>
+
+  <pre><code>function calculate(x, y) {
+<del data-cli-diff-style="git" data-cli-show-marker="true">  return x * y;</del>
+<ins data-cli-diff-style="git" data-cli-show-marker="true">  return x + y;</ins>
+}</code></pre>
+
+  <h2>11. Mixed KBD Styles</h2>
+
+  <p>
+    Simple: <kbd>Esc</kbd> |
+    Boxed: <kbd data-cli-key-style="box">Enter</kbd> |
+    Colored: <kbd data-cli-key-style="box" data-cli-color="green">Space</kbd>
+  </p>
+
+  <h2>12. Documentation Example</h2>
+
+  <p>To save your changes, press <kbd data-cli-key-style="box">Ctrl+S</kbd> or use the menu.</p>
+  <p>The old command <del data-cli-diff-style="git" data-cli-show-marker="true">npm run dev</del> has been replaced with <ins data-cli-diff-style="git" data-cli-show-marker="true">npm start</ins>.</p>
+
+</body>
+</html>

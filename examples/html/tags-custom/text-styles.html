@@ -1,0 +1,207 @@
+<h2>Text Formatting and Styles</h2>
+
+<h3>Basic Text Formatting</h3>
+
+<p>This is <b>bold text</b> and <strong>strong text</strong>.</p>
+<p>This is <i>italic text</i> and <em>emphasized text</em>.</p>
+<p>This is <u>underlined text</u>.</p>
+<p>This is <s>strikethrough text</s> and <strike>strike text</strike> and <del>deleted text</del>.</p>
+<p>This is <mark>highlighted text</mark>.</p>
+<p>This is <small>small text</small> and <big>big text</big>.</p>
+
+<h3>Custom Colors (data-cli-color)</h3>
+
+<p>
+  <small data-cli-color="gray">Small gray note</small>,
+  <big data-cli-color="cyan bold">large cyan emphasis</big>,
+  <sup data-cli-color="yellow">superscript</sup>,
+  <sub data-cli-color="magenta">subscript</sub>,
+  <tt data-cli-color="green">teletype</tt>,
+  <nobr data-cli-color="blue underline">non-breaking text stays together</nobr>.
+</p>
+
+<p>
+  Bidirectional isolation with color:
+  <bdi data-cli-color="yellow">مرحبا</bdi>,
+  <bdo data-cli-color="cyan" dir="rtl">Hello</bdo>,
+  <data data-cli-color="green">payload</data>.
+</p>
+
+<h3>Subscript and Superscript</h3>
+
+<p>H<sub>2</sub>O is water.</p>
+<p>E = mc<sup>2</sup> is Einstein's formula.</p>
+<p>The 5<sup>th</sup> element.</p>
+<p>Chemical formula: C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></p>
+
+<h3>Code and Technical Text</h3>
+
+<p>Use <code>console.log()</code> to print output.</p>
+<p>Press <kbd>Ctrl+C</kbd> to copy.</p>
+<p>The output is: <samp>Hello, World!</samp></p>
+<p>The variable <var>x</var> equals <var>y</var> plus <var>z</var>.</p>
+<p>The HTML <code>&lt;pre&gt;</code> tag preserves whitespace.</p>
+
+<h3>Quotations and Citations</h3>
+
+<p>He said <q>Hello, World!</q> to everyone.</p>
+<p>The book <cite>1984</cite> by George Orwell.</p>
+<p>Time: <time>2024-01-15</time></p>
+
+<h3>Abbreviations and Definitions</h3>
+
+<p>The <abbr title="HyperText Markup Language">HTML</abbr> specification.</p>
+<p>Use <abbr title="Cascading Style Sheets">CSS</abbr> for styling.</p>
+<p><dfn>JavaScript</dfn> is a programming language.</p>
+<p><abbr title="Application Programming Interface">API</abbr> documentation.</p>
+
+<h3>Insertions and Deletions</h3>
+
+<p>The price is <del>$100</del> <ins>$80</ins>.</p>
+<p><del>Old text</del> <ins>New text</ins></p>
+<p>Updated: <del>Monday</del> <ins>Tuesday</ins></p>
+
+<h3>Bidirectional Text (BDI/BDO)</h3>
+
+<p><i>The bdi (Bidirectional Isolation) and bdo (Bidirectional Override) elements
+are used for handling text in different directions.</i></p>
+
+<h4>BDI - Bidirectional Isolation</h4>
+
+<p>User <bdi>مرحبا</bdi> posted a comment.</p>
+<p>Welcome to <bdi>العربية</bdi> language support!</p>
+<p>The user <bdi>שלום</bdi> has joined the chat.</p>
+
+<h4>BDI with Usernames</h4>
+
+<p>Comment by <bdi>alice123</bdi>: Great post!</p>
+<p>Comment by <bdi>محمد_أحمد</bdi>: شكراً لك</p>
+<p>Comment by <bdi>דוד_כהן</bdi>: תודה רבה</p>
+
+<h4>BDO - Bidirectional Override</h4>
+
+<p>Left-to-right (default): <bdo dir="ltr">Hello World</bdo></p>
+<p>Right-to-left override: <bdo dir="rtl">Hello World</bdo></p>
+
+<p>Normal order: <bdo dir="ltr">1234567890</bdo></p>
+<p>Reversed order: <bdo dir="rtl">1234567890</bdo></p>
+
+<h4>Mixed Content Examples</h4>
+
+<p>English with Arabic: The word <bdi>مرحبا</bdi> means "hello" in Arabic.</p>
+<p>English with Hebrew: The word <bdi>שלום</bdi> means "hello" in Hebrew.</p>
+
+<h4>Email Addresses with RTL Names</h4>
+
+<p>Email: <bdi>أحمد</bdi>@example.com</p>
+<p>Email: <bdi>דניאל</bdi>@example.com</p>
+<p>Email: <bdi>john.doe</bdi>@example.com</p>
+
+<h4>List with Mixed Directionality</h4>
+
+<ul>
+  <li>User: <bdi>Alice</bdi> - Score: 100</li>
+  <li>User: <bdi>محمد</bdi> - Score: 95</li>
+  <li>User: <bdi>Bob</bdi> - Score: 90</li>
+  <li>User: <bdi>דוד</bdi> - Score: 85</li>
+</ul>
+
+<h3>Obsolete Tags (Compatibility)</h3>
+
+<p>No break text: <nobr data-cli-color="magenta dim">This text will not break onto multiple lines even if it is very long</nobr></p>
+<p>Marquee (scrolling): <marquee data-cli-color="magenta">Scrolling text</marquee></p>
+<p>Centered: <center data-cli-color="cyan bold">This text is centered</center></p>
+
+<h3>Custom Styled Text Elements</h3>
+
+<p>Bold with colors:
+  <b data-cli-color="red">Red bold</b>,
+  <strong data-cli-color="green bold">Green strong</strong>,
+  <b data-cli-color="blue underline">Blue underlined bold</b>
+</p>
+
+<p>Italic variations:
+  <i data-cli-color="magenta">Magenta italic</i>,
+  <em data-cli-color="cyan italic">Cyan emphasis</em>,
+  <i data-cli-color="yellow dim">Yellow dim italic</i>
+</p>
+
+<p>Underline styles:
+  <u data-cli-color="red">Red underline</u>,
+  <u data-cli-color="green bold">Green bold underline</u>
+</p>
+
+<p>Strikethrough:
+  <s data-cli-color="red">Red strikethrough</s>,
+  <del data-cli-color="magenta dim">Magenta dim deleted</del>,
+  <strike data-cli-color="gray">Gray strike</strike>
+</p>
+
+<p>Mark/highlight:
+  <mark data-cli-color="bgYellow black">Yellow highlight</mark>,
+  <mark data-cli-color="bgGreen white bold">Green bold highlight</mark>,
+  <mark data-cli-color="bgMagenta white">Magenta highlight</mark>
+</p>
+
+<p>Insertions:
+  <ins data-cli-color="green">Green inserted</ins>,
+  <ins data-cli-color="cyan underline">Cyan underlined insertion</ins>
+</p>
+
+<h3>Code Elements with Custom Colors</h3>
+
+<p>Inline code:
+  <code data-cli-color="magenta">const x = 42;</code>,
+  <code data-cli-color="cyan bold">function()</code>,
+  <code data-cli-color="green">npm install</code>
+</p>
+
+<p>Keyboard shortcuts:
+  <kbd data-cli-color="red bold">Ctrl+C</kbd>,
+  <kbd data-cli-color="blue">Alt+Tab</kbd>,
+  <kbd data-cli-color="magenta">Cmd+V</kbd>
+</p>
+
+<p>Sample output:
+  <samp data-cli-color="green">Success!</samp>,
+  <samp data-cli-color="red">Error: File not found</samp>,
+  <samp data-cli-color="yellow">Warning: Low memory</samp>
+</p>
+
+<h3>Citations and Time with Colors</h3>
+
+<p>Citations:
+  <cite data-cli-color="italic magenta">"1984"</cite> by George Orwell,
+  <cite data-cli-color="italic cyan">"The Great Gatsby"</cite>
+</p>
+
+<p>Time elements:
+  <time data-cli-color="blue">2024-01-15</time>,
+  <time data-cli-color="green bold">10:30 AM</time>,
+  <time data-cli-color="cyan">December 25, 2024</time>
+</p>
+
+<h3>Combined Example</h3>
+
+<p>
+  The <strong>quick</strong> <mark>brown</mark> <i>fox</i> jumps over the <u>lazy</u> dog.
+  Use <code>Array.map()</code> to transform data. The <abbr title="World Wide Web">WWW</abbr>
+  was invented in <time>1989</time>. Price: <del>$99</del> <ins>$79</ins>.
+</p>
+
+<h3>Advanced Custom Styling</h3>
+
+<p>
+  <strong data-cli-color="red bold">ERROR:</strong> The file
+  <code data-cli-color="cyan">/path/to/file.txt</code> was
+  <del data-cli-color="red strikethrough">deleted</del>
+  <ins data-cli-color="green">moved</ins> to
+  <code data-cli-color="cyan">/backup/file.txt</code> at
+  <time data-cli-color="dim">2024-12-08 15:30</time>
+</p>
+
+<p>
+  Press <kbd data-cli-color="yellow bold">Ctrl+S</kbd> to save or
+  <kbd data-cli-color="red bold">Ctrl+Q</kbd> to quit.
+  Output: <samp data-cli-color="green">Operation completed successfully</samp>
+</p>

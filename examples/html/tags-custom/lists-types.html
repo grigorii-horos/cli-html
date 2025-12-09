@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List Type Attribute Examples</title>
+</head>
+<body>
+  <h1>Unordered Lists - HTML type Attribute</h1>
+
+  <h2>type="disc" (default)</h2>
+  <ul type="disc">
+    <li>Disc marker (•)</li>
+    <li>Default marker type</li>
+    <li>Uses theme.ul.markers.disc configuration</li>
+  </ul>
+
+  <h2>type="square"</h2>
+  <ul type="square">
+    <li>Square marker (▪)</li>
+    <li>Alternative marker type</li>
+    <li>Uses theme.ul.markers.square configuration</li>
+  </ul>
+
+  <h2>type="circle"</h2>
+  <ul type="circle">
+    <li>Circle marker (⚬)</li>
+    <li>Hollow circle marker</li>
+    <li>Uses theme.ul.markers.circle configuration</li>
+  </ul>
+
+  <h2>Nested Lists with Automatic Rotation</h2>
+  <ul>
+    <li>Level 1 - disc (•)
+      <ul>
+        <li>Level 2 - square (▪)
+          <ul>
+            <li>Level 3 - circle (⚬)
+              <ul>
+                <li>Level 4 - back to disc (•)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>Combining type with data-cli-* Attributes</h2>
+  
+  <p>Override marker color while keeping type:</p>
+  <ul type="square" data-cli-marker-color="red bold">
+    <li>Square marker with red color</li>
+    <li>Type defines marker, data-cli-marker-color defines color</li>
+  </ul>
+
+  <p>Override both marker and color:</p>
+  <ul type="circle" data-cli-marker="→" data-cli-marker-color="green">
+    <li>Completely custom arrow marker</li>
+    <li>data-cli-marker overrides type attribute</li>
+  </ul>
+
+  <h1>Ordered Lists - HTML type Attribute</h1>
+
+  <h2>type="1" (default)</h2>
+  <ol type="1">
+    <li>Decimal numbers</li>
+    <li>Default numbering</li>
+    <li>1, 2, 3...</li>
+  </ol>
+
+  <h2>type="A"</h2>
+  <ol type="A">
+    <li>Uppercase letters</li>
+    <li>Alphabetical ordering</li>
+    <li>A, B, C...</li>
+  </ol>
+
+  <h2>type="a"</h2>
+  <ol type="a">
+    <li>Lowercase letters</li>
+    <li>Alphabetical ordering</li>
+    <li>a, b, c...</li>
+  </ol>
+
+  <h2>type="I"</h2>
+  <ol type="I">
+    <li>Uppercase Roman numerals</li>
+    <li>Roman numbering</li>
+    <li>I, II, III...</li>
+  </ol>
+
+  <h2>type="i"</h2>
+  <ol type="i">
+    <li>Lowercase Roman numerals</li>
+    <li>Roman numbering</li>
+    <li>i, ii, iii...</li>
+  </ol>
+
+  <h2>Nested Ordered Lists with Rotation</h2>
+  <ol>
+    <li>Level 1 - decimal (1, 2, 3...)
+      <ol>
+        <li>Level 2 - Roman uppercase (I, II, III...)
+          <ol>
+            <li>Level 3 - Alphabetic uppercase (A, B, C...)</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+
+</body>
+</html>

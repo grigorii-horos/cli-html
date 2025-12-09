@@ -1,0 +1,129 @@
+<!--
+  Progress and Meter Elements with Custom Attributes
+
+  Customization attributes:
+  - data-cli-filled-color: Color for filled/completed portion
+  - data-cli-empty-color: Color for empty/remaining portion
+  - data-cli-filled-marker: Character for filled portion (default: █)
+  - data-cli-empty-marker: Character for empty portion (default: ░)
+
+  All attributes support full chalk-string syntax.
+-->
+
+<h1>Custom Progress and Meter Examples</h1>
+
+<h2>Progress Element with Custom Attributes</h2>
+
+<h3>Custom Filled Color</h3>
+<p>Green filled: <progress value="70" max="100" data-cli-filled-color="green bold">70%</progress></p>
+<p>Cyan filled: <progress value="50" max="100" data-cli-filled-color="cyan">50%</progress></p>
+
+<h3>Custom Empty Color</h3>
+<p>Red empty: <progress value="30" max="100" data-cli-empty-color="red">30%</progress></p>
+<p>Gray empty: <progress value="40" max="100" data-cli-empty-color="gray dim">40%</progress></p>
+
+<h3>Custom Markers</h3>
+<p>Square filled: <progress value="60" max="100" data-cli-filled-marker="▰">60%</progress></p>
+<p>Dot markers: <progress value="50" max="100" data-cli-filled-marker="●" data-cli-empty-marker="○">50%</progress></p>
+<p>Arrow markers: <progress value="75" max="100" data-cli-filled-marker="►" data-cli-empty-marker="▷">75%</progress></p>
+
+<h3>Combined Custom Attributes</h3>
+<p>Full custom: <progress value="50" max="100"
+   data-cli-filled-color="cyan bold"
+   data-cli-filled-marker="●"
+   data-cli-empty-color="gray"
+   data-cli-empty-marker="○">50%</progress></p>
+
+<p>Green/red theme: <progress value="80" max="100"
+   data-cli-filled-color="green"
+   data-cli-filled-marker="█"
+   data-cli-empty-color="red dim"
+   data-cli-empty-marker="░">80%</progress></p>
+
+<h3>File Upload Progress with Custom Styles</h3>
+<p>File 1: <progress value="1" max="3"
+   data-cli-filled-color="blue bold"
+   data-cli-filled-marker="▰">33%</progress></p>
+<p>File 2: <progress value="2" max="3"
+   data-cli-filled-color="blue bold"
+   data-cli-filled-marker="▰">66%</progress></p>
+<p>File 3: <progress value="3" max="3"
+   data-cli-filled-color="green bold"
+   data-cli-filled-marker="✓">100%</progress></p>
+
+<h2>Meter Element with Custom Attributes</h2>
+
+<h3>Custom Colors</h3>
+<p>Disk usage: <meter value="0.6" min="0" max="1"
+   data-cli-filled-color="yellow"
+   data-cli-empty-color="gray dim">60%</meter></p>
+
+<p>Battery: <meter value="0.85" min="0" max="1"
+   data-cli-filled-color="green bold"
+   data-cli-empty-color="gray">85%</meter></p>
+
+<p>Low battery: <meter value="0.15" min="0" max="1"
+   data-cli-filled-color="red bold"
+   data-cli-empty-color="gray">15%</meter></p>
+
+<h3>Custom Markers</h3>
+<p>CPU: <meter value="30" min="0" max="100"
+   data-cli-filled-marker="▰"
+   data-cli-empty-marker="▱">30%</meter></p>
+
+<p>RAM: <meter value="6.4" min="0" max="16"
+   data-cli-filled-color="cyan"
+   data-cli-filled-marker="█"
+   data-cli-empty-marker="░">6.4 GB</meter></p>
+
+<h3>Status Indicators</h3>
+<p>Health (good): <meter value="90" min="0" max="100"
+   data-cli-filled-color="green bold"
+   data-cli-filled-marker="♥">90%</meter></p>
+
+<p>Health (warning): <meter value="50" min="0" max="100"
+   data-cli-filled-color="yellow bold"
+   data-cli-filled-marker="♥">50%</meter></p>
+
+<p>Health (critical): <meter value="20" min="0" max="100"
+   data-cli-filled-color="red bold"
+   data-cli-filled-marker="♥">20%</meter></p>
+
+<h2>Default Progress and Meter (No Custom Attributes)</h2>
+
+<h3>Standard Progress</h3>
+<p>30% complete: <progress value="30" max="100">30%</progress></p>
+<p>70% complete: <progress value="70" max="100">70%</progress></p>
+<p>Full bar: <progress value="100" max="100">100%</progress></p>
+
+<h3>Standard Meter</h3>
+<p>Quarter: <meter value="25" min="0" max="100">25%</meter></p>
+<p>Half: <meter value="50" min="0" max="100">50%</meter></p>
+<p>Three quarters: <meter value="75" min="0" max="100">75%</meter></p>
+
+<h2>Real-World Examples</h2>
+
+<h3>Download Progress</h3>
+<p>Downloading update.zip: <progress value="45" max="100"
+   data-cli-filled-color="blue bold"
+   data-cli-filled-marker="▰"
+   data-cli-empty-marker="▱">45%</progress> (45 MB / 100 MB)</p>
+
+<h3>System Resources</h3>
+<p>CPU: <meter value="65" min="0" max="100"
+   data-cli-filled-color="yellow"
+   data-cli-empty-color="gray dim">65%</meter></p>
+
+<p>RAM: <meter value="8.2" min="0" max="16"
+   data-cli-filled-color="cyan"
+   data-cli-empty-color="gray dim">8.2 GB</meter> / 16 GB</p>
+
+<p>Disk: <meter value="240" min="0" max="512"
+   data-cli-filled-color="green"
+   data-cli-empty-color="gray dim">240 GB</meter> / 512 GB</p>
+
+<h3>Build Progress</h3>
+<p>Compiling: <progress value="3" max="5"
+   data-cli-filled-color="green"
+   data-cli-filled-marker="✓"
+   data-cli-empty-marker="○">60%</progress> (3/5 modules)</p>

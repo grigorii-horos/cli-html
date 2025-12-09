@@ -6,17 +6,8 @@ import { markdownToHtml } from './lib/markdown.js';
 
 export const renderHTML = (rawHTML, theme = {}) => {
   const document = parse(rawHTML);
-
-  // console.dir(
-  //   filterAst(document).childNodes[0].childNodes[1].childNodes,
-  //   { depth: null },
-  // );
-
   const globalConfig = getGlobalConfig(document, theme);
-
-  return `${
-    (renderTag(document, globalConfig) || { value: '' }).value
-  }\n`;
+  return `${(renderTag(document, globalConfig) || { value: '' }).value}\n`;
 };
 
 /**

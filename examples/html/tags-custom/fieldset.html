@@ -1,0 +1,134 @@
+<h1>Custom Fieldset Examples</h1>
+
+<h2>Border Colors</h2>
+
+<h3>Default Fieldset</h3>
+<fieldset>
+  <legend>Default Style</legend>
+  <p>Fieldset with default gray border and yellow legend.</p>
+</fieldset>
+
+<h3>Custom Border Colors</h3>
+<fieldset data-cli-border="blue">
+  <legend>Blue Border</legend>
+  <p>Fieldset with blue border color.</p>
+</fieldset>
+
+<fieldset data-cli-border="green">
+  <legend>Green Border</legend>
+  <p>Fieldset with green border color.</p>
+</fieldset>
+
+<fieldset data-cli-border="magenta">
+  <legend>Magenta Border</legend>
+  <p>Fieldset with magenta border color.</p>
+</fieldset>
+
+<h2>Border Styles</h2>
+
+<h3>Single Style (Default)</h3>
+<fieldset data-cli-border="cyan" data-cli-border-style="single">
+  <legend>Single Line</legend>
+  <p>Single line border style.</p>
+</fieldset>
+
+<h3>Round Style</h3>
+<fieldset data-cli-border="green" data-cli-border-style="round">
+  <legend>Rounded Corners</legend>
+  <p>Rounded corner border style.</p>
+</fieldset>
+
+<h3>Double Style</h3>
+<fieldset data-cli-border="red" data-cli-border-style="double">
+  <legend>Double Line</legend>
+  <p>Double line border style.</p>
+</fieldset>
+
+<h3>Bold Style</h3>
+<fieldset data-cli-border="yellow" data-cli-border-style="bold">
+  <legend>Bold Line</legend>
+  <p>Bold line border style.</p>
+</fieldset>
+
+<h3>Classic Style</h3>
+<fieldset data-cli-border="blue" data-cli-border-style="classic">
+  <legend>Classic ASCII</legend>
+  <p>Classic ASCII border with +, -, |</p>
+</fieldset>
+
+<h2>Title Color Customization</h2>
+
+<h3>Red Bold Title</h3>
+<fieldset data-cli-border="cyan" data-cli-title-color="red bold">
+  <legend>Important Section</legend>
+  <p>Cyan border with red bold legend text.</p>
+</fieldset>
+
+<h3>Green Title</h3>
+<fieldset data-cli-border="gray" data-cli-title-color="green">
+  <legend>Success</legend>
+  <p>Gray border with green legend.</p>
+</fieldset>
+
+<h3>Magenta Italic Title</h3>
+<fieldset data-cli-border="blue" data-cli-title-color="magenta italic">
+  <legend>Stylized Title</legend>
+  <p>Blue border with magenta italic legend.</p>
+</fieldset>
+
+<h2>Border Dim</h2>
+
+<h3>Normal Border</h3>
+<fieldset data-cli-border="white">
+  <legend>Normal Brightness</legend>
+  <p>Normal border brightness.</p>
+</fieldset>
+
+<h3>Dimmed Border</h3>
+<fieldset data-cli-border="white" data-cli-border-dim="true">
+  <legend>Dimmed</legend>
+  <p>Dimmed border for subtle appearance.</p>
+</fieldset>
+
+<h2>Combined Custom Attributes</h2>
+
+<h3>Full Customization</h3>
+<fieldset data-cli-border="blue" data-cli-border-style="double" data-cli-title-color="red bold">
+  <legend>Fully Customized</legend>
+  <p>Blue double border with red bold legend.</p>
+</fieldset>
+
+<h3>Subtle Style</h3>
+<fieldset data-cli-border="gray" data-cli-border-style="round" data-cli-border-dim="true" data-cli-title-color="cyan">
+  <legend>Subtle Appearance</legend>
+  <p>Gray dimmed rounded border with cyan legend.</p>
+</fieldset>
+
+<h2>Real-World Examples</h2>
+
+<h3>User Preferences Form</h3>
+<fieldset data-cli-border="green" data-cli-border-style="round" data-cli-title-color="green bold">
+  <legend>Preferences</legend>
+  <p>
+    <label><input type="checkbox" checked /> Email notifications</label>
+  </p>
+  <p>
+    <label><input type="radio" name="mode" checked /> Light mode</label><br/>
+    <label><input type="radio" name="mode" /> Dark mode</label>
+  </p>
+</fieldset>
+
+<h3>Configuration Section</h3>
+<fieldset data-cli-border="blue" data-cli-border-style="single" data-cli-title-color="blue bold">
+  <legend>Advanced Configuration</legend>
+  <p>Database connection: <code>localhost:5432</code></p>
+  <p>Cache enabled: <code>true</code></p>
+  <p>Log level: <code>info</code></p>
+</fieldset>
+
+<h3>Warning Section</h3>
+<fieldset data-cli-border="yellow" data-cli-border-style="bold" data-cli-title-color="red bold">
+  <legend>⚠ Warning</legend>
+  <p>Deleting this resource is permanent and cannot be undone.</p>
+  <p>Make sure you have a backup before proceeding.</p>
+</fieldset>

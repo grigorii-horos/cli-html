@@ -1,0 +1,156 @@
+<h1>Custom Details Examples</h1>
+
+<h2>Default and Border Colors</h2>
+
+<h3>Default Details</h3>
+<details>
+  <summary>Click to expand</summary>
+  <p>This is the content inside the details element.</p>
+  <p>It can contain multiple lines and other elements.</p>
+</details>
+
+<h3>Custom Border Colors</h3>
+<details data-cli-border="cyan">
+  <summary>Cyan Border</summary>
+  <p>This details element has a cyan border color.</p>
+</details>
+
+<details data-cli-border="magenta">
+  <summary>Magenta Border</summary>
+  <p>This details element has a magenta border color.</p>
+</details>
+
+<details data-cli-border="green">
+  <summary>Green Border</summary>
+  <p>This details element has a green border color.</p>
+</details>
+
+<h2>Border Styles</h2>
+
+<h3>Single Style (Default)</h3>
+<details data-cli-border="blue" data-cli-border-style="single">
+  <summary>Single Line Border</summary>
+  <p>Single line border style.</p>
+</details>
+
+<h3>Round Style</h3>
+<details data-cli-border="green" data-cli-border-style="round">
+  <summary>Rounded Corners</summary>
+  <p>Rounded corner border style.</p>
+</details>
+
+<h3>Double Style</h3>
+<details data-cli-border="red" data-cli-border-style="double">
+  <summary>Double Line Border</summary>
+  <p>Double line border style.</p>
+</details>
+
+<h3>Bold Style</h3>
+<details data-cli-border="yellow" data-cli-border-style="bold">
+  <summary>Bold Line Border</summary>
+  <p>Bold line border style.</p>
+</details>
+
+<h3>Classic Style</h3>
+<details data-cli-border="cyan" data-cli-border-style="classic">
+  <summary>Classic ASCII Border</summary>
+  <p>Classic ASCII border with +, -, |</p>
+</details>
+
+<h2>Custom Markers</h2>
+
+<h3>Arrow Marker</h3>
+<details data-cli-marker="> ">
+  <summary>Expandable Section</summary>
+  <p>Details with a custom arrow marker instead of the default.</p>
+</details>
+
+<h3>Star Marker</h3>
+<details data-cli-marker="★ ">
+  <summary>Important Information</summary>
+  <p>Details with a star marker.</p>
+</details>
+
+<h3>Plus Marker</h3>
+<details data-cli-marker="+ ">
+  <summary>Additional Details</summary>
+  <p>Details with a plus sign marker.</p>
+</details>
+
+<h2>Border Dim</h2>
+
+<h3>Normal Border</h3>
+<details data-cli-border="white">
+  <summary>Normal Brightness</summary>
+  <p>Normal border brightness.</p>
+</details>
+
+<h3>Dimmed Border</h3>
+<details data-cli-border="white" data-cli-border-dim="true">
+  <summary>Dimmed Appearance</summary>
+  <p>Dimmed border for subtle appearance.</p>
+</details>
+
+<h2>Combined Custom Attributes</h2>
+
+<h3>Full Customization</h3>
+<details data-cli-marker="▼ " data-cli-border="blue" data-cli-border-style="double">
+  <summary>Fully Customized</summary>
+  <p>Blue double border with custom arrow marker.</p>
+  <p>Multiple paragraphs supported.</p>
+</details>
+
+<h3>Subtle Style</h3>
+<details data-cli-marker="› " data-cli-border="gray" data-cli-border-style="round" data-cli-border-dim="true">
+  <summary>Subtle Appearance</summary>
+  <p>Gray dimmed rounded border with subtle marker.</p>
+</details>
+
+<h3>Attention Style</h3>
+<details data-cli-marker="! " data-cli-border="yellow" data-cli-border-style="bold">
+  <summary>Warning</summary>
+  <p>Yellow bold border with warning marker.</p>
+</details>
+
+<h2>Real-World Examples</h2>
+
+<h3>FAQ Section</h3>
+<details data-cli-marker="? " data-cli-border="blue" data-cli-border-style="round">
+  <summary>What is CLI-HTML?</summary>
+  <p>CLI-HTML is a terminal renderer for HTML and Markdown with full GitHub Flavored Markdown support.</p>
+  <p>It supports syntax highlighting, customizable themes, and extensive inline customization.</p>
+</details>
+
+<h3>Code Documentation</h3>
+<details data-cli-marker="{ } " data-cli-border="cyan" data-cli-border-style="single">
+  <summary>Function Documentation</summary>
+  <p>Function name: <code>renderHTML(html, theme)</code></p>
+  <p>Parameters:</p>
+  <ul>
+    <li><code>html</code> - HTML string to render</li>
+    <li><code>theme</code> - Optional custom theme object</li>
+  </ul>
+  <p>Returns: Formatted terminal output</p>
+</details>
+
+<h3>Advanced Options</h3>
+<details data-cli-marker="⚙ " data-cli-border="magenta" data-cli-border-style="classic">
+  <summary>Advanced Configuration</summary>
+  <p>Hidden content is still rendered inside a box.</p>
+  <ul>
+    <li>Enable debug mode</li>
+    <li>Set custom line width</li>
+    <li>Configure syntax highlighting</li>
+  </ul>
+</details>
+
+<h3>Collapsible List</h3>
+<details data-cli-marker="▸ " data-cli-border="green" data-cli-border-style="round">
+  <summary>Project Files</summary>
+  <ul>
+    <li>src/index.js</li>
+    <li>src/components/</li>
+    <li>tests/</li>
+    <li>README.md</li>
+  </ul>
+</details>

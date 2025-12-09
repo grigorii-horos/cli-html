@@ -43,7 +43,6 @@ export interface PaddingConfig {
  */
 export interface CodePaddingConfig {
   left?: number;
-  lineWidth?: number;
 }
 
 /**
@@ -118,11 +117,59 @@ export interface CodeInlineStyle {
 }
 
 /**
+ * Code gutter style configuration
+ */
+export interface CodeGutterStyle {
+  enabled?: boolean;
+  marker?: string;
+  color?: ChalkString;
+}
+
+/**
+ * Code label prefix/suffix style configuration
+ */
+export interface CodeLabelAffixStyle {
+  marker?: string;
+  color?: ChalkString;
+}
+
+/**
+ * Code label style configuration
+ */
+export interface CodeLabelStyle {
+  enabled?: boolean;
+  position?: 'top' | 'bottom';
+  color?: ChalkString;
+  prefix?: CodeLabelAffixStyle;
+  suffix?: CodeLabelAffixStyle;
+}
+
+/**
+ * Code highlight style configuration
+ */
+export interface CodeHighlightStyle {
+  color?: ChalkString;
+}
+
+/**
+ * Code overflow indicator style configuration
+ */
+export interface CodeOverflowIndicatorStyle {
+  enabled?: boolean;
+  marker?: string;
+  color?: ChalkString;
+}
+
+/**
  * Code block style configuration
  */
 export interface CodeBlockStyle {
   color?: ChalkString;
   numbers?: CodeNumbersStyle;
+  gutter?: CodeGutterStyle;
+  label?: CodeLabelStyle;
+  highlight?: CodeHighlightStyle;
+  overflowIndicator?: CodeOverflowIndicatorStyle;
   padding?: CodePaddingConfig;
 }
 
@@ -134,6 +181,16 @@ export interface CodeStyle {
   block?: CodeBlockStyle;
   color?: ChalkString;
   numbers?: ChalkString | CodeNumbersStyle;
+}
+
+/**
+ * Table responsive mode configuration
+ */
+export interface TableResponsiveStyle {
+  enabled?: boolean;
+  threshold?: number;
+  separator?: string;
+  itemSeparator?: string;
 }
 
 /**
@@ -149,6 +206,25 @@ export interface TableStyle {
   cell?: {
     color?: ChalkString;
   };
+  td?: {
+    color?: ChalkString;
+  };
+  th?: {
+    color?: ChalkString;
+  };
+  tr?: {
+    color?: ChalkString;
+  };
+  thead?: {
+    color?: ChalkString;
+  };
+  tbody?: {
+    color?: ChalkString;
+  };
+  tfoot?: {
+    color?: ChalkString;
+  };
+  responsive?: TableResponsiveStyle;
 }
 
 /**
@@ -158,9 +234,32 @@ export interface AbbrStyle {
   color?: ChalkString;
   title?: {
     color?: ChalkString;
+    prefix?: {
+      color?: ChalkString;
+      marker?: string;
+    };
+    suffix?: {
+      color?: ChalkString;
+      marker?: string;
+    };
   };
-  parens?: {
+}
+
+/**
+ * Definition (dfn) style configuration
+ */
+export interface DfnStyle {
+  color?: ChalkString;
+  title?: {
     color?: ChalkString;
+    prefix?: {
+      color?: ChalkString;
+      marker?: string;
+    };
+    suffix?: {
+      color?: ChalkString;
+      marker?: string;
+    };
   };
 }
 
@@ -214,6 +313,7 @@ export interface ProgressComponentStyle {
  * Progress bar style configuration
  */
 export interface ProgressStyle {
+  width?: number;
   filled?: ChalkString | ProgressComponentStyle;
   empty?: ChalkString | ProgressComponentStyle;
   color?: ChalkString;
@@ -311,6 +411,84 @@ export interface ImgStyle {
 }
 
 /**
+ * Keyboard input (kbd) key style configuration
+ */
+export interface KbdKeyStyle {
+  enabled?: boolean;
+  style?: 'simple' | 'box';
+  separator?: string;
+}
+
+/**
+ * Keyboard input (kbd) style configuration
+ */
+export interface KbdStyle {
+  color?: ChalkString;
+  prefix?: {
+    marker?: string;
+    color?: ChalkString;
+  };
+  suffix?: {
+    marker?: string;
+    color?: ChalkString;
+  };
+  key?: KbdKeyStyle;
+}
+
+/**
+ * External link indicator style configuration
+ */
+export interface ExternalLinkIndicatorStyle {
+  enabled?: boolean;
+  marker?: string;
+  color?: ChalkString;
+  position?: 'before' | 'after';
+  spacing?: string;
+}
+
+/**
+ * Link (a) style configuration
+ */
+export interface LinkStyle {
+  color?: ChalkString;
+  showHref?: boolean;
+  hrefColor?: ChalkString;
+  showTitle?: boolean;
+  titleColor?: ChalkString;
+  titlePrefix?: string;
+  titleSuffix?: string;
+  titlePrefixColor?: ChalkString;
+  titleSuffixColor?: ChalkString;
+  externalIndicator?: ExternalLinkIndicatorStyle;
+}
+
+/**
+ * Diff style configuration for del/ins
+ */
+export interface DiffStyle {
+  enabled?: boolean;
+  style?: 'simple' | 'git';
+  marker?: string;
+  color?: ChalkString;
+}
+
+/**
+ * Deleted text (del) style configuration
+ */
+export interface DelStyle {
+  color?: ChalkString;
+  diff?: DiffStyle;
+}
+
+/**
+ * Inserted text (ins) style configuration
+ */
+export interface InsStyle {
+  color?: ChalkString;
+  diff?: DiffStyle;
+}
+
+/**
  * Complete theme configuration for styling terminal output
  */
 export interface Theme {
@@ -324,7 +502,8 @@ export interface Theme {
 
   // Inline elements
   span?: ChalkString;
-  a?: ChalkString;
+  a?: ChalkString | LinkStyle;
+  p?: ChalkString;
 
   // Box elements
   figure?: ChalkString | FigureStyle;
@@ -355,13 +534,13 @@ export interface Theme {
   dl?: ChalkString;
 
   // Text modifications
-  del?: ChalkString;
-  ins?: ChalkString;
+  del?: ChalkString | DelStyle;
+  ins?: ChalkString | InsStyle;
   strikethrough?: ChalkString;
   underline?: ChalkString;
   bold?: ChalkString;
   samp?: ChalkString;
-  kbd?: ChalkString;
+  kbd?: ChalkString | KbdStyle;
   variableTag?: ChalkString;
   mark?: ChalkString;
   time?: ChalkString;
@@ -371,7 +550,7 @@ export interface Theme {
   abbrTitle?: ChalkString;
   abbrParens?: ChalkString;
 
-  dfn?: ChalkString;
+  dfn?: ChalkString | DfnStyle;
 
   // Emphasis
   italic?: ChalkString;
@@ -391,10 +570,25 @@ export interface Theme {
 }
 
 /**
+ * Line width configuration
+ */
+export interface LineWidthConfig {
+  /** Maximum line width (terminal width) */
+  max?: number;
+  /** Fixed line width (overrides automatic detection) */
+  value?: number;
+}
+
+/**
  * Configuration wrapper (can contain theme property)
  */
 export interface Config {
+  /** Custom theme configuration */
   theme?: Theme;
+  /** Line width configuration */
+  lineWidth?: LineWidthConfig;
+  /** ASCII fallback mode for limited terminals (default: false) */
+  asciiMode?: boolean;
 }
 
 /**
@@ -482,3 +676,140 @@ export function renderMarkdown(markdown: string, theme?: Theme | Config): string
  * ```
  */
 export default function cliHtml(html: string, theme?: Theme | Config): string;
+
+// ============================================================================
+// Utility Functions
+// ============================================================================
+
+/**
+ * Validate and sanitize numeric value
+ * @param value - Value to validate
+ * @param min - Minimum allowed value (default: -Infinity)
+ * @param max - Maximum allowed value (default: Infinity)
+ * @param defaultValue - Default value if invalid (default: 0)
+ * @returns Validated number or default
+ */
+export function validateNumber(value: any, min?: number, max?: number, defaultValue?: number): number;
+
+/**
+ * Validate and sanitize integer value
+ * @param value - Value to validate
+ * @param min - Minimum allowed value (default: -Infinity)
+ * @param max - Maximum allowed value (default: Infinity)
+ * @param defaultValue - Default value if invalid (default: 0)
+ * @returns Validated integer or default
+ */
+export function validateInteger(value: any, min?: number, max?: number, defaultValue?: number): number;
+
+/**
+ * Validate boolean value from various formats
+ * @param value - Value to validate (true/false/'true'/'false'/1/0/'yes'/'no')
+ * @param defaultValue - Default value if invalid (default: false)
+ * @returns Validated boolean or default
+ */
+export function validateBoolean(value: any, defaultValue?: boolean): boolean;
+
+/**
+ * Validate color string format (chalk-string compatible)
+ * @param color - Color string to validate
+ * @returns True if valid color format
+ */
+export function isValidColor(color: string): boolean;
+
+/**
+ * Check if NO_COLOR environment variable is set
+ * @returns True if colors should be disabled
+ */
+export function isNoColor(): boolean;
+
+/**
+ * Get visual length of string (accounting for ANSI codes, emoji, and wide characters)
+ * @param str - Input string (may contain ANSI codes, emoji, wide chars)
+ * @returns Visual length
+ */
+export function visualLength(str: string): number;
+
+/**
+ * Convert string to title case
+ * @param str - Input string
+ * @returns Title cased string
+ * @example toTitleCase('hello world') // => 'Hello World'
+ */
+export function toTitleCase(str: string): string;
+
+/**
+ * Capitalize first letter of string (rest unchanged)
+ * @param str - Input string
+ * @returns Capitalized string
+ * @example capitalize('hello world') // => 'Hello world'
+ */
+export function capitalize(str: string): string;
+
+/**
+ * Strip all ANSI escape codes from string
+ * @param str - Input string with ANSI codes
+ * @returns String without ANSI codes
+ * @example stripAnsi('\x1b[31mred\x1b[0m') // => 'red'
+ */
+export function stripAnsi(str: string): string;
+
+/**
+ * Check if string is empty (null, undefined, or empty string)
+ * @param str - Input string
+ * @returns True if empty
+ */
+export function isEmpty(str: any): boolean;
+
+/**
+ * Reverse a string
+ * @param str - Input string
+ * @returns Reversed string
+ * @example reverse('hello') // => 'olleh'
+ */
+export function reverse(str: string): string;
+
+/**
+ * Count occurrences of substring in string
+ * @param str - Input string
+ * @param substr - Substring to count
+ * @param caseSensitive - Case sensitive search (default: true)
+ * @returns Number of occurrences
+ */
+export function count(str: string, substr: string, caseSensitive?: boolean): number;
+
+/**
+ * Convert Unicode characters to ASCII equivalents
+ * Useful for terminals that don't support Unicode properly
+ * @param str - Input string with Unicode characters
+ * @returns String with ASCII equivalents
+ * @example toAscii('Progress: ████░░░░') // => 'Progress: ####----'
+ */
+export function toAscii(str: string): string;
+
+/**
+ * Convert a marker (symbol) to ASCII if needed
+ * @param marker - Original marker (may be Unicode)
+ * @param asciiMode - Whether ASCII mode is enabled
+ * @returns ASCII marker if asciiMode is true, original otherwise
+ */
+export function markerToAscii(marker: string, asciiMode?: boolean): string;
+
+/**
+ * Logger with different levels (DEBUG, INFO, WARN, ERROR)
+ * Only logs when DEBUG environment variable is set (except WARN and ERROR)
+ */
+export const logger: {
+  debug(context: string, message: string, data?: any): void;
+  info(context: string, message: string, data?: any): void;
+  warn(context: string, message: string, data?: any): void;
+  error(context: string, message: string, error?: Error | any): void;
+};
+
+/**
+ * Safe wrapper for functions that might throw
+ * @param fn - Function to execute
+ * @param fallback - Fallback value on error
+ * @param context - Context for error logging
+ * @returns Function result or fallback
+ */
+export function safeExecute<T>(fn: () => T, fallback: T, context?: string): T;

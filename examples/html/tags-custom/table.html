@@ -1,0 +1,388 @@
+<h1>Table Examples with Custom Styles</h1>
+
+<p>Tables support customization at multiple levels with priority cascade:</p>
+<ul>
+  <li><code>td</code>/<code>th</code> cell level (highest priority) - <code>data-cli-color</code></li>
+  <li><code>tr</code> row level - <code>data-cli-tr-color</code></li>
+  <li><code>thead</code>/<code>tbody</code>/<code>tfoot</code> section level - <code>data-cli-thead-color</code>, <code>data-cli-tbody-color</code>, <code>data-cli-tfoot-color</code></li>
+  <li>Theme configuration (lowest priority)</li>
+</ul>
+
+<h2>Section-Level Customization</h2>
+
+<h3>Custom thead Color</h3>
+<table>
+  <thead data-cli-thead-color="green bold">
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Widget A</td>
+      <td>$10.99</td>
+      <td>Available</td>
+    </tr>
+    <tr>
+      <td>Widget B</td>
+      <td>$15.99</td>
+      <td>Available</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Custom tbody Color</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody data-cli-tbody-color="cyan">
+    <tr>
+      <td>Apple</td>
+      <td>5</td>
+      <td>$2.50</td>
+    </tr>
+    <tr>
+      <td>Banana</td>
+      <td>10</td>
+      <td>$3.00</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Custom tfoot Color</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Item A</td>
+      <td>$100</td>
+    </tr>
+    <tr>
+      <td>Item B</td>
+      <td>$200</td>
+    </tr>
+  </tbody>
+  <tfoot data-cli-tfoot-color="yellow bold">
+    <tr>
+      <td>Total</td>
+      <td>$300</td>
+    </tr>
+  </tfoot>
+</table>
+
+<h2>Row-Level Customization</h2>
+
+<h3>Server Status with Custom Row Colors</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Server</th>
+      <th>Status</th>
+      <th>Uptime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-cli-tr-color="green">
+      <td>Server-01</td>
+      <td>Online</td>
+      <td>99.9%</td>
+    </tr>
+    <tr data-cli-tr-color="yellow">
+      <td>Server-02</td>
+      <td>Warning</td>
+      <td>95.2%</td>
+    </tr>
+    <tr data-cli-tr-color="red">
+      <td>Server-03</td>
+      <td>Offline</td>
+      <td>0%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Priority Cascade Example</h2>
+<p>Demonstrates how colors are resolved when multiple levels specify styling:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Priority Level</th>
+      <th>Color Source</th>
+    </tr>
+  </thead>
+  <tbody data-cli-tbody-color="cyan">
+    <tr data-cli-tr-color="yellow">
+      <td data-cli-color="red bold">Cell Level</td>
+      <td>1 (Highest)</td>
+      <td>data-cli-color on td</td>
+    </tr>
+    <tr data-cli-tr-color="magenta">
+      <td>Row Level</td>
+      <td>2</td>
+      <td>data-cli-tr-color on tr</td>
+    </tr>
+    <tr>
+      <td>Section Level</td>
+      <td>3</td>
+      <td>data-cli-tbody-color on tbody</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Sales Report Example</h2>
+<table>
+  <caption>Q4 2024 Sales Report</caption>
+  <thead data-cli-thead-color="blue bold">
+    <tr>
+      <th>Month</th>
+      <th>Revenue</th>
+      <th>Growth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-cli-tr-color="green">
+      <td>October</td>
+      <td>$52,000</td>
+      <td data-cli-color="green bold">+15%</td>
+    </tr>
+    <tr data-cli-tr-color="green">
+      <td>November</td>
+      <td>$58,000</td>
+      <td data-cli-color="green bold">+12%</td>
+    </tr>
+    <tr data-cli-tr-color="yellow">
+      <td>December</td>
+      <td>$51,000</td>
+      <td data-cli-color="yellow bold">+2%</td>
+    </tr>
+  </tbody>
+  <tfoot data-cli-tfoot-color="magenta bold">
+    <tr>
+      <td>Total</td>
+      <td>$161,000</td>
+      <td>+9.7%</td>
+    </tr>
+  </tfoot>
+</table>
+
+<h2>Original Examples</h2>
+
+<h3>Table with Custom Header Colors</h3>
+<table>
+  <thead>
+    <tr>
+      <th data-cli-color="cyan bold">Name</th>
+      <th data-cli-color="magenta bold">Role</th>
+      <th data-cli-color="yellow bold">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alice</td>
+      <td>Developer</td>
+      <td>Active</td>
+    </tr>
+    <tr>
+      <td>Bob</td>
+      <td>Designer</td>
+      <td>Active</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Table with Custom Cell Colors</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-cli-color="green">Success</td>
+      <td data-cli-color="greenBright">42</td>
+    </tr>
+    <tr>
+      <td data-cli-color="red">Failed</td>
+      <td data-cli-color="redBright">3</td>
+    </tr>
+    <tr>
+      <td data-cli-color="yellow">Pending</td>
+      <td data-cli-color="yellowBright">7</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Table with Highlighted Cells</h3>
+<table>
+  <caption data-cli-color="magenta bold">User Statistics</caption>
+  <thead>
+    <tr>
+      <th data-cli-color="cyan">Metric</th>
+      <th data-cli-color="cyan">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-cli-color="yellow">Total Users</td>
+      <td data-cli-color="cyan bold">1,234</td>
+    </tr>
+    <tr>
+      <td data-cli-color="yellow">Active Today</td>
+      <td data-cli-color="green bold">567</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Basic Table with Caption</h3>
+
+<table>
+  <caption>Sample Table</caption>
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+      <th>Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Row 1, Cell 1</td>
+      <td>Row 1, Cell 2</td>
+      <td>Row 1, Cell 3</td>
+    </tr>
+    <tr>
+      <td>Row 2, Cell 1</td>
+      <td>Row 2, Cell 2</td>
+      <td>Row 2, Cell 3</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Footer 1</td>
+      <td>Footer 2</td>
+      <td>Footer 3</td>
+    </tr>
+  </tfoot>
+</table>
+
+<h3>Product Pricing Table</h3>
+
+<table>
+  <caption>Monthly Subscription Plans</caption>
+  <thead>
+    <tr>
+      <th>Plan</th>
+      <th>Price</th>
+      <th>Features</th>
+      <th>Users</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Basic</td>
+      <td>$9/month</td>
+      <td>Core features</td>
+      <td>1 user</td>
+    </tr>
+    <tr>
+      <td>Professional</td>
+      <td>$29/month</td>
+      <td>All features</td>
+      <td>5 users</td>
+    </tr>
+    <tr>
+      <td>Enterprise</td>
+      <td>$99/month</td>
+      <td>All features + support</td>
+      <td>Unlimited</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4">All prices in USD. Annual billing available.</td>
+    </tr>
+  </tfoot>
+</table>
+
+<h3>Comparison Table with Alignment</h3>
+
+<table>
+  <caption>Browser Comparison</caption>
+  <thead>
+    <tr>
+      <th>Browser</th>
+      <th>Release Year</th>
+      <th align="right">Market Share</th>
+      <th>Engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Chrome</td>
+      <td>2008</td>
+      <td align="right">65%</td>
+      <td>Blink</td>
+    </tr>
+    <tr>
+      <td>Safari</td>
+      <td>2003</td>
+      <td align="right">18%</td>
+      <td>WebKit</td>
+    </tr>
+    <tr>
+      <td>Firefox</td>
+      <td>2004</td>
+      <td align="right">8%</td>
+      <td>Gecko</td>
+    </tr>
+    <tr>
+      <td>Edge</td>
+      <td>2015</td>
+      <td align="right">5%</td>
+      <td>Blink</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Simple Table without Footer</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alice Johnson</td>
+      <td>alice@example.com</td>
+      <td>Developer</td>
+    </tr>
+    <tr>
+      <td>Bob Smith</td>
+      <td>bob@example.com</td>
+      <td>Designer</td>
+    </tr>
+    <tr>
+      <td>Carol White</td>
+      <td>carol@example.com</td>
+      <td>Manager</td>
+    </tr>
+  </tbody>
+</table>

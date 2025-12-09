@@ -1,0 +1,140 @@
+<!--
+  Preformatted Text (<pre>) Tag Examples
+
+  The <pre> tag preserves whitespace, line breaks, and formatting.
+  Often used with <code> for displaying code blocks.
+
+  Customization:
+  - data-cli-color: Custom color for the entire preformatted block
+  - Works with nested <code> tags for syntax-specific coloring
+-->
+
+<h2>Preformatted Text Examples</h2>
+
+<h3>Default Style</h3>
+
+<pre><code>
+zpm load @gist/user/hash,origin:https://another-site/file.zsh
+zpm load @gist/user/hash,origin:https://another-site/file.zsh
+zpm load @gist/user/hash,origin:https://another-site/file.zsh
+</code></pre>
+
+<h3>Bash Script</h3>
+
+<pre><code class="lang-sh">#!/usr/bin/env bash
+echo "Preserve spacing"
+  echo "with indentation"
+    echo "nested further"
+</code></pre>
+
+<h3>Simple Pre Block</h3>
+
+<pre>Pre without code wrapper keeps spacing too.
+  Indentation preserved
+    Multiple levels work fine</pre>
+
+<h3>Colored Pre Blocks</h3>
+
+<pre data-cli-color="green"><code>// Success output
+Build completed successfully
+All tests passed ✓
+</code></pre>
+
+<pre data-cli-color="red"><code>// Error output
+Error: Module not found
+  at require (internal/modules/cjs/loader.js:883:19)
+  at Object.<anonymous> (/app/index.js:1:1)
+</code></pre>
+
+<pre data-cli-color="cyan"><code>// Info output
+Server listening on http://localhost:3000
+Environment: development
+Database connected
+</code></pre>
+
+<h3>ASCII Art with Colors</h3>
+
+<pre data-cli-color="yellow bold">
+  ╔═══════════════╗
+  ║  Hello CLI!   ║
+  ╚═══════════════╝
+</pre>
+
+<pre data-cli-color="magenta">
+    /\_/\
+   ( o.o )
+    > ^ <
+  ASCII Cat
+</pre>
+
+<h3>Code with Line Numbers (styled)</h3>
+
+<pre data-cli-color="dim"><code>  1 | function greet(name) {
+  2 |   return `Hello, ${name}!`;
+  3 | }
+  4 |
+  5 | console.log(greet("World"));
+</code></pre>
+
+<h3>Configuration Files</h3>
+
+<pre data-cli-color="blue"><code># config.yaml
+server:
+  host: localhost
+  port: 3000
+database:
+  url: mongodb://localhost:27017
+  name: myapp
+</code></pre>
+
+<pre data-cli-color="green"><code>{
+  "name": "my-package",
+  "version": "1.0.0",
+  "description": "A sample package",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  }
+}
+</code></pre>
+
+<h3>Log Output with Colors</h3>
+
+<pre><code><span data-cli-color="dim">[2024-12-08 10:30:15]</span> <span data-cli-color="blue">INFO</span> Application started
+<span data-cli-color="dim">[2024-12-08 10:30:16]</span> <span data-cli-color="green">SUCCESS</span> Database connected
+<span data-cli-color="dim">[2024-12-08 10:30:17]</span> <span data-cli-color="yellow">WARN</span> High memory usage
+<span data-cli-color="dim">[2024-12-08 10:30:18]</span> <span data-cli-color="red bold">ERROR</span> Connection timeout
+</code></pre>
+
+<h3>Terminal Session</h3>
+
+<pre><code><span data-cli-color="cyan">user@machine:~$</span> npm install
+<span data-cli-color="dim">added 123 packages in 5s</span>
+
+<span data-cli-color="cyan">user@machine:~$</span> npm test
+<span data-cli-color="green bold">PASS</span> tests/app.test.js
+<span data-cli-color="green">✓ should work correctly</span>
+
+<span data-cli-color="cyan">user@machine:~$</span> git status
+<span data-cli-color="green">On branch main
+Your branch is up to date</span>
+</code></pre>
+
+<h3>Multi-language Code Examples</h3>
+
+<pre data-cli-color="yellow"><code>// JavaScript
+const greeting = "Hello, World!";
+console.log(greeting);
+</code></pre>
+
+<pre data-cli-color="blue"><code># Python
+greeting = "Hello, World!"
+print(greeting)
+</code></pre>
+
+<pre data-cli-color="red"><code>// Rust
+fn main() {
+    println!("Hello, World!");
+}
+</code></pre>

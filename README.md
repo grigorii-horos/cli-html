@@ -61,6 +61,23 @@ md examples/markdown/full/gfm-features.md
 npm i cli-html
 ```
 
+### Library Examples
+
+For practical, runnable examples of using `cli-html` and `cli-markdown` as libraries, check out the [examples/library-usage](examples/library-usage) directory:
+
+- **[html-basic.js](examples/library-usage/html-basic.js)** - Basic HTML rendering (headings, lists, tables, code blocks)
+- **[markdown-basic.js](examples/library-usage/markdown-basic.js)** - GitHub Flavored Markdown features (alerts, task lists, tables)
+- **[custom-theme.js](examples/library-usage/custom-theme.js)** - Custom theming examples (dark, light, vibrant themes)
+- **[dynamic-content.js](examples/library-usage/dynamic-content.js)** - Generating content from data (reports, dashboards, changelogs)
+- **[file-reader.js](examples/library-usage/file-reader.js)** - Reading and rendering files from disk
+
+Run any example:
+```bash
+node examples/library-usage/<example-name>.js
+```
+
+See the [Library Examples README](examples/library-usage/README.md) for detailed documentation.
+
 ### API Reference
 
 #### `renderHTML(html, theme?)`
@@ -221,6 +238,89 @@ const markdown = '# Title\n\n**Bold** and *italic*';
 console.log(renderMarkdown(markdown));
 ```
 
+## Inline Style Customization
+
+You can customize individual elements using `data-cli-*` attributes without modifying the global theme.
+
+### Using data-cli-* Attributes
+
+```html
+<!-- Custom color and styles in a single attribute -->
+<h1 data-cli-color="magenta bold">Magenta Bold Header</h1>
+<h2 data-cli-color="cyan underline italic">Cyan Underlined Italic Header</h2>
+
+<!-- Custom markers for headers -->
+<h1 data-cli-marker="►">Triangle Marker</h1>
+<h2 data-cli-marker="•••">Triple Dot Marker</h2>
+
+<!-- Combined attributes -->
+<h1 data-cli-color="red bold"
+    data-cli-marker="⚠">
+  Warning Header
+</h1>
+
+<!-- Background colors -->
+<span data-cli-color="bgRed white bold">White bold on red</span>
+
+<!-- Lists customization -->
+<ol data-cli-color="green" data-cli-marker-color="red bold" data-cli-decimal=")">
+  <li>Item with green text and red bold marker with ) separator</li>
+  <li>Another item</li>
+</ol>
+
+<ul data-cli-color="yellow" data-cli-marker="★" data-cli-marker-color="cyan">
+  <li>Item with yellow text and cyan star marker</li>
+  <li>Another item</li>
+</ul>
+```
+
+**Available Attributes:**
+- **`data-cli-color`**: Full chalk-string specification (color + styles), e.g., `"red bold italic"`, `"bgBlue white"`
+  - For `ol`/`ul`: applies to list item text
+- **`data-cli-marker`**: Custom marker symbol
+  - For headers/blockquotes: e.g., `"►"`, `"▌ "`, `"•••"`
+  - For `ul`: custom bullet marker, e.g., `"★"`, `"►"`, `"•"`
+- **`data-cli-marker-color`**: Marker color (for `ol`/`ul`), e.g., `"red bold"`, `"cyan"`
+- **`data-cli-decimal`**: Decimal separator for `ol`, e.g., `")"`, `":"`, `"-"`
+- **`data-cli-title-*`** (abbr/dfn):
+  - `data-cli-title-color`: Title color
+  - `data-cli-title-prefix-marker` / `data-cli-title-prefix-color`: Opening marker + color
+  - `data-cli-title-suffix-marker` / `data-cli-title-suffix-color`: Closing marker + color
+
+**Available Colors:**
+- Basic: `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan`, `white`, `gray`
+- Bright: `redBright`, `greenBright`, `yellowBright`, `blueBright`, `magentaBright`, `cyanBright`, `whiteBright`
+- Background: `bgRed`, `bgGreen`, `bgBlue`, `bgYellow`, `bgMagenta`, `bgCyan`, `bgWhite`, etc.
+
+**Available Styles:**
+- `bold`, `italic`, `underline`, `dim`, `inverse`, `strikethrough`
+
+**Examples:**
+- Color only: `data-cli-color="red"`
+- Color + style: `data-cli-color="blue bold"`
+- Multiple styles: `data-cli-color="green bold italic underline"`
+- Background: `data-cli-color="bgYellow black"`
+- Background + styles: `data-cli-color="bgMagenta white bold"`
+
+**Supported Tags:**
+- Headers (color, marker): `h1`, `h2`, `h3`, `h4`, `h5`, `h6`
+- Block (color, marker): `blockquote`
+- Lists (color for text, marker-color, marker, decimal): `ol`, `ul`
+- Inline (color): `span`, `strong`, `b`, `em`, `i`, `u`, `del`, `ins`, `mark`, `code`, `kbd`, `samp`, `var`, `cite`, `time`
+
+See [examples/html/tags-custom/](examples/html/tags-custom/) for complete examples with `data-cli-*` attributes.
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the `examples/` directory:
+
+- **[Examples Overview](examples/README.md)** - Main documentation hub
+- **[HTML Examples](examples/html/README.md)** - Complete HTML rendering guide with examples
+- **[Markdown Examples](examples/markdown/README.md)** - Markdown rendering guide
+- **[Customization Guide](examples/CUSTOMIZATION.md)** - Complete reference for all `data-cli-*` attributes
+- **[Theme Configuration](examples/THEMES.md)** - Guide to customizing the default theme via `config.yaml`
+- **[Library Usage](examples/library-usage/README.md)** - Programmatic API examples and patterns
+
 ## Customizing Styles
 
 ### For CLI Usage
@@ -262,7 +362,7 @@ node -e "import('env-paths').then(({ default: envPaths }) => console.log(envPath
    - Windows: Create `%LOCALAPPDATA%\cli-markdown\Config` directory
 2. Add a `config.yaml` file with styles written as [chalk-string](https://www.npmjs.com/package/chalk-string) values (colors/modifiers separated by spaces). For objects, only `color` is passed to `chalk-string`; other keys are used as extra config for components.
 
-   Available style keys: `h1`–`h6`, `span`, `a`, `figure.border.color`, `figure.border.style`, `figcaption`, `fieldset.border.color`, `fieldset.border.style`, `fieldset.title.color`, `details.border.color`, `details.border.style`, `blockquote`, `address`, `code.color`, `code.inline`, `code.numbers`, `table.header`, `table.caption`, `table.cell`, `dt`, `dd`, `dl`, `del`, `ins`, `strikethrough`, `underline`, `bold`, `samp`, `kbd`, `variableTag` (for `<var>`), `mark`, `time`, `italic`, `i`, `em`, `cite`, `abbr.color`, `abbr.title`, `abbr.parens`, `dfn`, `ol.color`, `ol.markers`, `ul.color`, `ul.markers`, `hr`, `progress.filled`, `progress.empty`.
+   Available style keys: `h1`–`h6`, `span`, `a`, `figure.border.color`, `figure.border.style`, `figcaption`, `fieldset.border.color`, `fieldset.border.style`, `fieldset.title.color`, `details.border.color`, `details.border.style`, `blockquote`, `address`, `code.color`, `code.inline`, `code.numbers`, `table.header`, `table.caption`, `table.cell`, `dt`, `dd`, `dl`, `del`, `ins`, `strikethrough`, `underline`, `bold`, `samp`, `kbd`, `variableTag` (for `<var>`), `mark`, `time`, `italic`, `i`, `em`, `cite`, `abbr.color`, `abbr.title.color`, `abbr.title.prefix.marker`, `abbr.title.prefix.color`, `abbr.title.suffix.marker`, `abbr.title.suffix.color`, `dfn`, `ol.color`, `ol.markers`, `ul.color`, `ul.markers`, `hr`, `progress.filled`, `progress.empty`.
 
    Extra config:
    - `figure.border` supports `color` and `style` (e.g., `'single'`, `'double'`, `'round'`, `'bold'`) for configuring the border around figure elements.
@@ -272,7 +372,7 @@ node -e "import('env-paths').then(({ default: envPaths }) => console.log(envPath
    - `ul.markers` (array or object) controls markers for UL depth 1–3 (disc, square, circle). Example: `markers: ["+", "-", ">"]` or `markers: { disc: "+", square: "-", circle: ">" }`.
    - `code` can be configured as a string (applies to `color`) or an object with `color`, `inline`, and `numbers` properties. Supports fallback: `code.color` ← `code`, `code.inline` ← `inlineCode` (legacy), `code.numbers` ← `codeNumbers` (legacy).
    - `table` can be configured as nested object with `header`, `caption`, and `cell` properties. Supports fallback from legacy `tableHeader`, `tableCaption`, `tableCell`.
-   - `abbr` can be configured as a string (applies to `color`) or an object with `color`, `title`, and `parens` properties. Supports fallback from legacy `abbr`, `abbrTitle`, `abbrParens`.
+   - `abbr` can be configured as a string (applies to `color`) or an object with `color`, `title` (with `color`, `prefix.marker/color`, `suffix.marker/color`). Supports fallback from legacy `abbr`, `abbrTitle`, `abbrParens`.
    - `progress` supports flexible fallback configuration:
      - **For filled**: checks `progress.filled.color` → `progress.filled` (if string) → `progress.color` → `progress` (if string) → base theme
      - **For empty**: checks `progress.empty.color` → `progress.empty` (if string) → base theme
@@ -315,11 +415,42 @@ theme:
     title: "cyan"
     parens: "gray"
   ol:
-    color: "blueBright"
-    markers: ["1", "I", "A",  "i", "a"]  # Rotates for nested lists
+    color: ""  # Text color for list items (empty = no color)
+    markers:   # Marker configuration by type
+      "1":
+        color: "blueBright"   # Marker color
+        marker: "1"           # Marker type
+        decimal: "."          # Decimal separator
+      I:
+        color: "cyanBright"
+        marker: "I"
+        decimal: "."
+      A:
+        color: "magentaBright"
+        marker: "A"
+        decimal: "."
+      i:
+        color: "blueBright"
+        marker: "i"
+        decimal: "."
+      a:
+        color: "cyanBright"
+        marker: "a"
+        decimal: "."
+    indent: "   "  # Indentation for nested items
   ul:
-    color: "green"
-    markers: ["+", "-", ">"]
+    color: ""  # Text color for list items (empty = no color)
+    markers:   # Marker configuration by type
+      disc:
+        color: "redBright"    # Marker color
+        marker: "•"           # Marker symbol
+      square:
+        color: "yellowBright"
+        marker: "▪"
+      circle:
+        color: "cyanBright"
+        marker: "⚬"
+    indent: "  "  # Indentation for nested items
   hr: "gray"
   progress:
     filled:
@@ -372,12 +503,24 @@ const customTheme = {
     cell: ""
   },
   ul: {
-    color: "green",
-    markers: ["+", "-", ">"]
+    color: "",  // Text color for list items
+    markers: {
+      disc: { color: "green", marker: "•" },
+      square: { color: "yellow", marker: "▪" },
+      circle: { color: "cyan", marker: "⚬" }
+    },
+    indent: "  "
   },
   ol: {
-    color: "blueBright",
-    markers: ["1", "A", "a", "I", "i"]
+    color: "",  // Text color for list items
+    markers: {
+      "1": { color: "blueBright", marker: "1", decimal: "." },
+      I: { color: "cyanBright", marker: "I", decimal: "." },
+      A: { color: "magentaBright", marker: "A", decimal: "." },
+      i: { color: "blueBright", marker: "i", decimal: "." },
+      a: { color: "cyanBright", marker: "a", decimal: "." }
+    },
+    indent: "   "
   },
   progress: {
     filled: {
@@ -408,7 +551,7 @@ The theme object uses the same structure and keys as the CLI `config.yaml` file.
 - **Links**: `a`, `span`
 - **Block elements**: `blockquote`, `address`, `hr`
 - **Code**: `code` (string or object with `color`, `inline`, `numbers`)
-- **Lists**: `ul` (with `color` and `markers`), `ol` (with `color` and `markers`), `dl`, `dt`, `dd`
+- **Lists**: `ul` (with `color` for text, `markers` array with `marker.color` and `marker.marker`, `indent`), `ol` (with `color` for text, `markers` array with `marker.color`, `marker.marker`, and `marker.decimal`, `indent`), `dl`, `dt`, `dd`
 - **Tables**: `table` (object with `header`, `caption`, `cell`)
 - **Borders**: `figure` (with `border.color`, `border.style`), `fieldset` (with `border.color`, `border.style`, `title.color`), `details` (with `border.color`, `border.style`)
 - **Progress bars**: `progress` (object with `filled` and `empty`, each having `color` and `symbol`)

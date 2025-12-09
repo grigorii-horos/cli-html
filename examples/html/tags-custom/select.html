@@ -1,0 +1,152 @@
+<!--
+  Select Element Examples
+
+  The <select> tag creates dropdown menus with options.
+  Supports <option> and <optgroup> elements.
+
+  Customization:
+  - data-cli-selected-marker: Marker for selected options (default: ◉)
+  - data-cli-unselected-marker: Marker for unselected options (default: ○)
+  - data-cli-selected-color: Color for selected option marker
+  - data-cli-unselected-color: Color for unselected option marker
+  - data-cli-option-color: Color for option text
+  - data-cli-label-color: Color for option labels
+  - data-cli-group-label-color: Color for optgroup labels
+  - data-cli-group-prefix: Prefix for optgroups (default: ▸ )
+  - data-cli-select-label: Custom label for the select element
+  - data-cli-select-label-color: Color for select label
+-->
+
+<h2>Select Element Examples</h2>
+
+<h3>Basic Select</h3>
+
+<select name="colors">
+  <option value="red">Red</option>
+  <option value="green" selected>Green</option>
+  <option value="blue">Blue</option>
+</select>
+
+<h3>Select with Optgroups</h3>
+
+<select name="programming">
+  <optgroup label="Frontend">
+    <option value="html">HTML</option>
+    <option value="css">CSS</option>
+    <option value="js" selected>JavaScript</option>
+  </optgroup>
+  <optgroup label="Backend">
+    <option value="python">Python</option>
+    <option value="node">Node.js</option>
+    <option value="ruby">Ruby</option>
+  </optgroup>
+</select>
+
+<h3>Select with Disabled Options</h3>
+
+<select name="status">
+  <option value="active" selected>Active</option>
+  <option value="pending">Pending</option>
+  <option value="archived" disabled>Archived</option>
+  <option value="deleted" disabled>Deleted</option>
+</select>
+
+<h3>Custom Marker Colors</h3>
+
+<select name="custom" data-cli-selected-color="yellow bold" data-cli-unselected-color="cyan">
+  <option value="opt1" selected>Selected Option</option>
+  <option value="opt2">Option 2</option>
+  <option value="opt3">Option 3</option>
+</select>
+
+<h3>Custom Markers</h3>
+
+<select name="markers" data-cli-selected-marker="✓" data-cli-unselected-marker=" ">
+  <option value="yes" selected>Yes</option>
+  <option value="no">No</option>
+  <option value="maybe">Maybe</option>
+</select>
+
+<h3>Select with Custom Label</h3>
+
+<select name="language" data-cli-select-label="Choose Language" data-cli-select-label-color="magenta bold">
+  <option value="en" selected>English</option>
+  <option value="es">Spanish</option>
+  <option value="fr">French</option>
+  <option value="de">German</option>
+</select>
+
+<h3>Complex Example with All Features</h3>
+
+<select name="complex"
+  data-cli-selected-marker="◉"
+  data-cli-unselected-marker="○"
+  data-cli-selected-color="green bold"
+  data-cli-group-prefix="▶ "
+  data-cli-group-label-color="blue bold"
+  data-cli-select-label="Select Framework"
+  data-cli-select-label-color="red bold">
+  <optgroup label="JavaScript Frameworks">
+    <option value="react" selected>React</option>
+    <option value="vue">Vue.js</option>
+    <option value="angular">Angular</option>
+  </optgroup>
+  <optgroup label="CSS Frameworks">
+    <option value="tailwind">Tailwind CSS</option>
+    <option value="bootstrap">Bootstrap</option>
+    <option value="bulma">Bulma</option>
+  </optgroup>
+</select>
+
+<h3>Disabled Optgroup</h3>
+
+<select name="disabled-group">
+  <optgroup label="Available">
+    <option value="opt1" selected>Option 1</option>
+    <option value="opt2">Option 2</option>
+  </optgroup>
+  <optgroup label="Unavailable" disabled>
+    <option value="opt3">Option 3</option>
+    <option value="opt4">Option 4</option>
+  </optgroup>
+</select>
+
+<h3>Practical Examples</h3>
+
+<p>Choose your country:</p>
+<select name="country">
+  <optgroup label="North America">
+    <option value="us">United States</option>
+    <option value="ca" selected>Canada</option>
+    <option value="mx">Mexico</option>
+  </optgroup>
+  <optgroup label="Europe">
+    <option value="uk">United Kingdom</option>
+    <option value="de">Germany</option>
+    <option value="fr">France</option>
+  </optgroup>
+  <optgroup label="Asia">
+    <option value="jp">Japan</option>
+    <option value="cn">China</option>
+    <option value="in">India</option>
+  </optgroup>
+</select>
+
+<p>Select your plan:</p>
+<select name="plan" data-cli-select-label="Subscription Plan" data-cli-select-label-color="cyan bold">
+  <option value="free" selected>Free - $0/month</option>
+  <option value="basic">Basic - $9/month</option>
+  <option value="pro">Pro - $29/month</option>
+  <option value="enterprise">Enterprise - Custom pricing</option>
+</select>
+
+<p>Priority level:</p>
+<select name="priority"
+  data-cli-selected-marker="●"
+  data-cli-unselected-marker="○"
+  data-cli-selected-color="red bold">
+  <option value="low">Low</option>
+  <option value="medium" selected>Medium</option>
+  <option value="high">High</option>
+  <option value="critical">Critical</option>
+</select>
