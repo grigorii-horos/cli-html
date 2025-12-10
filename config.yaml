@@ -10,22 +10,34 @@ theme:
   # Headers (h1-h6)
   h1:
     color: red bold  # Text color
-    marker: '#'  # Marker before header text
+    indicator:
+      marker: '#'  # Marker before header text
+      color: red bold
   h2:
     color: blue bold
-    marker: '##'
+    indicator:
+      marker: '##'
+      color: blue bold
   h3:
     color: blue bold
-    marker: '###'
+    indicator:
+      marker: '###'
+      color: blue bold
   h4:
     color: cyan bold
-    marker: '####'
+    indicator:
+      marker: '####'
+      color: cyan bold
   h5:
     color: cyan
-    marker: '#####'
+    indicator:
+      marker: '#####'
+      color: cyan
   h6:
     color: cyan
-    marker: '######'
+    indicator:
+      marker: '######'
+      color: cyan
 
   # Inline elements
   span:
@@ -105,8 +117,10 @@ theme:
 
   # Block elements
   blockquote:
-    color: black  # Quote text color
-    marker: '│ '  # Marker at the start of each line
+    color: ''  # Quote text color
+    indicator:
+      marker: '│ '  # Marker at the start of each line
+      color: black
   address:
     color: italic  # Address text color
   p:
@@ -146,8 +160,6 @@ theme:
 
   # Tables
   table:
-    header:
-      color: bold red  # Table header (th) color
     caption:
       color: bold blue  # Table caption color
     cell:
@@ -155,7 +167,7 @@ theme:
     td:
       color: ''  # Specific td color (overrides cell)
     th:
-      color: 'bold red'  # Specific th color (overrides header)
+      color: 'bold red'  # Table header cell color
     tr:
       color: ''  # Table row color
     thead:
@@ -223,7 +235,7 @@ theme:
       style: simple  # Style: simple (single wrap) | box (wrap each key)
       separator: '+'  # Separator between keys (e.g., Ctrl+S)
 
-  variableTag:
+  var:
     color: blue italic  # Variable name color (<var> tag)
   mark:
     color: bgYellow black  # Highlighted/marked text color
@@ -344,10 +356,10 @@ theme:
       unchecked:
         color: gray  # Color for unchecked state
         marker: ' '  # Marker for unchecked
-      open:
+      prefix:
         color: gray  # Opening bracket color
         marker: '['
-      close:
+      suffix:
         color: gray  # Closing bracket color
         marker: ']'
     radio:
@@ -357,17 +369,17 @@ theme:
       unchecked:
         color: red bold  # Color for unchecked state
         marker: ' '  # Marker for unchecked
-      open:
+      prefix:
         color: gray  # Opening parenthesis color
         marker: (
-      close:
+      suffix:
         color: gray  # Closing parenthesis color
         marker: )
     button:
-      open:
+      prefix:
         color: bgBlack gray  # Opening marker color
         marker: '[ '
-      close:
+      suffix:
         color: bgBlack gray  # Closing marker color
         marker: ' ]'
       text:
