@@ -329,7 +329,7 @@ theme:
   progress:
     # width: 30  # Fixed width (optional, adaptive by default: 30% of lineWidth, min 10, max 60)
     filled:
-      color: bgWhite green  # Color for filled portion
+      color: bgWhite cyan  # Color for filled portion
       marker: '█'  # Character for filled portion
     empty:
       color: bgBlack gray  # Color for empty portion
@@ -378,16 +378,34 @@ theme:
       color: cyanBright bgBlack  # Textarea field color
     range:
       filled:
-        color: green  # Color for filled portion of range
+        color: magenta bgMagenta  # Color for filled portion of range
         marker: '█'
       empty:
-        color: gray  # Color for empty portion
+        color: gray bgGray  # Color for empty portion
         marker: '░'
       thumb:
-        color: green bold  # Slider thumb color
+        color: magenta bold bgGray  # Slider thumb color
         marker: '●'
     color:
-      prefix: '#'  # Prefix for color input (e.g., #FF0000)
+      indicator:
+        marker: '■'  # Color indicator (will be colored with the actual color value)
+      brackets:
+        open: '('  # Opening bracket for color value
+        close: ')'  # Closing bracket for color value
+        color: gray  # Bracket color
+      value:
+        color: ''  # Hex value color (empty = no color)
+    password:
+      char: '•'  # Character to use for masking password (alternatives: *, ●, ⚫)
+      color: gray  # Password mask color
+    email:
+      prefix: '✉ '  # Email prefix indicator
+      prefixColor: cyan  # Prefix color
+      color: cyan  # Email text color
+    date:
+      prefix: '📅 '  # Date prefix indicator
+      prefixColor: blue  # Prefix color
+      color: blue  # Date value color
     file:
       prefix:
         marker: '@'  # Prefix marker for file input
