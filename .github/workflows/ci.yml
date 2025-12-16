@@ -1,0 +1,125 @@
+name: CI
+
+on:
+  push:
+    branches: [ master, main, develop ]
+  pull_request:
+    branches: [ master, main, develop ]
+
+jobs:
+  test:
+    name: Test on Node.js ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 21.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+        env:
+          FORCE_COLOR: '1'
+
+      - name: Run linter
+        run: npm run fix
+        continue-on-error: true
+
+  coverage:
+    name: Code Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install c8 for coverage
+        run: npm install -D c8
+
+      - name: Run tests with coverage
+        run: npx c8 --reporter=lcov --reporter=text npm test
+        env:
+          FORCE_COLOR: '1'
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  build:
+    name: Build Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify package
+        run: npm pack --dry-run
+
+      - name: Test CLI commands
+        run: |
+          echo "<h1>Test</h1>" | node bin/html.js
+          echo "# Test" | node bin/markdown.js
+          node bin/html.js --help
+          node bin/markdown.js --help
+
+  integration:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test with example files
+        run: |
+          node bin/html.js examples/html/full/demo.html > /dev/null
+          node bin/markdown.js examples/markdown/full/gfm-features.md > /dev/null
+          echo "✓ Example files rendered successfully"
+
+      - name: Test streaming mode
+        run: |
+          node bin/html.js --verbose examples/html/full/comprehensive-demo.html > /dev/null
+          echo "✓ Streaming mode works"

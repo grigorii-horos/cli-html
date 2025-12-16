@@ -46,22 +46,36 @@ const colors = {
 const config = {
   examplesDir: join(PROJECT_ROOT, 'examples/html'),
   binHtml: join(PROJECT_ROOT, 'bin/html.js'),
-  outputDir: null, // Will be set to examples/html/screenshots
+  binMarkdown: join(PROJECT_ROOT, 'bin/markdown.js'),
+  outputDir: null, // Will be set to examples/html/screenshots or examples/markdown/screenshots
   force: false,
   filter: null,
   parallel: 4,
   verbose: false,
   recursive: true, // Search recursively in subdirectories
+  type: 'html', // 'html', 'markdown', or 'all'
+  optimize: true, // Enable PNG optimization with optipng
 
   // Termshot configuration
   termshot: {
-    columns: 100,
+    columns: 120,
+  },
+
+  // Optipng configuration
+  optipng: {
+    level: 7, // Optimization level (0-7, 7 is maximum)
+    strip: true, // Strip metadata
   },
 };
 
 // Parse command line arguments
 function parseArgs() {
   const args = process.argv.slice(2);
+
+  // Check for type argument (html, markdown, all)
+  if (args.length > 0 && !args[0].startsWith('--')) {
+    config.type = args.shift();
+  }
 
   for (let i = 0; i < args.length; i++) {
     switch (args[i]) {
@@ -80,6 +94,9 @@ function parseArgs() {
       case '--verbose':
         config.verbose = true;
         break;
+      case '--no-optimize':
+        config.optimize = false;
+        break;
       case '--help':
         printHelp();
         process.exit(0);
@@ -88,6 +105,13 @@ function parseArgs() {
         console.error(`${colors.red}Unknown option: ${args[i]}${colors.reset}`);
         process.exit(1);
     }
+  }
+
+  // Set examples directory based on type
+  if (config.type === 'markdown' || config.type === 'md') {
+    config.examplesDir = join(PROJECT_ROOT, 'examples/markdown');
+  } else if (config.type === 'all') {
+    // Will process both in main()
   }
 
   // Set output directory if not specified
@@ -129,17 +153,61 @@ ${colors.cyan}Examples:${colors.reset}
 `);
 }
 
-// Check if termshot is installed
-async function checkTermshot() {
+// Check if a command is installed
+async function checkCommand(command) {
   return new Promise((resolve) => {
-    const proc = spawn('termshot', ['--version']);
+    const proc = spawn(command, ['--version']);
     proc.on('error', () => resolve(false));
     proc.on('exit', (code) => resolve(code === 0));
   });
 }
 
-// Find all HTML files in directory (recursively)
-function findHtmlFiles() {
+// Check if termshot is installed
+async function checkTermshot() {
+  return checkCommand('termshot');
+}
+
+// Check if optipng is installed
+async function checkOptipng() {
+  return checkCommand('optipng');
+}
+
+// Optimize PNG file with optipng
+async function optimizePng(pngFile) {
+  if (!config.optimize) return;
+
+  return new Promise((resolve) => {
+    const args = [
+      `-o${config.optipng.level}`,
+    ];
+
+    if (config.optipng.strip) {
+      args.push('-strip', 'all');
+    }
+
+    args.push(pngFile);
+
+    if (config.verbose) {
+      console.log(`${colors.cyan}Optimizing:${colors.reset} optipng ${args.join(' ')}`);
+    }
+
+    const proc = spawn('optipng', args, {
+      stdio: config.verbose ? 'inherit' : 'pipe',
+    });
+
+    proc.on('error', () => {
+      if (config.verbose) {
+        console.log(`${colors.yellow}Warning: optipng failed${colors.reset}`);
+      }
+      resolve();
+    });
+
+    proc.on('exit', () => resolve());
+  });
+}
+
+// Find all example files in directory (recursively)
+function findExampleFiles(extensions = ['.html', '.md']) {
   if (!existsSync(config.examplesDir)) {
     console.error(`${colors.red}Error: Examples directory not found: ${config.examplesDir}${colors.reset}`);
     process.exit(1);
@@ -155,14 +223,18 @@ function findHtmlFiles() {
       const stat = statSync(fullPath);
 
       if (stat.isDirectory() && config.recursive) {
-        // Skip node_modules and hidden directories
-        if (!entry.startsWith('.') && entry !== 'node_modules') {
+        // Skip node_modules, hidden directories, and screenshots
+        if (!entry.startsWith('.') && entry !== 'node_modules' && entry !== 'screenshots') {
           scanDirectory(fullPath);
         }
-      } else if (stat.isFile() && entry.endsWith('.html')) {
-        // Apply filter if specified
-        if (!config.filter || entry.includes(config.filter)) {
-          files.push(fullPath);
+      } else if (stat.isFile()) {
+        // Check if file has valid extension
+        const hasValidExt = extensions.some(ext => entry.endsWith(ext));
+        if (hasValidExt) {
+          // Apply filter if specified
+          if (!config.filter || entry.includes(config.filter)) {
+            files.push(fullPath);
+          }
         }
       }
     }
@@ -174,10 +246,13 @@ function findHtmlFiles() {
 }
 
 // Generate screenshot for a single file
-async function generateScreenshot(htmlFile) {
+async function generateScreenshot(inputFile) {
   // Get relative path from examples dir to preserve directory structure
-  const relativePath = htmlFile.replace(config.examplesDir + '/', '');
-  const filename = basename(htmlFile, '.html');
+  const relativePath = inputFile.replace(config.examplesDir + '/', '');
+  const ext = inputFile.endsWith('.md') ? '.md' : '.html';
+  const filename = basename(inputFile, ext);
+  const isMarkdown = ext === '.md';
+  const binPath = isMarkdown ? config.binMarkdown : config.binHtml;
 
   // Create subdirectory structure in output dir
   const relativeDir = dirname(relativePath);
@@ -203,7 +278,7 @@ async function generateScreenshot(htmlFile) {
       console.log(`${colors.cyan}Step 1:${colors.reset} Generating output to ${tempFile}`);
     }
 
-    const renderProc = spawn('node', [config.binHtml, htmlFile], {
+    const renderProc = spawn('node', [binPath, inputFile], {
       stdio: ['ignore', 'pipe', 'pipe'],
       env: { ...process.env, FORCE_COLOR: '1' },
     });
@@ -252,11 +327,13 @@ async function generateScreenshot(htmlFile) {
         resolve({ status: 'failed', filename: relativePath, error: error.message });
       });
 
-      termshotProc.on('exit', (code) => {
+      termshotProc.on('exit', async (code) => {
         // Clean up temp file
         try { unlinkSync(tempFile); } catch {}
 
         if (code === 0) {
+          // Optimize PNG if enabled
+          await optimizePng(outputFile);
           resolve({ status: 'success', filename: relativePath, output: outputFile });
         } else {
           resolve({ status: 'failed', filename: relativePath, error: `Termshot failed with code ${code}` });
@@ -334,15 +411,16 @@ async function main() {
     mkdirSync(config.outputDir, { recursive: true });
   }
 
-  // Find HTML files
-  const files = findHtmlFiles();
+  // Find example files
+  const extensions = (config.type === 'markdown' || config.type === 'md') ? ['.md'] : ['.html'];
+  const files = findExampleFiles(extensions);
 
   if (files.length === 0) {
-    console.log(`${colors.yellow}No HTML files found${colors.reset}`);
+    console.log(`${colors.yellow}No example files found${colors.reset}`);
     return;
   }
 
-  console.log(`Found ${files.length} HTML files\n`);
+  console.log(`Found ${files.length} example files\n`);
 
   // Process files
   const stats = await processBatch(files, config.parallel);

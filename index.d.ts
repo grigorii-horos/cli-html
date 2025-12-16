@@ -161,6 +161,28 @@ export interface CodeOverflowIndicatorStyle {
 }
 
 /**
+ * Code diff line type style configuration
+ */
+export interface CodeDiffLineStyle {
+  color?: ChalkString;
+  indicator?: {
+    marker?: string;
+    color?: ChalkString;
+  };
+}
+
+/**
+ * Code diff style configuration (git-style diff highlighting)
+ */
+export interface CodeDiffStyle {
+  enabled?: boolean;
+  added?: CodeDiffLineStyle;
+  removed?: CodeDiffLineStyle;
+  modified?: CodeDiffLineStyle;
+  unchanged?: CodeDiffLineStyle;
+}
+
+/**
  * Code block style configuration
  */
 export interface CodeBlockStyle {
@@ -170,6 +192,7 @@ export interface CodeBlockStyle {
   label?: CodeLabelStyle;
   highlight?: CodeHighlightStyle;
   overflowIndicator?: CodeOverflowIndicatorStyle;
+  diff?: CodeDiffStyle;
   padding?: CodePaddingConfig;
 }
 
@@ -196,6 +219,22 @@ export interface TableResponsiveStyle {
 /**
  * Table style configuration
  */
+/**
+ * Table striping row style
+ */
+export interface TableStripingRowStyle {
+  color?: ChalkString;
+}
+
+/**
+ * Table striping configuration
+ */
+export interface TableStripingStyle {
+  enabled?: boolean;
+  count?: number; // 2-5
+  rows?: TableStripingRowStyle[]; // Array of row styles (0-based), data-cli attributes use 1-based numbering
+}
+
 export interface TableStyle {
   header?: {
     color?: ChalkString;
@@ -225,6 +264,7 @@ export interface TableStyle {
     color?: ChalkString;
   };
   responsive?: TableResponsiveStyle;
+  striping?: TableStripingStyle;
 }
 
 /**
@@ -451,15 +491,15 @@ export interface ExternalLinkIndicatorStyle {
  */
 export interface LinkStyle {
   color?: ChalkString;
-  showHref?: boolean;
+  hrefEnabled?: boolean | 'auto';
   hrefColor?: ChalkString;
-  showTitle?: boolean;
+  titleEnabled?: boolean;
   titleColor?: ChalkString;
   titlePrefix?: string;
   titleSuffix?: string;
   titlePrefixColor?: ChalkString;
   titleSuffixColor?: ChalkString;
-  externalIndicator?: ExternalLinkIndicatorStyle;
+  external?: ExternalLinkIndicatorStyle;
 }
 
 /**

@@ -1,9 +1,26 @@
+<!--
+  Definition List (<dl>, <dt>, <dd>) Examples
+
+  The <dl> tag defines a definition list.
+  <dt> defines a term, <dd> defines the description.
+
+  Customization:
+  - data-cli-color: Custom color for terms (<dt>) and descriptions (<dd>)
+  - data-cli-marker: Custom marker for terms
+-->
+
+<h2>Definition List Examples</h2>
+
+<h3>Default Style</h3>
+
 <dl>
   <dt>Coffee</dt>
   <dd>Black hot drink</dd>
   <dt>Milk</dt>
   <dd>White cold drink</dd>
 </dl>
+
+<h3>Multiple Descriptions per Term</h3>
 
 <dl>
   <dt>Frontend</dt>
@@ -13,4 +30,110 @@
   <dt>Backend</dt>
   <dd>Node.js</dd>
   <dd>Python</dd>
+</dl>
+
+<h3>Colored Terms and Descriptions</h3>
+
+<dl>
+  <dt data-cli-color="blue bold">HTTP</dt>
+  <dd data-cli-color="dim">HyperText Transfer Protocol - foundation of data communication on the web</dd>
+
+  <dt data-cli-color="green bold">API</dt>
+  <dd data-cli-color="dim">Application Programming Interface - set of rules for building software</dd>
+
+  <dt data-cli-color="magenta bold">JSON</dt>
+  <dd data-cli-color="dim">JavaScript Object Notation - lightweight data interchange format</dd>
+</dl>
+
+<h3>Technical Glossary</h3>
+
+<dl>
+  <dt data-cli-color="cyan">Variable</dt>
+  <dd>A named storage location in memory that holds a value</dd>
+
+  <dt data-cli-color="cyan">Function</dt>
+  <dd>A reusable block of code that performs a specific task</dd>
+
+  <dt data-cli-color="cyan">Array</dt>
+  <dd>An ordered collection of elements, accessed by numeric index</dd>
+
+  <dt data-cli-color="cyan">Object</dt>
+  <dd>A collection of key-value pairs representing an entity</dd>
+</dl>
+
+<h3>Command Line Options</h3>
+
+<dl>
+  <dt data-cli-color="yellow bold">-v, --version</dt>
+  <dd data-cli-color="green">Display version information</dd>
+
+  <dt data-cli-color="yellow bold">-h, --help</dt>
+  <dd data-cli-color="green">Show help message</dd>
+
+  <dt data-cli-color="yellow bold">-c, --config</dt>
+  <dd data-cli-color="green">Specify configuration file path</dd>
+
+  <dt data-cli-color="yellow bold">-d, --debug</dt>
+  <dd data-cli-color="green">Enable debug mode</dd>
+</dl>
+
+<h3>Status Codes</h3>
+
+<dl>
+  <dt data-cli-color="green bold">200 OK</dt>
+  <dd>Request succeeded</dd>
+
+  <dt data-cli-color="blue bold">301 Moved Permanently</dt>
+  <dd>Resource has been moved to a new URL</dd>
+
+  <dt data-cli-color="yellow bold">404 Not Found</dt>
+  <dd>Requested resource could not be found</dd>
+
+  <dt data-cli-color="red bold">500 Internal Server Error</dt>
+  <dd>Server encountered an unexpected condition</dd>
+</dl>
+
+<h3>Git Commands</h3>
+
+<dl>
+  <dt data-cli-color="cyan bold">git init</dt>
+  <dd data-cli-color="dim">Initialize a new Git repository</dd>
+
+  <dt data-cli-color="cyan bold">git clone</dt>
+  <dd data-cli-color="dim">Clone a repository into a new directory</dd>
+
+  <dt data-cli-color="cyan bold">git commit</dt>
+  <dd data-cli-color="dim">Record changes to the repository</dd>
+
+  <dt data-cli-color="cyan bold">git push</dt>
+  <dd data-cli-color="dim">Update remote refs along with associated objects</dd>
+</dl>
+
+<h3>Programming Paradigms</h3>
+
+<dl>
+  <dt data-cli-color="magenta">Imperative Programming</dt>
+  <dd>Programming paradigm that uses statements to change program state</dd>
+  <dd data-cli-color="blue">Examples: C, Pascal, Fortran</dd>
+
+  <dt data-cli-color="magenta">Functional Programming</dt>
+  <dd>Programming paradigm based on mathematical functions</dd>
+  <dd data-cli-color="blue">Examples: Haskell, Lisp, Erlang</dd>
+
+  <dt data-cli-color="magenta">Object-Oriented Programming</dt>
+  <dd>Programming paradigm based on objects containing data and code</dd>
+  <dd data-cli-color="blue">Examples: Java, Python, C++</dd>
+</dl>
+
+<h3>Environment Variables</h3>
+
+<dl>
+  <dt data-cli-color="green bold">PATH</dt>
+  <dd data-cli-color="dim">Directories searched for executable files</dd>
+
+  <dt data-cli-color="green bold">HOME</dt>
+  <dd data-cli-color="dim">User's home directory path</dd>
+
+  <dt data-cli-color="green bold">NODE_ENV</dt>
+  <dd data-cli-color="dim">Node.js environment (development, production, etc.)</dd>
 </dl>

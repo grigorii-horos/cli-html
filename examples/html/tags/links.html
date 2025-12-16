@@ -1,6 +1,90 @@
-<p><a>Hello</a> (no href)</p>
-<p><a href="file:///">File link</a></p>
-<p><a href="http://google.com" title="Google">External HTTP</a></p>
-<p><a href="https://example.com/docs">Secure HTTPS</a></p>
-<p><a href="mailto:user@example.com">Email mailto</a></p>
-<p><a href="ftp://example.com/files">FTP download</a></p>
+<!--
+  Link (<a>) Tag Examples with Custom Styles
+
+  The <a> tag creates hyperlinks.
+  Default style: cyan underline with URL display
+
+  Customization:
+  - data-cli-color: Custom color and style (e.g., "magenta bold", "red underline")
+  - Works with all chalk-string color combinations
+-->
+
+<h2>Link Examples with Custom Styles</h2>
+
+<h3>Default Links</h3>
+
+<p>Default link: <a href="https://example.com">Example Website</a></p>
+<p>Documentation: <a href="https://docs.example.com">Read the Docs</a></p>
+<p>Local path: <a href="file:///path/to/file.html">Local File</a></p>
+
+<h3>Colored Links</h3>
+
+<p>Magenta bold: <a data-cli-color="magenta bold" href="https://github.com">GitHub</a></p>
+<p>Red underline: <a data-cli-color="red underline" href="https://npmjs.com">NPM Registry</a></p>
+<p>Green bold: <a data-cli-color="green bold" href="https://stackoverflow.com">Stack Overflow</a></p>
+<p>Cyan italic: <a data-cli-color="cyan italic" href="https://mozilla.org">Mozilla</a></p>
+<p>Yellow: <a data-cli-color="yellow" href="https://nodejs.org">Node.js</a></p>
+
+<h3>Bright Colors</h3>
+
+<p>Blue bright: <a data-cli-color="blueBright" href="https://twitter.com">Twitter</a></p>
+<p>Yellow bright: <a data-cli-color="yellowBright bold" href="https://wikipedia.org">Wikipedia</a></p>
+<p>Magenta bright: <a data-cli-color="magentaBright bold" href="https://reddit.com">Reddit</a></p>
+<p>Green bright: <a data-cli-color="greenBright" href="https://medium.com">Medium</a></p>
+
+<h3>Background Colors</h3>
+
+<p>Red background: <a data-cli-color="bgRed white bold" href="https://danger.example">Danger Zone</a></p>
+<p>Green background: <a data-cli-color="bgGreen black" href="https://success.example">Success Page</a></p>
+<p>Blue background: <a data-cli-color="bgBlue white" href="https://info.example">Information</a></p>
+
+<h3>Different Styles</h3>
+
+<p>Dim style: <a data-cli-color="dim" href="https://archive.org">Archive Link</a></p>
+<p>Bold italic: <a data-cli-color="red bold italic" href="https://important.example">Important!</a></p>
+<p>Underline bold: <a data-cli-color="cyan underline bold" href="https://emphasis.example">Emphasized Link</a></p>
+
+<h3>Link Lists</h3>
+
+<h4>Social Media</h4>
+<ul>
+  <li><a data-cli-color="blue bold" href="https://facebook.com">Facebook</a></li>
+  <li><a data-cli-color="blueBright" href="https://twitter.com">Twitter</a></li>
+  <li><a data-cli-color="magenta" href="https://instagram.com">Instagram</a></li>
+  <li><a data-cli-color="red" href="https://youtube.com">YouTube</a></li>
+</ul>
+
+<h4>Developer Resources</h4>
+<ul>
+  <li><a data-cli-color="green" href="https://github.com">GitHub</a></li>
+  <li><a data-cli-color="yellow" href="https://stackoverflow.com">Stack Overflow</a></li>
+  <li><a data-cli-color="cyan" href="https://developer.mozilla.org">MDN Web Docs</a></li>
+  <li><a data-cli-color="blue" href="https://npmjs.com">npm</a></li>
+</ul>
+
+<h4>Search Engines</h4>
+<ul>
+  <li><a data-cli-color="blue bold" href="https://google.com">Google</a></li>
+  <li><a data-cli-color="cyan" href="https://bing.com">Bing</a></li>
+  <li><a data-cli-color="magenta" href="https://duckduckgo.com">DuckDuckGo</a></li>
+</ul>
+
+<h3>Contextual Links</h3>
+
+<p>
+  Visit our <a data-cli-color="green bold" href="https://example.com">homepage</a>,
+  read the <a data-cli-color="blue" href="https://docs.example.com">documentation</a>,
+  or check out the <a data-cli-color="cyan" href="https://github.com/example">source code</a>.
+</p>
+
+<p>
+  For support, please <a data-cli-color="yellow underline" href="mailto:support@example.com">email us</a> or
+  <a data-cli-color="red bold" href="https://github.com/example/issues">report an issue</a>.
+</p>
+
+<h3>Links with Icons/Symbols</h3>
+
+<p>→ <a data-cli-color="green" href="https://docs.example.com">Documentation</a></p>
+<p>⚡ <a data-cli-color="yellow bold" href="https://fast.example.com">Fast Server</a></p>
+<p>🔗 <a data-cli-color="blue" href="https://link.example.com">External Link</a></p>
+<p>📦 <a data-cli-color="magenta" href="https://packages.example.com">Packages</a></p>

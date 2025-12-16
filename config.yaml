@@ -7,11 +7,14 @@ lineWidth:
 asciiMode: false  # Set to true to use ASCII characters instead of Unicode
 
 theme:
-  # Headers (h1-h6)
+  # ========
+  # HEADERS (h1-h6)
+  # ========
+
   h1:
-    color: red bold  # Text color
+    color: red bold
     indicator:
-      marker: '#'  # Marker before header text
+      marker: '#'
       color: red bold
   h2:
     color: blue bold
@@ -39,261 +42,257 @@ theme:
       marker: '######'
       color: cyan
 
-  # Inline elements
-  span:
-    color: ''  # Empty = no color change
+  # ========
+  # TEXT BLOCKS
+  # ========
 
-  # Links (a)
-  a:
-    color: blue underline  # Link text color
-    href:
-      enabled: false  # Show href URL after link text
-      color: gray  # Color for displayed URL
-    title:
-      enabled: false  # Show title attribute after link text
-      color: yellow  # Color for displayed title
-      prefix:
-        marker: ' ('  # Opening marker for title
-        color: yellow
-      suffix:
-        marker: ')'  # Closing marker for title
-        color: yellow
-    externalIndicator:
-      enabled: false  # Show indicator for external links (http/https)
-      marker: '↗'  # External link indicator character
-      color: gray  # Indicator color
-      position: after  # Position: before or after
-      spacing: ' '  # Space between link and indicator
-
-  # Container elements with borders
-  figure:
-    color: gray  # Content color
-    border:
-      color: gray  # Border color
-      style: round  # Border style: round, single, double, bold, classic
-      dim: false  # Dim border (less bright)
-    padding:
-      top: 0  # Padding lines at top
-      bottom: 0  # Padding lines at bottom
-      left: 1  # Padding spaces on left
-      right: 1  # Padding spaces on right
-  figcaption:
-    color: bgGreen bold  # Caption color
-    prefix: ' '  # Text before caption
-    suffix: ' '  # Text after caption
-
-  fieldset:
-    color: gray  # Content color
-    border:
-      color: gray  # Border color
-      style: single  # Border style
-      dim: false  # Dim border
-    title:
-      color: yellow  # Legend (title) color
-    padding:
-      top: 0
-      bottom: 0
-      left: 1
-      right: 1
-
-  details:
-    color: gray  # Content color
-    indicator:
-      open:
-        marker: '▼ '  # Marker when details is open
-        color: gray
-      closed:
-        marker: '▶ '  # Marker when details is closed
-        color: gray
-    border:
-      color: gray
-      style: single
-      dim: false
-    padding:
-      top: 0
-      bottom: 0
-      left: 1
-      right: 1
-
-  # Block elements
-  blockquote:
-    color: ''  # Quote text color
-    indicator:
-      marker: '│ '  # Marker at the start of each line
-      color: black
-  address:
-    color: italic  # Address text color
   p:
-    color: ''  # Paragraph color
+    color: ''
 
-  # Code elements
+  blockquote:
+    color: ''
+    # Rotating indicators by depth (cycles after level 3)
+    indicators:
+      - marker: '│ '
+        color: blue
+      - marker: '┃ '
+        color: cyan
+      - marker: '┆ '
+        color: magenta
+
+  address:
+    color: italic
+
+  pre:
+    padding:
+      left: 1
+      right: 0
+      top: 0
+      bottom: 0
+
+  # ========
+  # INLINE TEXT FORMATTING
+  # ========
+
+  span:
+    color: ''
+
+  bold:
+    color: bold
+
+  italic:
+    color: italic
+
+  i:
+    color: italic
+
+  em:
+    color: italic
+
+  cite:
+    color: italic
+
+  underline:
+    color: underline
+
+  strikethrough:
+    color: strikethrough
+
+  mark:
+    color: bgYellow black
+
+  # ========
+  # SEMANTIC INLINE TEXT
+  # ========
+
   code:
-    inline:
-      color: yellowBright bgBlack  # Inline code color (e.g., `code`)
-    block:
-      color: yellowBright  # Code block text color
+    color: yellowBright bgBlack  # Default for inline code
+
+    highlight:
+      color: bgYellowBright black
+
+    block:  # Applies only to <pre><code> blocks
+      enabled: true
+      color: yellowBright
+
       numbers:
-        color: blackBright dim  # Line numbers color
-        enabled: true  # Show line numbers in code blocks
+        enabled: true
+        color: blackBright dim
+
       gutter:
-        enabled: false  # Show gutter separator between line numbers and code
-        marker: ' │ '  # Separator character
-        color: blackBright dim  # Separator color
+        enabled: false
+        marker: ' │ '
+        color: blackBright dim
+
       label:
-        enabled: false  # Show language label (e.g., "JavaScript")
-        position: top  # Label position: top or bottom
-        color: bgBlack cyan  # Language name color
+        enabled: false
+        position: top  # top or bottom
+        color: bgBlack cyan
         prefix:
-          marker: '['  # Opening marker for label
+          marker: '['
           color: gray bgBlack
         suffix:
-          marker: ']'  # Closing marker for label
+          marker: ']'
           color: gray bgBlack
-      highlight:
-        color: bgYellowBright black  # Color for highlighted lines
+
       overflowIndicator:
-        enabled: true  # Show indicator for wrapped/overflow lines
-        marker: '↳'  # Overflow indicator character (replaces line number for continuation lines)
-        color: blackBright dim  # Indicator color (defaults to numbers color if not set)
-      padding:
-        left: 1  # Spaces on the left of code block
+        enabled: true  # Replaces line number for continuation lines
+        marker: '↳'
+        color: blackBright dim
 
-  # Tables
-  table:
-    caption:
-      color: bold blue  # Table caption color
-    cell:
-      color: ''  # Table cell (td) color
-    td:
-      color: ''  # Specific td color (overrides cell)
-    th:
-      color: 'bold red'  # Table header cell color
-    tr:
-      color: ''  # Table row color
-    thead:
-      color: 'bold red'  # Table head section color
-    tbody:
-      color: ''  # Table body section color
-    tfoot:
-      color: ''  # Table footer section color
-    responsive:
-      enabled: true  # Enable responsive mode for narrow terminals
-      threshold: 60  # Terminal width threshold to switch to list view
-      separator: ': '  # Separator between header and value in list mode
-      itemSeparator: '\n\n'  # Separator between items in list mode
-
-  # Definition lists
-  dt:
-    color: blue bold  # Definition term color
-  dd:
-    color: cyan  # Definition description color
-  dl:
-    color: ''  # Definition list container color
-
-  # Text modification elements
-  del:
-    color: bgRed black  # Deleted text base color
-    diff:
-      enabled: false  # Enable diff-style markers (like git diff)
-      style: git  # Style: simple (no marker) | git (marker before text)
-      marker: '-'  # Marker character for deleted text
-      color: red bold  # Color for the marker
-  ins:
-    color: bgGreen black  # Inserted text base color
-    diff:
-      enabled: false  # Enable diff-style markers (like git diff)
-      style: git  # Style: simple (no marker) | git (marker before text)
-      marker: '+'  # Marker character for inserted text
-      color: green bold  # Color for the marker
-  strikethrough:
-    color: strikethrough  # Strikethrough text style
-  underline:
-    color: underline  # Underlined text style
-  bold:
-    color: bold  # Bold text style
-
-  # Semantic text elements
-  samp:
-    color: yellowBright  # Sample output text color
-    prefix:
-      marker: '$ '  # Prefix before sample text (like shell prompt)
-      color: green dim
-    suffix:
-      marker: ''  # Suffix after sample text
-      color: ''
+      diff:  # Git-style diff highlighting
+        enabled: false
+        added:
+          color: bgGreen black
+          indicator:
+            marker: '+ '
+            color: green bold
+        removed:
+          color: bgRed black
+          indicator:
+            marker: '- '
+            color: red bold
+        modified:
+          color: bgYellow black
+          indicator:
+            marker: '~ '
+            color: yellow bold
+        unchanged:
+          color: ''
+          indicator:
+            marker: '  '
 
   kbd:
-    color: cyan  # Keyboard shortcut text color
+    color: cyan
     prefix:
-      marker: '['  # Opening marker
+      marker: '['
       color: gray
     suffix:
-      marker: ']'  # Closing marker
+      marker: ']'
       color: gray
     key:
-      enabled: false  # Enable key-by-key styling (e.g., [ Ctrl ] + [ S ])
-      style: simple  # Style: simple (single wrap) | box (wrap each key)
-      separator: '+'  # Separator between keys (e.g., Ctrl+S)
+      enabled: false  # Key-by-key styling: [ Ctrl ] + [ S ]
+      style: simple  # simple or box
+      separator: '+'
+
+  samp:
+    color: yellowBright
+    prefix:
+      marker: '$ '
+      color: green dim
+    suffix:
+      marker: ''
+      color: ''
 
   var:
-    color: blue italic  # Variable name color (<var> tag)
-  mark:
-    color: bgYellow black  # Highlighted/marked text color
-  time:
-    color: cyan  # Time/date element color
+    color: blue italic
 
   abbr:
-    color: underline  # Abbreviation text color
+    color: underline
     title:
-      color: cyan  # Abbreviation definition color
+      color: cyan
       prefix:
-        marker: '('  # Opening marker for definition
+        marker: '('
         color: gray
       suffix:
-        marker: ')'  # Closing marker for definition
+        marker: ')'
         color: gray
+
   dfn:
-    color: underline italic  # Definition text color
+    color: underline italic
     title:
-      color: cyan  # Definition title color
+      color: cyan
       prefix:
-        marker: '('  # Opening marker for title
+        marker: '('
         color: gray
       suffix:
-        marker: ')'  # Closing marker for title
+        marker: ')'
         color: gray
 
-  # Emphasis elements
-  italic:
-    color: italic  # Italic text style
-  i:
-    color: italic  # <i> tag style
-  em:
-    color: italic  # Emphasis style
-  cite:
-    color: italic  # Citation style
+  time:
+    color: cyan
 
-  # Subscript and superscript
   sub:
-    color: ''  # Subscript text color
+    color: ''
     prefix:
-      marker: '₍'  # Opening marker for subscript
+      marker: '₍'
       color: gray dim
     suffix:
-      marker: '₎'  # Closing marker for subscript
-      color: gray dim
-  sup:
-    color: ''  # Superscript text color
-    prefix:
-      marker: '⁽'  # Opening marker for superscript
-      color: gray dim
-    suffix:
-      marker: '⁾'  # Closing marker for superscript
+      marker: '₎'
       color: gray dim
 
-  # Lists
-  li:
-    color: ''  # List item text color
+  sup:
+    color: ''
+    prefix:
+      marker: '⁽'
+      color: gray dim
+    suffix:
+      marker: '⁾'
+      color: gray dim
+
+  # ========
+  # TEXT MODIFICATIONS (del/ins)
+  # ========
+
+  del:
+    color: bgRed black
+    diff:
+      enabled: false
+      style: git  # simple or git
+      marker: '-'
+      color: red bold
+
+  ins:
+    color: bgGreen black
+    diff:
+      enabled: false
+      style: git  # simple or git
+      marker: '+'
+      color: green bold
+
+  # ========
+  # LINKS
+  # ========
+
+  a:
+    color: blue underline
+    href:
+      enabled: auto  # auto = show only if terminal doesn't support hyperlinks
+      color: gray
+    title:
+      enabled: false
+      color: yellow
+      prefix:
+        marker: ' ('
+        color: yellow
+      suffix:
+        marker: ')'
+        color: yellow
+    external:
+      enabled: false  # Show indicator for external links
+      marker: '↗'
+      color: gray
+      position: after  # before or after
+      spacing: ' '
+
+  # ========
+  # LISTS
+  # ========
+
+  ul:
+    color: ''  # Unordered list text color
+    indicators:
+      disc:  # Disc marker (•)
+        color: redBright
+        marker: '•'
+      square:  # Square marker (▪)
+        color: yellowBright
+        marker: '▪'
+      circle:  # Circle marker (⚬)
+        color: cyanBright
+        marker: '⚬'
+    indent: '  '  # Indentation for nested lists
+
   ol:
     color: ''  # Ordered list text color
     indicators:
@@ -318,37 +317,96 @@ theme:
         marker: a
         decimal: '.'
     indent: '   '  # Indentation for nested lists
-  ul:
-    color: ''  # Unordered list text color
-    indicators:
-      disc:  # Disc marker (•)
-        color: redBright
-        marker: '•'
-      square:  # Square marker (▪)
-        color: yellowBright
-        marker: '▪'
-      circle:  # Circle marker (⚬)
-        color: cyanBright
-        marker: '⚬'
-    indent: '  '  # Indentation for nested lists
 
-  # Horizontal rule
-  hr:
-    color: gray  # Line color
-    marker: '─'  # Character for the line
+  li:
+    color: ''  # List item text color
 
-  # Progress bars and widgets
-  progress:
-    # width: 30  # Fixed width (optional, adaptive by default: 30% of lineWidth, min 10, max 60)
-    filled:
-      color: bgWhite cyan  # Color for filled portion
-      marker: '█'  # Character for filled portion
-    empty:
-      color: bgBlack gray  # Color for empty portion
-      marker: '█'  # Character for empty portion
+  dl:
+    color: ''  # Definition list container color
 
-  # Input elements
+  dt:
+    color: blue bold  # Definition term color
+
+  dd:
+    color: cyan  # Definition description color
+
+  # ========
+  # TABLES
+  # ========
+
+  table:
+    color: ''  # Default table color (inherited by tr and td)
+    responsive:
+      enabled: true  # Enable responsive mode for narrow terminals
+      threshold: 60  # Terminal width threshold to switch to list view
+      separator: ': '  # Separator between header and value in list mode
+      itemSeparator: '\n\n'  # Separator between items in list mode
+
+    # Zebra striping for alternating row colors with flexible pattern
+    striping:
+      enabled: false  # Enable zebra striping
+      count: 2  # Number of different colors to cycle through (2-5)
+      rows:  # Array of row stripe styles (0-based array index, but represents 1-based row numbers in data attributes)
+        - color: 'white bgBlack'        # Row 1 (index 0): rows 1, count+1, count*2+1, ...
+        - color: 'white bgBlackBright'  # Row 2 (index 1): rows 2, count+2, count*2+2, ...
+        - color: 'white bgBlue'         # Row 3 (index 2): rows 3, count+3, ... - used only if count >= 3
+        - color: 'white bgGreen'        # Row 4 (index 3): rows 4, count+4, ... - used only if count >= 4
+        - color: 'white bgMagenta'      # Row 5 (index 4): rows 5, count+5, ... - used only if count >= 5
+      # Example with count=2 (classic zebra): rows alternate between rows[0] and rows[1]
+      # Example with count=3: rows cycle through rows[0].color, rows[1].color, rows[2].color
+      # Note: data-cli-striping-row-N-color uses 1-based numbering (N=1,2,3,4,5) for user convenience
+
+    # Cell alignment indicators
+    alignment:
+      enabled: false
+      left:
+        indicator: ''
+        color: ''
+      center:
+        indicator: '≡ '
+        color: gray dim
+      right:
+        indicator: '» '
+        color: gray dim
+
+  caption:
+    color: blue bold  # Table caption color
+
+  thead:
+    color: 'red bold'  # Table head section color
+
+  tbody:
+    color: ''  # Table body section color
+
+  tfoot:
+    color: ''  # Table footer section color
+
+  tr:
+    color: ''  # Table row color
+
+  th:
+    color: 'red bold'  # Table header cell color
+
+  td:
+    color: ''  # Table data cell color
+
+  # ========
+  # FORMS & INPUTS
+  # ========
+
   input:
+    # Disabled state (applies to all input types)
+    disabled:
+      color: gray dim  # Color for disabled inputs
+
+    # Required field indicator
+    required:
+      enabled: true  # Show required field indicator
+      indicator:
+        marker: '*'  # Required marker
+        color: red  # Marker color
+        position: after  # before or after input (before adds marker before input, after adds after)
+
     checkbox:
       checked:
         color: green bold  # Color for checked state
@@ -362,12 +420,13 @@ theme:
       suffix:
         color: gray  # Closing bracket color
         marker: ']'
+
     radio:
       checked:
         color: red bold  # Color for checked state
         marker: '•'  # Marker for checked
       unchecked:
-        color: red bold  # Color for unchecked state
+        color: gray  # Color for unchecked state
         marker: ' '  # Marker for unchecked
       prefix:
         color: gray  # Opening parenthesis color
@@ -375,19 +434,22 @@ theme:
       suffix:
         color: gray  # Closing parenthesis color
         marker: )
+
     button:
+      color: bgBlack bold  # Button text color (for input type="button")
       prefix:
         color: bgBlack gray  # Opening marker color
         marker: '[ '
       suffix:
         color: bgBlack gray  # Closing marker color
         marker: ' ]'
-      text:
-        color: bgBlack bold  # Button text color
+
     textInput:
       color: cyanBright bgBlack  # Text input field color
+
     textarea:
       color: cyanBright bgBlack  # Textarea field color
+
     range:
       filled:
         color: magenta bgMagenta  # Color for filled portion of range
@@ -398,68 +460,294 @@ theme:
       thumb:
         color: magenta bold bgGray  # Slider thumb color
         marker: '●'
+
     color:
       indicator:
         marker: '■'  # Color indicator (will be colored with the actual color value)
-      brackets:
-        open: '('  # Opening bracket for color value
-        close: ')'  # Closing bracket for color value
+      prefix:
+        marker: '('  # Opening bracket for color value
+        color: gray  # Bracket color
+      suffix:
+        marker: ')'  # Closing bracket for color value
         color: gray  # Bracket color
       value:
         color: ''  # Hex value color (empty = no color)
+
     password:
-      char: '•'  # Character to use for masking password (alternatives: *, ●, ⚫)
+      char: '*'  # Character to use for masking password (alternatives: *, ●, ⚫)
+      count: 6  # Number of masking characters to display
       color: gray  # Password mask color
+
     email:
-      prefix: '✉ '  # Email prefix indicator
-      prefixColor: cyan  # Prefix color
+      prefix:
+        marker: '@ '  # Email prefix indicator
+        color: cyan  # Prefix color
       color: cyan  # Email text color
+
     date:
-      prefix: '📅 '  # Date prefix indicator
-      prefixColor: blue  # Prefix color
+      prefix:
+        marker: '# '  # Date prefix indicator
+        color: blue  # Prefix color
       color: blue  # Date value color
+
     file:
+      color: cyan  # File name color
       prefix:
         marker: '@'  # Prefix marker for file input
         color: gray
-      text:
-        color: cyan  # File name color
       placeholder: No file chosen  # Placeholder text when no file selected
 
-  # Images
-  img:
+  button:
+    color: bgBlack bold  # Button text color (separate from input type="button")
+    disabled:
+      color: gray dim  # Color for disabled button
     prefix:
-      color: cyan  # Color for prefix marker
-      marker: '!'  # Prefix marker (like Markdown)
-    open:
-      color: gray  # Opening bracket color
-      marker: '['
-    close:
-      color: gray  # Closing bracket color
-      marker: ']'
-    text:
-      color: cyan  # Alt text color
+      color: bgBlack gray  # Opening marker color
+      marker: '[ '
+    suffix:
+      color: bgBlack gray  # Closing marker color
+      marker: ' ]'
 
-  # Select elements (dropdowns)
+  fieldset:
+    color: gray  # Content color
+    disabled:
+      color: gray dim  # Color for disabled fieldset
+    border:
+      color: gray  # Border color
+      style: single  # Border style
+      dim: false  # Dim border
+    title:
+      color: yellow  # Legend (title) color
+    padding:
+      top: 0
+      bottom: 0
+      left: 1
+      right: 1
+
+  label:
+    color: ''  # Label element color
+
   select:
     color: cyan bold  # Select label color
+    disabled:
+      color: gray dim  # Color for disabled select
     prefix:
       marker: ''  # Prefix before label
       color: ''
     suffix:
       marker: ':'  # Suffix after label
       color: cyan bold
+
   option:
     color: ''  # Option text color
+    disabled:
+      color: gray dim  # Color for disabled option
     selected:
       marker: '◉'  # Marker for selected option
       color: green bold  # Selected option color
     unselected:
       marker: '○'  # Marker for unselected option
       color: gray  # Unselected option color
+
   optgroup:
     indicator:
       marker: '▸ '  # Marker for option group
       color: cyan bold
     label:
       color: cyan bold  # Option group label color
+
+  # ========
+  # INTERACTIVE ELEMENTS
+  # ========
+
+  details:
+    color: gray  # Content color
+    indicator:
+      open:
+        marker: '▼ '  # Marker when details is open
+        color: gray
+      closed:
+        marker: '▶ '  # Marker when details is closed
+        color: gray
+    border:
+      color: gray
+      style: single
+      dim: false
+    padding:
+      top: 0
+      bottom: 0
+      left: 1
+      right: 1
+
+  progress:
+    # width: 30  # Fixed width (optional, adaptive by default: 30% of lineWidth, min 10, max 60)
+    filled:
+      color: bgWhite cyan  # Color for filled portion
+      marker: '█'  # Character for filled portion
+    empty:
+      color: bgBlack gray  # Color for empty portion
+      marker: '░'  # Character for empty portion
+
+  meter:
+    width: 30  # Bar width (adaptive by default: 30% of lineWidth, min 10, max 60)
+
+    # Value ranges with different colors based on value position
+    ranges:
+      low:  # Low range (value < low threshold)
+        threshold: 0.33  # Percentage of max value (0-1)
+        color: red bgRed  # Color for low range
+        marker: '█'
+      medium:  # Medium range (low <= value < high)
+        threshold: 0.66  # Percentage of max value
+        color: yellow bgYellow  # Color for medium range
+        marker: '█'
+      high:  # High/optimal range (value >= high threshold)
+        threshold: 1.0  # Percentage of max value
+        color: green bgGreen  # Color for high range
+        marker: '█'
+
+    empty:
+      color: gray bgBlack  # Empty portion color
+      marker: '░'
+
+    # Value labels
+    labels:
+      enabled: true  # Show value labels
+      format: '%v/%m'  # %v = value, %m = max, %n = min, %% = percent
+      color: gray  # Label text color
+      position: right  # left or right of the bar
+
+  data:
+    color: ''  # Text color (uses default if empty)
+    # Value display (data-value attribute)
+    value:
+      enabled: false  # Show value attribute
+      color: cyan  # Value color
+      prefix:
+        marker: ' ['  # Opening bracket
+        color: gray
+      suffix:
+        marker: ']'  # Closing bracket
+        color: gray
+
+  # ========
+  # MEDIA
+  # ========
+
+  img:
+    indicator:
+      marker: '!'  # Prefix marker (like Markdown)
+      color: cyan  # Color for indicator marker
+    prefix:
+      marker: '['  # Opening bracket
+      color: gray  # Opening bracket color
+    suffix:
+      marker: ']'  # Closing bracket
+      color: gray  # Closing bracket color
+    alt:
+      color: cyan  # Alt text color
+
+  # ========
+  # VISUAL ELEMENTS
+  # ========
+
+  hr:
+    color: gray  # Line color
+    marker: '─'  # Character for the line
+
+  figure:
+    color: gray  # Content color
+    border:
+      color: gray  # Border color
+      style: round  # Border style: round, single, double, bold, classic
+      dim: false  # Dim border (less bright)
+    padding:
+      top: 0  # Padding lines at top
+      bottom: 0  # Padding lines at bottom
+      left: 1  # Padding spaces on left
+      right: 1  # Padding spaces on right
+
+  figcaption:
+    color: bgGreen bold  # Caption color
+    prefix: ' '  # Text before caption
+    suffix: ' '  # Text after caption
+
+  # ========
+  # CONTAINER ELEMENTS (semantic HTML5)
+  # ========
+
+  div:
+    color: ''  # Generic container color
+
+  header:
+    color: ''  # Header container color
+
+  footer:
+    color: ''  # Footer container color
+
+  article:
+    color: ''  # Article container color
+
+  section:
+    color: ''  # Section container color
+
+  main:
+    color: ''  # Main content container color
+
+  nav:
+    color: ''  # Navigation container color
+
+  aside:
+    color: ''  # Aside container color
+
+  form:
+    color: ''  # Form container color
+
+  picture:
+    color: ''  # Picture container color
+
+  hgroup:
+    color: ''  # Heading group container color
+
+  dialog:
+    color: ''  # Dialog container color
+
+  # ========
+  # LEGACY / DEPRECATED ELEMENTS
+  # ========
+
+  center:
+    color: ''  # Centered text color (deprecated, use CSS text-align instead)
+
+  blink:
+    color: ''  # Blink element color (deprecated)
+    # Animation indicator for blinking text
+    animation:
+      enabled: false  # Enable animation indicator
+      indicator:
+        marker: '⚡'  # Blink indicator
+        color: yellow
+        position: both  # before, after, or both
+
+  marquee:
+    color: ''  # Marquee element color (deprecated)
+    # Direction indicators for scrolling text
+    direction:
+      enabled: true  # Show scroll direction indicator
+      left:  # Default scrolling direction
+        indicator:
+          marker: '⟵'  # Left scroll indicator
+          color: cyan
+      right:
+        indicator:
+          marker: '⟶'  # Right scroll indicator
+          color: cyan
+      up:
+        indicator:
+          marker: '⟰'  # Up scroll indicator
+          color: cyan
+      down:
+        indicator:
+          marker: '⟱'  # Down scroll indicator
+          color: cyan
+      position: before  # before or after text

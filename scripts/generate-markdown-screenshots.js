@@ -55,7 +55,7 @@ const config = {
 
   // Termshot configuration
   termshot: {
-    columns: 100,
+    columns: 120,
   },
 };
 

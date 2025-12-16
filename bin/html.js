@@ -55,12 +55,12 @@ const loadTheme = (customConfigPath) => {
 let inputPath = null;
 let configPath = null;
 
-for (let i = 2; i < process.argv.length; i++) {
-  if (process.argv[i] === '--config' && i + 1 < process.argv.length) {
-    configPath = process.argv[i + 1];
-    i++; // Skip next argument
-  } else if (!inputPath && !process.argv[i].startsWith('--')) {
-    inputPath = process.argv[i];
+for (let index = 2; index < process.argv.length; index++) {
+  if (process.argv[index] === '--config' && index + 1 < process.argv.length) {
+    configPath = process.argv[index + 1];
+    index++; // Skip next argument
+  } else if (!inputPath && !process.argv[index].startsWith('--')) {
+    inputPath = process.argv[index];
   }
 }
 

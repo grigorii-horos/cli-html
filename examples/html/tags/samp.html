@@ -1,3 +1,16 @@
+<!--
+  Sample Output (<samp>) Tag Examples
+
+  The <samp> tag represents sample output from a computer program.
+  Useful for displaying command outputs, program results, and terminal sessions.
+
+  Customization:
+  - data-cli-color: Custom color and style (e.g., "green", "red bold", "cyan")
+-->
+
+<h2>Sample Output Tag Examples</h2>
+
+<h3>Default Style</h3>
 <pre>
 <samp><span class="prompt">mike@interwebz:~$</span> <kbd>md5 -s "Hello world"</kbd>
 MD5 ("Hello world") = 3e25960a79dbc69b674cd4ec67a72c62
@@ -6,3 +19,71 @@ MD5 ("Hello world") = 3e25960a79dbc69b674cd4ec67a72c62
 Server listening on http://localhost:3000
 
 <span class="prompt">mike@interwebz:~$</span> <span class="cursor">█</span></samp></pre>
+
+<h3>Colored Sample Outputs</h3>
+
+<p>Success message: <samp data-cli-color="green bold">✓ Build completed successfully</samp></p>
+<p>Error message: <samp data-cli-color="red bold">✗ Error: Module not found</samp></p>
+<p>Warning: <samp data-cli-color="yellow">⚠ Warning: Deprecated API usage</samp></p>
+<p>Info: <samp data-cli-color="blue">ℹ Server running on port 3000</samp></p>
+
+<h3>Command Outputs with Colors</h3>
+
+<p>Git status:</p>
+<pre><samp data-cli-color="green">On branch master
+Your branch is up to date with 'origin/master'.</samp></pre>
+
+<p>npm install output:</p>
+<pre><samp data-cli-color="dim">added 245 packages, and audited 246 packages in 12s</samp></pre>
+
+<p>Test results:</p>
+<pre><samp>
+<span data-cli-color="green">✓ Should validate user input</span>
+<span data-cli-color="green">✓ Should handle errors gracefully</span>
+<span data-cli-color="red">✗ Should connect to database</span>
+<span data-cli-color="yellow">⊘ Should send email notifications (skipped)</span>
+</samp></pre>
+
+<h3>Different Output Types</h3>
+
+<p>Compilation output: <samp data-cli-color="cyan">Compiling TypeScript files...</samp></p>
+<p>Deployment status: <samp data-cli-color="magenta bold">Deploying to production...</samp></p>
+<p>Database query: <samp data-cli-color="blue dim">Query executed in 42ms</samp></p>
+
+<h3>Terminal Session with Custom Colors</h3>
+
+<pre><samp>
+<span data-cli-color="cyan">user@hostname:~$</span> <kbd>ls -la</kbd>
+<span data-cli-color="dim">total 48
+drwxr-xr-x  6 user user 4096 Dec  8 10:30 .
+drwxr-xr-x 18 user user 4096 Dec  1 09:15 ..</span>
+
+<span data-cli-color="cyan">user@hostname:~$</span> <kbd>node --version</kbd>
+<span data-cli-color="green">v20.10.0</span>
+
+<span data-cli-color="cyan">user@hostname:~$</span> <kbd>npm test</kbd>
+<span data-cli-color="green bold">PASS</span> <span data-cli-color="dim">src/utils.test.js</span>
+<span data-cli-color="green">✓ All tests passed (8/8)</span>
+</samp></pre>
+
+<h3>Log Levels</h3>
+
+<p>Debug: <samp data-cli-color="dim">[DEBUG] Variable x = 42</samp></p>
+<p>Info: <samp data-cli-color="blue">[INFO] Application started</samp></p>
+<p>Warning: <samp data-cli-color="yellow bold">[WARN] High memory usage detected</samp></p>
+<p>Error: <samp data-cli-color="red bold">[ERROR] Connection timeout</samp></p>
+<p>Fatal: <samp data-cli-color="bgRed white bold">[FATAL] Critical system error</samp></p>
+
+<h3>API Responses</h3>
+
+<p>Success response:</p>
+<pre><samp data-cli-color="green">{
+  "status": "success",
+  "data": { "id": 123, "name": "John Doe" }
+}</samp></pre>
+
+<p>Error response:</p>
+<pre><samp data-cli-color="red">{
+  "status": "error",
+  "message": "Invalid credentials"
+}</samp></pre>

@@ -1,4 +1,45 @@
+<!--
+  Variable Tag (<var>) Customization Examples
+
+  The <var> tag represents variables in mathematical expressions, code, or technical content.
+  Default style: blue italic
+
+  Customization:
+  - data-cli-color: Custom color and style (e.g., "red bold", "bgBlue white", "dim")
+
+  Examples in this file demonstrate:
+  - Default blue italic style
+  - Various colors: red, green, yellow, cyan, magenta
+  - Style modifiers: bold, dim
+  - Background colors: bgRed, bgBlue, bgGreen
+  - Usage in mathematical formulas and equations
+  - Mixed usage within code context
+-->
+
+<h2>Variable Tag Examples</h2>
+
+<h3>Default Style</h3>
 <p>The volume of a box is <var>l</var> × <var>w</var> × <var>h</var>, where <var>l</var> represents the length,
   <var>w</var> the width and <var>h</var> the height of the box.</p>
 
-<p>Physics: <var>F</var> = <var>m</var> × <var>a</var>, and kinetic energy <var>E</var> = 1/2 <var>m</var> <var>v</var><sup>2</sup>.</p>
+<h3>Custom Colors</h3>
+<p>Physics: <var data-cli-color="red bold">F</var> = <var data-cli-color="green">m</var> × <var data-cli-color="green">a</var>,
+  and kinetic energy <var data-cli-color="red bold">E</var> = 1/2 <var data-cli-color="green">m</var> <var data-cli-color="cyan">v</var><sup>2</sup>.</p>
+
+<h3>Different Color Styles</h3>
+<p>Chemistry: <var data-cli-color="magenta">H₂</var><var data-cli-color="cyan">O</var> represents water molecule.</p>
+
+<h3>Bold and Underline Variables</h3>
+<p>Math equation: <var data-cli-color="yellow bold">x</var><sup>2</sup> + <var data-cli-color="yellow bold">y</var><sup>2</sup> = <var data-cli-color="yellow bold">r</var><sup>2</sup></p>
+
+<h3>Background Colors</h3>
+<p>Temperature: <var data-cli-color="bgRed white">T</var> = <var data-cli-color="bgBlue white">T₀</var> + <var data-cli-color="bgGreen black">ΔT</var></p>
+
+<h3>Dim Style</h3>
+<p>Optional parameters: <var data-cli-color="dim">config</var>, <var data-cli-color="dim">options</var>, <var data-cli-color="dim">settings</var></p>
+
+<h3>Mixed Styles in Code Context</h3>
+<p>Function call: <code>calculate(<var data-cli-color="magenta">width</var>, <var data-cli-color="magenta">height</var>)</code></p>
+
+<h3>Complex Mathematical Expression</h3>
+<p>Quadratic formula: <var data-cli-color="cyan bold">x</var> = (-<var data-cli-color="green">b</var> ± √(<var data-cli-color="green">b</var><sup>2</sup> - 4<var data-cli-color="yellow">a</var><var data-cli-color="red">c</var>)) / (2<var data-cli-color="yellow">a</var>)</p>

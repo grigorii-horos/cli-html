@@ -1,0 +1,32 @@
+# Test configuration for table striping with 5 different colors
+lineWidth:
+  max: 120
+
+theme:
+  h1:
+    color: cyan bold
+    indicator:
+      marker: '#'
+      color: cyan bold
+  h2:
+    color: blue bold
+    indicator:
+      marker: '##'
+      color: blue bold
+
+  table:
+    color: ''
+    striping:
+      enabled: true
+      count: 5
+      rows:
+        - color: 'white bgBlue'           # Row 1 (index 0): White text on blue background
+        - color: 'white bgGreen'          # Row 2 (index 1): White text on green background
+        - color: 'white bgMagenta'        # Row 3 (index 2): White text on magenta background
+        - color: 'white bgYellow black'   # Row 4 (index 3): Black text on yellow background
+        - color: 'white bgCyan black'     # Row 5 (index 4): Black text on cyan background
+
+  th:
+    color: 'black bgWhite bold'
+  td:
+    color: ''

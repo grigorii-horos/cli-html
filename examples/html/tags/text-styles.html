@@ -9,6 +9,24 @@
 <p>This is <mark>highlighted text</mark>.</p>
 <p>This is <small>small text</small> and <big>big text</big>.</p>
 
+<h3>Custom Colors (data-cli-color)</h3>
+
+<p>
+  <small data-cli-color="gray">Small gray note</small>,
+  <big data-cli-color="cyan bold">large cyan emphasis</big>,
+  <sup data-cli-color="yellow">superscript</sup>,
+  <sub data-cli-color="magenta">subscript</sub>,
+  <tt data-cli-color="green">teletype</tt>,
+  <nobr data-cli-color="blue underline">non-breaking text stays together</nobr>.
+</p>
+
+<p>
+  Bidirectional isolation with color:
+  <bdi data-cli-color="yellow">مرحبا</bdi>,
+  <bdo data-cli-color="cyan" dir="rtl">Hello</bdo>,
+  <data data-cli-color="green">payload</data>.
+</p>
+
 <h3>Subscript and Superscript</h3>
 
 <p>H<sub>2</sub>O is water.</p>
@@ -90,9 +108,78 @@ are used for handling text in different directions.</i></p>
 
 <h3>Obsolete Tags (Compatibility)</h3>
 
-<p>No break text: <nobr>This text will not break onto multiple lines even if it is very long</nobr></p>
-<p>Marquee (scrolling): <marquee>Scrolling text</marquee></p>
-<p>Centered: <center>This text is centered</center></p>
+<p>No break text: <nobr data-cli-color="magenta dim">This text will not break onto multiple lines even if it is very long</nobr></p>
+<p>Marquee (scrolling): <marquee data-cli-color="magenta">Scrolling text</marquee></p>
+<p>Centered: <center data-cli-color="cyan bold">This text is centered</center></p>
+
+<h3>Custom Styled Text Elements</h3>
+
+<p>Bold with colors:
+  <b data-cli-color="red">Red bold</b>,
+  <strong data-cli-color="green bold">Green strong</strong>,
+  <b data-cli-color="blue underline">Blue underlined bold</b>
+</p>
+
+<p>Italic variations:
+  <i data-cli-color="magenta">Magenta italic</i>,
+  <em data-cli-color="cyan italic">Cyan emphasis</em>,
+  <i data-cli-color="yellow dim">Yellow dim italic</i>
+</p>
+
+<p>Underline styles:
+  <u data-cli-color="red">Red underline</u>,
+  <u data-cli-color="green bold">Green bold underline</u>
+</p>
+
+<p>Strikethrough:
+  <s data-cli-color="red">Red strikethrough</s>,
+  <del data-cli-color="magenta dim">Magenta dim deleted</del>,
+  <strike data-cli-color="gray">Gray strike</strike>
+</p>
+
+<p>Mark/highlight:
+  <mark data-cli-color="bgYellow black">Yellow highlight</mark>,
+  <mark data-cli-color="bgGreen white bold">Green bold highlight</mark>,
+  <mark data-cli-color="bgMagenta white">Magenta highlight</mark>
+</p>
+
+<p>Insertions:
+  <ins data-cli-color="green">Green inserted</ins>,
+  <ins data-cli-color="cyan underline">Cyan underlined insertion</ins>
+</p>
+
+<h3>Code Elements with Custom Colors</h3>
+
+<p>Inline code:
+  <code data-cli-color="magenta">const x = 42;</code>,
+  <code data-cli-color="cyan bold">function()</code>,
+  <code data-cli-color="green">npm install</code>
+</p>
+
+<p>Keyboard shortcuts:
+  <kbd data-cli-color="red bold">Ctrl+C</kbd>,
+  <kbd data-cli-color="blue">Alt+Tab</kbd>,
+  <kbd data-cli-color="magenta">Cmd+V</kbd>
+</p>
+
+<p>Sample output:
+  <samp data-cli-color="green">Success!</samp>,
+  <samp data-cli-color="red">Error: File not found</samp>,
+  <samp data-cli-color="yellow">Warning: Low memory</samp>
+</p>
+
+<h3>Citations and Time with Colors</h3>
+
+<p>Citations:
+  <cite data-cli-color="italic magenta">"1984"</cite> by George Orwell,
+  <cite data-cli-color="italic cyan">"The Great Gatsby"</cite>
+</p>
+
+<p>Time elements:
+  <time data-cli-color="blue">2024-01-15</time>,
+  <time data-cli-color="green bold">10:30 AM</time>,
+  <time data-cli-color="cyan">December 25, 2024</time>
+</p>
 
 <h3>Combined Example</h3>
 
@@ -100,4 +187,21 @@ are used for handling text in different directions.</i></p>
   The <strong>quick</strong> <mark>brown</mark> <i>fox</i> jumps over the <u>lazy</u> dog.
   Use <code>Array.map()</code> to transform data. The <abbr title="World Wide Web">WWW</abbr>
   was invented in <time>1989</time>. Price: <del>$99</del> <ins>$79</ins>.
+</p>
+
+<h3>Advanced Custom Styling</h3>
+
+<p>
+  <strong data-cli-color="red bold">ERROR:</strong> The file
+  <code data-cli-color="cyan">/path/to/file.txt</code> was
+  <del data-cli-color="red strikethrough">deleted</del>
+  <ins data-cli-color="green">moved</ins> to
+  <code data-cli-color="cyan">/backup/file.txt</code> at
+  <time data-cli-color="dim">2024-12-08 15:30</time>
+</p>
+
+<p>
+  Press <kbd data-cli-color="yellow bold">Ctrl+S</kbd> to save or
+  <kbd data-cli-color="red bold">Ctrl+Q</kbd> to quit.
+  Output: <samp data-cli-color="green">Operation completed successfully</samp>
 </p>

@@ -1,17 +1,55 @@
-<p>
-  Common web stacks: <abbr title="HyperText Markup Language">HTML</abbr>,
-  <abbr title="Cascading Style Sheets">CSS</abbr>, and
-  <abbr title="JavaScript">JS</abbr>.
-</p>
-<p>
-  Measurement units: <abbr title="millisecond">ms</abbr>,
-  <abbr title="kilobyte">KB</abbr>, <abbr title="megabyte">MB</abbr>.
-</p>
-<p>
-  Definitions: <dfn title="Representational State Transfer">REST</dfn> vs
-  <dfn title="Remote Procedure Call">RPC</dfn>.
-</p>
-<p>
-  Legacy: <acronym title="Personal Computer">PC</acronym>,
-  <acronym title="Compact Disc">CD</acronym>.
-</p>
+<h2>Abbreviation Examples with Custom Styles</h2>
+
+<p>Default abbreviation: <abbr title="HyperText Markup Language">HTML</abbr></p>
+
+<p>Custom color for abbreviation: <abbr data-cli-color="cyan bold" title="Cascading Style Sheets">CSS</abbr></p>
+
+<p>Red color for abbreviation: <abbr data-cli-color="red" title="Application Programming Interface">API</abbr></p>
+
+<p>Green italic abbreviation: <abbr data-cli-color="green italic" title="Uniform Resource Locator">URL</abbr></p>
+
+<h3>Custom Title Decorations (prefix/suffix)</h3>
+
+<p>Square brackets: <abbr data-cli-title-prefix-marker="[" data-cli-title-suffix-marker="]" title="JavaScript">JS</abbr></p>
+
+<p>Guillemets with colored abbr: <abbr data-cli-color="magenta bold" data-cli-title-prefix-marker="«" data-cli-title-suffix-marker="»" title="Extensible Markup Language">XML</abbr></p>
+
+<p>Angle brackets: <abbr data-cli-title-prefix-marker="⟨" data-cli-title-suffix-marker="⟩" title="HyperText Transfer Protocol">HTTP</abbr></p>
+
+<h3>Custom Title Color</h3>
+
+<p>Red title: <abbr data-cli-title-color="red bold" title="Structured Query Language">SQL</abbr></p>
+
+<p>Green title with cyan abbr: <abbr data-cli-color="cyan" data-cli-title-color="green italic" title="Portable Document Format">PDF</abbr></p>
+
+<p>Yellow title with custom brackets: <abbr data-cli-title-color="yellow" data-cli-title-prefix-marker="[" data-cli-title-suffix-marker="]" title="Uniform Resource Identifier">URI</abbr></p>
+
+<h3>Title Prefix/Suffix (inside parentheses)</h3>
+
+<p>Arrows around title text: <abbr data-cli-title-prefix-marker="→ " data-cli-title-suffix-marker=" ←" title="Transmission Control Protocol">TCP</abbr></p>
+
+<p>Stars around title: <abbr data-cli-title-prefix-marker="★ " data-cli-title-suffix-marker=" ★" title="User Datagram Protocol">UDP</abbr></p>
+
+<p>Combined - custom brackets + title decorations: <abbr data-cli-title-prefix-marker="»" data-cli-title-suffix-marker="«" title="Internet Protocol">IP</abbr></p>
+
+<p>Colored markers: <abbr
+  data-cli-title-prefix-marker="["
+  data-cli-title-prefix-color="cyan"
+  data-cli-title-suffix-marker="]"
+  data-cli-title-suffix-color="magenta"
+  data-cli-title-color="yellow bold"
+  title="Colored Markers">CM</abbr></p>
+
+<h3>Full Customization</h3>
+
+<p>Everything custom (title-only decorations): <abbr data-cli-color="magenta bold" data-cli-title-color="cyan italic" data-cli-title-prefix-marker="★ " data-cli-title-suffix-marker=" ★" title="Application Programming Interface">API</abbr></p>
+
+<h2>DFN (Definition) Examples</h2>
+
+<p>Default: <dfn title="World Wide Web">WWW</dfn></p>
+
+<p>Custom color: <dfn data-cli-color="yellow bold" title="HyperText Transfer Protocol Secure">HTTPS</dfn></p>
+
+<p>Custom title color: <dfn data-cli-color="blue" data-cli-title-color="red" title="File Transfer Protocol">FTP</dfn></p>
+
+<p>With all customizations: <dfn data-cli-color="green" data-cli-title-color="yellow bold" data-cli-title-prefix-marker="> " data-cli-title-suffix-marker=" ◀" title="Domain Name System">DNS</dfn></p>

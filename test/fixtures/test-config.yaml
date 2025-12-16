@@ -1,0 +1,8 @@
+theme:
+  h1: "blue bold"
+  h2: "cyan"
+  code:
+    color: "yellow"
+    inline: "bgBlack yellow"
+  strong: "red bold"
+  em: "green italic"

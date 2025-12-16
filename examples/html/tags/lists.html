@@ -1,41 +1,82 @@
-<h2>Lists and Menus Examples</h2>
+<h1>Custom Lists Examples</h1>
 
-<h3>Unordered Lists (UL)</h3>
+<h2>Ordered List: Custom Text Color</h2>
+<ol data-cli-color="green">
+  <li>Item text in green</li>
+  <li>Another item in green</li>
+  <li>Third item in green</li>
+</ol>
 
-<p>Simple list:</p>
+<h2>Ordered List: Custom Marker Color</h2>
+<ol data-cli-marker-color="magenta bold">
+  <li>Item with magenta bold marker</li>
+  <li>Another item with magenta bold marker</li>
+</ol>
+
+<h2>Ordered List: Custom Decimal Separator</h2>
+<ol data-cli-decimal=")">
+  <li>Item with ) instead of .</li>
+  <li>Another item with )</li>
+  <li>Third item with )</li>
+</ol>
+
+<h2>Ordered List: Combined Custom Attributes</h2>
+<ol data-cli-color="cyan" data-cli-marker-color="red bold" data-cli-decimal=":">
+  <li>Cyan text with red bold marker and : separator</li>
+  <li>Same styling for all items</li>
+  <li>Third item</li>
+</ol>
+
+<h2>Unordered List: Custom Marker</h2>
+<ul data-cli-marker="★">
+  <li>Star marker</li>
+  <li>Another star</li>
+  <li>Third star</li>
+</ul>
+
+<h2>Unordered List: Custom Marker Color</h2>
+<ul data-cli-marker-color="yellow bold">
+  <li>Yellow bold bullet marker</li>
+  <li>Another yellow bold bullet</li>
+  <li>Third item</li>
+</ul>
+
+<h2>Unordered List: Combined Custom Attributes</h2>
+<ul data-cli-color="magenta" data-cli-marker-color="green bold" data-cli-marker="►">
+  <li>Magenta text with green bold triangle marker</li>
+  <li>Same styling for all items</li>
+  <li>Third item</li>
+</ul>
+
+<h2>Nested Lists with Different Customizations</h2>
+<ol data-cli-color="blue" data-cli-marker-color="red">
+  <li>Blue text, red marker
+    <ul data-cli-color="yellow" data-cli-marker="★" data-cli-marker-color="cyan">
+      <li>Nested yellow text with cyan star</li>
+      <li>Another nested item</li>
+    </ul>
+  </li>
+  <li>Back to blue text</li>
+</ol>
+
+<h2>Simple Lists (Default theme)</h2>
+
+<p>Simple unordered list:</p>
 <ul>
   <li>Coffee</li>
   <li>Tea</li>
   <li>Milk</li>
 </ul>
 
-<p>Nested unordered lists (5 levels deep):</p>
+<p>Nested unordered lists (showing depth rotation):</p>
 <ul>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>
-    Milk
+  <li>Level 1 - disc marker
     <ul>
-      <li>Coffee</li>
-      <li>Tea</li>
-      <li>
-        Milk
+      <li>Level 2 - dash marker
         <ul>
-          <li>Coffee</li>
-          <li>Tea</li>
-          <li>
-            Milk
+          <li>Level 3 - arrow marker
             <ul>
-              <li>Coffee</li>
-              <li>Tea</li>
-              <li>
-                Milk
-                <ul>
-                  <li>Coffee</li>
-                  <li>Tea</li>
-                  <li>Milk</li>
-                </ul>
-              </li>
+              <li>Level 4 - rotates back to disc</li>
             </ul>
           </li>
         </ul>
@@ -44,8 +85,6 @@
   </li>
 </ul>
 
-<h3>Ordered Lists (OL)</h3>
-
 <p>Simple ordered list:</p>
 <ol>
   <li>Coffee</li>
@@ -53,31 +92,17 @@
   <li>Milk</li>
 </ol>
 
-<p>Nested ordered lists (5 levels deep):</p>
+<p>Nested ordered lists (showing depth rotation):</p>
 <ol>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>
-    Milk
+  <li>Level 1 - numeric (1, 2, 3)
     <ol>
-      <li>Coffee</li>
-      <li>Tea</li>
-      <li>
-        Milk
+      <li>Level 2 - Roman (I, II, III)
         <ol>
-          <li>Coffee</li>
-          <li>Tea</li>
-          <li>
-            Milk
+          <li>Level 3 - Uppercase letters (A, B, C)
             <ol>
-              <li>Coffee</li>
-              <li>Tea</li>
-              <li>
-                Milk
+              <li>Level 4 - lowercase roman (i, ii, iii)
                 <ol>
-                  <li>Coffee</li>
-                  <li>Tea</li>
-                  <li>Milk</li>
+                  <li>Level 5 - lowercase letters (a, b, c)</li>
                 </ol>
               </li>
             </ol>
@@ -88,19 +113,10 @@
   </li>
 </ol>
 
-<h3>Ordered List with Start Attribute</h3>
+<h2>Ordered List with Type Attribute</h2>
 
-<p>Starting from 3:</p>
-<ol start="3">
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ol>
-
-<h3>Ordered List with Different Types</h3>
-
-<p>Type A (uppercase letters), starting from C:</p>
-<ol type="A" start="3">
+<p>Type A (uppercase letters):</p>
+<ol type="A">
   <li>Coffee</li>
   <li>Tea</li>
   <li>Milk</li>
@@ -113,73 +129,18 @@
   <li>Milk</li>
 </ol>
 
-<h3>List with Form Elements</h3>
+<h2>Unordered List with Type Attribute</h2>
 
-<ol type="I">
-  <li><input type="radio" checked /> Coffee</li>
-  <li><input type="checkbox" checked /> Tea</li>
+<p>Type square:</p>
+<ul type="square">
+  <li>Coffee</li>
+  <li>Tea</li>
   <li>Milk</li>
-</ol>
+</ul>
 
-<h3>Menu Element</h3>
-
-<p>Application menu:</p>
-<menu>
-  <li>File</li>
-  <li>Edit</li>
-  <li>View</li>
-  <li>Help</li>
-</menu>
-
-<p>Context menu:</p>
-<menu>
-  <li>Copy</li>
-  <li>Paste</li>
-  <li>Cut</li>
-  <li>Delete</li>
-  <li>Select All</li>
-</menu>
-
-<p>Toolbar menu:</p>
-<menu>
-  <li>New Document</li>
-  <li>Open File</li>
-  <li>Save</li>
-  <li>Save As</li>
-  <li>Print</li>
-  <li>Close</li>
-</menu>
-
-<p>Settings menu:</p>
-<menu>
-  <li>General Settings</li>
-  <li>Privacy & Security</li>
-  <li>Appearance</li>
-  <li>Notifications</li>
-  <li>Advanced</li>
-  <li>About</li>
-</menu>
-
-<p>Nested menu structure:</p>
-<menu>
-  <li>Home</li>
-  <li>Products
-    <menu>
-      <li>Software</li>
-      <li>Hardware</li>
-      <li>Services</li>
-    </menu>
-  </li>
-  <li>Support</li>
-  <li>Contact</li>
-</menu>
-
-<p>Command palette:</p>
-<menu>
-  <li>Run Build</li>
-  <li>Run Tests</li>
-  <li>Deploy to Production</li>
-  <li>View Logs</li>
-  <li>Database Backup</li>
-  <li>Clear Cache</li>
-</menu>
+<p>Type circle:</p>
+<ul type="circle">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
