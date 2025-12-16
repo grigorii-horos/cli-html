@@ -1,6 +1,6 @@
 {
   "name": "cli-html",
-  "version": "5.2.0",
+  "version": "5.3.0",
   "description": "Render HTML and Markdown to Terminal",
   "main": "index.js",
   "types": "index.d.ts",
