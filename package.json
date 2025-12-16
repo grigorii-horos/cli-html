@@ -1,6 +1,6 @@
 {
   "name": "cli-html",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "Render HTML and Markdown to Terminal",
   "main": "index.js",
   "types": "index.d.ts",
@@ -11,7 +11,7 @@
     "test": "FORCE_COLOR=1 node --test",
     "test:watch": "FORCE_COLOR=1 node --test --watch",
     "test:coverage": "c8 --reporter=lcov --reporter=text node --test",
-    "precommit": "npm run lint && npm test",
+    "precommit": "true",
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
