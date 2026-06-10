@@ -3,3 +3,6 @@ examples
 cli-html-*.tgz
 test
 .vscode/
+.claude/
+.superpowers/
+docs/superpowers/
