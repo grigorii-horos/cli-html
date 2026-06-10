@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>cli-html Changelog</title>
+</head>
+<body>
+
+<h1>cli-html Changelog</h1>
+
+<p>All notable changes to this project are documented here. Format based on
+<a href="https://keepachangelog.com">Keep a Changelog</a>.</p>
+
+<hr data-cli-style="double">
+
+<h2>v6.0.0 — <time datetime="2026-06-10">June 10, 2026</time></h2>
+
+<dialog>
+  <strong>Migration Note: v5 to v6</strong>
+  <p>The theme configuration format has changed. All color values are now plain
+  chalk-string format (<code>"red bold"</code>). Remove any function-based color
+  values from your config. Run <code>cli-html --validate-config</code> to check
+  your configuration file.</p>
+</dialog>
+
+<h3>Added</h3>
+<ul>
+  <li><ins>Named styles for <code>&lt;hr&gt;</code></ins>: single, double, bold, dashed, dotted via <code>hr.style</code> config</li>
+  <li><ins>Configurable <code>&lt;ruby&gt;</code>/<code>&lt;rt&gt;</code></ins>: prefix/suffix markers for annotations</li>
+  <li><ins>Box border for <code>&lt;dialog&gt;</code></ins>: mirrors <code>&lt;figure&gt;</code> and <code>&lt;fieldset&gt;</code> border system</li>
+  <li><ins>Datetime display for <code>&lt;time&gt;</code></ins>: show <code>datetime</code> attribute when <code>time.datetime.enabled: true</code></li>
+  <li><ins>Cite-as-link for <code>&lt;q&gt;</code></ins>: <code>cite</code> attribute treated as external link when enabled</li>
+  <li><ins>Inline <code>&lt;video&gt;</code>/<code>&lt;audio&gt;</code></ins>: inline placeholders showing title or filename</li>
+</ul>
+
+<h3>Breaking Changes</h3>
+<dl>
+  <dt data-cli-color="red">Theme color format</dt>
+  <dd><del>Function-based color values</del> replaced by <ins>chalk-string format only</ins>. See migration note above.</dd>
+
+  <dt data-cli-color="red">hr.marker removed as primary config</dt>
+  <dd>Use <code>hr.style</code> instead. <code>hr.marker</code> still works as an explicit character override.</dd>
+</dl>
+
+<details>
+  <summary>Full diff from v5.3.0</summary>
+  <p>See GitHub comparison for the complete change set including all internal refactoring.</p>
+</details>
+
+<hr data-cli-style="dashed">
+
+<h2>v5.3.0 — <time datetime="2026-05-15">May 15, 2026</time></h2>
+
+<h3>Added</h3>
+<ul>
+  <li><ins>Inline <code>&lt;dt&gt;</code> suffix</ins>: configurable suffix marker after term text</li>
+  <li><ins>Media placeholders</ins>: <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code>
+    now render inline title instead of nothing</li>
+</ul>
+
+<h3>Fixed</h3>
+<ul>
+  <li><code>&lt;ruby&gt;</code> color bug: was inheriting from <code>&lt;span&gt;</code> theme instead of own config</li>
+</ul>
+
+<hr data-cli-style="dashed">
+
+<h2>v5.2.0 — <time datetime="2026-04-01">April 1, 2026</time></h2>
+
+<h3>Changed</h3>
+<ul>
+  <li>Core architecture rewrite: theme values now plain strings, <code>getAttr()</code> replaces <code>getCustomAttributes()</code></li>
+  <li>Removed <code>parseStyleEntry()</code> — no longer needed</li>
+  <li>Removed <code>lib/utils/find-parrent-tag.js</code> — dead code</li>
+</ul>
+
+<hr data-cli-style="double">
+
+<h2>v5.0.0 — <time datetime="2026-01-10">January 10, 2026</time></h2>
+
+<dialog>
+  <strong>Migration Note: v4 to v5</strong>
+  <p>Input element configuration moved under <code>input.*</code> namespace.
+  Button element now uses <code>button.*</code> (separate from <code>input.button.*</code>).
+  Table sub-elements (td, th, tr, etc.) are now top-level theme keys.</p>
+</dialog>
+
+<h3>Breaking Changes</h3>
+<dl>
+  <dt data-cli-color="red">Table configuration</dt>
+  <dd>Table sub-elements moved to top-level: <del><code>table.td</code></del> replaced by <ins><code>td</code></ins></dd>
+
+  <dt data-cli-color="red">Button element</dt>
+  <dd><del><code>input.button</code></del> for the <code>&lt;button&gt;</code> HTML element replaced by <ins><code>button</code></ins></dd>
+</dl>
+
+</body>
+</html>

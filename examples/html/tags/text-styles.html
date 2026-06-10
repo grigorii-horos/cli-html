@@ -162,6 +162,49 @@ are used for handling text in different directions.</i></p>
   <kbd data-cli-color="magenta">Cmd+V</kbd>
 </p>
 
+<h3>Quote with Cite Attribute (data-cli-cite-enabled)</h3>
+
+<p>Default — double quotes, no cite indicator:</p>
+<p><q>To be or not to be, that is the question.</q></p>
+
+<p>Custom prefix/suffix markers:</p>
+<p><q data-cli-prefix-marker="«" data-cli-suffix-marker="»">Veni, vidi, vici.</q></p>
+
+<p>With cite attr — disabled by default (no external marker):</p>
+<p><q cite="https://shakespeare.example">All the world's a stage.</q></p>
+
+<p>With cite enabled (data-cli-cite-enabled="true"):</p>
+<p><q cite="https://shakespeare.example" data-cli-cite-enabled="true">All the world's a stage.</q></p>
+
+<p>Cite enabled with custom link color:</p>
+<p><q cite="https://example.com" data-cli-cite-enabled="true" data-cli-cite-color="cyan">The quick brown fox jumps over the lazy dog.</q></p>
+
+<p>Custom brackets + cite enabled:</p>
+<p><q cite="https://example.com" data-cli-prefix-marker="&ldquo;" data-cli-suffix-marker="&rdquo;" data-cli-cite-enabled="true">Form follows function.</q></p>
+
+<h3>Time with Datetime Display (data-cli-datetime-enabled)</h3>
+
+<p>Default — text only, datetime attr hidden:</p>
+<p>Published: <time datetime="2026-06-10">June 10, 2026</time></p>
+
+<p>With datetime enabled (data-cli-datetime-enabled="true"):</p>
+<p>Published: <time datetime="2026-06-10" data-cli-datetime-enabled="true">June 10, 2026</time></p>
+
+<p>ISO duration — cooking time:</p>
+<p>Prep time: <time datetime="PT45M" data-cli-datetime-enabled="true">45 minutes</time></p>
+
+<p>Historical date:</p>
+<p>Founded: <time datetime="1969-07-20" data-cli-datetime-enabled="true">Moon landing day</time></p>
+
+<p>Custom prefix/suffix markers:</p>
+<p>Event: <time datetime="2026-12-31" data-cli-datetime-enabled="true" data-cli-datetime-prefix-marker=" [" data-cli-datetime-suffix-marker="]">New Year's Eve</time></p>
+
+<p>Custom datetime color:</p>
+<p>Deadline: <time datetime="2026-09-01" data-cli-datetime-enabled="true" data-cli-datetime-color="red bold">September 1</time></p>
+
+<p>Full customization:</p>
+<p>Version: <time datetime="2026-06-10T12:00:00Z" data-cli-datetime-enabled="true" data-cli-datetime-color="cyan" data-cli-datetime-prefix-marker=" (" data-cli-datetime-suffix-marker=")">release day</time></p>
+
 <p>Sample output:
   <samp data-cli-color="green">Success!</samp>,
   <samp data-cli-color="red">Error: File not found</samp>,

@@ -1,0 +1,59 @@
+<h1>Media Element Examples (Video &amp; Audio)</h1>
+
+<h2>Video</h2>
+
+<h3>No attributes (fallback title)</h3>
+<p>Inline video: <video></video></p>
+
+<h3>With src (title from filename)</h3>
+<p>Conference talk: <video src="videos/keynote-2026.mp4"></video></p>
+
+<h3>With title attribute (explicit title wins)</h3>
+<p>Tutorial: <video src="videos/tutorial.mp4" title="Getting Started Tutorial"></video></p>
+
+<h3>Title only (no src)</h3>
+<p>Demo: <video title="Live Demo Recording"></video></p>
+
+<h2>Audio</h2>
+
+<h3>No attributes (fallback title)</h3>
+<p>Recording: <audio></audio></p>
+
+<h3>With src</h3>
+<p>Podcast: <audio src="audio/episode-42.mp3"></audio></p>
+
+<h3>With title</h3>
+<p>Pronunciation: <audio src="audio/pronunciation.mp3" title="Pronunciation Guide"></audio></p>
+
+<h2>Custom Indicator</h2>
+
+<p>Custom play marker: <video title="Demo" data-cli-indicator-marker="▶"></video></p>
+<p>Custom audio marker: <audio title="Clip" data-cli-indicator-marker="♪"></audio></p>
+<p>No indicator: <video title="Recording" data-cli-indicator-marker=""></video></p>
+
+<h2>Custom Prefix / Suffix</h2>
+
+<p>Bracketed: <video title="Tutorial" data-cli-prefix-marker="[" data-cli-suffix-marker="]"></video></p>
+<p>Labeled: <video title="Demo" data-cli-prefix-marker="Video: " data-cli-suffix-marker=""></video></p>
+<p>Parentheses: <audio title="Guide" data-cli-prefix-marker="(" data-cli-suffix-marker=")"></audio></p>
+
+<h2>Custom Colors</h2>
+
+<p>Cyan title: <video title="Webinar" data-cli-title-color="cyan bold"></video></p>
+<p>Yellow audio: <audio title="Interview" data-cli-title-color="yellow"></audio></p>
+<p>Colored indicator: <video title="Clip" data-cli-indicator-color="magenta"></video></p>
+<p>Colored prefix: <video title="Talk" data-cli-prefix-marker="▶ " data-cli-prefix-color="green" data-cli-title-color="green"></video></p>
+
+<h2>Inline in Paragraph Text</h2>
+
+<p>
+  The conference featured a keynote <video title="Opening Keynote"></video> followed by
+  a panel discussion <audio title="Panel: Future of the Web"></audio> and a hands-on
+  workshop recording <video title="Workshop Recording"></video>.
+</p>
+
+<p>
+  For pronunciation guides, listen to the audio clip
+  <audio src="audio/guide.mp3" title="Audio Pronunciation Guide"></audio>
+  embedded directly in the text flow.
+</p>

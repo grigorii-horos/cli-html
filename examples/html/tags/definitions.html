@@ -28,3 +28,49 @@
   <dt data-cli-color="blue">Term Two</dt>
   <dd data-cli-color="blue dim">Definition of term two</dd>
 </dl>
+
+<h3>Custom Term Suffix (data-cli-suffix-marker)</h3>
+
+<p>Default suffix (:: from config):</p>
+<dl>
+  <dt>Term</dt>
+  <dd>Default suffix applied automatically from config</dd>
+</dl>
+
+<p>Arrow suffix:</p>
+<dl>
+  <dt data-cli-suffix-marker=" →">HTML</dt>
+  <dd>HyperText Markup Language</dd>
+  <dt data-cli-suffix-marker=" →">CSS</dt>
+  <dd>Cascading Style Sheets</dd>
+</dl>
+
+<p>Simple colon suffix:</p>
+<dl>
+  <dt data-cli-suffix-marker=":">JavaScript</dt>
+  <dd>A programming language for the web</dd>
+</dl>
+
+<p>No suffix (empty string):</p>
+<dl>
+  <dt data-cli-suffix-marker="">Python</dt>
+  <dd>A general-purpose programming language</dd>
+  <dt data-cli-suffix-marker="">Rust</dt>
+  <dd>A systems programming language focused on safety</dd>
+</dl>
+
+<p>Colored suffix:</p>
+<dl>
+  <dt data-cli-suffix-color="yellow">Go</dt>
+  <dd>A statically typed, compiled language by Google</dd>
+  <dt data-cli-suffix-color="cyan">TypeScript</dt>
+  <dd>A typed superset of JavaScript</dd>
+</dl>
+
+<p>Custom suffix + term color:</p>
+<dl>
+  <dt data-cli-color="magenta bold" data-cli-suffix-marker=" ▸" data-cli-suffix-color="magenta">Node.js</dt>
+  <dd>JavaScript runtime built on Chrome's V8 engine</dd>
+  <dt data-cli-color="cyan bold" data-cli-suffix-marker=" ▸" data-cli-suffix-color="cyan">Deno</dt>
+  <dd>A modern runtime for JavaScript and TypeScript</dd>
+</dl>

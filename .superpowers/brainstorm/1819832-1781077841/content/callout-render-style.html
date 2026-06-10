@@ -1,0 +1,74 @@
+<h2>Callout Rendering Style</h2>
+<p class="subtitle">How should callouts look in the terminal?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Left border + icon prefix</h3>
+      <p>Colored vertical bar on the left, icon + type label on first line. Like GitHub Markdown alerts.</p>
+      <pre style="background:#0d1117;color:#c9d1d9;padding:12px;border-radius:4px;font-size:13px;margin-top:8px;border-left:4px solid #3fb950;font-family:monospace">
+<span style="color:#3fb950">│</span> <span style="color:#3fb950">✓ NOTE</span>
+<span style="color:#3fb950">│</span> This is important information about
+<span style="color:#3fb950">│</span> the current topic.
+</pre>
+      <pre style="background:#0d1117;color:#c9d1d9;padding:12px;border-radius:4px;font-size:13px;margin-top:4px;border-left:4px solid #d29922;font-family:monospace">
+<span style="color:#d29922">│</span> <span style="color:#d29922">⚠ WARNING</span>
+<span style="color:#d29922">│</span> Be careful when doing this.
+</pre>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Full box border</h3>
+      <p>Complete box with rounded/single borders, colored header line.</p>
+      <pre style="background:#0d1117;color:#c9d1d9;padding:12px;border-radius:4px;font-size:13px;margin-top:8px;font-family:monospace">
+<span style="color:#3fb950">╭─ ✓ NOTE ─────────────────╮</span>
+<span style="color:#3fb950">│</span> This is important info    <span style="color:#3fb950">│</span>
+<span style="color:#3fb950">│</span> about the current topic.  <span style="color:#3fb950">│</span>
+<span style="color:#3fb950">╰──────────────────────────╯</span>
+</pre>
+      <pre style="background:#0d1117;color:#c9d1d9;padding:12px;border-radius:4px;font-size:13px;margin-top:4px;font-family:monospace">
+<span style="color:#d29922">╭─ ⚠ WARNING ──────────────╮</span>
+<span style="color:#d29922">│</span> Be careful when doing     <span style="color:#d29922">│</span>
+<span style="color:#d29922">│</span> this.                     <span style="color:#d29922">│</span>
+<span style="color:#d29922">╰──────────────────────────╯</span>
+</pre>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Left border + indented content (no box)</h3>
+      <p>Minimalist. Just colored bar + indented text. No right border.</p>
+      <pre style="background:#0d1117;color:#c9d1d9;padding:12px;border-radius:4px;font-size:13px;margin-top:8px;font-family:monospace">
+<span style="color:#3fb950">✓ Note</span>
+<span style="color:#3fb950">▌</span> This is important information
+<span style="color:#3fb950">▌</span> about the current topic.
+</pre>
+      <pre style="background:#0d1117;color:#c9d1d9;padding:12px;border-radius:4px;font-size:13px;margin-top:4px;font-family:monospace">
+<span style="color:#d29922">⚠ Warning</span>
+<span style="color:#d29922">▌</span> Be careful when doing this.
+</pre>
+    </div>
+  </div>
+
+  <div class="option" data-choice="d" onclick="toggleSelect(this)">
+    <div class="letter">D</div>
+    <div class="content">
+      <h3>Config-driven: default = left border, override до box</h3>
+      <p>За замовчуванням — стиль A (лівий бордер). Через <code>config.yaml</code> або <code>data-cli-style</code> — можна змінити на box.</p>
+      <pre style="background:#1a1a2e;color:#e0e0e0;padding:8px;border-radius:4px;font-size:12px;margin-top:8px">callout:
+  style: border  # border | box
+  note:
+    color: green
+    icon: ✓
+  warning:
+    color: yellow
+    icon: ⚠</pre>
+    </div>
+  </div>
+</div>

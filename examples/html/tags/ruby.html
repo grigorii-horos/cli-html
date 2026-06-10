@@ -64,3 +64,26 @@ commonly used in East Asian typography (Japanese, Chinese, Korean).</i></p>
 <p>HTML: <ruby>超文本<rt>chāo wén běn</rt></ruby></p>
 <p>Computer: <ruby>電腦<rt>diàn nǎo</rt></ruby></p>
 <p>Internet: <ruby>互聯網<rt>hù lián wǎng</rt></ruby></p>
+
+<h3>Custom Annotation Brackets (data-cli-prefix-marker / data-cli-suffix-marker)</h3>
+
+<p>Square brackets:</p>
+<p><ruby>漢字<rt data-cli-prefix-marker=" [" data-cli-suffix-marker="]">かんじ</rt></ruby></p>
+
+<p>Angle brackets:</p>
+<p><ruby>東京<rt data-cli-prefix-marker=" &lt;" data-cli-suffix-marker="&gt;">とうきょう</rt></ruby></p>
+
+<p>No brackets (empty):</p>
+<p><ruby>日本<rt data-cli-prefix-marker="" data-cli-suffix-marker="">にほん</rt></ruby></p>
+
+<p>Colored brackets:</p>
+<p><ruby>勉強<rt data-cli-prefix-marker=" (" data-cli-suffix-marker=")" data-cli-prefix-color="cyan" data-cli-suffix-color="cyan">べんきょう</rt></ruby></p>
+
+<p>Custom brackets + annotation color:</p>
+<p><ruby>富士山<rt data-cli-prefix-marker=" «" data-cli-suffix-marker="»" data-cli-color="yellow bold" data-cli-prefix-color="yellow" data-cli-suffix-color="yellow">ふじさん</rt></ruby></p>
+
+<p>Multiple with different brackets in one sentence:</p>
+<p>
+  <ruby>私<rt data-cli-prefix-marker=" [" data-cli-suffix-marker="]">わたし</rt></ruby>は
+  <ruby>学生<rt data-cli-prefix-marker=" [" data-cli-suffix-marker="]">がくせい</rt></ruby>です。
+</p>

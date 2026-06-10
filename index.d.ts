@@ -63,6 +63,15 @@ export interface FigureStyle {
 }
 
 /**
+ * Dialog element style configuration
+ */
+export interface DialogStyle {
+  color?: ChalkString;
+  border?: BorderConfig;
+  padding?: PaddingConfig;
+}
+
+/**
  * Figure caption style configuration
  */
 export interface FigcaptionStyle {
@@ -270,6 +279,19 @@ export interface TableStyle {
 /**
  * Abbreviation style configuration
  */
+/**
+ * Quote element style configuration
+ */
+export interface QStyle {
+  color?: ChalkString;
+  prefix?: { marker?: string; color?: ChalkString; };
+  suffix?: { marker?: string; color?: ChalkString; };
+  cite?: {
+    enabled?: boolean;
+    color?: ChalkString;
+  };
+}
+
 export interface AbbrStyle {
   color?: ChalkString;
   title?: {
@@ -339,6 +361,7 @@ export interface OrderedListStyle {
 export interface HrStyle {
   color?: ChalkString;
   marker?: string;
+  style?: 'single' | 'double' | 'bold' | 'dashed' | 'dotted';
 }
 
 /**
@@ -451,6 +474,38 @@ export interface ImgStyle {
 }
 
 /**
+ * Video placeholder style configuration
+ */
+export interface VideoStyle {
+  indicator?: { marker?: string; color?: ChalkString; };
+  prefix?: { marker?: string; color?: ChalkString; };
+  suffix?: { marker?: string; color?: ChalkString; };
+  title?: { color?: ChalkString; };
+}
+
+/**
+ * Ruby annotation style configuration
+ */
+export interface RubyStyle {
+  color?: ChalkString;
+  rt?: {
+    color?: ChalkString;
+    prefix?: { marker?: string; color?: ChalkString; };
+    suffix?: { marker?: string; color?: ChalkString; };
+  };
+}
+
+/**
+ * Audio placeholder style configuration
+ */
+export interface AudioStyle {
+  indicator?: { marker?: string; color?: ChalkString; };
+  prefix?: { marker?: string; color?: ChalkString; };
+  suffix?: { marker?: string; color?: ChalkString; };
+  title?: { color?: ChalkString; };
+}
+
+/**
  * Keyboard input (kbd) key style configuration
  */
 export interface KbdKeyStyle {
@@ -541,6 +596,7 @@ export interface Theme {
   h6?: ChalkString | HeadingStyle;
 
   // Inline elements
+  ruby?: ChalkString | RubyStyle;
   span?: ChalkString;
   a?: ChalkString | LinkStyle;
   p?: ChalkString;
@@ -548,6 +604,7 @@ export interface Theme {
   // Box elements
   figure?: ChalkString | FigureStyle;
   figcaption?: ChalkString | FigcaptionStyle;
+  dialog?: ChalkString | DialogStyle;
   fieldset?: ChalkString | FieldsetStyle;
   details?: ChalkString | DetailsStyle;
   blockquote?: ChalkString | BlockquoteStyle;
@@ -569,7 +626,13 @@ export interface Theme {
   tableCell?: ChalkString;
 
   // Definition lists
-  dt?: ChalkString;
+  dt?: ChalkString | {
+    color?: ChalkString;
+    suffix?: {
+      marker?: string;
+      color?: ChalkString;
+    };
+  };
   dd?: ChalkString;
   dl?: ChalkString;
 
@@ -583,7 +646,16 @@ export interface Theme {
   kbd?: ChalkString | KbdStyle;
   variableTag?: ChalkString;
   mark?: ChalkString;
-  time?: ChalkString;
+  time?: ChalkString | {
+    color?: ChalkString;
+    datetime?: {
+      enabled?: boolean;
+      color?: ChalkString;
+      prefix?: { marker?: string; color?: ChalkString; };
+      suffix?: { marker?: string; color?: ChalkString; };
+    };
+  };
+  q?: ChalkString | QStyle;
   abbr?: ChalkString | AbbrStyle;
 
   // Legacy abbr properties (for backward compatibility)
@@ -607,6 +679,8 @@ export interface Theme {
   progress?: ChalkString | ProgressStyle;
   input?: InputStyle;
   img?: ImgStyle;
+  video?: VideoStyle;
+  audio?: AudioStyle;
 }
 
 /**

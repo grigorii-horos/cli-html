@@ -1,0 +1,42 @@
+<h2>Gradient Text — Style</h2>
+<p class="subtitle">Як має виглядати градієнтний текст? (емулюємо ANSI-кольори через CSS)</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Rainbow (7 кольорів ANSI по символах)</h3>
+      <p>Кожен символ — наступний колір спектру. Яскраво, ретро.</p>
+      <div style="background:#0d1117;padding:14px;border-radius:4px;font-family:monospace;font-size:18px;font-weight:bold;margin-top:8px;letter-spacing:1px">
+        <span style="color:#ff5555">H</span><span style="color:#ffb86c">e</span><span style="color:#f1fa8c">l</span><span style="color:#50fa7b">l</span><span style="color:#8be9fd">o</span><span style="color:#bd93f9">,</span><span style="color:#ff79c6"> </span><span style="color:#ff5555">W</span><span style="color:#ffb86c">o</span><span style="color:#f1fa8c">r</span><span style="color:#50fa7b">l</span><span style="color:#8be9fd">d</span><span style="color:#bd93f9">!</span>
+      </div>
+      <p style="margin-top:8px;font-size:12px;color:#888">Активується через <code>data-cli-gradient="rainbow"</code> або <code>gradient: rainbow</code> у темі</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Два кольори (start → end)</h3>
+      <p>Плавний перехід між двома ANSI-кольорами. Елегантно.</p>
+      <div style="background:#0d1117;padding:14px;border-radius:4px;font-family:monospace;font-size:18px;font-weight:bold;margin-top:8px;letter-spacing:1px">
+        <span style="color:#ff79c6">H</span><span style="color:#e87ec8">e</span><span style="color:#d183ca">l</span><span style="color:#ba88cc">l</span><span style="color:#a38dce">o</span><span style="color:#8c92d0">,</span><span style="color:#7597d2"> </span><span style="color:#5e9cd4">W</span><span style="color:#47a1d6">o</span><span style="color:#30a6d8">r</span><span style="color:#19abda">l</span><span style="color:#02b0dc">d</span><span style="color:#8be9fd">!</span>
+      </div>
+      <p style="margin-top:8px;font-size:12px;color:#888"><code>data-cli-gradient="pink,cyan"</code> — будь-які два ANSI-кольори</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Named presets + custom</h3>
+      <p>Набір вбудованих preset-ів + можливість задати свої кольори.</p>
+      <div style="background:#0d1117;padding:10px;border-radius:4px;font-family:monospace;font-size:14px;font-weight:bold;margin-top:8px">
+        <div style="margin-bottom:6px"><span style="color:#ff5555">s</span><span style="color:#ff7755">u</span><span style="color:#ff9955">n</span><span style="color:#ffbb55">s</span><span style="color:#ffdd55">e</span><span style="color:#ffff55">t</span> <span style="color:#666">← preset: "sunset"</span></div>
+        <div style="margin-bottom:6px"><span style="color:#50fa7b">o</span><span style="color:#3df5a0">c</span><span style="color:#2af0c5">e</span><span style="color:#17ebea">a</span><span style="color:#04e6ff">n</span> <span style="color:#666">← preset: "ocean"</span></div>
+        <div><span style="color:#ff79c6">n</span><span style="color:#e87ec8">e</span><span style="color:#d183ca">o</span><span style="color:#ba88cc">n</span> <span style="color:#666">← preset: "neon"</span></div>
+      </div>
+      <p style="margin-top:8px;font-size:12px;color:#888"><code>data-cli-gradient="sunset"</code> або <code>data-cli-gradient="red,yellow,green"</code></p>
+    </div>
+  </div>
+</div>

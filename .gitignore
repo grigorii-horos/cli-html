@@ -89,3 +89,6 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 package-lock.json
+
+# Superpowers IDE brainstorming state
+.superpowers/

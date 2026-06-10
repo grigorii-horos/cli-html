@@ -1,0 +1,40 @@
+<h2>Яким контентом наповнити нову full-page HTML showcase?</h2>
+<p class="subtitle">Сторінка має природньо використовувати нові фічі: <code>&lt;dialog&gt;</code>, <code>&lt;video&gt;</code>/<code>&lt;audio&gt;</code>, <code>&lt;ruby&gt;</code>, <code>&lt;time datetime&gt;</code>, <code>&lt;q cite&gt;</code>, named <code>&lt;hr&gt;</code> styles, <code>&lt;dt&gt;</code> suffix</p>
+
+<div class="options">
+  <div class="option" data-choice="article" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Technical Article</h3>
+      <p>Стаття про веб-технологію або мову. Природньо: <code>&lt;q cite&gt;</code> для цитат зі специфікацій, <code>&lt;ruby&gt;</code> для термінів з іноземних мов, <code>&lt;time datetime&gt;</code> для дат публікацій/версій, <code>&lt;hr&gt;</code> між секціями, <code>&lt;dialog&gt;</code> для "read more" блоків, <code>&lt;video&gt;</code> для демо-роликів.</p>
+      <p style="color:#6e7681;font-size:13px">Схоже на поточний <code>documentation.html</code>, але з новими елементами</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="recipe" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Recipe / How-To</h3>
+      <p>Кулінарний рецепт або інструкція. Природньо: <code>&lt;ruby&gt;</code> для назв страв азійської кухні, <code>&lt;time datetime&gt;</code> для часу приготування (ISO duration), <code>&lt;audio&gt;</code> для вимови, <code>&lt;dl&gt;&lt;dt&gt;</code> для інгредієнтів з кількістю, <code>&lt;hr&gt;</code> між кроками, <code>&lt;dialog&gt;</code> для tips/warnings, <code>&lt;q cite&gt;</code> для джерела рецепту.</p>
+      <p style="color:#6e7681;font-size:13px">Унікальний сценарій — жоден з поточних full pages такого не має</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="changelog" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Changelog / Release Notes</h3>
+      <p>Журнал змін проекту. Природньо: <code>&lt;time datetime&gt;</code> для дат релізів, <code>&lt;hr&gt;</code> різних стилів між версіями, <code>&lt;q cite&gt;</code> для цитат з issues/PRs, <code>&lt;dialog&gt;</code> для migration notes, <code>&lt;video&gt;</code> для demo записів, <code>&lt;dl&gt;&lt;dt&gt;</code> для breaking changes.</p>
+      <p style="color:#6e7681;font-size:13px">Але <code>changelog.html</code> вже є в markdown full — дублювання</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="glossary" onclick="toggleSelect(this)">
+    <div class="letter">D</div>
+    <div class="content">
+      <h3>Glossary / Encyclopedia Entry</h3>
+      <p>Глосарій або стаття-енциклопедія. Природньо: <code>&lt;ruby&gt;</code> для транскрипції термінів, <code>&lt;dl&gt;&lt;dt&gt;</code> для визначень (з suffix <code>::</code>), <code>&lt;q cite&gt;</code> для авторських цитат з посиланнями, <code>&lt;time datetime&gt;</code> для дат першого вживання, <code>&lt;audio&gt;</code> для вимови, <code>&lt;hr&gt;</code> між літерами, <code>&lt;dialog&gt;</code> для expanded definitions.</p>
+      <p style="color:#6e7681;font-size:13px">Максимальне покриття нових фіч в одному документі</p>
+    </div>
+  </div>
+</div>

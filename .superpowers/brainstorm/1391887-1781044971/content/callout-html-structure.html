@@ -1,0 +1,59 @@
+<h2>Callout Boxes — HTML Structure</h2>
+<p class="subtitle">How should callouts be written in HTML? Pick the approach that feels most natural.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3><code>&lt;aside class="note"&gt;</code></h3>
+      <p>Semantic HTML5. Uses existing <code>&lt;aside&gt;</code> tag with class to specify type.</p>
+      <pre style="background:#1a1a2e;color:#e0e0e0;padding:8px;border-radius:4px;font-size:12px;margin-top:8px">&lt;aside class="note"&gt;
+  This is a note.
+&lt;/aside&gt;
+
+&lt;aside class="warning"&gt;
+  Be careful here!
+&lt;/aside&gt;</pre>
+      <div class="pros-cons" style="margin-top:8px">
+        <div class="pros"><h4>Pros</h4><ul><li>Standard HTML5 element</li><li>Works in browsers too</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li><code>&lt;aside&gt;</code> currently renders as plain div</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3><code>data-cli-callout="note"</code> attribute</h3>
+      <p>Any block element gets callout styling via a custom attribute.</p>
+      <pre style="background:#1a1a2e;color:#e0e0e0;padding:8px;border-radius:4px;font-size:12px;margin-top:8px">&lt;div data-cli-callout="note"&gt;
+  This is a note.
+&lt;/div&gt;
+
+&lt;blockquote data-cli-callout="warning"&gt;
+  Be careful here!
+&lt;/blockquote&gt;</pre>
+      <div class="pros-cons" style="margin-top:8px">
+        <div class="pros"><h4>Pros</h4><ul><li>Flexible — works on any element</li><li>Explicit, hard to misuse</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Verbose</li><li>Non-semantic</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Both: <code>&lt;aside class="note"&gt;</code> + <code>data-cli-callout</code></h3>
+      <p>Support both approaches. <code>&lt;aside&gt;</code> as primary, attribute as fallback for any element.</p>
+      <pre style="background:#1a1a2e;color:#e0e0e0;padding:8px;border-radius:4px;font-size:12px;margin-top:8px">&lt;!-- Primary way --&gt;
+&lt;aside class="note"&gt;A note&lt;/aside&gt;
+
+&lt;!-- Also works --&gt;
+&lt;p data-cli-callout="tip"&gt;A tip&lt;/p&gt;</pre>
+      <div class="pros-cons" style="margin-top:8px">
+        <div class="pros"><h4>Pros</h4><ul><li>Maximum compatibility</li><li>Semantic primary path</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Two code paths to maintain</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

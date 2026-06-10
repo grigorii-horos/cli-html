@@ -1,0 +1,36 @@
+<h2>П'ята full-page HTML — що це?</h2>
+<p class="subtitle">A, B, C, D вже підтверджено. Обираємо п'яту:</p>
+
+<div class="options">
+  <div class="option" data-choice="profile" onclick="toggleSelect(this)">
+    <div class="letter">E</div>
+    <div class="content">
+      <h3>Author / Speaker Profile</h3>
+      <p>Профіль автора або спікера. Природньо: <code>&lt;audio&gt;</code> для вимови імені, <code>&lt;ruby&gt;</code> для імені в оригінальному script, <code>&lt;q cite&gt;</code> для цитат автора, <code>&lt;time datetime&gt;</code> для дат конференцій/публікацій, <code>&lt;video&gt;</code> для recorded talks, <code>&lt;dialog&gt;</code> для bio popup, <code>&lt;dl&gt;&lt;dt&gt;</code> для facts/credentials.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="newspaper" onclick="toggleSelect(this)">
+    <div class="letter">F</div>
+    <div class="content">
+      <h3>News Article / Press Release</h3>
+      <p>Новинна стаття. Природньо: <code>&lt;time datetime&gt;</code> для дати публікації та подій, <code>&lt;q cite&gt;</code> для прямої мови з джерелом, <code>&lt;video&gt;</code>/<code>&lt;audio&gt;</code> для media embeds, <code>&lt;hr&gt;</code> named styles між секціями, <code>&lt;dialog&gt;</code> для "related stories", <code>&lt;ruby&gt;</code> для іноземних імен.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="museum" onclick="toggleSelect(this)">
+    <div class="letter">G</div>
+    <div class="content">
+      <h3>Museum / Exhibition Entry</h3>
+      <p>Опис музейного експонату або виставки. Природньо: <code>&lt;ruby&gt;</code> для назв мовою оригіналу, <code>&lt;time datetime&gt;</code> для датування (~3000 BCE), <code>&lt;q cite&gt;</code> для цитат з каталогів, <code>&lt;audio&gt;</code> для audio guide, <code>&lt;video&gt;</code> для 3D tour, <code>&lt;dialog&gt;</code> для provenance details, <code>&lt;dl&gt;&lt;dt&gt;</code> для metadata (матеріал, розміри, місцезнаходження).</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="academic" onclick="toggleSelect(this)">
+    <div class="letter">H</div>
+    <div class="content">
+      <h3>Academic Abstract / Research Paper</h3>
+      <p>Академічна стаття з абстрактом. Природньо: <code>&lt;ruby&gt;</code> для термінів різними мовами, <code>&lt;q cite&gt;</code> для цитат джерел з DOI/URL, <code>&lt;time datetime&gt;</code> для дат подання/прийняття, <code>&lt;hr&gt;</code> між розділами, <code>&lt;dl&gt;&lt;dt&gt;</code> для metadata, <code>&lt;dialog&gt;</code> для footnotes/references.</p>
+    </div>
+  </div>
+</div>

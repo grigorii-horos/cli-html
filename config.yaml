@@ -178,7 +178,7 @@ theme:
   samp:
     color: yellowBright
     prefix:
-      marker: '$ '
+      marker: ''
       color: green dim
     suffix:
       marker: ''
@@ -209,8 +209,28 @@ theme:
         marker: ')'
         color: gray
 
+  ruby:
+    color: ''      # Ruby base text color
+    rt:
+      color: gray dim  # Annotation text color
+      prefix:
+        marker: ' ('
+        color: gray dim
+      suffix:
+        marker: ')'
+        color: gray dim
+
   time:
     color: cyan
+    datetime:
+      enabled: false  # Show datetime attribute value after text
+      color: gray dim
+      prefix:
+        marker: ' ('
+        color: gray dim
+      suffix:
+        marker: ')'
+        color: gray dim
 
   sub:
     color: ''
@@ -275,6 +295,18 @@ theme:
       position: after  # before or after
       spacing: ' '
 
+  q:
+    color: ''   # Quoted text color
+    prefix:
+      marker: '"'
+      color: ''
+    suffix:
+      marker: '"'
+      color: ''
+    cite:
+      enabled: false  # Style quoted text as external link when cite attr present
+      color: magenta  # Link color (separate from a.color)
+
   # ========
   # LISTS
   # ========
@@ -326,6 +358,9 @@ theme:
 
   dt:
     color: blue bold  # Definition term color
+    suffix:
+      marker: ' ::'  # Suffix after term
+      color: gray dim
 
   dd:
     color: cyan  # Definition description color
@@ -634,6 +669,32 @@ theme:
   # MEDIA
   # ========
 
+  video:
+    indicator:
+      marker: '▶'
+      color: cyan
+    prefix:
+      marker: '['
+      color: gray
+    suffix:
+      marker: ']'
+      color: gray
+    title:
+      color: cyan
+
+  audio:
+    indicator:
+      marker: '♪'
+      color: cyan
+    prefix:
+      marker: '['
+      color: gray
+    suffix:
+      marker: ']'
+      color: gray
+    title:
+      color: cyan
+
   img:
     indicator:
       marker: '!'  # Prefix marker (like Markdown)
@@ -652,8 +713,9 @@ theme:
   # ========
 
   hr:
-    color: gray  # Line color
-    marker: '─'  # Character for the line
+    color: gray    # Line color
+    style: single  # single | double | bold | dashed | dotted
+    marker: ''     # Explicit character override (overrides style when non-empty)
 
   figure:
     color: gray  # Content color
@@ -711,6 +773,15 @@ theme:
 
   dialog:
     color: ''  # Dialog container color
+    border:
+      color: cyan    # Border color
+      style: round   # round | single | double | bold | classic
+      dim: false
+    padding:
+      top: 0
+      bottom: 0
+      left: 1
+      right: 1
 
   # ========
   # LEGACY / DEPRECATED ELEMENTS

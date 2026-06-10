@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Character Encoding and Unicode: A Developer's Guide</title>
+</head>
+<body>
+
+<article>
+
+<header>
+  <h1>Character Encoding and Unicode: A Developer's Guide</h1>
+  <p>
+    <small>
+      Published <time datetime="2026-06-01">June 1, 2026</time> ·
+      Updated <time datetime="2026-06-10">June 10, 2026</time> ·
+      <strong>15 min read</strong>
+    </small>
+  </p>
+</header>
+
+<hr>
+
+<h2>Introduction</h2>
+
+<p>
+  Every string in your program is a sequence of characters. But what is a character?
+  The answer has been contentious for decades. <abbr title="American Standard Code for Information Interchange">ASCII</abbr>
+  gave us 128 symbols. <abbr title="International Organization for Standardization">ISO</abbr>-8859 tried to extend that.
+  Then came <dfn>Unicode</dfn> — a universal character set designed to represent every writing system on Earth.
+</p>
+
+<p>
+  As <q cite="https://unicode.org/standard/WhatIsUnicode.html">Unicode provides a unique number for every character,
+  no matter what the platform, no matter what the program, no matter what the language.</q>
+  That promise changed how we think about text.
+</p>
+
+<hr>
+
+<h2>A Brief History</h2>
+
+<p>
+  The Unicode Standard was first published in
+  <time datetime="1991">1991</time>, with version 1.0 covering 7,129 characters.
+  Today, Unicode <time datetime="2023-09-12">15.1</time> defines 149,813 characters
+  across 161 scripts.
+</p>
+
+<figure>
+  <pre>
+  Unicode versions over time:
+  1.0  (1991) -- 7,129 characters
+  3.0  (1999) -- 49,194 characters
+  6.0  (2010) -- 109,449 characters
+  15.1 (2023) -- 149,813 characters
+  </pre>
+  <figcaption>Growth of the Unicode character repertoire</figcaption>
+</figure>
+
+<hr>
+
+<h2>Scripts and Writing Systems</h2>
+
+<p>Unicode covers writing systems from across history and geography. Here are a few examples:</p>
+
+<dl>
+  <dt>Latin</dt>
+  <dd>Used by most European languages, including English, French, Spanish, German.</dd>
+
+  <dt>CJK Unified Ideographs</dt>
+  <dd>
+    Shared characters for <ruby>漢字<rt>hànzì</rt></ruby> (Chinese),
+    <ruby>漢字<rt>かんじ</rt></ruby> (Japanese kanji), and
+    <ruby>한자<rt>hanja</rt></ruby> (Korean).
+  </dd>
+
+  <dt>Arabic</dt>
+  <dd>Right-to-left script used by Arabic, Persian, Urdu, and other languages.</dd>
+
+  <dt>Devanagari</dt>
+  <dd>Used for Hindi (<ruby>हिन्दी<rt>hindī</rt></ruby>), Sanskrit, Nepali, and others.</dd>
+</dl>
+
+<hr>
+
+<h2>UTF-8: The Dominant Encoding</h2>
+
+<p>
+  <dfn><abbr title="Unicode Transformation Format">UTF</abbr>-8</dfn> encodes Unicode as 1-4 bytes per character.
+  ASCII characters (U+0000 to U+007F) use a single byte — making UTF-8 backward-compatible with ASCII.
+</p>
+
+<p>
+  As <q cite="https://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</q>,
+  it has become the default encoding for the web. As of
+  <time datetime="2024-01-01">2024</time>, over 98% of websites use UTF-8.
+</p>
+
+<pre><code class="language-javascript">// Always specify encoding explicitly
+const fs = require('fs');
+const text = fs.readFileSync('file.txt', 'utf8');
+console.log(text.length);        // character count
+console.log(Buffer.byteLength(text, 'utf8'));  // byte count</code></pre>
+
+<blockquote>
+  <p><strong>Key insight:</strong> <code>string.length</code> in JavaScript counts UTF-16 code units,
+  not Unicode code points. For emoji and rare CJK characters, these differ.</p>
+</blockquote>
+
+<hr>
+
+<h2>Normalization</h2>
+
+<p>
+  Unicode includes multiple ways to represent the same character.
+  The letter <strong>e&#769;</strong> can be encoded as a single precomposed character (U+00E9)
+  or as <strong>e</strong> + combining acute accent (U+0065 U+0301).
+  Both look identical but compare as unequal without normalization.
+</p>
+
+<p>
+  The four normalization forms are <abbr title="Canonical Decomposition">NFD</abbr>,
+  <abbr title="Canonical Decomposition, followed by Canonical Composition">NFC</abbr>,
+  <abbr title="Compatibility Decomposition">NFKD</abbr>, and
+  <abbr title="Compatibility Decomposition, followed by Canonical Composition">NFKC</abbr>.
+  For most applications, <strong>NFC</strong> is the right choice.
+</p>
+
+<hr>
+
+<h2>Video Resources</h2>
+
+<p>
+  For a visual introduction, see the talk
+  <video title="Unicode: The Secret of a, n, and emoji (Tom Scott)" src="https://youtube.example/unicode"></video>
+  and the conference presentation
+  <video title="Unicode Internals — PyCon 2023"></video>.
+</p>
+
+<dialog>
+  <h3>Further Reading</h3>
+  <ul>
+    <li><cite>The Unicode Standard</cite> — <a href="https://unicode.org">unicode.org</a></li>
+    <li><q cite="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">The Absolute Minimum Every Software Developer Must Know About Unicode</q> — Joel Spolsky, <time datetime="2003-10-08">2003</time></li>
+    <li><abbr title="Request for Comments">RFC</abbr> 3629: UTF-8, a transformation format of ISO 10646</li>
+  </ul>
+</dialog>
+
+</article>
+
+</body>
+</html>

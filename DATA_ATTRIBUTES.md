@@ -161,6 +161,8 @@ These attributes work on most elements:
 
 ## Text Elements
 
+### Kbd, Samp, Sub, Sup
+
 For inline text elements like `<kbd>`, `<samp>`, `<sub>`, `<sup>`:
 
 | Attribute | Type | Description | Example |
@@ -169,6 +171,18 @@ For inline text elements like `<kbd>`, `<samp>`, `<sub>`, `<sup>`:
 | `data-cli-prefix-color` | string | Prefix color | `data-cli-prefix-color="green"` |
 | `data-cli-suffix` | string | Suffix marker text | `data-cli-suffix=" >"` |
 | `data-cli-suffix-color` | string | Suffix color | `data-cli-suffix-color="gray"` |
+
+### Quote (`<q>`)
+
+| Attribute | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `data-cli-color` | string | Quoted text color | `data-cli-color="cyan"` |
+| `data-cli-prefix-marker` | string | Opening quote character | `data-cli-prefix-marker="""` |
+| `data-cli-prefix-color` | string | Opening quote color | `data-cli-prefix-color="gray"` |
+| `data-cli-suffix-marker` | string | Closing quote character | `data-cli-suffix-marker="""` |
+| `data-cli-suffix-color` | string | Closing quote color | `data-cli-suffix-color="gray"` |
+| `data-cli-cite-enabled` | boolean | Style text as link when cite attribute present | `data-cli-cite-enabled="true"` |
+| `data-cli-cite-color` | string | Link color when cite enabled | `data-cli-cite-color="magenta"` |
 
 ---
 
