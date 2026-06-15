@@ -115,7 +115,7 @@ theme:
         marker: "▪"
       circle:
         color: magenta
-        marker: "⚬"
+        marker: "◦"
     indent: "  "            # Indentation for nested items
 ```
 
@@ -127,7 +127,7 @@ theme:
   - `square.color` - Color for square marker
   - `square.marker` - Marker symbol for square (default: "▪")
   - `circle.color` - Color for circle marker
-  - `circle.marker` - Marker symbol for circle (default: "⚬")
+  - `circle.marker` - Marker symbol for circle (default: "◦")
 - `indent` - Indentation string for nested items
 
 **HTML Attribute Support:**
@@ -582,7 +582,7 @@ theme:
         marker: "▪"
       circle:
         color: magenta
-        marker: "⚬"
+        marker: "◦"
     indent: "  "
   ol:
     color: white

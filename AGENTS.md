@@ -330,7 +330,7 @@ theme:
         marker: '▪'
       circle:
         color: cyanBright
-        marker: '⚬'
+        marker: '◦'
     indent: '  '
 
   # Tables
@@ -1091,7 +1091,7 @@ ul:
       marker: '▪'
     circle:
       color: cyanBright
-      marker: '⚬'
+      marker: '◦'
   indent: '  '
 ```
 

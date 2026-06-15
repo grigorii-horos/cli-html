@@ -89,7 +89,7 @@ All examples in `tags-custom/` demonstrate the full customization API using `dat
 </ul>
 
 <ul type="circle">
-  <li>Circle marker (⚬)</li>
+  <li>Circle marker (◦)</li>
 </ul>
 
 <!-- Custom markers with data-cli-* attributes -->

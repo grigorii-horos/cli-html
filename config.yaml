@@ -320,9 +320,9 @@ theme:
       square:  # Square marker (▪)
         color: yellowBright
         marker: '▪'
-      circle:  # Circle marker (⚬)
+      circle:  # Circle marker (◦)
         color: cyanBright
-        marker: '⚬'
+        marker: '◦'
     indent: '  '  # Indentation for nested lists
 
   ol:
@@ -509,7 +509,7 @@ theme:
         color: ''  # Hex value color (empty = no color)
 
     password:
-      char: '*'  # Character to use for masking password (alternatives: *, ●, ⚫)
+      char: '*'  # Character to use for masking password (alternatives: *, ●)
       count: 6  # Number of masking characters to display
       color: gray  # Password mask color
 
@@ -796,7 +796,7 @@ theme:
     animation:
       enabled: false  # Enable animation indicator
       indicator:
-        marker: '⚡'  # Blink indicator
+        marker: '↯'  # Blink indicator
         color: yellow
         position: both  # before, after, or both
 

@@ -449,7 +449,7 @@ theme:
         marker: "▪"
       circle:
         color: "cyanBright"
-        marker: "⚬"
+        marker: "◦"
     indent: "  "  # Indentation for nested items
   hr: "gray"
   progress:
@@ -507,7 +507,7 @@ const customTheme = {
     markers: {
       disc: { color: "green", marker: "•" },
       square: { color: "yellow", marker: "▪" },
-      circle: { color: "cyan", marker: "⚬" }
+      circle: { color: "cyan", marker: "◦" }
     },
     indent: "  "
   },
