@@ -77,7 +77,6 @@
     "markdown-it-task-lists": "^2.1.1",
     "@mdit/plugin-alert": "^0.22.1",
     "normalize-html-whitespace": "^1.0.0",
-    "number-to-alphabet": "^1.0.0",
     "parse5": "^8.0.0",
     "romanize": "^1.1.1",
     "supports-hyperlinks": "^4.3.0",
