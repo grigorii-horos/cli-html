@@ -62,15 +62,18 @@ HTML via `react-dom`, then drawn by the same renderer used for HTML and Markdown
 
 ```sh
 # Render a JSX file
-jsx examples/jsx/demo.jsx
+jsx examples/jsx/full/demo.jsx
 
 # With a custom theme config
-jsx examples/jsx/demo.jsx --config ./theme.yaml
+jsx examples/jsx/full/demo.jsx --config ./theme.yaml
 ```
 
 The file's `default` export may be a React element (`export default <App />`) or a
 component (`export default App`). Neighbouring modules resolve relative to the
 file; `react` / `react-dom` are provided by `cli-html` itself.
+
+More examples (components, data-driven tables, dashboards, boxed layouts) live in
+[examples/jsx](examples/jsx).
 
 ## Usage as module
 

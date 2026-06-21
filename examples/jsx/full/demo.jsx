@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Quick tour of cli-html's JSX rendering.
+
 const Feature = ({ name, children }) => (
   <>
     <h2>{name}</h2>
@@ -11,7 +13,7 @@ export default (
   <>
     <h1>cli-html · JSX demo</h1>
     <p>
-      Run with <code>jsx examples/jsx/demo.jsx</code>. JSX is transpiled,
+      Run with <code>jsx examples/jsx/full/demo.jsx</code>. JSX is transpiled,
       rendered to HTML via react-dom, then drawn to the terminal by cli-html.
     </p>
     <Feature name="Components">
