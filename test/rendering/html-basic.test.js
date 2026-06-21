@@ -151,6 +151,25 @@ describe('HTML Basic Rendering', () => {
       assert.ok(result.includes('Cell 1'));
       assert.ok(result.includes('Cell 2'));
     });
+
+    it('should render all rows of a multi-row tfoot', () => {
+      const html = `
+        <table>
+          <tbody>
+            <tr><td>Item</td><td>1</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td>Subtotal</td><td>10</td></tr>
+            <tr><td>Tax</td><td>2</td></tr>
+            <tr><td>Total</td><td>12</td></tr>
+          </tfoot>
+        </table>
+      `;
+      const result = renderHTML(html);
+      assert.ok(result.includes('Subtotal'));
+      assert.ok(result.includes('Tax'));
+      assert.ok(result.includes('Total'));
+    });
   });
 
   describe('Edge Cases', () => {
