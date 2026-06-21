@@ -775,6 +775,26 @@ export function renderHTML(html: string, theme?: Theme | Config): string;
 export function renderMarkdown(markdown: string, theme?: Theme | Config): string;
 
 /**
+ * Renders a React/JSX element or component to formatted terminal output.
+ *
+ * `react` and `react-dom` are loaded lazily, so importing cli-html for plain
+ * HTML/Markdown rendering never pays for them; they ship as dependencies.
+ *
+ * @param jsx - A React element (e.g. `<App />`) or a component to instantiate
+ * @param theme - Optional custom theme configuration
+ * @returns Promise resolving to formatted terminal output
+ *
+ * @example
+ * ```tsx
+ * import { renderJSX } from 'cli-html';
+ *
+ * const App = () => <h1>Hello from JSX</h1>;
+ * console.log(await renderJSX(<App />));
+ * ```
+ */
+export function renderJSX(jsx: unknown, theme?: Theme | Config): Promise<string>;
+
+/**
  * Default export - alias for renderHTML
  *
  * @param html - HTML content to render

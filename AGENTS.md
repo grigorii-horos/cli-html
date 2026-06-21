@@ -40,7 +40,8 @@ See [Important Architecture Principles](#important-architecture-principles) for 
 cli-html/
 ├── bin/                    # CLI executables
 │   ├── html.js            # HTML renderer CLI
-│   └── markdown.js        # Markdown renderer CLI
+│   ├── markdown.js        # Markdown renderer CLI
+│   └── jsx.js             # JSX renderer CLI (transpile + react-dom + renderHTML)
 ├── lib/                   # Core library
 │   ├── tags/             # HTML tag implementations
 │   │   ├── headers.js    # h1-h6 tags

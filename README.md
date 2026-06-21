@@ -55,6 +55,23 @@ md examples/markdown/full/gfm-features.md
 - ✓ **Insert/Mark** - `++inserted++` and `==marked==` text
 - ✓ **Abbreviations** - `*[HTML]: Hyper Text Markup Language`
 
+### JSX Rendering
+
+Render React/JSX files straight to the terminal. JSX is transpiled, rendered to
+HTML via `react-dom`, then drawn by the same renderer used for HTML and Markdown:
+
+```sh
+# Render a JSX file
+jsx examples/jsx/demo.jsx
+
+# With a custom theme config
+jsx examples/jsx/demo.jsx --config ./theme.yaml
+```
+
+The file's `default` export may be a React element (`export default <App />`) or a
+component (`export default App`). Neighbouring modules resolve relative to the
+file; `react` / `react-dom` are provided by `cli-html` itself.
+
 ## Usage as module
 
 ```sh
@@ -70,6 +87,7 @@ For practical, runnable examples of using `cli-html` and `cli-markdown` as libra
 - **[custom-theme.js](examples/library-usage/custom-theme.js)** - Custom theming examples (dark, light, vibrant themes)
 - **[dynamic-content.js](examples/library-usage/dynamic-content.js)** - Generating content from data (reports, dashboards, changelogs)
 - **[file-reader.js](examples/library-usage/file-reader.js)** - Reading and rendering files from disk
+- **[jsx-basic.js](examples/library-usage/jsx-basic.js)** - Rendering React/JSX with `renderJSX`
 
 Run any example:
 ```bash
@@ -173,6 +191,34 @@ const customTheme = {
 
 const markdown = '# Title\n\nParagraph with `code`.';
 console.log(renderMarkdown(markdown, customTheme));
+```
+
+#### `renderJSX(jsx, theme?)`
+
+Renders a React/JSX element or component to formatted terminal output.
+
+`react` and `react-dom` are loaded lazily, so importing `cli-html` for plain
+HTML/Markdown rendering never pays for them.
+
+**Parameters:**
+- `jsx` (React element | component) - e.g. `<App />` or `App`
+- `theme` (object, optional) - Custom theme configuration (see [Customizing Styles](#customizing-styles))
+
+**Returns:** `Promise<string>` - Formatted terminal output (async)
+
+**Example:**
+
+```jsx
+import { renderJSX } from 'cli-html';
+
+const App = () => (
+  <>
+    <h1>Hello from JSX</h1>
+    <p>Rendered with <strong>cli-html</strong></p>
+  </>
+);
+
+console.log(await renderJSX(<App />));
 ```
 
 #### Default Export: `cliHtml(html, theme?)`

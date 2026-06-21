@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-`cli-html` is a terminal renderer for HTML and Markdown with GitHub Flavored Markdown support, syntax highlighting, and extensive theming. It can be used both as a CLI tool (`html`, `markdown`, `md` commands) and as a Node.js library (`renderHTML()`, `renderMarkdown()`).
+`cli-html` is a terminal renderer for HTML and Markdown with GitHub Flavored Markdown support, syntax highlighting, and extensive theming. It can be used both as a CLI tool (`html`, `markdown`, `md`, `jsx` commands) and as a Node.js library (`renderHTML()`, `renderMarkdown()`, `renderJSX()`).
 
 ## Common Commands
 
@@ -35,6 +35,7 @@ node examples/library-usage/markdown-basic.js   # Markdown rendering example
 1. **Entry Point** (`index.js`):
    - `renderHTML(html, theme)` - Parses HTML with parse5, applies theme, renders to terminal
    - `renderMarkdown(markdown, theme)` - Converts Markdown to HTML via markdown-it, then renders
+   - `renderJSX(jsx, theme)` - Renders a React element/component to HTML via react-dom, then renders (async; react/react-dom loaded lazily)
 
 2. **Tag System** (`lib/tags.js` + `lib/tags/*`):
    - Every HTML tag maps to a handler function
