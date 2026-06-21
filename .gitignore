@@ -92,3 +92,4 @@ package-lock.json
 
 # Superpowers IDE brainstorming state
 .superpowers/
+.superpowers/brainstorm/

@@ -1,5 +1,0 @@
-{"type":"click","text":"A\n    \n      single — поточний default\n      ──────────────────────────────────────","choice":"single","id":null,"timestamp":1781083532063}
-{"type":"click","text":"B\n    \n      double\n      ══════════════════════════════════════","choice":"double","id":null,"timestamp":1781083532479}
-{"type":"click","text":"C\n    \n      bold\n      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━","choice":"bold","id":null,"timestamp":1781083533823}
-{"type":"click","text":"D\n    \n      dashed\n      ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌","choice":"dashed","id":null,"timestamp":1781083534509}
-{"type":"click","text":"E\n    \n      dotted\n      ··········································","choice":"dotted","id":null,"timestamp":1781083535307}
