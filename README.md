@@ -69,7 +69,7 @@ curl -s https://example.com | html
 
 This will produce the following:
 
-![Screenshot of cli-html](./images/html.png)
+![Screenshot of cli-html](https://raw.githubusercontent.com/grigorii-horos/cli-html/master/images/html.png)
 
 ### Markdown Rendering
 
