@@ -28,7 +28,7 @@
     "npm": ">=8.0.0"
   },
   "author": "Grigorii Horos",
-  "license": "GPL3",
+  "license": "GPL-3.0-or-later",
   "keywords": [
     "html",
     "markdown",
