@@ -294,16 +294,14 @@ h1:
 1. **Create tag implementation** in `lib/tags/your-tag.js`:
 ```javascript
 import { blockTag } from '../tag-helpers/block-tag.js';
-import { getCustomAttributes } from '../utilities.js';
+import { getAttr } from '../core/attr.js';
 
 export const yourTag = (tag, context) => {
-  const custom = getCustomAttributes(tag);
-
   return blockTag(
     tag,
     context,
-    custom.yourTagColor || context.theme.yourTag?.color,
-    custom.yourTagMarker || context.theme.yourTag?.marker || '> '
+    getAttr(tag, 'color') || context.theme.yourTag?.color,
+    getAttr(tag, 'marker') || context.theme.yourTag?.marker || '> '
   );
 };
 ```
@@ -335,18 +333,7 @@ const yourTagStyle = parseStyleEntry(
 );
 ```
 
-5. **Add custom attributes** in `lib/utilities.js` (if needed):
-```javascript
-export const getCustomAttributes = (tag) => {
-  return {
-    // ... existing attributes
-    yourTagColor: getAttribute(tag, 'data-cli-your-tag-color', null),
-    yourTagMarker: getAttribute(tag, 'data-cli-your-tag-marker', null),
-  };
-};
-```
-
-6. **Update TypeScript types** in `index.d.ts`:
+5. **Update TypeScript types** in `index.d.ts`:
 ```typescript
 export interface YourTagStyle {
   color?: ChalkString;
@@ -359,7 +346,7 @@ export interface ThemeConfig {
 }
 ```
 
-7. **Add example** in `examples/html/tags/your-tag.html`:
+6. **Add example** in `examples/html/tags/your-tag.html`:
 ```html
 <!DOCTYPE html>
 <html>
@@ -371,21 +358,22 @@ export interface ThemeConfig {
 </html>
 ```
 
-8. **Generate screenshot** (if applicable):
+7. **Generate screenshot** (if applicable):
 ```bash
 node scripts/generate-screenshots.js
 ```
 
 ### Adding Custom data-cli-* Attributes
 
-All custom attributes must be registered in `lib/utilities.js` in the `getCustomAttributes()` function. This is the single location where ALL `data-cli-*` attributes are extracted.
+You do not need to register custom attributes anymore! Use `getAttr(tag, 'dot.path')` from `lib/core/attr.js` inside your tag implementation. It automatically translates the dot path to the `data-cli-` prefix and reads it from the tag.
 
 Example for input elements:
 ```javascript
+import { getAttr } from '../core/attr.js';
+
 // For input color
-colorIndicator: getAttribute(tag, 'data-cli-color-indicator', null),
-colorOpenBracket: getAttribute(tag, 'data-cli-color-open-bracket', null),
-colorCloseBracket: getAttribute(tag, 'data-cli-color-close-bracket', null),
+const colorIndicator = getAttr(tag, 'color.indicator');
+const colorOpenBracket = getAttr(tag, 'color.open.bracket');
 ```
 
 ### Theme Color Function Pattern
@@ -543,10 +531,10 @@ if (getAttribute(tag, 'type', 'text') === 'email') {
 6. **Never hardcode fallbacks** - Use theme values from `config.yaml`. If a value is missing from config, add it there instead of hardcoding it in the implementation. When accessing theme values, avoid redundant fallback chains:
    ```javascript
    // ❌ WRONG: Redundant fallbacks when value exists in config.yaml
-   const marker = custom.external.marker || theme.external?.marker || '↗';
+   const marker = getAttr(tag, 'external.marker') || theme.external?.marker || '↗';
 
    // ✅ CORRECT: Trust config.yaml defaults
-   const marker = custom.external.marker || theme.external?.marker;
+   const marker = getAttr(tag, 'external.marker') || theme.external?.marker;
    ```
    Only use hardcoded fallbacks for truly dynamic or computed values that cannot be in config.yaml.
 
@@ -606,33 +594,10 @@ if (getAttribute(tag, 'type', 'text') === 'email') {
       - ❌ Wrong: `data-cli-button-prefix-marker` (redundant "button-" prefix)
     - **Keep ALL intermediate levels**: For clarity and consistency, include all nested object names
       - This makes mapping straightforward and predictable
-    - All attribute extraction happens in `lib/utilities.js` via `getCustomAttributes()`
 
-14. **Custom attributes structure is nested** - The `custom` object returned by `getCustomAttributes()` uses nested structure for related attributes:
-    - **Flat attributes** for simple values: `custom.color`, `custom.marker`, `custom.border`
-    - **Nested objects** for grouped attributes:
-      ```javascript
-      // OLD (flat):
-      custom.numbersEnabled
-      custom.numbersColor
-      custom.gutterEnabled
-      custom.gutterMarker
-      custom.gutterColor
-
-      // NEW (nested):
-      custom.numbers.enabled
-      custom.numbers.color
-      custom.gutter.enabled
-      custom.gutter.marker
-      custom.gutter.color
-      ```
-    - **Examples of nested structures**:
-      - Title: `custom.title.enabled`, `custom.title.color`, `custom.title.prefix.marker`, `custom.title.prefix.color`
-      - External links: `custom.external.enabled`, `custom.external.marker`, `custom.external.color`
-      - Numbers: `custom.numbers.enabled`, `custom.numbers.color`
-      - Radio buttons: `custom.radio.checked.marker`, `custom.radio.prefix.color`
-      - Range input: `custom.range.filled`, `custom.range.filledColor`, `custom.range.thumb`
-    - This structure mirrors the YAML config structure and makes the code more maintainable
+14. **Custom attributes access via getAttr()** - Instead of `getCustomAttributes()`, use `getAttr(tag, 'path.to.prop')` from `lib/core/attr.js`:
+    - This automatically maps `getAttr(tag, 'numbers.enabled')` to reading `data-cli-numbers-enabled`.
+    - Allows accessing nested attributes cleanly in code.
 
 15. **Update types, documentation, and examples in proper locations** - When adding or modifying features, ALWAYS update all related files:
     - **TypeScript types**: Update `index.d.ts` for all public API changes (theme configuration, render options, etc.)

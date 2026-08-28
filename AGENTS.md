@@ -873,25 +873,17 @@ For code blocks, custom attributes can be placed on either `<pre>` or `<code>` t
 
 ### Adding New Custom Attributes
 
-1. **Update `lib/utilities.js`:**
-```javascript
-export const getCustomAttributes = (tag) => {
-  return {
-    // ... existing attributes
-    newAttribute: getAttribute(tag, 'data-cli-new-attribute', null),
-  };
-};
-```
-
-2. **Update tag implementation:**
+1. **Update tag implementation:**
 ```javascript
 import chalkString from 'chalk-string';
+import { getAttr } from '../core/attr.js';
 
 export const myTag = (tag, context) => {
-  const custom = getCustomAttributes(tag);
-
-  // ✅ CORRECT: Use theme value directly (no fallback)
-  const value = custom.newAttribute || context.theme.myTag.defaultValue;
+  // Use getAttr which automatically maps 'path.to.prop' to 'data-cli-path-to-prop'
+  // ✅ CORRECT: Check custom attribute first, fallback to theme
+  const customValue = getAttr(tag, 'myTag.defaultValue');
+  const themeValue = context.theme.myTag?.defaultValue;
+  const value = customValue || themeValue;
 
   // Apply color using chalkString
   const coloredValue = chalkString(value, { colors: true })('text content');
@@ -900,7 +892,7 @@ export const myTag = (tag, context) => {
 };
 ```
 
-3. **Update config.yaml** (if needed):
+2. **Update config.yaml** (if needed):
 ```yaml
 theme:
   myTag:
@@ -920,11 +912,12 @@ const styledText = chalkString('red bold', { colors: true })('Hello');
 const styledText = chalkString('red bold')('Hello');  // Missing { colors: true }
 ```
 
-4. **Add examples:**
+3. **Add examples:**
 - Create example in `examples/html/tags-custom/`
 - Update README.md documentation
+- Update `DATA_ATTRIBUTES.md` documentation
 
-5. **Synchronize with config.yaml:**
+4. **Synchronize with config.yaml:**
 - When adding new theme properties, ALWAYS update `config.yaml` first
 - Then update AGENTS.md "Theme Structure" section to match exactly
 - Verify all examples use the same default values as `config.yaml`
@@ -946,40 +939,31 @@ theme:
       color: "cyan"  # Feature-specific color
 ```
 
-**2. Update lib/utils/get-theme.js:**
-Add the new element with its nested structure to extraKeys:
+**2. Update tag implementation (lib/tags/my-element.js):**
 ```javascript
-myElement: parseStyleEntry(
-  customTheme.myElement,
-  baseTheme.myElement,
-  ["specialFeature"]  // Include nested object in extraKeys
-),
-```
+import { getAttr } from '../core/attr.js';
 
-**3. Update tag implementation (lib/tags/my-element.js):**
-```javascript
 export const myElement = inlineTag((value, tag, context) => {
-  const custom = getCustomAttributes(tag);
   const theme = context.theme.myElement || {};
   const specialFeature = theme.specialFeature || {};
 
-  const styledValue = applyCustomColor(
-    custom.color,
+  const customColor = getAttr(tag, 'color');
+  const styledValue = applyThemeColor(
+    customColor,
     theme.color,
-    value,
-    chalkString
+    value
   );
 
   // Check if special feature is enabled
-  const isEnabled = specialFeature.enabled === true;
+  const isEnabled = getAttr(tag, 'specialFeature.enabled') ?? specialFeature.enabled === true;
   if (!isEnabled) {
     return styledValue;
   }
 
   // Apply special feature
-  const style = specialFeature.style || 'simple';
-  const marker = specialFeature.marker || '→';
-  const featureColor = specialFeature.color || '';
+  const style = getAttr(tag, 'specialFeature.style') || specialFeature.style || 'simple';
+  const marker = getAttr(tag, 'specialFeature.marker') || specialFeature.marker || '→';
+  const featureColor = getAttr(tag, 'specialFeature.color') || specialFeature.color || '';
 
   const styledMarker = featureColor
     ? chalkString(featureColor, { colors: true })(marker)
@@ -1126,13 +1110,13 @@ node bin/html.js your-test-file.html
 ### Pattern 1: Simple Color Customization
 
 ```javascript
-export const myTag = (tag, context) => {
-  const custom = getCustomAttributes(tag);
+import { getAttr } from '../core/attr.js';
 
+export const myTag = (tag, context) => {
   return blockTag(
     (value) => {
       const styledValue = applyCustomColor(
-        custom.color,
+        getAttr(tag, 'color'),
         context.theme.myTag.color,
         value,
         chalkString
@@ -1146,30 +1130,32 @@ export const myTag = (tag, context) => {
 ### Pattern 2: Nested Configuration (like code blocks)
 
 ```javascript
-export const pre = (tag, context) => {
-  const custom = getCustomAttributes(tag);
+import { getAttr } from '../core/attr.js';
 
+export const pre = (tag, context) => {
   // Also check for attributes on child <code> tag
   const codeTag = tag.childNodes?.find(child => child.nodeName === 'code');
-  const codeCustom = codeTag ? getCustomAttributes(codeTag) : {};
+  
+  // Helper to check both tags
+  const getProp = (prop) => getAttr(tag, prop) ?? (codeTag ? getAttr(codeTag, prop) : null);
 
   const newContext = {
     ...context,
-    customCodeColor: custom.color || codeCustom.color,
-    customNumbersEnabled: custom.numbersEnabled ?? codeCustom.numbersEnabled,
-    customNumbersColor: custom.numbersColor || codeCustom.numbersColor,
-    customHighlightLines: custom.highlightLines || codeCustom.highlightLines,
-    customHighlightColor: custom.highlightColor || codeCustom.highlightColor,
-    customGutterEnabled: custom.gutterEnabled ?? codeCustom.gutterEnabled,
-    customGutterSeparatorMarker: custom.gutterSeparatorMarker || codeCustom.gutterSeparatorMarker,
-    customGutterSeparatorColor: custom.gutterSeparatorColor || codeCustom.gutterSeparatorColor,
-    customLangLabelEnabled: custom.langLabelEnabled ?? codeCustom.langLabelEnabled,
-    customLangLabelPosition: custom.langLabelPosition || codeCustom.langLabelPosition,
-    customLangLabelColor: custom.langLabelColor || codeCustom.langLabelColor,
-    customLangLabelPrefixMarker: custom.langLabelPrefixMarker || codeCustom.langLabelPrefixMarker,
-    customLangLabelPrefixColor: custom.langLabelPrefixColor || codeCustom.langLabelPrefixColor,
-    customLangLabelSuffixMarker: custom.langLabelSuffixMarker || codeCustom.langLabelSuffixMarker,
-    customLangLabelSuffixColor: custom.langLabelSuffixColor || codeCustom.langLabelSuffixColor,
+    customCodeColor: getProp('color'),
+    customNumbersEnabled: getProp('numbers.enabled'),
+    customNumbersColor: getProp('numbers.color'),
+    customHighlightLines: getProp('highlight-lines'),
+    customHighlightColor: getProp('highlight-color'),
+    customGutterEnabled: getProp('gutter.enabled'),
+    customGutterSeparatorMarker: getProp('gutter-separator.marker'),
+    customGutterSeparatorColor: getProp('gutter-separator.color'),
+    customLangLabelEnabled: getProp('lang-label.enabled'),
+    customLangLabelPosition: getProp('lang-label.position'),
+    customLangLabelColor: getProp('lang-label.color'),
+    customLangLabelPrefixMarker: getProp('lang-label.prefix.marker'),
+    customLangLabelPrefixColor: getProp('lang-label.prefix.color'),
+    customLangLabelSuffixMarker: getProp('lang-label.suffix.marker'),
+    customLangLabelSuffixColor: getProp('lang-label.suffix.color'),
   };
 
   return blockTag(...)(tag, newContext);

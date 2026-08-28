@@ -458,6 +458,31 @@ jsx demo.jsx --config ./theme.yaml
 cat page.html | html --config ./theme.yaml
 ```
 
+#### `--streaming`
+
+Process files sequentially in chunks. This reduces memory usage when rendering very large HTML or Markdown files, allowing you to view results instantly before the entire document finishes processing. Auto-enabled for large files (>100MB).
+
+```sh
+html --streaming large-file.html
+md --streaming big-document.md
+```
+
+#### `--verbose`
+
+Prints detailed analysis, processing information, and memory usage statistics.
+
+```sh
+html --verbose document.html
+```
+
+#### `--help`
+
+Show usage information and available options for the command.
+
+```sh
+html --help
+```
+
 Values are [chalk-string](https://www.npmjs.com/package/chalk-string) compatible (`"red bold"`, `"bgBlue white underline"`). Example `config.yaml`:
 
 ```yml

@@ -623,7 +623,6 @@ Then use simple HTML:
 - With `count=4`: Rows cycle through `rows[0]` to `rows[3]`
 - With `count=5`: Rows cycle through all 5 colors
 - After the last color, it cycles back to the first
-```
 
 ### Custom Email Input
 ```html
