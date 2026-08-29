@@ -311,7 +311,8 @@ async function generateScreenshot(inputFile) {
         '--raw-read', tempFile,
         '-f', outputFile,
         '-C', config.termshot.columns.toString(),
-        '--font', '/usr/share/fonts/TTF/JetBrainsMono-Regular.ttf'
+        '--font', '/usr/share/fonts/TTF/JetBrainsMono-Regular.ttf',
+        '--colorscheme', 'scripts/neutral-colors.json'
       ];
 
       if (config.verbose) {
