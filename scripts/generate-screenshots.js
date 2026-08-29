@@ -63,7 +63,7 @@ const config = {
 
   // Optipng configuration
   optipng: {
-    level: 2, // Optimization level (0-7, 3 is medium-fast)
+    level: 2, // Optimization level (0-7, 2 is fast)
     strip: true, // Strip metadata
   },
 };
