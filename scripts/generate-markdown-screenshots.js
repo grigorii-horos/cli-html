@@ -242,7 +242,7 @@ async function generateScreenshot(mdFile) {
         '--raw-read', tempFile,
         '-f', outputFile,
         '-C', config.termshot.columns.toString(),
-        '--font', '/usr/share/fonts/TTF/JetBrainsMono-Regular.ttf',
+        '--font', '/usr/share/fonts/TTF/FiraCodeNerdFontMono-Medium.ttf',
         '--colorscheme', 'scripts/neutral-colors.json'
       ];
 
