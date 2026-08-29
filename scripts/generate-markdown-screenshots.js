@@ -57,6 +57,12 @@ const config = {
   termshot: {
     columns: 120,
   },
+
+  optimize: true, // Enable PNG optimization with optipng
+  optipng: {
+    level: 2, // Optimization level (0-7, 3 is medium-fast)
+    strip: true, // Strip metadata
+  },
 };
 
 // Parse command line arguments
@@ -254,11 +260,12 @@ async function generateScreenshot(mdFile) {
         resolve({ status: 'failed', filename: relativePath, error: error.message });
       });
 
-      termshotProc.on('exit', (code) => {
+      termshotProc.on('exit', async (code) => {
         // Clean up temp file
         try { unlinkSync(tempFile); } catch {}
 
         if (code === 0) {
+          await optimizePng(outputFile);
           resolve({ status: 'success', filename: relativePath, output: outputFile });
         } else {
           resolve({ status: 'failed', filename: relativePath, error: `Termshot failed with code ${code}` });
@@ -269,6 +276,40 @@ async function generateScreenshot(mdFile) {
 }
 
 // Process files in parallel batches
+async function optimizePng(pngFile) {
+  if (!config.optimize) return;
+
+  return new Promise((resolve) => {
+    const args = [
+      `-o${config.optipng.level}`,
+    ];
+
+    if (config.optipng.strip) {
+      args.push('-strip', 'all');
+    }
+
+    args.push(pngFile);
+
+    if (config.verbose) {
+      console.log(`${colors.cyan}Optimizing:${colors.reset} optipng ${args.join(' ')}`);
+    }
+
+    const proc = spawn('optipng', args, {
+      stdio: config.verbose ? 'inherit' : 'pipe',
+    });
+
+    proc.on('error', () => {
+      if (config.verbose) {
+        console.log(`${colors.yellow}Warning: optipng failed${colors.reset}`);
+      }
+      resolve();
+    });
+
+    proc.on('exit', () => {
+      resolve();
+    });
+  });
+}
 async function processBatch(files, batchSize) {
   const stats = {
     total: files.length,
