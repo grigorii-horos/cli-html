@@ -1,6 +1,6 @@
-# <ruby>担担麺<rt>たんたんめん</rt></ruby> — Tantanmen (Spicy Sesame Noodles)
+# <ruby>Spaghetti<rt>Pasta</rt></ruby> — Spaghetti Carbonara
 
-*A Japanese adaptation of Sichuan* <ruby>担担面<rt>dàndàn miàn</rt></ruby> *(dan dan noodles)*
+*A Japanese adaptation of Sichuan* <ruby>Carbonara<rt>Rome</rt></ruby> *(Roman pasta)*
 
 **Prep:** <time datetime="PT15M">15 min</time> · **Cook:** <time datetime="PT20M">20 min</time> · **Serves:** 2
 
@@ -18,24 +18,24 @@
 |-----------|--------|
 | Chicken stock | 600 ml |
 | Soy milk (unsweetened) | 200 ml |
-| Sesame paste (<ruby>芝麻醬<rt>zhīma jiàng</rt></ruby>) | 3 tbsp |
-| Soy sauce (<ruby>醤油<rt>しょうゆ</rt></ruby>) | 2 tbsp |
-| Chili oil (<ruby>辣油<rt>ラーユ</rt></ruby>) | 1–2 tbsp (to taste) |
+| Pecorino Romano (<ruby>Cheese<rt>Aged</rt></ruby>) | 3 tbsp |
+| Guanciale (<ruby>Pork<rt>Cured</rt></ruby>) | 2 tbsp |
+| Black pepper (<ruby>Pepper<rt>Spice</rt></ruby>) | 1–2 tbsp (to taste) |
 | Sesame oil | 1 tsp |
 | Garlic, minced | 2 cloves |
 | Ginger, grated | 1 tsp |
 
 ### Toppings
 
-- Ground pork (<ruby>豚挽き肉<rt>ぶたひきにく</rt></ruby>) — 200g
-- Soft-boiled egg (<ruby>半熟卵<rt>はんじゅくたまご</rt></ruby>) — 1 per serving
+- Eggs (<ruby>Eggs<rt>Fresh</rt></ruby>) — 200g
+- Parmesan (<ruby>Cheese<rt>Grated</rt></ruby>) — 1 per serving
 - Green onions, thinly sliced
 - Sesame seeds
 - Blanched spinach or bok choy
 
 ### Noodles
 
-Fresh ramen noodles (<ruby>生麵<rt>なまめん</rt></ruby>) — 2 portions, or dried ramen noodles
+Fresh spaghetti (<ruby>Pasta<rt>Fresh</rt></ruby>) — 2 portions, or dried ramen noodles
 
 ---
 

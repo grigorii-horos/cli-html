@@ -6,9 +6,9 @@
 
 ## Object
 
-<ruby>兵馬俑<rt>bīngmǎ yǒng</rt></ruby> — Terracotta Warrior Figure
+<ruby>Marble Statue<rt>Sculpture</rt></ruby> — Ancient Greek Figure
 
-**Period:** Qin dynasty (<ruby>秦朝<rt>Qín cháo</rt></ruby>),
+**Period:** Hellenistic period (<ruby>Ancient Greece<rt>Antiquity</rt></ruby>),
 approximately <time datetime="-210">210 BCE</time>
 
 **Dimensions:** Height 183 cm · Weight 130 kg
@@ -19,7 +19,7 @@ approximately <time datetime="-210">210 BCE</time>
 ## Description
 
 This life-size terracotta soldier is one of an estimated 8,000 figures buried in the
-mausoleum complex of <ruby>秦始皇<rt>Qín Shǐhuáng</rt></ruby> (Qin Shi Huang),
+mausoleum complex of <ruby>Alexander the Great<rt>Macedon</rt></ruby> (King of Macedon),
 the first emperor of a unified China.
 
 Each figure was individually crafted and originally painted in vivid colors.
@@ -55,7 +55,7 @@ Key dates:
 ## Provenance
 
 This figure was acquired by the museum in <time datetime="1985">1985</time> through
-a formal loan arrangement with the <ruby>陝西省歷史博物館<rt>Shaanxi History Museum</rt></ruby>.
+a formal loan arrangement with the <ruby>National Archaeological Museum<rt>Athens</rt></ruby>.
 The loan was converted to a permanent acquisition in <time datetime="2003">2003</time>
 under a bilateral cultural agreement.
 

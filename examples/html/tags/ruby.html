@@ -1,89 +1,90 @@
 <h2>Ruby Annotation Examples</h2>
 
 <p><i>Ruby annotations are used to show pronunciation or meaning of characters,
-commonly used in East Asian typography (Japanese, Chinese, Korean).</i></p>
+commonly used for acronyms or phonetic spelling in English.</i></p>
 
-<h3>Basic Ruby (Japanese Kanji)</h3>
+<h3>Basic Ruby (Acronyms)</h3>
 
-<p>Japanese word: <ruby>漢字<rt>かんじ</rt></ruby> (kanji)</p>
-<p>Name: <ruby>東京<rt>とうきょう</rt></ruby> (Tokyo)</p>
-<p>Country: <ruby>日本<rt>にほん</rt></ruby> (Japan)</p>
+<p>Network: <ruby>WWW<rt>World Wide Web</rt></ruby></p>
+<p>Language: <ruby>HTML<rt>HyperText Markup Language</rt></ruby></p>
+<p>Component: <ruby>GUI<rt>Graphical User Interface</rt></ruby></p>
 
 <h3>Custom Colors</h3>
 
 <p>
-  Accent base text: <ruby data-cli-color="cyan bold">漢字<rt>かんじ</rt></ruby>
+  Accent base text: <ruby data-cli-color="cyan bold">API<rt>Application Programming Interface</rt></ruby>
 </p>
 <p>
-  Accent annotation: <ruby>東京<rt data-cli-color="yellow bold">とうきょう</rt></ruby>
+  Accent annotation: <ruby>HTTP<rt data-cli-color="yellow bold">Hypertext Transfer Protocol</rt></ruby>
 </p>
 <p>
-  Both customized: <ruby data-cli-color="magenta bold">日本<rt data-cli-color="green">にほん</rt></ruby>
+  Both customized: <ruby data-cli-color="magenta bold">URL<rt data-cli-color="green">Uniform Resource Locator</rt></ruby>
 </p>
 
 <h3>Ruby with Fallback Parentheses</h3>
 
-<p>With rp tags: <ruby>漢字<rp>(</rp><rt>かんじ</rt><rp>)</rp></ruby></p>
-<p>Example: <ruby>富士山<rp>(</rp><rt>ふじさん</rt><rp>)</rp></ruby> (Mount Fuji)</p>
+<p>With rp tags: <ruby>CPU<rp>(</rp><rt>Central Processing Unit</rt><rp>)</rp></ruby></p>
+<p>Example: <ruby>RAM<rp>(</rp><rt>Random Access Memory</rt><rp>)</rp></ruby></p>
 
 <h3>Multiple Ruby Annotations</h3>
 
 <p>
-  Sentence:
-  <ruby>私<rt>わたし</rt></ruby>は
-  <ruby>学生<rt>がくせい</rt></ruby>です
+  The
+  <ruby>NASA<rt>National Aeronautics and Space Administration</rt></ruby>
+  launched a
+  <ruby>UAV<rt>Unmanned Aerial Vehicle</rt></ruby>
 </p>
 
 <p>
-  <ruby>今日<rt>きょう</rt></ruby>は
-  <ruby>良<rt>よ</rt></ruby>い
-  <ruby>天気<rt>てんき</rt></ruby>ですね
+  The
+  <ruby>CEO<rt>Chief Executive Officer</rt></ruby>
+  met the
+  <ruby>CTO<rt>Chief Technology Officer</rt></ruby>
 </p>
 
-<h3>Chinese Characters (Pinyin)</h3>
+<h3>Phonetic Spelling</h3>
 
-<p>Hello: <ruby>你好<rt>nǐ hǎo</rt></ruby></p>
-<p>Thank you: <ruby>谢谢<rt>xiè xiè</rt></ruby></p>
-<p>China: <ruby>中国<rt>Zhōngguó</rt></ruby></p>
+<p>Word: <ruby>Colonel<rt>ker-nl</rt></ruby></p>
+<p>Word: <ruby>Choir<rt>kwire</rt></ruby></p>
+<p>Word: <ruby>Queue<rt>kyoo</rt></ruby></p>
 
-<h3>Korean Hanja</h3>
+<h3>Scientific Terms</h3>
 
-<p>Korea: <ruby>韓國<rt>한국</rt></ruby></p>
-<p>School: <ruby>學校<rt>학교</rt></ruby></p>
+<p>Chemical: <ruby>NaCl<rt>Sodium Chloride</rt></ruby></p>
+<p>Compound: <ruby>H2O<rt>Water</rt></ruby></p>
 
 <h3>Complex Example</h3>
 
 <p>
-  The word <ruby>勉強<rt>べんきょう</rt></ruby> means "study" in Japanese.
-  To say "I study", you would say:
-  <ruby>私<rt>わたし</rt></ruby>は<ruby>勉強<rt>べんきょう</rt></ruby>します。
+  The acronym <ruby>JSON<rt>JavaScript Object Notation</rt></ruby> is a lightweight data-interchange format.
+  A common tool to parse it is the <ruby>jq<rt>command-line JSON processor</rt></ruby>.
 </p>
 
 <h3>Technical Terms</h3>
 
-<p>HTML: <ruby>超文本<rt>chāo wén běn</rt></ruby></p>
-<p>Computer: <ruby>電腦<rt>diàn nǎo</rt></ruby></p>
-<p>Internet: <ruby>互聯網<rt>hù lián wǎng</rt></ruby></p>
+<p>Database: <ruby>SQL<rt>Structured Query Language</rt></ruby></p>
+<p>Protocol: <ruby>FTP<rt>File Transfer Protocol</rt></ruby></p>
+<p>Standard: <ruby>XML<rt>eXtensible Markup Language</rt></ruby></p>
 
 <h3>Custom Annotation Brackets (data-cli-prefix-marker / data-cli-suffix-marker)</h3>
 
 <p>Square brackets:</p>
-<p><ruby>漢字<rt data-cli-prefix-marker=" [" data-cli-suffix-marker="]">かんじ</rt></ruby></p>
+<p><ruby>CSS<rt data-cli-prefix-marker=" [" data-cli-suffix-marker="]">Cascading Style Sheets</rt></ruby></p>
 
 <p>Angle brackets:</p>
-<p><ruby>東京<rt data-cli-prefix-marker=" &lt;" data-cli-suffix-marker="&gt;">とうきょう</rt></ruby></p>
+<p><ruby>SVG<rt data-cli-prefix-marker=" &lt;" data-cli-suffix-marker="&gt;">Scalable Vector Graphics</rt></ruby></p>
 
 <p>No brackets (empty):</p>
-<p><ruby>日本<rt data-cli-prefix-marker="" data-cli-suffix-marker="">にほん</rt></ruby></p>
+<p><ruby>DNS<rt data-cli-prefix-marker="" data-cli-suffix-marker="">Domain Name System</rt></ruby></p>
 
 <p>Colored brackets:</p>
-<p><ruby>勉強<rt data-cli-prefix-marker=" (" data-cli-suffix-marker=")" data-cli-prefix-color="cyan" data-cli-suffix-color="cyan">べんきょう</rt></ruby></p>
+<p><ruby>GPU<rt data-cli-prefix-marker=" (" data-cli-suffix-marker=")" data-cli-prefix-color="cyan" data-cli-suffix-color="cyan">Graphics Processing Unit</rt></ruby></p>
 
 <p>Custom brackets + annotation color:</p>
-<p><ruby>富士山<rt data-cli-prefix-marker=" «" data-cli-suffix-marker="»" data-cli-color="yellow bold" data-cli-prefix-color="yellow" data-cli-suffix-color="yellow">ふじさん</rt></ruby></p>
+<p><ruby>SSD<rt data-cli-prefix-marker=" «" data-cli-suffix-marker="»" data-cli-color="yellow bold" data-cli-prefix-color="yellow" data-cli-suffix-color="yellow">Solid State Drive</rt></ruby></p>
 
 <p>Multiple with different brackets in one sentence:</p>
 <p>
-  <ruby>私<rt data-cli-prefix-marker=" [" data-cli-suffix-marker="]">わたし</rt></ruby>は
-  <ruby>学生<rt data-cli-prefix-marker=" [" data-cli-suffix-marker="]">がくせい</rt></ruby>です。
+  I bought a <ruby>USB<rt data-cli-prefix-marker=" [" data-cli-suffix-marker="]">Universal Serial Bus</rt></ruby> drive
+  for my <ruby>PC<rt data-cli-prefix-marker=" [" data-cli-suffix-marker="]">Personal Computer</rt></ruby>.
 </p>

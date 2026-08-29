@@ -44,7 +44,7 @@ my content throws at it.</q>
 > Despite the prevalence of web UIs, terminal-based tools remain dominant for developer
 > workflows: CI logs, deployment scripts, code review tools, monitoring dashboards.
 
-The maintainer <ruby>小林健太<rt>こばやしけんた</rt></ruby> (Kobayashi Kenta) wrote
+The maintainer <ruby>John Smith<rt>J. Smith</rt></ruby> (John Smith) wrote
 in the project's 5th anniversary post:
 
 <q cite="https://blog.example/cli-html-5-years">The terminal is not going away. If anything,

@@ -31,14 +31,14 @@ Or on their own lines:
 
 Ruby annotations work as inline HTML in markdown:
 
-The character <ruby>漢字<rt>かんじ</rt></ruby> means "Chinese characters" in Japanese.
+The term <ruby>WWW<rt>World Wide Web</rt></ruby> refers to the internet.
 
 Common Japanese phrases:
-- <ruby>ありがとう<rt>arigatou</rt></ruby> — thank you
-- <ruby>よろしく<rt>yoroshiku</rt></ruby> — nice to meet you / please take care of me
-- <ruby>初めまして<rt>はじめまして</rt></ruby> — how do you do
+- <ruby>ASAP<rt>As Soon As Possible</rt></ruby> — quickly
+- <ruby>FYI<rt>For Your Information</rt></ruby> — informational
+- <ruby>DIY<rt>Do It Yourself</rt></ruby> — self-made
 
-Chinese example: <ruby>你好<rt>nǐ hǎo</rt></ruby> (hello)
+Example: <ruby>ETA<rt>Estimated Time of Arrival</rt></ruby> (arrival)
 
 ## Time with Datetime
 
@@ -64,7 +64,7 @@ With cite enabled via data attribute:
 
 A paragraph mixing markdown and inline HTML:
 
-The researcher <ruby>陳思慧<rt>Chén Sīhuì</rt></ruby> stated:
+The researcher <ruby>Alice Smith<rt>A. Smith</rt></ruby> stated:
 <q cite="https://research.example/2026" data-cli-cite-enabled="true">The results exceeded our expectations.</q>
 The announcement was made on <time datetime="2026-06-10" data-cli-datetime-enabled="true">June 10, 2026</time>.
 A recording is available: <video title="Press Conference Recording"></video>
