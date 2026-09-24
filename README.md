@@ -7,8 +7,8 @@
 [![Maintenance](https://img.shields.io/maintenance/yes/2026.svg)](https://github.com/grigorii-horos/cli-html/graphs/commit-activity)
 [![License: GPL-3.0](https://img.shields.io/github/license/grigorii-horos/cli-html.svg)](https://github.com/grigorii-horos/cli-html/blob/master/LICENSE)
 
-> Renderer HTML and Markdown in the Terminal.
-> Supports pretty tables, syntax highlighting, and GitHub Flavored Markdown
+> Render HTML and Markdown in the terminal.
+> Supports pretty tables, syntax highlighting, and GitHub Flavored Markdown.
 
 ## Features
 
@@ -97,7 +97,7 @@ cat CHANGELOG.md | md
 - ✓ **Definition Lists** - Term and definition pairs
 - ✓ **Subscript/Superscript** - `H~2~O` and `x^2^`
 - ✓ **Insert/Mark** - `++inserted++` and `==marked==` text
-- ✓ **Abbreviations** - `*[HTML]: Hyper Text Markup Language`
+- ✓ **Abbreviations** - `*[HTML]: HyperText Markup Language`
 
 ### JSX Rendering
 
@@ -179,7 +179,7 @@ import { renderHTML } from 'cli-html';
 
 const customTheme = {
   h1: "magenta bold",
-  code: { inline: "bgBlack yellow" }
+  code: { color: "bgBlack yellow" }
 };
 
 const html = '<h1>Styled Title</h1>';
@@ -231,8 +231,7 @@ const customTheme = {
   h1: "cyan bold",
   h2: "blue bold",
   code: {
-    color: "yellowBright",
-    inline: "bgBlack yellow"
+    color: "bgBlack yellow"
   }
 };
 
@@ -343,12 +342,12 @@ You can customize individual elements using `data-cli-*` attributes without modi
 <h2 data-cli-color="cyan underline italic">Cyan Underlined Italic Header</h2>
 
 <!-- Custom markers for headers -->
-<h1 data-cli-marker="►">Triangle Marker</h1>
-<h2 data-cli-marker="•••">Triple Dot Marker</h2>
+<h1 data-cli-indicator-marker="►">Triangle Marker</h1>
+<h2 data-cli-indicator-marker="•••">Triple Dot Marker</h2>
 
 <!-- Combined attributes -->
 <h1 data-cli-color="red bold"
-    data-cli-marker="⚠">
+    data-cli-indicator-marker="⚠">
   Warning Header
 </h1>
 
@@ -356,12 +355,12 @@ You can customize individual elements using `data-cli-*` attributes without modi
 <span data-cli-color="bgRed white bold">White bold on red</span>
 
 <!-- Lists customization -->
-<ol data-cli-color="green" data-cli-marker-color="red bold" data-cli-decimal=")">
+<ol data-cli-color="green" data-cli-indicator-color="red bold" data-cli-decimal=")">
   <li>Item with green text and red bold marker with ) separator</li>
   <li>Another item</li>
 </ol>
 
-<ul data-cli-color="yellow" data-cli-marker="★" data-cli-marker-color="cyan">
+<ul data-cli-color="yellow" data-cli-indicator-marker="★" data-cli-indicator-color="cyan">
   <li>Item with yellow text and cyan star marker</li>
   <li>Another item</li>
 </ul>
@@ -370,10 +369,10 @@ You can customize individual elements using `data-cli-*` attributes without modi
 **Available Attributes:**
 - **`data-cli-color`**: Full chalk-string specification (color + styles), e.g., `"red bold italic"`, `"bgBlue white"`
   - For `ol`/`ul`: applies to list item text
-- **`data-cli-marker`**: Custom marker symbol
+- **`data-cli-indicator-marker`**: Custom marker symbol
   - For headers/blockquotes: e.g., `"►"`, `"▌ "`, `"•••"`
   - For `ul`: custom bullet marker, e.g., `"★"`, `"►"`, `"•"`
-- **`data-cli-marker-color`**: Marker color (for `ol`/`ul`), e.g., `"red bold"`, `"cyan"`
+- **`data-cli-indicator-color`**: Marker color (headers, blockquotes, `ol`/`ul`), e.g., `"red bold"`, `"cyan"`
 - **`data-cli-decimal`**: Decimal separator for `ol`, e.g., `")"`, `":"`, `"-"`
 - **`data-cli-title-*`** (abbr/dfn):
   - `data-cli-title-color`: Title color
@@ -396,9 +395,9 @@ You can customize individual elements using `data-cli-*` attributes without modi
 - Background + styles: `data-cli-color="bgMagenta white bold"`
 
 **Supported Tags:**
-- Headers (color, marker): `h1`, `h2`, `h3`, `h4`, `h5`, `h6`
-- Block (color, marker): `blockquote`
-- Lists (color for text, marker-color, marker, decimal): `ol`, `ul`
+- Headers (color, indicator-marker, indicator-color): `h1`, `h2`, `h3`, `h4`, `h5`, `h6`
+- Block (color, indicator-marker, indicator-color): `blockquote`
+- Lists (color for text, indicator-color, indicator-marker, decimal): `ol`, `ul`
 - Inline (color): `span`, `strong`, `b`, `em`, `i`, `u`, `del`, `ins`, `mark`, `code`, `kbd`, `samp`, `var`, `cite`, `time`
 
 See [examples/html/tags-custom/](examples/html/tags-custom/) for complete examples with `data-cli-*` attributes.
@@ -589,9 +588,9 @@ See the comprehensive examples in `examples/html/full/documentation.html`, `exam
 
 ## Author
 
-👤**Grigorii Horos**
+👤 **Grigorii Horos**
 
-* Github: [@grigorii-horos](https://github.com/grigorii-horos)
+* GitHub: [@grigorii-horos](https://github.com/grigorii-horos)
 
 ## Contributing
 
