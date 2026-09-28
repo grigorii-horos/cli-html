@@ -4,6 +4,14 @@
   "description": "Render HTML, Markdown and JSX to Terminal",
   "main": "index.js",
   "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./config.yaml": "./config.yaml",
+    "./package.json": "./package.json"
+  },
   "type": "module",
   "files": [
     "index.js",
