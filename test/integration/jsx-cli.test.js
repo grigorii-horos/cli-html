@@ -31,7 +31,7 @@ describe('JSX CLI Integration', () => {
     const proc = spawn('node', [join(PROJECT_ROOT, 'bin/jsx.js')]);
 
     proc.on('exit', (code) => {
-      assert.strictEqual(code, 1);
+      assert.strictEqual(code, 2);
       done();
     });
   });
