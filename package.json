@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "fix": "eslint --fix index.js lib bin test",
-    "lint": "eslint index.js lib bin test",
+    "lint": "eslint --max-warnings 0 index.js lib bin test",
     "test": "FORCE_COLOR=1 node --test",
     "test:watch": "FORCE_COLOR=1 node --test --watch",
     "test:coverage": "c8 --reporter=lcov --reporter=text node --test",
