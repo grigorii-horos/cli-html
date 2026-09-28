@@ -13,13 +13,13 @@
     "config.yaml"
   ],
   "scripts": {
-    "fix": "eslint --fix index.js lib/*.js lib/*/*.js bin/*.js test/**/*.js",
-    "lint": "eslint index.js lib/*.js lib/*/*.js bin/*.js test/**/*.js",
+    "fix": "eslint --fix index.js lib bin test",
+    "lint": "eslint index.js lib bin test",
     "test": "FORCE_COLOR=1 node --test",
     "test:watch": "FORCE_COLOR=1 node --test --watch",
     "test:coverage": "c8 --reporter=lcov --reporter=text node --test",
     "screenshots": "node scripts/generate-screenshots.js --force && node scripts/generate-markdown-screenshots.js --force",
-    "precommit": "true",
+    "precommit": "npm run lint && npm test",
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
@@ -32,7 +32,7 @@
     "jsx": "bin/jsx.js"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=20.0.0",
     "npm": ">=8.0.0"
   },
   "author": "Grigorii Horos",
@@ -70,11 +70,9 @@
     "change-case": "^5.4.4",
     "cli-highlight": "^2.1.11",
     "cli-table3": "^0.6.5",
-    "color-namer": "^1.4.0",
     "compose-function": "^3.0.3",
     "env-paths": "^3.0.0",
     "inline-style-parser": "^0.2.7",
-    "languages-aliases": "^3.0.0",
     "markdown-it": "^14.1.0",
     "markdown-it-abbr": "^2.0.0",
     "markdown-it-container": "^4.0.0",

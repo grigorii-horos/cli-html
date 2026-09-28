@@ -86,7 +86,7 @@ describe('Layout fixes', () => {
 
     it('separates responsive items with real newlines', () => {
       const output = render(table, 40);
-      assert.ok(!output.includes('\\n'), output);
+      assert.ok(!output.includes(String.raw`\n`), output);
       assert.ok(output.includes('A: 1\n\nA: 2'), output);
     });
 

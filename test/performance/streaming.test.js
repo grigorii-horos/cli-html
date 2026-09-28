@@ -48,6 +48,7 @@ describe('Streaming Performance', () => {
       });
 
       assert.ok(result.length > 0);
+      assert.ok(progressCalled, 'progress callback should be called');
       // Progress may or may not be called depending on document size
     });
   });

@@ -88,7 +88,7 @@ describe('Theme config override tests', () => {
         { input: { textarea: { color: 'bold' } } }
       );
       // Should contain ANSI codes from the bold color
-      assert.ok(result.includes('\x1B['), `Expected ANSI codes in: ${result}`);
+      assert.ok(result.includes('\u001B['), `Expected ANSI codes in: ${result}`);
       assert.ok(stripAnsi(result).includes('hello world'), `Expected 'hello world' in: ${stripAnsi(result)}`);
     });
   });
@@ -124,7 +124,7 @@ describe('Theme config override tests', () => {
         '<fieldset><legend>Title</legend><p>content</p></fieldset>',
         { fieldset: { border: { color: 'red' } } }
       );
-      assert.ok(result.includes('\x1B['), `Expected ANSI codes in: ${result}`);
+      assert.ok(result.includes('\u001B['), `Expected ANSI codes in: ${result}`);
     });
 
     it('title color from theme is respected', () => {
@@ -140,7 +140,7 @@ describe('Theme config override tests', () => {
         '<fieldset disabled><legend>Title</legend><p>content</p></fieldset>',
         { fieldset: { disabled: { color: 'blue' } } }
       );
-      assert.ok(result.includes('\x1B['), `Expected ANSI codes in: ${result}`);
+      assert.ok(result.includes('\u001B['), `Expected ANSI codes in: ${result}`);
     });
   });
 
@@ -150,7 +150,7 @@ describe('Theme config override tests', () => {
         '<figure><p>content</p></figure>',
         { figure: { border: { color: 'red' } } }
       );
-      assert.ok(result.includes('\x1B['), `Expected ANSI codes in: ${result}`);
+      assert.ok(result.includes('\u001B['), `Expected ANSI codes in: ${result}`);
     });
 
     it('border style from theme is respected', () => {
@@ -235,14 +235,14 @@ describe('Theme config override tests', () => {
       const result = renderHTML(
         '<blockquote data-cli-indicator-color="red">content</blockquote>'
       );
-      assert.ok(result.includes('\x1B['), `Expected ANSI codes in: ${result}`);
+      assert.ok(result.includes('\u001B['), `Expected ANSI codes in: ${result}`);
     });
   });
 
   describe('list — data-cli attributes', () => {
     it('data-cli-indicator-color on ul overrides marker color', () => {
       const result = renderHTML('<ul data-cli-indicator-color="red"><li>item</li></ul>');
-      assert.ok(result.includes('\x1B['), `Expected ANSI codes in: ${result}`);
+      assert.ok(result.includes('\u001B['), `Expected ANSI codes in: ${result}`);
     });
 
     it('data-cli-indicator-marker on ul overrides marker', () => {

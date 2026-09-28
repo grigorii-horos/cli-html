@@ -72,11 +72,9 @@ run(moduleObject, moduleObject.exports, smartRequire);
 
 const jsx = moduleObject.exports.default ?? moduleObject.exports;
 
-renderJSX(jsx, theme)
-  .then((output) => {
-    writeOutput(output);
-  })
-  .catch((error) => {
-    console.error(`Failed to render JSX: ${error.message}`);
-    process.exit(1);
-  });
+try {
+  writeOutput(await renderJSX(jsx, theme));
+} catch (error) {
+  console.error(`Failed to render JSX: ${error.message}`);
+  process.exit(1);
+}
