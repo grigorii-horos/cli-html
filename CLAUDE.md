@@ -555,7 +555,7 @@ echo '<h1>Test</h1>' | node bin/html.js
 node bin/markdown.js examples/markdown/features/alerts.md
 ```
 
-For debugging, use `DEBUG=1` or `DEBUG_INPUT=1` environment variables.
+For debugging, use `DEBUG=1` to print the stack trace of any tag that fails to render.
 
 ## Performance Optimizations
 

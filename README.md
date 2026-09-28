@@ -114,7 +114,14 @@ jsx examples/jsx/full/demo.jsx --config ./theme.yaml
 
 The file's `default` export may be a React element (`export default <App />`) or a
 component (`export default App`). Neighbouring modules resolve relative to the
-file; `react` / `react-dom` are provided by `cli-html` itself.
+file.
+
+JSX support uses optional peer dependencies that are not installed with `cli-html`
+by default. Install them next to it to use the `jsx` command:
+
+```sh
+npm install -g cli-html @babel/core @babel/preset-env @babel/preset-react react react-dom
+```
 
 More examples (components, data-driven tables, dashboards, boxed layouts) live in
 [examples/jsx](examples/jsx).
@@ -244,8 +251,8 @@ console.log(renderMarkdown(markdown, customTheme));
 
 Renders a React/JSX element or component to formatted terminal output.
 
-`react` and `react-dom` are loaded lazily, so importing `cli-html` for plain
-HTML/Markdown rendering never pays for them.
+`react` and `react-dom` are optional peer dependencies (`npm install react react-dom`),
+loaded lazily, so plain HTML/Markdown rendering never needs them.
 
 **Parameters:**
 - `jsx` (React element | component) - e.g. `<App />` or `App`

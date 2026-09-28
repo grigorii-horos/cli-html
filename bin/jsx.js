@@ -6,8 +6,6 @@ import { resolve } from 'node:path';
 import process from 'node:process';
 import vm from 'node:vm';
 
-import babel from '@babel/core';
-
 import { loadConfig, parseArgs, writeOutput } from '../lib/cli.js';
 import { renderJSX } from '../index.js';
 
@@ -35,8 +33,17 @@ if (!fs.existsSync(jsxFile)) {
 
 const theme = loadConfig('cli-html', configPath);
 
-// react / react-dom and babel presets resolve from cli-html's own
-// dependencies; the user's own neighbouring modules resolve relative to the
+// Babel, react and react-dom are optional peer dependencies of cli-html
+let babel;
+try {
+  ({ default: babel } = await import('@babel/core'));
+} catch {
+  console.error('The jsx command needs the optional peer dependencies: npm install @babel/core @babel/preset-env @babel/preset-react react react-dom');
+  process.exit(1);
+}
+
+// react / react-dom and babel presets resolve next to cli-html (as its peers)
+// or from the user's project; the user's own neighbouring modules resolve relative to the
 // source file.
 const pkgRequire = createRequire(import.meta.url);
 const fileRequire = createRequire(jsxFile);
