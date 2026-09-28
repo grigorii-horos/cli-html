@@ -123,11 +123,6 @@ describe('CLI Integration', () => {
     it('should handle invalid HTML gracefully', (t, done) => {
       const proc = spawn('node', [join(PROJECT_ROOT, 'bin/html.js')]);
 
-      let output = '';
-      proc.stdout.on('data', (data) => {
-        output += data.toString();
-      });
-
       proc.on('exit', (code) => {
         assert.strictEqual(code, 0); // Should still exit successfully
         done();

@@ -1,0 +1,97 @@
+# Custom Progress and Meter Examples
+
+## Progress Element with Custom Attributes
+
+### Custom Filled Color
+
+Green filled:  █████████████████░░░░░░░
+
+Cyan filled:  ████████████░░░░░░░░░░░░
+
+### Custom Empty Color
+
+Red empty:  ███████░░░░░░░░░░░░░░░░░
+
+Gray empty:  ██████████░░░░░░░░░░░░░░
+
+### Custom Markers
+
+Square filled:  ▰▰▰▰▰▰▰▰▰▰▰▰▰▰░░░░░░░░░░
+
+Dot markers:  ●●●●●●●●●●●●○○○○○○○○○○○○
+
+Arrow markers:  ►►►►►►►►►►►►►►►►►►▷▷▷▷▷▷
+
+### Combined Custom Attributes
+
+Full custom:  ●●●●●●●●●●●●○○○○○○○○○○○○
+
+Green/red theme:  ███████████████████░░░░░
+
+### File Upload Progress with Custom Styles
+
+File 1:  ▰▰▰▰▰▰▰▰░░░░░░░░░░░░░░░░
+
+File 2:  ▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰░░░░░░░░
+
+File 3:  ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓
+
+## Meter Element with Custom Attributes
+
+### Custom Colors
+
+Disk usage: [██████████████████░░░░░░░░░░░░] 0.6/1
+
+Battery: [██████████████████████████░░░░] 0.85/1
+
+Low battery: [█████░░░░░░░░░░░░░░░░░░░░░░░░░] 0.15/1
+
+### Custom Markers
+
+CPU: [█████████░░░░░░░░░░░░░░░░░░░░░] 30/100
+
+RAM: [████████████░░░░░░░░░░░░░░░░░░] 6.4/16
+
+### Status Indicators
+
+Health (good): [███████████████████████████░░░] 90/100
+
+Health (warning): [███████████████░░░░░░░░░░░░░░░] 50/100
+
+Health (critical): [██████░░░░░░░░░░░░░░░░░░░░░░░░] 20/100
+
+## Default Progress and Meter (No Custom Attributes)
+
+### Standard Progress
+
+30% complete:  ███████░░░░░░░░░░░░░░░░░
+
+70% complete:  █████████████████░░░░░░░
+
+Full bar:  ████████████████████████
+
+### Standard Meter
+
+Quarter: [████████░░░░░░░░░░░░░░░░░░░░░░] 25/100
+
+Half: [███████████████░░░░░░░░░░░░░░░] 50/100
+
+Three quarters: [███████████████████████░░░░░░░] 75/100
+
+## Real-World Examples
+
+### Download Progress
+
+Downloading update.zip:  ▰▰▰▰▰▰▰▰▰▰▰▱▱▱▱▱▱▱▱▱▱▱▱▱ (45 MB / 100 MB)
+
+### System Resources
+
+CPU: [████████████████████░░░░░░░░░░] 65/100
+
+RAM: [███████████████░░░░░░░░░░░░░░░] 8.2/16 / 16 GB
+
+Disk: [██████████████░░░░░░░░░░░░░░░░] 240/512 / 512 GB
+
+### Build Progress
+
+Compiling:  ✓✓✓✓✓✓✓✓✓✓✓✓✓✓○○○○○○○○○○ (3/5 modules)

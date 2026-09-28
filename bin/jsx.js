@@ -6,71 +6,23 @@ import { resolve } from 'node:path';
 import process from 'node:process';
 import vm from 'node:vm';
 
-import babel from '@babel/core';
-import envPaths from 'env-paths';
-import { parse } from 'yaml';
-
+import {
+  applyOptions, loadConfig, OPTIONS_HELP, parseArgs, writeOutput,
+} from '../lib/cli.js';
 import { renderJSX } from '../index.js';
 
-const paths = envPaths('cli-html', {
-  suffix: '',
-});
+const usage = `Usage: jsx <file.jsx> [--config <path>] [--width <n>]
 
-const loadTheme = (customConfigPath) => {
-  // If custom config path is provided, use it
-  if (customConfigPath) {
-    if (!fs.existsSync(customConfigPath)) {
-      console.error(`Config file not found: ${customConfigPath}`);
-      process.exit(1);
-    }
+Render a JSX file (default export: element or component) to the terminal.
 
-    try {
-      const fileContent = fs.readFileSync(customConfigPath, 'utf8');
-      const parsed = fileContent.trim() ? parse(fileContent) || {} : {};
-      return parsed.theme || parsed;
-    } catch (error) {
-      console.error(`Failed to read config: ${error.message}`);
-      process.exit(1);
-    }
-  }
+${OPTIONS_HELP}`;
 
-  // Otherwise, look for config in standard locations
-  const candidateFiles = ['config.yaml', 'config.yml', 'theme.yml'].map(
-    (file) => `${paths.config}/${file}`,
-  );
-
-  const themePath = candidateFiles.find((filePath) => fs.existsSync(filePath));
-
-  if (!themePath) {
-    return {};
-  }
-
-  try {
-    const fileContent = fs.readFileSync(themePath, 'utf8');
-    const parsed = fileContent.trim() ? parse(fileContent) || {} : {};
-    return parsed.theme || parsed;
-  } catch (error) {
-    console.error(`Failed to read config: ${error.message}`);
-    return {};
-  }
-};
-
-// Parse command line arguments
-let inputPath = null;
-let configPath = null;
-
-for (let index = 2; index < process.argv.length; index++) {
-  if (process.argv[index] === '--config' && index + 1 < process.argv.length) {
-    configPath = process.argv[index + 1];
-    index++; // Skip next argument
-  } else if (!inputPath && !process.argv[index].startsWith('--')) {
-    inputPath = process.argv[index];
-  }
-}
+const options = parseArgs(process.argv.slice(2), usage);
+const { inputPath } = options;
 
 if (!inputPath) {
-  console.error('Usage: jsx <file.jsx> [--config <path>]');
-  process.exit(1);
+  console.error(usage);
+  process.exit(2);
 }
 
 const jsxFile = resolve(process.cwd(), inputPath);
@@ -80,10 +32,19 @@ if (!fs.existsSync(jsxFile)) {
   process.exit(1);
 }
 
-const theme = loadTheme(configPath);
+const theme = applyOptions(loadConfig('cli-html', options.configPath), options);
 
-// react / react-dom and babel presets resolve from cli-html's own
-// dependencies; the user's own neighbouring modules resolve relative to the
+// Babel, react and react-dom are optional peer dependencies of cli-html
+let babel;
+try {
+  ({ default: babel } = await import('@babel/core'));
+} catch {
+  console.error('The jsx command needs the optional peer dependencies: npm install @babel/core @babel/preset-env @babel/preset-react react react-dom');
+  process.exit(1);
+}
+
+// react / react-dom and babel presets resolve next to cli-html (as its peers)
+// or from the user's project; the user's own neighbouring modules resolve relative to the
 // source file.
 const pkgRequire = createRequire(import.meta.url);
 const fileRequire = createRequire(jsxFile);
@@ -119,11 +80,9 @@ run(moduleObject, moduleObject.exports, smartRequire);
 
 const jsx = moduleObject.exports.default ?? moduleObject.exports;
 
-renderJSX(jsx, theme)
-  .then((output) => {
-    process.stdout.write(output);
-  })
-  .catch((error) => {
-    console.error(`Failed to render JSX: ${error.message}`);
-    process.exit(1);
-  });
+try {
+  writeOutput(await renderJSX(jsx, theme));
+} catch (error) {
+  console.error(`Failed to render JSX: ${error.message}`);
+  process.exit(1);
+}

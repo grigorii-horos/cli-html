@@ -371,11 +371,14 @@ theme:
 
   table:
     color: ''  # Default table color (inherited by tr and td)
+    padding:
+      left: 1  # Spaces before the text of every cell
+      right: 1  # Spaces after the text of every cell
     responsive:
       enabled: true  # Enable responsive mode for narrow terminals
       threshold: 60  # Terminal width threshold to switch to list view
       separator: ': '  # Separator between header and value in list mode
-      itemSeparator: '\n\n'  # Separator between items in list mode
+      itemSeparator: "\n\n"  # Separator between items in list mode (double quotes so \n is a newline)
 
     # Zebra striping for alternating row colors with flexible pattern
     striping:
@@ -553,6 +556,12 @@ theme:
       dim: false  # Dim border
     title:
       color: yellow  # Legend (title) color
+    required:
+      enabled: true  # Show required indicator next to the legend
+      indicator:
+        marker: '*'
+        color: red
+        position: after  # before or after the legend
     padding:
       top: 0
       bottom: 0
@@ -585,6 +594,8 @@ theme:
       color: gray  # Unselected option color
 
   optgroup:
+    disabled:
+      color: gray dim bold  # Color for disabled option group
     indicator:
       marker: '▸ '  # Marker for option group
       color: cyan bold
@@ -597,6 +608,8 @@ theme:
 
   details:
     color: gray  # Content color
+    collapse:
+      enabled: false  # Hide the content of closed <details> (no open attribute); terminals can't expand it, so it's shown by default
     indicator:
       open:
         marker: '▼ '  # Marker when details is open

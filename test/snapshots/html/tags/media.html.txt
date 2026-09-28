@@ -1,0 +1,68 @@
+# Media Element Examples (Video & Audio)
+
+## Video
+
+### No attributes (fallback title)
+
+Inline video: ▶[Video]
+
+### With src (title from filename)
+
+Conference talk: ▶[keynote-2026.mp4]
+
+### With title attribute (explicit title wins)
+
+Tutorial: ▶[Getting Started Tutorial]
+
+### Title only (no src)
+
+Demo: ▶[Live Demo Recording]
+
+## Audio
+
+### No attributes (fallback title)
+
+Recording: ♪[Audio]
+
+### With src
+
+Podcast: ♪[episode-42.mp3]
+
+### With title
+
+Pronunciation: ♪[Pronunciation Guide]
+
+## Custom Indicator
+
+Custom play marker: ▶[Demo]
+
+Custom audio marker: ♪[Clip]
+
+No indicator: [Recording]
+
+## Custom Prefix / Suffix
+
+Bracketed: ▶[Tutorial]
+
+Labeled: ▶Video: Demo
+
+Parentheses: ♪(Guide)
+
+## Custom Colors
+
+Cyan title: ▶[Webinar]
+
+Yellow audio: ♪[Interview]
+
+Colored indicator: ▶[Clip]
+
+Colored prefix: ▶▶ Talk]
+
+## Inline in Paragraph Text
+
+The conference featured a keynote ▶[Opening Keynote] followed by a panel
+discussion ♪[Panel: Future of the Web] and a hands-on workshop recording
+▶[Workshop Recording].
+
+For pronunciation guides, listen to the audio clip ♪[Audio Pronunciation Guide]
+embedded directly in the text flow.

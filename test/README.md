@@ -9,8 +9,6 @@ test/
 ├── rendering/           # Core rendering tests
 │   ├── html-basic.test.js      # HTML element rendering
 │   └── markdown.test.js        # Markdown & GFM features
-├── performance/         # Performance & streaming tests
-│   └── streaming.test.js       # Streaming API tests
 ├── integration/         # Integration tests
 │   └── cli.test.js             # CLI command tests
 └── fixtures/            # Test data
@@ -82,20 +80,7 @@ Tests Markdown to terminal conversion:
 
 **Total: ~40 tests**
 
-### 3. Streaming Performance Tests (`performance/streaming.test.js`)
-Tests streaming API for large documents:
-- Small document handling
-- Large document processing
-- Progress tracking
-- Memory estimation
-- Adaptive rendering
-- Error handling
-- Custom options
-- Theme integration
-
-**Total: ~15 tests**
-
-### 4. CLI Integration Tests (`integration/cli.test.js`)
+### 3. CLI Integration Tests (`integration/cli.test.js`)
 Tests command-line interface:
 - HTML command with file input
 - HTML command with stdin
@@ -204,12 +189,6 @@ Tests use `FORCE_COLOR=1` for consistent output. If colors appear in test output
 NO_COLOR=1 npm test
 ```
 
-### Memory issues with large tests
-Use streaming for large document tests:
-```javascript
-import { renderHTMLStreaming } from '../../lib/utils/streaming.js';
-```
-
 ## Adding New Test Categories
 
 1. Create new test file in appropriate directory
@@ -217,17 +196,6 @@ import { renderHTMLStreaming } from '../../lib/utils/streaming.js';
 3. Import required modules
 4. Write descriptive test suite
 5. Add to this README
-
-## Performance Benchmarking
-
-For performance testing beyond unit tests:
-```bash
-# Run with performance monitoring
-PERFORMANCE=true npm test
-
-# Profile specific test
-node --prof test/performance/streaming.test.js
-```
 
 ## Test Data
 

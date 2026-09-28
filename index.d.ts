@@ -1,36 +1,65 @@
 /**
  * TypeScript definitions for cli-html
  * Renderer for HTML and Markdown in the Terminal
+ *
+ * Theme defaults live in `config.yaml` (under `theme:`); every property here is
+ * optional and deep-merged over those defaults.
  */
+
+// ============================================================================
+// Primitive types
+// ============================================================================
 
 /**
  * Chalk-string compatible color/style value
- * Examples: "red bold", "bgBlue white underline", "cyan"
+ * Examples: "red bold", "bgBlue white underline", "cyan", "" (no styling)
  */
 export type ChalkString = string;
 
-/**
- * Border style for figure, fieldset, and details elements
- */
-export type BorderStyle = 'single' | 'double' | 'round' | 'bold' | 'singleDouble' | 'doubleSingle' | 'classic';
+/** Function that styles text (e.g. a chalk instance). */
+export type ColorFunction = (text: string) => string;
+
+/** A color: chalk-string spec or styling function. */
+export type Color = ChalkString | ColorFunction;
 
 /**
- * Ordered list marker types
+ * An object style with a `color` key, which may also be given in shorthand
+ * as just a color (`h1: 'red bold'` is expanded to `h1: { color: 'red bold' }`).
  */
+export type Styled<T extends { color?: Color }> = Color | T;
+
+/** Boxen border style for figure, fieldset, details and dialog elements */
+export type BorderStyle = 'single' | 'double' | 'round' | 'bold' | 'singleDouble' | 'doubleSingle' | 'classic' | 'arrow';
+
+/** Ordered list marker types */
 export type OrderedListMarker = '1' | 'A' | 'a' | 'I' | 'i';
 
-/**
- * Border configuration for box elements
- */
+/** Placement of an indicator relative to its content */
+export type Position = 'before' | 'after';
+
+// ============================================================================
+// Shared structures
+// ============================================================================
+
+/** Plain color entry: `{ color }` */
+export interface ColorStyle {
+  color?: Color;
+}
+
+/** Marker with its own color (prefix / suffix / indicator / state pattern) */
+export interface MarkerStyle {
+  marker?: string;
+  color?: Color;
+}
+
+/** Border configuration for box elements */
 export interface BorderConfig {
-  color?: ChalkString;
+  color?: Color;
   style?: BorderStyle;
   dim?: boolean;
 }
 
-/**
- * Padding configuration
- */
+/** Padding configuration (lines for top/bottom, spaces for left/right) */
 export interface PaddingConfig {
   top?: number;
   bottom?: number;
@@ -38,186 +67,270 @@ export interface PaddingConfig {
   right?: number;
 }
 
-/**
- * Code block padding configuration
- */
-export interface CodePaddingConfig {
-  left?: number;
+/** Element with a color and optional prefix/suffix markers */
+export interface AffixStyle {
+  color?: Color;
+  prefix?: Styled<MarkerStyle>;
+  suffix?: Styled<MarkerStyle>;
 }
 
-/**
- * Heading style configuration
- */
-export interface HeadingStyle {
-  color?: ChalkString;
-  marker?: string;
-}
+/** Title pattern: colored text wrapped in prefix/suffix markers */
+export interface TitleStyle extends AffixStyle {}
 
-/**
- * Figure element style configuration
- */
-export interface FigureStyle {
-  color?: ChalkString;
-  border?: BorderConfig;
+/** Box container (figure, dialog) */
+export interface BoxStyle {
+  color?: Color;
+  border?: Styled<BorderConfig>;
   padding?: PaddingConfig;
 }
 
-/**
- * Dialog element style configuration
- */
-export interface DialogStyle {
-  color?: ChalkString;
-  border?: BorderConfig;
-  padding?: PaddingConfig;
-}
-
-/**
- * Figure caption style configuration
- */
-export interface FigcaptionStyle {
-  color?: ChalkString;
-  prefix?: string;
-  suffix?: string;
-}
-
-/**
- * Fieldset element style configuration
- */
-export interface FieldsetStyle {
-  color?: ChalkString;
-  border?: BorderConfig;
-  title?: {
-    color?: ChalkString;
-  };
-  padding?: PaddingConfig;
-}
-
-/**
- * Details element style configuration
- */
-export interface DetailsStyle {
-  color?: ChalkString;
-  marker?: string;
-  border?: BorderConfig;
-  padding?: PaddingConfig;
-}
-
-/**
- * Blockquote style configuration
- */
-export interface BlockquoteStyle {
-  color?: ChalkString;
-  marker?: string;
-}
-
-/**
- * Code numbers style configuration
- */
-export interface CodeNumbersStyle {
-  color?: ChalkString;
+/** Required-field indicator */
+export interface RequiredStyle {
   enabled?: boolean;
+  indicator?: Styled<MarkerStyle & { position?: Position }>;
 }
 
-/**
- * Code inline style configuration
- */
-export interface CodeInlineStyle {
-  color?: ChalkString;
+/** Element with a separate disabled color */
+export interface DisabledStyle {
+  disabled?: Styled<ColorStyle>;
 }
 
-/**
- * Code gutter style configuration
- */
+// ============================================================================
+// Headings & text blocks
+// ============================================================================
+
+/** h1-h6 */
+export interface HeadingStyle {
+  color?: Color;
+  indicator?: Styled<MarkerStyle>;
+}
+
+/** Blockquote; indicators rotate by nesting depth */
+export interface BlockquoteStyle {
+  color?: Color;
+  indicators?: MarkerStyle[];
+}
+
+/** Preformatted block */
+export interface PreStyle {
+  padding?: PaddingConfig;
+}
+
+// ============================================================================
+// Code
+// ============================================================================
+
+/** Code block line numbers */
+export interface CodeNumbersStyle {
+  enabled?: boolean;
+  color?: Color;
+}
+
+/** Code block gutter between numbers and code */
 export interface CodeGutterStyle {
   enabled?: boolean;
   marker?: string;
-  color?: ChalkString;
+  color?: Color;
 }
 
-/**
- * Code label prefix/suffix style configuration
- */
-export interface CodeLabelAffixStyle {
-  marker?: string;
-  color?: ChalkString;
-}
-
-/**
- * Code label style configuration
- */
+/** Code block language label */
 export interface CodeLabelStyle {
   enabled?: boolean;
   position?: 'top' | 'bottom';
-  color?: ChalkString;
-  prefix?: CodeLabelAffixStyle;
-  suffix?: CodeLabelAffixStyle;
+  color?: Color;
+  prefix?: Styled<MarkerStyle>;
+  suffix?: Styled<MarkerStyle>;
 }
 
-/**
- * Code highlight style configuration
- */
+/** Highlighted lines */
 export interface CodeHighlightStyle {
-  color?: ChalkString;
+  color?: Color;
 }
 
-/**
- * Code overflow indicator style configuration
- */
+/** Marker for wrapped continuation lines (replaces the line number) */
 export interface CodeOverflowIndicatorStyle {
   enabled?: boolean;
   marker?: string;
-  color?: ChalkString;
+  color?: Color;
 }
 
-/**
- * Code diff line type style configuration
- */
+/** Style for one diff line kind */
 export interface CodeDiffLineStyle {
-  color?: ChalkString;
-  indicator?: {
-    marker?: string;
-    color?: ChalkString;
-  };
+  color?: Color;
+  indicator?: Styled<MarkerStyle>;
 }
 
-/**
- * Code diff style configuration (git-style diff highlighting)
- */
+/** Git-style diff highlighting in code blocks */
 export interface CodeDiffStyle {
   enabled?: boolean;
-  added?: CodeDiffLineStyle;
-  removed?: CodeDiffLineStyle;
-  modified?: CodeDiffLineStyle;
-  unchanged?: CodeDiffLineStyle;
+  added?: Styled<CodeDiffLineStyle>;
+  removed?: Styled<CodeDiffLineStyle>;
+  modified?: Styled<CodeDiffLineStyle>;
+  unchanged?: Styled<CodeDiffLineStyle>;
 }
 
-/**
- * Code block style configuration
- */
+/** Block code (`<pre><code>`) features */
 export interface CodeBlockStyle {
-  color?: ChalkString;
-  numbers?: CodeNumbersStyle;
-  gutter?: CodeGutterStyle;
-  label?: CodeLabelStyle;
-  highlight?: CodeHighlightStyle;
-  overflowIndicator?: CodeOverflowIndicatorStyle;
+  enabled?: boolean;
+  color?: Color;
+  numbers?: Styled<CodeNumbersStyle>;
+  gutter?: Styled<CodeGutterStyle>;
+  label?: Styled<CodeLabelStyle>;
+  overflowIndicator?: Styled<CodeOverflowIndicatorStyle>;
   diff?: CodeDiffStyle;
-  padding?: CodePaddingConfig;
 }
 
-/**
- * Code style configuration (can be string or object)
- */
+/** `<code>`; `color` is used for inline code */
 export interface CodeStyle {
-  inline?: ChalkString | CodeInlineStyle;
-  block?: CodeBlockStyle;
-  color?: ChalkString;
-  numbers?: ChalkString | CodeNumbersStyle;
+  color?: Color;
+  highlight?: Styled<CodeHighlightStyle>;
+  block?: Styled<CodeBlockStyle>;
 }
 
-/**
- * Table responsive mode configuration
- */
+// ============================================================================
+// Inline semantics
+// ============================================================================
+
+/** kbd key-by-key rendering */
+export interface KbdKeyStyle {
+  enabled?: boolean;
+  style?: 'simple' | 'box';
+  separator?: string;
+}
+
+/** `<kbd>` */
+export interface KbdStyle extends AffixStyle {
+  key?: KbdKeyStyle;
+}
+
+/** `<samp>` */
+export interface SampStyle extends AffixStyle {}
+
+/** `<abbr>` */
+export interface AbbrStyle {
+  color?: Color;
+  title?: Styled<TitleStyle>;
+}
+
+/** `<dfn>` */
+export interface DfnStyle {
+  color?: Color;
+  title?: Styled<TitleStyle>;
+}
+
+/** `<ruby>` */
+export interface RubyStyle {
+  color?: Color;
+  rt?: Styled<AffixStyle>;
+}
+
+/** `<time>` */
+export interface TimeStyle {
+  color?: Color;
+  datetime?: Styled<AffixStyle & { enabled?: boolean }>;
+}
+
+/** `<sub>` / `<sup>` */
+export interface ScriptStyle extends AffixStyle {}
+
+/** Diff markers for del/ins */
+export interface DiffStyle {
+  enabled?: boolean;
+  style?: 'simple' | 'git';
+  marker?: string;
+  color?: Color;
+}
+
+/** `<del>` */
+export interface DelStyle {
+  color?: Color;
+  diff?: Styled<DiffStyle>;
+}
+
+/** `<ins>` */
+export interface InsStyle {
+  color?: Color;
+  diff?: Styled<DiffStyle>;
+}
+
+/** `<q>` */
+export interface QStyle extends AffixStyle {
+  cite?: Styled<{ enabled?: boolean; color?: Color }>;
+}
+
+// ============================================================================
+// Links
+// ============================================================================
+
+/** Link href display */
+export interface LinkHrefStyle {
+  /** `auto` shows the href only when the terminal lacks hyperlink support */
+  enabled?: boolean | 'auto';
+  color?: Color;
+}
+
+/** Link title display */
+export interface LinkTitleStyle extends AffixStyle {
+  enabled?: boolean;
+}
+
+/** External link indicator */
+export interface ExternalLinkIndicatorStyle {
+  enabled?: boolean;
+  marker?: string;
+  color?: Color;
+  position?: Position;
+  spacing?: string;
+}
+
+/** `<a>` */
+export interface LinkStyle {
+  color?: Color;
+  href?: Styled<LinkHrefStyle>;
+  title?: Styled<LinkTitleStyle>;
+  external?: Styled<ExternalLinkIndicatorStyle>;
+}
+
+// ============================================================================
+// Lists
+// ============================================================================
+
+/** `<ul>` */
+export interface UnorderedListStyle {
+  color?: Color;
+  indicators?: {
+    disc?: Styled<MarkerStyle>;
+    square?: Styled<MarkerStyle>;
+    circle?: Styled<MarkerStyle>;
+  };
+  indent?: string;
+}
+
+/** Ordered list indicator (marker is the numbering type) */
+export interface OrderedListIndicatorStyle {
+  color?: Color;
+  marker?: OrderedListMarker;
+  decimal?: string;
+}
+
+/** `<ol>` */
+export interface OrderedListStyle {
+  color?: Color;
+  indicators?: Partial<Record<OrderedListMarker, Styled<OrderedListIndicatorStyle>>>;
+  indent?: string;
+}
+
+/** `<dt>` */
+export interface DtStyle {
+  color?: Color;
+  suffix?: Styled<MarkerStyle>;
+}
+
+// ============================================================================
+// Tables
+// ============================================================================
+
+/** Responsive (list view) mode for narrow terminals */
 export interface TableResponsiveStyle {
   enabled?: boolean;
   threshold?: number;
@@ -225,479 +338,401 @@ export interface TableResponsiveStyle {
   itemSeparator?: string;
 }
 
-/**
- * Table style configuration
- */
-/**
- * Table striping row style
- */
+/** Zebra striping row style */
 export interface TableStripingRowStyle {
-  color?: ChalkString;
+  color?: Color;
 }
 
-/**
- * Table striping configuration
- */
+/** Zebra striping */
 export interface TableStripingStyle {
   enabled?: boolean;
-  count?: number; // 2-5
-  rows?: TableStripingRowStyle[]; // Array of row styles (0-based), data-cli attributes use 1-based numbering
+  /** Number of colors to cycle through (2-5) */
+  count?: number;
+  /** Row styles (0-based; data-cli attributes use 1-based numbering) */
+  rows?: TableStripingRowStyle[];
 }
 
+/** Alignment indicator for one alignment */
+export interface TableAlignmentIndicatorStyle {
+  indicator?: string;
+  color?: Color;
+}
+
+/** Cell alignment indicators */
+export interface TableAlignmentStyle {
+  enabled?: boolean;
+  left?: Styled<TableAlignmentIndicatorStyle>;
+  center?: Styled<TableAlignmentIndicatorStyle>;
+  right?: Styled<TableAlignmentIndicatorStyle>;
+}
+
+/** `<table>` (cell/section colors are the top-level th/td/tr/... keys) */
 export interface TableStyle {
-  header?: {
-    color?: ChalkString;
-  };
-  caption?: {
-    color?: ChalkString;
-  };
-  cell?: {
-    color?: ChalkString;
-  };
-  td?: {
-    color?: ChalkString;
-  };
-  th?: {
-    color?: ChalkString;
-  };
-  tr?: {
-    color?: ChalkString;
-  };
-  thead?: {
-    color?: ChalkString;
-  };
-  tbody?: {
-    color?: ChalkString;
-  };
-  tfoot?: {
-    color?: ChalkString;
-  };
+  color?: Color;
+  /** Cell padding (spaces) */
+  padding?: { left?: number; right?: number };
   responsive?: TableResponsiveStyle;
   striping?: TableStripingStyle;
+  alignment?: TableAlignmentStyle;
 }
 
-/**
- * Abbreviation style configuration
- */
-/**
- * Quote element style configuration
- */
-export interface QStyle {
-  color?: ChalkString;
-  prefix?: { marker?: string; color?: ChalkString; };
-  suffix?: { marker?: string; color?: ChalkString; };
-  cite?: {
-    enabled?: boolean;
-    color?: ChalkString;
-  };
+// ============================================================================
+// Forms & inputs
+// ============================================================================
+
+/** Checked/unchecked toggle (checkbox, radio) */
+export interface ToggleInputStyle {
+  checked?: Styled<MarkerStyle>;
+  unchecked?: Styled<MarkerStyle>;
+  prefix?: Styled<MarkerStyle>;
+  suffix?: Styled<MarkerStyle>;
 }
 
-export interface AbbrStyle {
-  color?: ChalkString;
-  title?: {
-    color?: ChalkString;
-    prefix?: {
-      color?: ChalkString;
-      marker?: string;
-    };
-    suffix?: {
-      color?: ChalkString;
-      marker?: string;
-    };
-  };
+/** Checkbox input */
+export interface CheckboxStyle extends ToggleInputStyle {}
+
+/** Radio input */
+export interface RadioStyle extends ToggleInputStyle {}
+
+/** `<input type="button">` */
+export interface InputButtonStyle extends AffixStyle {}
+
+/** `<input type="range">` */
+export interface RangeStyle {
+  filled?: Styled<MarkerStyle>;
+  empty?: Styled<MarkerStyle>;
+  thumb?: Styled<MarkerStyle>;
 }
 
-/**
- * Definition (dfn) style configuration
- */
-export interface DfnStyle {
-  color?: ChalkString;
-  title?: {
-    color?: ChalkString;
-    prefix?: {
-      color?: ChalkString;
-      marker?: string;
-    };
-    suffix?: {
-      color?: ChalkString;
-      marker?: string;
-    };
-  };
+/** `<input type="color">` */
+export interface ColorInputStyle {
+  /** Indicator marker, drawn in the input's own color */
+  indicator?: { marker?: string };
+  prefix?: Styled<MarkerStyle>;
+  suffix?: Styled<MarkerStyle>;
+  value?: Styled<ColorStyle>;
 }
 
-/**
- * Unordered list markers configuration (can be array or object)
- */
-export type UnorderedListMarkers = string[] | {
-  disc?: string;
-  square?: string;
-  circle?: string;
-};
-
-/**
- * Unordered list style configuration
- */
-export interface UnorderedListStyle {
-  color?: ChalkString;
-  colors?: ChalkString[];
-  markers?: UnorderedListMarkers;
-  indent?: string;
+/** `<input type="password">` */
+export interface PasswordStyle {
+  char?: string;
+  count?: number;
+  color?: Color;
 }
 
-/**
- * Ordered list style configuration
- */
-export interface OrderedListStyle {
-  color?: ChalkString;
-  colors?: ChalkString[];
-  markers?: OrderedListMarker[];
-  decimal?: string;
-  indent?: string;
+/** `<input type="email">` / `<input type="date">` */
+export interface PrefixedInputStyle {
+  color?: Color;
+  prefix?: Styled<MarkerStyle>;
 }
 
-/**
- * Horizontal rule style configuration
- */
-export interface HrStyle {
-  color?: ChalkString;
-  marker?: string;
-  style?: 'single' | 'double' | 'bold' | 'dashed' | 'dotted';
+/** `<input type="file">` */
+export interface FileInputStyle extends PrefixedInputStyle {
+  placeholder?: string;
 }
 
-/**
- * Progress bar component style configuration
- */
-export interface ProgressComponentStyle {
-  color?: ChalkString;
-  marker?: string;
-}
-
-/**
- * Progress bar style configuration
- */
-export interface ProgressStyle {
-  width?: number;
-  filled?: ChalkString | ProgressComponentStyle;
-  empty?: ChalkString | ProgressComponentStyle;
-  color?: ChalkString;
-}
-
-/**
- * Checkbox style configuration
- */
-export interface CheckboxStyle {
-  checked?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  unchecked?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  open?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  close?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-}
-
-/**
- * Radio button style configuration
- */
-export interface RadioStyle {
-  checked?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  unchecked?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  open?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  close?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-}
-
-/**
- * Button style configuration
- */
-export interface ButtonStyle {
-  open?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  close?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  text?: {
-    color?: ChalkString;
-  };
-}
-
-/**
- * Input elements style configuration
- */
-export interface InputStyle {
+/** `<input>` (all types) */
+export interface InputStyle extends DisabledStyle {
+  required?: RequiredStyle;
   checkbox?: CheckboxStyle;
   radio?: RadioStyle;
-  button?: ButtonStyle;
+  button?: Styled<InputButtonStyle>;
+  textInput?: Styled<ColorStyle>;
+  textarea?: Styled<ColorStyle>;
+  range?: RangeStyle;
+  color?: ColorInputStyle;
+  password?: Styled<PasswordStyle>;
+  email?: Styled<PrefixedInputStyle>;
+  date?: Styled<PrefixedInputStyle>;
+  file?: Styled<FileInputStyle>;
 }
 
-/**
- * Image style configuration
- */
+/** `<button>` (separate from `input.button`) */
+export interface ButtonStyle extends AffixStyle, DisabledStyle {}
+
+/** `<fieldset>` */
+export interface FieldsetStyle extends BoxStyle, DisabledStyle {
+  /** Legend color */
+  title?: Styled<ColorStyle>;
+  required?: RequiredStyle;
+}
+
+/** `<select>` */
+export interface SelectStyle extends AffixStyle, DisabledStyle {}
+
+/** `<option>` */
+export interface OptionStyle extends DisabledStyle {
+  color?: Color;
+  selected?: Styled<MarkerStyle>;
+  unselected?: Styled<MarkerStyle>;
+}
+
+/** `<optgroup>` */
+export interface OptgroupStyle extends DisabledStyle {
+  indicator?: Styled<MarkerStyle>;
+  label?: Styled<ColorStyle>;
+}
+
+// ============================================================================
+// Interactive / widgets
+// ============================================================================
+
+/** `<details>` */
+export interface DetailsStyle extends BoxStyle {
+  /** Show only the summary of a closed `<details>` (default false) */
+  collapse?: { enabled?: boolean };
+  indicator?: {
+    open?: Styled<MarkerStyle>;
+    closed?: Styled<MarkerStyle>;
+  };
+}
+
+/** `<progress>` */
+export interface ProgressStyle {
+  /** Fixed bar width (adaptive by default) */
+  width?: number;
+  filled?: Styled<MarkerStyle>;
+  empty?: Styled<MarkerStyle>;
+}
+
+/** Meter range */
+export interface MeterRangeStyle extends MarkerStyle {
+  /** Fraction of max (0-1) */
+  threshold?: number;
+}
+
+/** `<meter>` */
+export interface MeterStyle {
+  width?: number;
+  ranges?: {
+    low?: Styled<MeterRangeStyle>;
+    medium?: Styled<MeterRangeStyle>;
+    high?: Styled<MeterRangeStyle>;
+  };
+  empty?: Styled<MarkerStyle>;
+  labels?: Styled<{
+    enabled?: boolean;
+    /** `%v` value, `%m` max, `%n` min, `%%` percent */
+    format?: string;
+    color?: Color;
+    position?: 'left' | 'right';
+  }>;
+}
+
+/** `<data>` */
+export interface DataStyle {
+  color?: Color;
+  value?: Styled<AffixStyle & { enabled?: boolean }>;
+}
+
+// ============================================================================
+// Media
+// ============================================================================
+
+/** `<video>` / `<audio>` placeholder */
+export interface MediaStyle {
+  indicator?: Styled<MarkerStyle>;
+  prefix?: Styled<MarkerStyle>;
+  suffix?: Styled<MarkerStyle>;
+  title?: Styled<ColorStyle>;
+}
+
+/** `<video>` */
+export interface VideoStyle extends MediaStyle {}
+
+/** `<audio>` */
+export interface AudioStyle extends MediaStyle {}
+
+/** `<img>` */
 export interface ImgStyle {
-  prefix?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  open?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  close?: {
-    color?: ChalkString;
-    marker?: string;
-  };
-  text?: {
-    color?: ChalkString;
-  };
+  indicator?: Styled<MarkerStyle>;
+  prefix?: Styled<MarkerStyle>;
+  suffix?: Styled<MarkerStyle>;
+  alt?: Styled<ColorStyle>;
 }
 
-/**
- * Video placeholder style configuration
- */
-export interface VideoStyle {
-  indicator?: { marker?: string; color?: ChalkString; };
-  prefix?: { marker?: string; color?: ChalkString; };
-  suffix?: { marker?: string; color?: ChalkString; };
-  title?: { color?: ChalkString; };
-}
+// ============================================================================
+// Visual / containers / legacy
+// ============================================================================
 
-/**
- * Ruby annotation style configuration
- */
-export interface RubyStyle {
-  color?: ChalkString;
-  rt?: {
-    color?: ChalkString;
-    prefix?: { marker?: string; color?: ChalkString; };
-    suffix?: { marker?: string; color?: ChalkString; };
-  };
-}
-
-/**
- * Audio placeholder style configuration
- */
-export interface AudioStyle {
-  indicator?: { marker?: string; color?: ChalkString; };
-  prefix?: { marker?: string; color?: ChalkString; };
-  suffix?: { marker?: string; color?: ChalkString; };
-  title?: { color?: ChalkString; };
-}
-
-/**
- * Keyboard input (kbd) key style configuration
- */
-export interface KbdKeyStyle {
-  enabled?: boolean;
-  style?: 'simple' | 'box';
-  separator?: string;
-}
-
-/**
- * Keyboard input (kbd) style configuration
- */
-export interface KbdStyle {
-  color?: ChalkString;
-  prefix?: {
-    marker?: string;
-    color?: ChalkString;
-  };
-  suffix?: {
-    marker?: string;
-    color?: ChalkString;
-  };
-  key?: KbdKeyStyle;
-}
-
-/**
- * External link indicator style configuration
- */
-export interface ExternalLinkIndicatorStyle {
-  enabled?: boolean;
+/** `<hr>` */
+export interface HrStyle {
+  color?: Color;
+  style?: 'single' | 'double' | 'bold' | 'dashed' | 'dotted';
+  /** Explicit character; overrides `style` when non-empty */
   marker?: string;
-  color?: ChalkString;
-  position?: 'before' | 'after';
-  spacing?: string;
 }
 
-/**
- * Link (a) style configuration
- */
-export interface LinkStyle {
-  color?: ChalkString;
-  hrefEnabled?: boolean | 'auto';
-  hrefColor?: ChalkString;
-  titleEnabled?: boolean;
-  titleColor?: ChalkString;
-  titlePrefix?: string;
-  titleSuffix?: string;
-  titlePrefixColor?: ChalkString;
-  titleSuffixColor?: ChalkString;
-  external?: ExternalLinkIndicatorStyle;
+/** `<figure>` */
+export interface FigureStyle extends BoxStyle {}
+
+/** `<dialog>` */
+export interface DialogStyle extends BoxStyle {}
+
+/** `<figcaption>` */
+export interface FigcaptionStyle {
+  color?: Color;
+  prefix?: string;
+  suffix?: string;
 }
 
-/**
- * Diff style configuration for del/ins
- */
-export interface DiffStyle {
-  enabled?: boolean;
-  style?: 'simple' | 'git';
-  marker?: string;
-  color?: ChalkString;
+/** `<blink>` */
+export interface BlinkStyle {
+  color?: Color;
+  animation?: {
+    enabled?: boolean;
+    indicator?: Styled<MarkerStyle & { position?: Position | 'both' }>;
+  };
 }
 
-/**
- * Deleted text (del) style configuration
- */
-export interface DelStyle {
-  color?: ChalkString;
-  diff?: DiffStyle;
+/** Marquee direction indicator */
+export interface MarqueeDirectionIndicator {
+  indicator?: Styled<MarkerStyle>;
 }
 
-/**
- * Inserted text (ins) style configuration
- */
-export interface InsStyle {
-  color?: ChalkString;
-  diff?: DiffStyle;
+/** `<marquee>` */
+export interface MarqueeStyle {
+  color?: Color;
+  direction?: {
+    enabled?: boolean;
+    left?: MarqueeDirectionIndicator;
+    right?: MarqueeDirectionIndicator;
+    up?: MarqueeDirectionIndicator;
+    down?: MarqueeDirectionIndicator;
+    position?: Position;
+  };
 }
 
+// ============================================================================
+// Theme
+// ============================================================================
+
 /**
- * Complete theme configuration for styling terminal output
+ * Complete theme configuration (mirrors `theme:` in config.yaml).
+ * Any entry with a `color` key also accepts a plain color shorthand.
  */
 export interface Theme {
   // Headings
-  h1?: ChalkString | HeadingStyle;
-  h2?: ChalkString | HeadingStyle;
-  h3?: ChalkString | HeadingStyle;
-  h4?: ChalkString | HeadingStyle;
-  h5?: ChalkString | HeadingStyle;
-  h6?: ChalkString | HeadingStyle;
+  h1?: Styled<HeadingStyle>;
+  h2?: Styled<HeadingStyle>;
+  h3?: Styled<HeadingStyle>;
+  h4?: Styled<HeadingStyle>;
+  h5?: Styled<HeadingStyle>;
+  h6?: Styled<HeadingStyle>;
 
-  // Inline elements
-  ruby?: ChalkString | RubyStyle;
-  span?: ChalkString;
-  a?: ChalkString | LinkStyle;
-  p?: ChalkString;
+  // Text blocks
+  p?: Styled<ColorStyle>;
+  blockquote?: Styled<BlockquoteStyle>;
+  address?: Styled<ColorStyle>;
+  pre?: PreStyle;
 
-  // Box elements
-  figure?: ChalkString | FigureStyle;
-  figcaption?: ChalkString | FigcaptionStyle;
-  dialog?: ChalkString | DialogStyle;
-  fieldset?: ChalkString | FieldsetStyle;
-  details?: ChalkString | DetailsStyle;
-  blockquote?: ChalkString | BlockquoteStyle;
-  address?: ChalkString;
+  // Inline formatting
+  span?: Styled<ColorStyle>;
+  bold?: Styled<ColorStyle>;
+  italic?: Styled<ColorStyle>;
+  i?: Styled<ColorStyle>;
+  em?: Styled<ColorStyle>;
+  cite?: Styled<ColorStyle>;
+  underline?: Styled<ColorStyle>;
+  strikethrough?: Styled<ColorStyle>;
+  mark?: Styled<ColorStyle>;
 
-  // Code
-  code?: ChalkString | CodeStyle;
+  // Semantic inline
+  code?: Styled<CodeStyle>;
+  kbd?: Styled<KbdStyle>;
+  samp?: Styled<SampStyle>;
+  var?: Styled<ColorStyle>;
+  abbr?: Styled<AbbrStyle>;
+  dfn?: Styled<DfnStyle>;
+  ruby?: Styled<RubyStyle>;
+  time?: Styled<TimeStyle>;
+  sub?: Styled<ScriptStyle>;
+  sup?: Styled<ScriptStyle>;
+  del?: Styled<DelStyle>;
+  ins?: Styled<InsStyle>;
 
-  // Legacy code properties (for backward compatibility)
-  inlineCode?: ChalkString;
-  codeNumbers?: ChalkString;
-
-  // Tables
-  table?: TableStyle;
-
-  // Legacy table properties (for backward compatibility)
-  tableHeader?: ChalkString;
-  tableCaption?: ChalkString;
-  tableCell?: ChalkString;
-
-  // Definition lists
-  dt?: ChalkString | {
-    color?: ChalkString;
-    suffix?: {
-      marker?: string;
-      color?: ChalkString;
-    };
-  };
-  dd?: ChalkString;
-  dl?: ChalkString;
-
-  // Text modifications
-  del?: ChalkString | DelStyle;
-  ins?: ChalkString | InsStyle;
-  strikethrough?: ChalkString;
-  underline?: ChalkString;
-  bold?: ChalkString;
-  samp?: ChalkString;
-  kbd?: ChalkString | KbdStyle;
-  variableTag?: ChalkString;
-  mark?: ChalkString;
-  time?: ChalkString | {
-    color?: ChalkString;
-    datetime?: {
-      enabled?: boolean;
-      color?: ChalkString;
-      prefix?: { marker?: string; color?: ChalkString; };
-      suffix?: { marker?: string; color?: ChalkString; };
-    };
-  };
-  q?: ChalkString | QStyle;
-  abbr?: ChalkString | AbbrStyle;
-
-  // Legacy abbr properties (for backward compatibility)
-  abbrTitle?: ChalkString;
-  abbrParens?: ChalkString;
-
-  dfn?: ChalkString | DfnStyle;
-
-  // Emphasis
-  italic?: ChalkString;
-  i?: ChalkString;
-  em?: ChalkString;
-  cite?: ChalkString;
+  // Links & quotes
+  a?: Styled<LinkStyle>;
+  q?: Styled<QStyle>;
 
   // Lists
-  ol?: ChalkString | OrderedListStyle;
-  ul?: ChalkString | UnorderedListStyle;
-  hr?: ChalkString | HrStyle;
+  ul?: Styled<UnorderedListStyle>;
+  ol?: Styled<OrderedListStyle>;
+  li?: Styled<ColorStyle>;
+  dl?: Styled<ColorStyle>;
+  dt?: Styled<DtStyle>;
+  dd?: Styled<ColorStyle>;
 
-  // Widgets
-  progress?: ChalkString | ProgressStyle;
+  // Tables
+  table?: Styled<TableStyle>;
+  caption?: Styled<ColorStyle>;
+  thead?: Styled<ColorStyle>;
+  tbody?: Styled<ColorStyle>;
+  tfoot?: Styled<ColorStyle>;
+  tr?: Styled<ColorStyle>;
+  th?: Styled<ColorStyle>;
+  td?: Styled<ColorStyle>;
+
+  // Forms
   input?: InputStyle;
-  img?: ImgStyle;
+  button?: Styled<ButtonStyle>;
+  fieldset?: Styled<FieldsetStyle>;
+  label?: Styled<ColorStyle>;
+  select?: Styled<SelectStyle>;
+  option?: Styled<OptionStyle>;
+  optgroup?: OptgroupStyle;
+
+  // Interactive / widgets
+  details?: Styled<DetailsStyle>;
+  progress?: ProgressStyle;
+  meter?: MeterStyle;
+  data?: Styled<DataStyle>;
+
+  // Media
   video?: VideoStyle;
   audio?: AudioStyle;
+  img?: ImgStyle;
+
+  // Visual
+  hr?: Styled<HrStyle>;
+  figure?: Styled<FigureStyle>;
+  figcaption?: Styled<FigcaptionStyle>;
+
+  // Containers
+  div?: Styled<ColorStyle>;
+  header?: Styled<ColorStyle>;
+  footer?: Styled<ColorStyle>;
+  article?: Styled<ColorStyle>;
+  section?: Styled<ColorStyle>;
+  main?: Styled<ColorStyle>;
+  nav?: Styled<ColorStyle>;
+  aside?: Styled<ColorStyle>;
+  form?: Styled<ColorStyle>;
+  picture?: Styled<ColorStyle>;
+  hgroup?: Styled<ColorStyle>;
+  dialog?: Styled<DialogStyle>;
+
+  // Legacy
+  center?: Styled<ColorStyle>;
+  blink?: Styled<BlinkStyle>;
+  marquee?: Styled<MarqueeStyle>;
 }
 
-/**
- * Line width configuration
- */
+// ============================================================================
+// Render configuration
+// ============================================================================
+
+/** Line width configuration */
 export interface LineWidthConfig {
-  /** Maximum line width (terminal width) */
+  /** Maximum line width when auto-detecting from the terminal (default 120) */
   max?: number;
   /** Fixed line width (overrides automatic detection) */
   value?: number;
 }
 
-/**
- * Configuration wrapper (can contain theme property)
- */
+/** Full render configuration */
 export interface Config {
-  /** Custom theme configuration */
+  /** Theme overrides */
   theme?: Theme;
   /** Line width configuration */
   lineWidth?: LineWidthConfig;
@@ -706,73 +741,49 @@ export interface Config {
 }
 
 /**
+ * Second argument of the render functions: a full {@link Config}, or a bare
+ * {@link Theme} (used as the theme when no `theme` key is present).
+ */
+export type RenderOptions = Config | Theme;
+
+// ============================================================================
+// API
+// ============================================================================
+
+/**
  * Renders HTML content to formatted terminal output
  *
  * @param html - HTML content to render
- * @param theme - Optional custom theme configuration
+ * @param options - Optional config (`{ theme, lineWidth, asciiMode }`) or bare theme
  * @returns Formatted terminal output
  *
  * @example
  * ```typescript
  * import { renderHTML } from 'cli-html';
  *
- * const html = '<h1>Hello World</h1><p>This is <strong>bold</strong>.</p>';
- * console.log(renderHTML(html));
- * ```
- *
- * @example
- * ```typescript
- * import { renderHTML } from 'cli-html';
- *
- * const customTheme = {
- *   h1: "magenta bold",
- *   code: { inline: "bgBlack yellow" }
- * };
- *
- * const html = '<h1>Styled Title</h1>';
- * console.log(renderHTML(html, customTheme));
+ * console.log(renderHTML('<h1>Hello</h1>', {
+ *   theme: { h1: 'magenta bold', code: { color: 'bgBlack yellow' } },
+ *   lineWidth: { value: 80 },
+ * }));
  * ```
  */
-export function renderHTML(html: string, theme?: Theme | Config): string;
+export function renderHTML(html: string, options?: RenderOptions): string;
 
 /**
- * Renders Markdown content to formatted terminal output with full GitHub Flavored Markdown support
+ * Renders Markdown content (GitHub Flavored Markdown) to formatted terminal output
  *
  * @param markdown - Markdown content to render
- * @param theme - Optional custom theme configuration
+ * @param options - Optional config (`{ theme, lineWidth, asciiMode }`) or bare theme
  * @returns Formatted terminal output
  *
  * @example
  * ```typescript
  * import { renderMarkdown } from 'cli-html';
  *
- * const markdown = `
- * # Hello World
- *
- * > [!NOTE]
- * > This is a note
- *
- * - [x] Task 1
- * - [ ] Task 2
- * `;
- *
- * console.log(renderMarkdown(markdown));
- * ```
- *
- * @example
- * ```typescript
- * import { renderMarkdown } from 'cli-html';
- *
- * const customTheme = {
- *   h1: "cyan bold",
- *   h2: "blue bold"
- * };
- *
- * const markdown = '# Title\n\nParagraph with `code`.';
- * console.log(renderMarkdown(markdown, customTheme));
+ * console.log(renderMarkdown('# Title\n\n- [x] Task', { h1: 'cyan bold' }));
  * ```
  */
-export function renderMarkdown(markdown: string, theme?: Theme | Config): string;
+export function renderMarkdown(markdown: string, options?: RenderOptions): string;
 
 /**
  * Renders a React/JSX element or component to formatted terminal output.
@@ -781,7 +792,7 @@ export function renderMarkdown(markdown: string, theme?: Theme | Config): string
  * HTML/Markdown rendering never pays for them; they ship as dependencies.
  *
  * @param jsx - A React element (e.g. `<App />`) or a component to instantiate
- * @param theme - Optional custom theme configuration
+ * @param options - Optional config (`{ theme, lineWidth, asciiMode }`) or bare theme
  * @returns Promise resolving to formatted terminal output
  *
  * @example
@@ -792,158 +803,9 @@ export function renderMarkdown(markdown: string, theme?: Theme | Config): string
  * console.log(await renderJSX(<App />));
  * ```
  */
-export function renderJSX(jsx: unknown, theme?: Theme | Config): Promise<string>;
+export function renderJSX(jsx: unknown, options?: RenderOptions): Promise<string>;
 
 /**
- * Default export - alias for renderHTML
- *
- * @param html - HTML content to render
- * @param theme - Optional custom theme configuration
- * @returns Formatted terminal output
- *
- * @example
- * ```typescript
- * import cliHtml from 'cli-html';
- *
- * const html = '<h1>Hello World</h1>';
- * console.log(cliHtml(html));
- * ```
+ * Default export - alias for {@link renderHTML}
  */
-export default function cliHtml(html: string, theme?: Theme | Config): string;
-
-// ============================================================================
-// Utility Functions
-// ============================================================================
-
-/**
- * Validate and sanitize numeric value
- * @param value - Value to validate
- * @param min - Minimum allowed value (default: -Infinity)
- * @param max - Maximum allowed value (default: Infinity)
- * @param defaultValue - Default value if invalid (default: 0)
- * @returns Validated number or default
- */
-export function validateNumber(value: any, min?: number, max?: number, defaultValue?: number): number;
-
-/**
- * Validate and sanitize integer value
- * @param value - Value to validate
- * @param min - Minimum allowed value (default: -Infinity)
- * @param max - Maximum allowed value (default: Infinity)
- * @param defaultValue - Default value if invalid (default: 0)
- * @returns Validated integer or default
- */
-export function validateInteger(value: any, min?: number, max?: number, defaultValue?: number): number;
-
-/**
- * Validate boolean value from various formats
- * @param value - Value to validate (true/false/'true'/'false'/1/0/'yes'/'no')
- * @param defaultValue - Default value if invalid (default: false)
- * @returns Validated boolean or default
- */
-export function validateBoolean(value: any, defaultValue?: boolean): boolean;
-
-/**
- * Validate color string format (chalk-string compatible)
- * @param color - Color string to validate
- * @returns True if valid color format
- */
-export function isValidColor(color: string): boolean;
-
-/**
- * Check if NO_COLOR environment variable is set
- * @returns True if colors should be disabled
- */
-export function isNoColor(): boolean;
-
-/**
- * Get visual length of string (accounting for ANSI codes, emoji, and wide characters)
- * @param str - Input string (may contain ANSI codes, emoji, wide chars)
- * @returns Visual length
- */
-export function visualLength(str: string): number;
-
-/**
- * Convert string to title case
- * @param str - Input string
- * @returns Title cased string
- * @example toTitleCase('hello world') // => 'Hello World'
- */
-export function toTitleCase(str: string): string;
-
-/**
- * Capitalize first letter of string (rest unchanged)
- * @param str - Input string
- * @returns Capitalized string
- * @example capitalize('hello world') // => 'Hello world'
- */
-export function capitalize(str: string): string;
-
-/**
- * Strip all ANSI escape codes from string
- * @param str - Input string with ANSI codes
- * @returns String without ANSI codes
- * @example stripAnsi('\x1b[31mred\x1b[0m') // => 'red'
- */
-export function stripAnsi(str: string): string;
-
-/**
- * Check if string is empty (null, undefined, or empty string)
- * @param str - Input string
- * @returns True if empty
- */
-export function isEmpty(str: any): boolean;
-
-/**
- * Reverse a string
- * @param str - Input string
- * @returns Reversed string
- * @example reverse('hello') // => 'olleh'
- */
-export function reverse(str: string): string;
-
-/**
- * Count occurrences of substring in string
- * @param str - Input string
- * @param substr - Substring to count
- * @param caseSensitive - Case sensitive search (default: true)
- * @returns Number of occurrences
- */
-export function count(str: string, substr: string, caseSensitive?: boolean): number;
-
-/**
- * Convert Unicode characters to ASCII equivalents
- * Useful for terminals that don't support Unicode properly
- * @param str - Input string with Unicode characters
- * @returns String with ASCII equivalents
- * @example toAscii('Progress: ████░░░░') // => 'Progress: ####----'
- */
-export function toAscii(str: string): string;
-
-/**
- * Convert a marker (symbol) to ASCII if needed
- * @param marker - Original marker (may be Unicode)
- * @param asciiMode - Whether ASCII mode is enabled
- * @returns ASCII marker if asciiMode is true, original otherwise
- */
-export function markerToAscii(marker: string, asciiMode?: boolean): string;
-
-/**
- * Logger with different levels (DEBUG, INFO, WARN, ERROR)
- * Only logs when DEBUG environment variable is set (except WARN and ERROR)
- */
-export const logger: {
-  debug(context: string, message: string, data?: any): void;
-  info(context: string, message: string, data?: any): void;
-  warn(context: string, message: string, data?: any): void;
-  error(context: string, message: string, error?: Error | any): void;
-};
-
-/**
- * Safe wrapper for functions that might throw
- * @param fn - Function to execute
- * @param fallback - Fallback value on error
- * @param context - Context for error logging
- * @returns Function result or fallback
- */
-export function safeExecute<T>(fn: () => T, fallback: T, context?: string): T;
+export default renderHTML;

@@ -4,7 +4,6 @@ import { renderHTML } from '../../index.js';
 import { createSgrState } from '../../lib/ansi/sgr-state.js';
 
 const ESC = '\u001B';
-// eslint-disable-next-line no-control-regex
 const SGR = /\u001B\[([\d;]*)m/g;
 // A background token inside an SGR parameter run: 40-47, 100-107, or 48;5/48;2.
 const BG_OPEN = /(?:^|;)(?:4[0-7]|10[0-7]|48;[25];)/;

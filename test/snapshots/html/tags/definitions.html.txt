@@ -1,0 +1,89 @@
+## Definition List Examples with Custom Styles
+
+### Default Definition List
+
+HTML ::
+
+  HyperText Markup Language
+
+CSS ::
+
+  Cascading Style Sheets
+
+### Customized Definition List
+
+JavaScript ::
+
+  A high-level programming language
+
+TypeScript ::
+
+  A typed superset of JavaScript
+
+Node.js ::
+
+  JavaScript runtime built on V8
+
+### With Emphasis
+
+Term One ::
+
+  Definition of term one
+
+Term Two ::
+
+  Definition of term two
+
+### Custom Term Suffix (data-cli-suffix-marker)
+
+Default suffix (:: from config):
+
+Term ::
+
+  Default suffix applied automatically from config
+
+Arrow suffix:
+
+HTML →
+
+  HyperText Markup Language
+
+CSS →
+
+  Cascading Style Sheets
+
+Simple colon suffix:
+
+JavaScript:
+
+  A programming language for the web
+
+No suffix (empty string):
+
+Python
+
+  A general-purpose programming language
+
+Rust
+
+  A systems programming language focused on safety
+
+Colored suffix:
+
+Go ::
+
+  A statically typed, compiled language by Google
+
+TypeScript ::
+
+  A typed superset of JavaScript
+
+Custom suffix + term color:
+
+Node.js ▸
+
+  JavaScript runtime built on Chrome's V8 engine
+
+Deno ▸
+
+  A modern runtime for JavaScript and TypeScript

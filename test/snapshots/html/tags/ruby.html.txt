@@ -1,0 +1,86 @@
+## Ruby Annotation Examples
+
+Ruby annotations are used to show pronunciation or meaning of characters,
+commonly used for acronyms or phonetic spelling in English.
+
+### Basic Ruby (Acronyms)
+
+Network: WWW (World Wide Web)
+
+Language: HTML (HyperText Markup Language)
+
+Component: GUI (Graphical User Interface)
+
+### Custom Colors
+
+Accent base text: API (Application Programming Interface)
+
+Accent annotation: HTTP (Hypertext Transfer Protocol)
+
+Both customized: URL (Uniform Resource Locator)
+
+### Ruby with Fallback Parentheses
+
+With rp tags: CPU (Central Processing Unit)
+
+Example: RAM (Random Access Memory)
+
+### Multiple Ruby Annotations
+
+The NASA (National Aeronautics and Space Administration) launched a UAV
+(Unmanned Aerial Vehicle)
+
+The CEO (Chief Executive Officer) met the CTO (Chief Technology Officer)
+
+### Phonetic Spelling
+
+Word: Colonel (ker-nl)
+
+Word: Choir (kwire)
+
+Word: Queue (kyoo)
+
+### Scientific Terms
+
+Chemical: NaCl (Sodium Chloride)
+
+Compound: H2O (Water)
+
+### Complex Example
+
+The acronym JSON (JavaScript Object Notation) is a lightweight data-interchange
+format. A common tool to parse it is the jq (command-line JSON processor).
+
+### Technical Terms
+
+Database: SQL (Structured Query Language)
+
+Protocol: FTP (File Transfer Protocol)
+
+Standard: XML (eXtensible Markup Language)
+
+### Custom Annotation Brackets (data-cli-prefix-marker / data-cli-suffix-marker)
+
+Square brackets:
+
+CSS [Cascading Style Sheets]
+
+Angle brackets:
+
+SVG <Scalable Vector Graphics>
+
+No brackets (empty):
+
+DNSDomain Name System
+
+Colored brackets:
+
+GPU (Graphics Processing Unit)
+
+Custom brackets + annotation color:
+
+SSD «Solid State Drive»
+
+Multiple with different brackets in one sentence:
+
+I bought a USB [Universal Serial Bus] drive for my PC [Personal Computer].

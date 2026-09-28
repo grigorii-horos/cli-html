@@ -1,0 +1,157 @@
+# Custom Details Examples
+
+## Default and Border Colors
+
+### Default Details
+
+┌ ▶ Click to expand ────────────────────────────────┐
+│ This is the content inside the details element.   │
+│                                                   │
+│ It can contain multiple lines and other elements. │
+└───────────────────────────────────────────────────┘
+
+### Custom Border Colors
+
+┌ ▶ Cyan Border ────────────────────────────────┐
+│ This details element has a cyan border color. │
+└───────────────────────────────────────────────┘
+
+┌ ▶ Magenta Border ────────────────────────────────┐
+│ This details element has a magenta border color. │
+└──────────────────────────────────────────────────┘
+
+┌ ▶ Green Border ────────────────────────────────┐
+│ This details element has a green border color. │
+└────────────────────────────────────────────────┘
+
+## Border Styles
+
+### Single Style (Default)
+
+┌ ▶ Single Line Border ─────┐
+│ Single line border style. │
+└───────────────────────────┘
+
+### Round Style
+
+╭ ▶ Rounded Corners ───────────╮
+│ Rounded corner border style. │
+╰──────────────────────────────╯
+
+### Double Style
+
+╔ ▶ Double Line Border ═════╗
+║ Double line border style. ║
+╚═══════════════════════════╝
+
+### Bold Style
+
+┏ ▶ Bold Line Border ━━━━━┓
+┃ Bold line border style. ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+### Classic Style
+
++ ▶ Classic ASCII Border -----------+
+| Classic ASCII border with +, -, | |
++-----------------------------------+
+
+## Custom Markers
+
+### Arrow Marker
+
+┌ > Expandable Section ──────────────────────────────────────┐
+│ Details with a custom arrow marker instead of the default. │
+└────────────────────────────────────────────────────────────┘
+
+### Star Marker
+
+┌ ★ Important Information ────┐
+│ Details with a star marker. │
+└─────────────────────────────┘
+
+### Plus Marker
+
+┌ + Additional Details ────────────┐
+│ Details with a plus sign marker. │
+└──────────────────────────────────┘
+
+## Border Dim
+
+### Normal Border
+
+┌ ▶ Normal Brightness ──────┐
+│ Normal border brightness. │
+└───────────────────────────┘
+
+### Dimmed Border
+
+┌ ▶ Dimmed Appearance ─────────────────┐
+│ Dimmed border for subtle appearance. │
+└──────────────────────────────────────┘
+
+## Combined Custom Attributes
+
+### Full Customization
+
+╔ ▼ Fully Customized ══════════════════════════╗
+║ Blue double border with custom arrow marker. ║
+║                                              ║
+║ Multiple paragraphs supported.               ║
+╚══════════════════════════════════════════════╝
+
+### Subtle Style
+
+╭ › Subtle Appearance ───────────────────────────╮
+│ Gray dimmed rounded border with subtle marker. │
+╰────────────────────────────────────────────────╯
+
+### Attention Style
+
+┏ ! Warning ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Yellow bold border with warning marker. ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+## Real-World Examples
+
+### FAQ Section
+
+╭ ? What is CLI-HTML? ───────────────────────────────────────────────────────╮
+│ CLI-HTML is a terminal renderer for HTML and Markdown with full GitHub     │
+│ Flavored Markdown support.                                                 │
+│                                                                            │
+│ It supports syntax highlighting, customizable themes, and extensive inline │
+│ customization.                                                             │
+╰────────────────────────────────────────────────────────────────────────────╯
+
+### Code Documentation
+
+┌ { } Function Documentation ─────────────┐
+│ Function name: renderHTML(html, theme)  │
+│                                         │
+│ Parameters:                             │
+│                                         │
+│  • html - HTML string to render         │
+│  • theme - Optional custom theme object │
+│                                         │
+│ Returns: Formatted terminal output      │
+└─────────────────────────────────────────┘
+
+### Advanced Options
+
++ ⚙ Advanced Configuration ----------------------+
+| Hidden content is still rendered inside a box. |
+|                                                |
+|  • Enable debug mode                           |
+|  • Set custom line width                       |
+|  • Configure syntax highlighting               |
++------------------------------------------------+
+
+### Collapsible List
+
+╭ ▸ Project Files ───╮
+│  • src/index.js    │
+│  • src/components/ │
+│  • tests/          │
+│  • README.md       │
+╰────────────────────╯

@@ -50,4 +50,4 @@ node bin/html.js examples/html/full/blog.html
 
 - [Main README](../../../README.md) - Full documentation
 - [../tags/](../tags/) - Standard tag examples
-- [../tags-custom/](../tags-custom/) - Examples with custom inline styles
+- [../tags/](../tags/) - Tag examples, including custom inline styles

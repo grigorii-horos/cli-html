@@ -1,0 +1,110 @@
+# Character Encoding and Unicode: A Developer's Guide
+
+Published June 1, 2026 · Updated June 10, 2026 · 15 min read
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Introduction
+
+Every string in your program is a sequence of characters. But what is a
+character? The answer has been contentious for decades. ASCII (American Standard
+Code for Information Interchange) gave us 128 symbols. ISO (International
+Organization for Standardization)-8859 tried to extend that. Then came Unicode —
+a universal character set designed to represent every writing system on Earth.
+
+As "Unicode provides a unique number for every character, no matter what the
+platform, no matter what the program, no matter what the language." That promise
+changed how we think about text.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## A Brief History
+
+The Unicode Standard was first published in 1991, with version 1.0 covering
+7,129 characters. Today, Unicode 15.1 defines 149,813 characters across 161
+scripts.
+
+╭──────────────────────────────────────────────╮
+│    Unicode versions over time:               │
+│    1.0  (1991) -- 7,129 characters           │
+│    3.0  (1999) -- 49,194 characters          │
+│    6.0  (2010) -- 109,449 characters         │
+│    15.1 (2023) -- 149,813 characters         │
+│                                              │
+│  Growth of the Unicode character repertoire  │
+╰──────────────────────────────────────────────╯
+────────────────────────────────────────────────────────────────────────────────
+
+## Scripts and Writing Systems
+
+Unicode covers writing systems from across history and geography. Here are a few
+examples:
+
+Latin ::
+
+  Used by most European languages, including English, French, Spanish, German.
+
+CJK Unified Ideographs ::
+
+  Shared characters for Latin (Script) (English), Cyrillic (Script) (Russian),
+  and Greek (Script) (Greek).
+
+Arabic ::
+
+  Right-to-left script used by Arabic, Persian, Urdu, and other languages.
+
+Devanagari ::
+
+  Used for Hindi (हिन्दी (hindī)), Sanskrit, Nepali, and others.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## UTF-8: The Dominant Encoding
+
+UTF (Unicode Transformation Format)-8 encodes Unicode as 1-4 bytes per
+character. ASCII characters (U+0000 to U+007F) use a single byte — making UTF-8
+backward-compatible with ASCII.
+
+As "UTF-8, a transformation format of ISO 10646", it has become the default
+encoding for the web. As of 2024, over 98% of websites use UTF-8.
+
+ 1 // Always specify encoding explicitly
+ 2 const fs = require('fs');
+ 3 const text = fs.readFileSync('file.txt', 'utf8');
+ 4 console.log(text.length);        // character count
+ 5 console.log(Buffer.byteLength(text, 'utf8'));  // byte count
+
+│ Key insight: string.length in JavaScript counts UTF-16 code units, not Unicode
+│ code points. For emoji and rare CJK characters, these differ.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Normalization
+
+Unicode includes multiple ways to represent the same character. The letter é can
+be encoded as a single precomposed character (U+00E9) or as e + combining acute
+accent (U+0065 U+0301). Both look identical but compare as unequal without
+normalization.
+
+The four normalization forms are NFD (Canonical Decomposition), NFC (Canonical
+Decomposition, followed by Canonical Composition), NFKD (Compatibility
+Decomposition), and NFKC (Compatibility Decomposition, followed by Canonical
+Composition). For most applications, NFC is the right choice.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Video Resources
+
+For a visual introduction, see the talk ▶[Unicode: The Secret of a, n, and
+emoji (Tom Scott)] and the conference presentation ▶[Unicode Internals — PyCon
+2023].
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│ ### Further Reading                                                          │
+│                                                                              │
+│  • The Unicode Standard — unicode.org [https://unicode.org]                  │
+│  • "The Absolute Minimum Every Software Developer Must Know About Unicode" — │
+│    Joel Spolsky, 2003                                                        │
+│  • RFC (Request for Comments) 3629: UTF-8, a transformation format of ISO    │
+│    10646                                                                     │
+╰──────────────────────────────────────────────────────────────────────────────╯

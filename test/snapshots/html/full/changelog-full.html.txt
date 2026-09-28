@@ -1,0 +1,92 @@
+# cli-html Changelog
+
+All notable changes to this project are documented here. Format based on Keep a
+Changelog [https://keepachangelog.com].
+
+════════════════════════════════════════════════════════════════════════════════
+
+## v6.0.0 — June 10, 2026
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│ Migration Note: v5 to v6                                                     │
+│                                                                              │
+│ The theme configuration format has changed. All color values are now plain   │
+│ chalk-string format ("red bold"). Remove any function-based color values     │
+│ from your config. Run cli-html --validate-config to check your configuration │
+│ file.                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+### Added
+
+ • Named styles for <hr>: single, double, bold, dashed, dotted via hr.style
+   config
+ • Configurable <ruby>/<rt>: prefix/suffix markers for annotations
+ • Box border for <dialog>: mirrors <figure> and <fieldset> border system
+ • Datetime display for <time>: show datetime attribute when
+   time.datetime.enabled: true
+ • Cite-as-link for <q>: cite attribute treated as external link when enabled
+ • Inline <video>/<audio>: inline placeholders showing title or filename
+
+### Breaking Changes
+
+Theme color format ::
+
+  Function-based color values replaced by chalk-string format only. See
+  migration note above.
+
+hr.marker removed as primary config ::
+
+  Use hr.style instead. hr.marker still works as an explicit character
+  override.
+
+┌ ▶ Full diff from v5.3.0 ─────────────────────────────────────────────────┐
+│ See GitHub comparison for the complete change set including all internal │
+│ refactoring.                                                             │
+└──────────────────────────────────────────────────────────────────────────┘
+
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+## v5.3.0 — May 15, 2026
+
+### Added
+
+ • Inline <dt> suffix: configurable suffix marker after term text
+ • Media placeholders: <video> and <audio> now render inline title instead of
+   nothing
+
+### Fixed
+
+ • <ruby> color bug: was inheriting from <span> theme instead of own config
+
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+## v5.2.0 — April 1, 2026
+
+### Changed
+
+ • Core architecture rewrite: theme values now plain strings, getAttr() replaces
+   getCustomAttributes()
+ • Removed parseStyleEntry() — no longer needed
+ • Removed lib/utils/find-parrent-tag.js — dead code
+
+════════════════════════════════════════════════════════════════════════════════
+
+## v5.0.0 — January 10, 2026
+
+╭───────────────────────────────────────────────────────────────────────────╮
+│ Migration Note: v4 to v5                                                  │
+│                                                                           │
+│ Input element configuration moved under input.* namespace. Button element │
+│ now uses button.* (separate from input.button.*). Table sub-elements (td, │
+│ th, tr, etc.) are now top-level theme keys.                               │
+╰───────────────────────────────────────────────────────────────────────────╯
+
+### Breaking Changes
+
+Table configuration ::
+
+  Table sub-elements moved to top-level: table.td replaced by td
+
+Button element ::
+
+  input.button for the <button> HTML element replaced by button

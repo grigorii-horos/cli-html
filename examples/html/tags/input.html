@@ -114,53 +114,53 @@
 
 <h3>Colored Button Text</h3>
 
-<p><input type="button" value="Success" data-cli-button-text-color="green bold" /></p>
-<p><button data-cli-button-text-color="red bold">Delete</button></p>
-<p><input type="button" value="Warning" data-cli-button-text-color="yellow" /></p>
-<p><button data-cli-button-text-color="cyan">Info</button></p>
+<p><input type="button" value="Success" data-cli-button-color="green bold" /></p>
+<p><button data-cli-button-color="red bold">Delete</button></p>
+<p><input type="button" value="Warning" data-cli-button-color="yellow" /></p>
+<p><button data-cli-button-color="cyan">Info</button></p>
 
 <h3>Custom Button Markers</h3>
 
-<p><input type="button" value="Download" data-cli-button-open-marker="⟨ " data-cli-button-close-marker=" ⟩" /></p>
-<p><button data-cli-button-open-marker="❮ " data-cli-button-close-marker=" ❯">Execute</button></p>
-<p><input type="button" value="Save" data-cli-button-open-marker="[ ◆ " data-cli-button-close-marker=" ◆ ]" /></p>
+<p><input type="button" value="Download" data-cli-button-prefix-marker="⟨ " data-cli-button-suffix-marker=" ⟩" /></p>
+<p><button data-cli-button-prefix-marker="❮ " data-cli-button-suffix-marker=" ❯">Execute</button></p>
+<p><input type="button" value="Save" data-cli-button-prefix-marker="[ ◆ " data-cli-button-suffix-marker=" ◆ ]" /></p>
 
 <h3>Custom Button Marker Colors</h3>
 
 <p><input type="button" value="Confirm"
-   data-cli-button-open-color="blue"
-   data-cli-button-close-color="blue" /></p>
+   data-cli-button-prefix-color="blue"
+   data-cli-button-suffix-color="blue" /></p>
 <p><button
-   data-cli-button-open-color="green bold"
-   data-cli-button-close-color="green bold">Proceed</button></p>
+   data-cli-button-prefix-color="green bold"
+   data-cli-button-suffix-color="green bold">Proceed</button></p>
 
 <h3>Combined Button Customizations</h3>
 
 <p><input type="button" value="✓ Accept"
-   data-cli-button-text-color="green bold"
-   data-cli-button-open-color="green"
-   data-cli-button-close-color="green"
-   data-cli-button-open-marker="〔 "
-   data-cli-button-close-marker=" 〕" /></p>
+   data-cli-button-color="green bold"
+   data-cli-button-prefix-color="green"
+   data-cli-button-suffix-color="green"
+   data-cli-button-prefix-marker="〔 "
+   data-cli-button-suffix-marker=" 〕" /></p>
 
 <p><button
-   data-cli-button-text-color="red bold"
-   data-cli-button-open-color="red"
-   data-cli-button-close-color="red"
-   data-cli-button-open-marker="⟦ "
-   data-cli-button-close-marker=" ⟧">✗ Reject</button></p>
+   data-cli-button-color="red bold"
+   data-cli-button-prefix-color="red"
+   data-cli-button-suffix-color="red"
+   data-cli-button-prefix-marker="⟦ "
+   data-cli-button-suffix-marker=" ⟧">✗ Reject</button></p>
 
 <p><input type="button" value="⚡ Power"
-   data-cli-button-text-color="yellow bold"
-   data-cli-button-open-color="yellow"
-   data-cli-button-close-color="yellow" /></p>
+   data-cli-button-color="yellow bold"
+   data-cli-button-prefix-color="yellow"
+   data-cli-button-suffix-color="yellow" /></p>
 
 <p><button
-   data-cli-button-text-color="magenta bold"
-   data-cli-button-open-color="magenta dim"
-   data-cli-button-close-color="magenta dim"
-   data-cli-button-open-marker="▶ "
-   data-cli-button-close-marker=" ◀">⚙ Settings</button></p>
+   data-cli-button-color="magenta bold"
+   data-cli-button-prefix-color="magenta dim"
+   data-cli-button-suffix-color="magenta dim"
+   data-cli-button-prefix-marker="▶ "
+   data-cli-button-suffix-marker=" ◀">⚙ Settings</button></p>
 
 <h3>Default Text Inputs</h3>
 
@@ -214,40 +214,40 @@ Passionate about open source and clean code.</textarea>
 <h3>Colored Textareas</h3>
 
 <p>Green (success message):</p>
-<textarea data-cli-textarea-color="green">✓ All tests passed
+<textarea data-cli-color="green">✓ All tests passed
 ✓ Build completed successfully
 ✓ Deployment finished</textarea>
 
 <p>Red (error log):</p>
-<textarea data-cli-textarea-color="red bold">✗ Error: Connection timeout
+<textarea data-cli-color="red bold">✗ Error: Connection timeout
 ✗ Failed to load resource
 ✗ Build failed</textarea>
 
 <p>Cyan (info):</p>
-<textarea data-cli-textarea-color="cyan">Server started on port 3000
+<textarea data-cli-color="cyan">Server started on port 3000
 Database connected
 Ready to accept connections</textarea>
 
 <p>Yellow (warning):</p>
-<textarea data-cli-textarea-color="yellow">⚠ High memory usage detected
+<textarea data-cli-color="yellow">⚠ High memory usage detected
 ⚠ Deprecated API usage
 ⚠ Security update available</textarea>
 
 <h3>Textarea with Background Colors</h3>
 
 <p>Magenta with bgBlack:</p>
-<textarea data-cli-textarea-color="magenta bgBlack">function hello() {
+<textarea data-cli-color="magenta bgBlack">function hello() {
   console.log("Hello, World!");
   return true;
 }</textarea>
 
 <p>White on red background:</p>
-<textarea data-cli-textarea-color="bgRed white bold">CRITICAL ERROR
+<textarea data-cli-color="bgRed white bold">CRITICAL ERROR
 System failure detected
 Immediate action required</textarea>
 
 <p>Black on green background:</p>
-<textarea data-cli-textarea-color="bgGreen black">{
+<textarea data-cli-color="bgGreen black">{
   "status": "success",
   "message": "Operation completed"
 }</textarea>
@@ -353,8 +353,8 @@ Immediate action required</textarea>
 
 <h3>Color with Hex Display</h3>
 
-<p>Brand color: <input type="color" value="#3498db" data-cli-show-hex="true" /></p>
-<p>Accent: <input type="color" value="#e74c3c" data-cli-color-prefix="●" data-cli-show-hex="true" /></p>
+<p>Brand color: <input type="color" value="#3498db" data-cli-hex-enabled="true" /></p>
+<p>Accent: <input type="color" value="#e74c3c" data-cli-color-prefix-marker="●" data-cli-hex-enabled="true" /></p>
 
 <h3>Input type="file" - File Upload</h3>
 
@@ -366,10 +366,10 @@ Immediate action required</textarea>
 
 <h3>Custom File Prefix</h3>
 
-<p>Attachment: <input type="file" value="document.pdf" data-cli-file-prefix="📄" /></p>
+<p>Attachment: <input type="file" value="document.pdf" data-cli-file-prefix-marker="📄" /></p>
 <p>Image: <input type="file" value="vacation.png"
   data-cli-file-prefix-color="yellow"
-  data-cli-file-text-color="green bold" /></p>
+  data-cli-file-color="green bold" /></p>
 
 <h3>Combined Form Example</h3>
 
@@ -383,7 +383,7 @@ Immediate action required</textarea>
     <input type="radio" name="gender" /> Female
   </p>
   <p>Volume: <input type="range" value="80" min="0" max="100" /></p>
-  <p>Theme color: <input type="color" value="#2ecc71" data-cli-show-hex="true" /></p>
+  <p>Theme color: <input type="color" value="#2ecc71" data-cli-hex-enabled="true" /></p>
   <p>Profile picture: <input type="file" value="avatar.jpg" /></p>
   <p>Message:</p>
   <textarea>Hello, this is a test message.</textarea>

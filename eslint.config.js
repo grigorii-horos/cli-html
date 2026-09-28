@@ -31,7 +31,7 @@ export default [
       simpleImportSort: simpleImportSortPlugin,
     },
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: "latest",
       sourceType: "module",
       globals: {
         Atomics: "readonly",
@@ -50,10 +50,40 @@ export default [
       "unicorn/no-array-callback-reference": "off",
       "max-len": "off",
       "import/no-unresolved": "off",
+      // getAttr/attr naming is the project convention (see CLAUDE.md)
+      "unicorn/prevent-abbreviations": ["error", {
+        checkFilenames: false,
+        replacements: {
+          attr: false, attrs: false, str: false, val: false, len: false, src: false, pkg: false,
+          args: false, params: false, fn: false, i: false,
+        },
+      }],
+      // Style rules the codebase does not follow
+      "unicorn/no-negated-condition": "off",
+      "unicorn/prefer-ternary": "off",
+      "unicorn/import-style": "off",
+      // Matching ANSI escape sequences is what this project does
+      "no-control-regex": "off",
       // "jsdoc/require-returns-description": "off",
       // "jsdoc/require-param-description": "off",
       // "simple-import-sort/imports": "error",
       // "simple-import-sort/exports": "error",
+    },
+  },
+  {
+    // CLI entry points report errors through exit codes
+    files: ["bin/**/*.js", "lib/cli.js"],
+    rules: {
+      "n/no-process-exit": "off",
+      "unicorn/no-process-exit": "off",
+    },
+  },
+  {
+    files: ["test/**/*.js"],
+    rules: {
+      // node:test is stable on every Node version in `engines`
+      "n/no-unsupported-features/node-builtins": ["error", { ignores: ["test", "test.describe", "test.it"] }],
+      "unicorn/consistent-function-scoping": "off",
     },
   },
 ];

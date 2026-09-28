@@ -1,0 +1,109 @@
+# Code Blocks
+
+Code blocks support syntax highlighting for many languages.
+
+## Inline Code
+
+Use inline code for short snippets like const x = 42 or npm install.
+
+## JavaScript
+
+ 1 function factorial(n) {
+ 2   if (n <= 1) return 1;
+ 3   return n * factorial(n - 1);
+ 4 }
+ 5 
+ 6 console.log(factorial(5)); // 120
+
+## Python
+
+ 1 def fibonacci(n):
+ 2     if n <= 1:
+ 3         return n
+ 4     return fibonacci(n-1) + fibonacci(n-2)
+ 5 
+ 6 print([fibonacci(i) for i in range(10)])
+
+## Bash
+
+  1 #!/bin/bash
+  2 
+  3 # Install dependencies
+  4 npm install
+  5 
+  6 # Run tests
+  7 npm test
+  8 
+  9 # Build for production
+ 10 npm run build
+
+## TypeScript
+
+  1 interface User {
+  2   id: number;
+  3   name: string;
+  4   email: string;
+  5 }
+  6 
+  7 async function fetchUser(id: number): Promise<User> {
+  8   const response = await fetch(`/api/users/${id}`);
+  9   return response.json();
+ 10 }
+
+## JSON
+
+  1 {
+  2   "name": "cli-html",
+  3   "version": "4.5.1",
+  4   "description": "Render HTML and Markdown to Terminal",
+  5   "main": "index.js",
+  6   "scripts": {
+  7     "test": "node --test",
+  8     "build": "npm run compile"
+  9   }
+ 10 }
+
+## SQL
+
+ 1 SELECT users.name, COUNT(orders.id) as order_count
+ 2 FROM users
+ 3 LEFT JOIN orders ON users.id = orders.user_id
+ 4 WHERE users.active = true
+ 5 GROUP BY users.id
+ 6 ORDER BY order_count DESC
+ 7 LIMIT 10;
+
+## HTML
+
+  1 <!DOCTYPE html>
+  2 <html lang="en">
+  3 <head>
+  4   <meta charset="UTF-8">
+  5   <title>Example Page</title>
+  6 </head>
+  7 <body>
+  8   <h1>Hello World</h1>
+  9   <p>This is a paragraph.</p>
+ 10 </body>
+ 11 </html>
+
+## CSS
+
+  1 .container {
+  2   max-width: 1200px;
+  3   margin: 0 auto;
+  4   padding: 20px;
+  5 }
+  6 
+  7 .card {
+  8   background: white;
+  9   border-radius: 8px;
+ 10   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ 11   padding: 16px;
+ 12 }
+
+## Plain Text
+
+ 1 This is a plain text code block
+ 2 without syntax highlighting.
+ 3 Useful for terminal output or logs.

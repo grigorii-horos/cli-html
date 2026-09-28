@@ -1,0 +1,50 @@
+## Abbreviation Examples with Custom Styles
+
+Default abbreviation: HTML (HyperText Markup Language)
+
+Custom color for abbreviation: CSS (Cascading Style Sheets)
+
+Red color for abbreviation: API (Application Programming Interface)
+
+Green italic abbreviation: URL (Uniform Resource Locator)
+
+### Custom Title Decorations (prefix/suffix)
+
+Square brackets: JS [JavaScript]
+
+Guillemets with colored abbr: XML «Extensible Markup Language»
+
+Angle brackets: HTTP ⟨HyperText Transfer Protocol⟩
+
+### Custom Title Color
+
+Red title: SQL (Structured Query Language)
+
+Green title with cyan abbr: PDF (Portable Document Format)
+
+Yellow title with custom brackets: URI [Uniform Resource Identifier]
+
+### Title Prefix/Suffix (inside parentheses)
+
+Arrows around title text: TCP → Transmission Control Protocol ←
+
+Stars around title: UDP ★ User Datagram Protocol ★
+
+Combined - custom brackets + title decorations: IP »Internet Protocol«
+
+Colored markers: CM [Colored Markers]
+
+### Full Customization
+
+Everything custom (title-only decorations): API ★ Application Programming
+Interface ★
+
+## DFN (Definition) Examples
+
+Default: WWW (World Wide Web)
+
+Custom color: HTTPS (HyperText Transfer Protocol Secure)
+
+Custom title color: FTP (File Transfer Protocol)
+
+With all customizations: DNS > Domain Name System ◀

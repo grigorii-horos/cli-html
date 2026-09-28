@@ -81,5 +81,4 @@ node bin/html.js examples/html/tags/headers.html
 ## See Also
 
 - [Main README](../../../README.md) - Full documentation
-- [../tags-custom/](../tags-custom/) - Examples with custom inline styles using `data-cli-*` attributes
 - [Customizing Styles](../../../README.md#customizing-styles) - Global theme customization

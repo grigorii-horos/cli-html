@@ -40,7 +40,7 @@ describe('ANSI rendering regression tests', () => {
         { a: { href: { color: 'red bold' } } }
       );
       assert.ok(stripAnsi(result).includes('example.com'));
-      assert.ok(result.includes('\x1B[')); // some ANSI applied to href
+      assert.ok(result.includes('\u001B[')); // some ANSI applied to href
     });
 
     it('title text from theme is shown when title.enabled=true in theme', () => {

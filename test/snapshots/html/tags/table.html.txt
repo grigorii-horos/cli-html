@@ -1,0 +1,228 @@
+# Table Examples with Custom Styles
+
+Tables support customization at multiple levels with priority cascade:
+
+## Zebra Striping
+
+### 2-Color Striping (Classic)
+
+
+┌──────────┬───────┐
+│ Product  │ Price │
+├──────────┼───────┤
+│ Laptop   │ $999  │
+├──────────┼───────┤
+│ Mouse    │ $25   │
+├──────────┼───────┤
+│ Keyboard │ $75   │
+├──────────┼───────┤
+│ Monitor  │ $350  │
+└──────────┴───────┘
+
+### 3-Color Rainbow Striping
+
+s
+
+┌─────────┬──────────┐
+│ Name    │ Status   │
+├─────────┼──────────┤
+│ Alice   │ Active   │
+├─────────┼──────────┤
+│ Bob     │ Pending  │
+├─────────┼──────────┤
+│ Charlie │ Active   │
+├─────────┼──────────┤
+│ Diana   │ Inactive │
+├─────────┼──────────┤
+│ Eve     │ Active   │
+├─────────┼──────────┤
+│ Frank   │ Pending  │
+└─────────┴──────────┘
+
+Tables support customization at multiple levels with priority cascade:
+
+ • td/th cell level (highest priority) - data-cli-color
+ • tr row level - data-cli-tr-color
+ • thead/tbody/tfoot section level - data-cli-thead-color, data-cli-tbody-color,
+   data-cli-tfoot-color
+ • Theme configuration (lowest priority)
+
+## Section-Level Customization
+
+### Custom thead Color
+
+
+┌──────────┬────────┬───────────┐
+│ Product  │ Price  │ Status    │
+├──────────┼────────┼───────────┤
+│ Widget A │ $10.99 │ Available │
+├──────────┼────────┼───────────┤
+│ Widget B │ $15.99 │ Available │
+└──────────┴────────┴───────────┘
+
+### Custom tbody Color
+
+
+┌────────┬──────────┬───────┐
+│ Item   │ Quantity │ Price │
+├────────┼──────────┼───────┤
+│ Apple  │ 5        │ $2.50 │
+├────────┼──────────┼───────┤
+│ Banana │ 10       │ $3.00 │
+└────────┴──────────┴───────┘
+
+### Custom tfoot Color
+
+
+┌────────┬────────┐
+│ Item   │ Amount │
+├────────┼────────┤
+│ Item A │ $100   │
+├────────┼────────┤
+│ Item B │ $200   │
+├────────┼────────┤
+│ Total  │ $300   │
+└────────┴────────┘
+
+## Row-Level Customization
+
+### Server Status with Custom Row Colors
+
+
+┌───────────┬─────────┬────────┐
+│ Server    │ Status  │ Uptime │
+├───────────┼─────────┼────────┤
+│ Server-01 │ Online  │ 99.9%  │
+├───────────┼─────────┼────────┤
+│ Server-02 │ Warning │ 95.2%  │
+├───────────┼─────────┼────────┤
+│ Server-03 │ Offline │ 0%     │
+└───────────┴─────────┴────────┘
+
+## Priority Cascade Example
+
+Demonstrates how colors are resolved when multiple levels specify styling:
+
+
+┌───────────────┬────────────────┬───────────────────────────────┐
+│ Item          │ Priority Level │ Color Source                  │
+├───────────────┼────────────────┼───────────────────────────────┤
+│ Cell Level    │ 1 (Highest)    │ data-cli-color on td          │
+├───────────────┼────────────────┼───────────────────────────────┤
+│ Row Level     │ 2              │ data-cli-tr-color on tr       │
+├───────────────┼────────────────┼───────────────────────────────┤
+│ Section Level │ 3              │ data-cli-tbody-color on tbody │
+└───────────────┴────────────────┴───────────────────────────────┘
+
+## Sales Report Example
+
+      Q4 2024 Sales Report
+                                
+┌──────────┬──────────┬────────┐
+│ Month    │ Revenue  │ Growth │
+├──────────┼──────────┼────────┤
+│ October  │ $52,000  │ +15%   │
+├──────────┼──────────┼────────┤
+│ November │ $58,000  │ +12%   │
+├──────────┼──────────┼────────┤
+│ December │ $51,000  │ +2%    │
+├──────────┼──────────┼────────┤
+│ Total    │ $161,000 │ +9.7%  │
+└──────────┴──────────┴────────┘
+
+## Original Examples
+
+### Table with Custom Header Colors
+
+
+┌───────┬───────────┬────────┐
+│ Name  │ Role      │ Status │
+├───────┼───────────┼────────┤
+│ Alice │ Developer │ Active │
+├───────┼───────────┼────────┤
+│ Bob   │ Designer  │ Active │
+└───────┴───────────┴────────┘
+
+### Table with Custom Cell Colors
+
+
+┌─────────┬───────┐
+│ Status  │ Count │
+├─────────┼───────┤
+│ Success │ 42    │
+├─────────┼───────┤
+│ Failed  │ 3     │
+├─────────┼───────┤
+│ Pending │ 7     │
+└─────────┴───────┘
+
+### Table with Highlighted Cells
+
+    User Statistics
+                        
+┌──────────────┬───────┐
+│ Metric       │ Value │
+├──────────────┼───────┤
+│ Total Users  │ 1,234 │
+├──────────────┼───────┤
+│ Active Today │ 567   │
+└──────────────┴───────┘
+
+### Basic Table with Caption
+
+                  Sample Table
+                                                 
+┌───────────────┬───────────────┬───────────────┐
+│ Header 1      │ Header 2      │ Header 3      │
+├───────────────┼───────────────┼───────────────┤
+│ Row 1, Cell 1 │ Row 1, Cell 2 │ Row 1, Cell 3 │
+├───────────────┼───────────────┼───────────────┤
+│ Row 2, Cell 1 │ Row 2, Cell 2 │ Row 2, Cell 3 │
+├───────────────┼───────────────┼───────────────┤
+│ Footer 1      │ Footer 2      │ Footer 3      │
+└───────────────┴───────────────┴───────────────┘
+
+### Product Pricing Table
+
+                   Monthly Subscription Plans
+                                                                 
+┌──────────────┬───────────┬────────────────────────┬───────────┐
+│ Plan         │ Price     │ Features               │ Users     │
+├──────────────┼───────────┼────────────────────────┼───────────┤
+│ Basic        │ $9/month  │ Core features          │ 1 user    │
+├──────────────┼───────────┼────────────────────────┼───────────┤
+│ Professional │ $29/month │ All features           │ 5 users   │
+├──────────────┼───────────┼────────────────────────┼───────────┤
+│ Enterprise   │ $99/month │ All features + support │ Unlimited │
+├──────────────┴───────────┴────────────────────────┴───────────┤
+│ All prices in USD. Annual billing available.                  │
+└───────────────────────────────────────────────────────────────┘
+
+### Comparison Table with Alignment
+
+                Browser Comparison
+                                                  
+┌─────────┬──────────────┬──────────────┬────────┐
+│ Browser │ Release Year │ Market Share │ Engine │
+├─────────┼──────────────┼──────────────┼────────┤
+│ Chrome  │ 2008         │          65% │ Blink  │
+├─────────┼──────────────┼──────────────┼────────┤
+│ Safari  │ 2003         │          18% │ WebKit │
+├─────────┼──────────────┼──────────────┼────────┤
+│ Firefox │ 2004         │           8% │ Gecko  │
+├─────────┼──────────────┼──────────────┼────────┤
+│ Edge    │ 2015         │           5% │ Blink  │
+└─────────┴──────────────┴──────────────┴────────┘
+
+### Simple Table without Footer
+
+
+┌───────────────┬───────────────────┬───────────┐
+│ Name          │ Email             │ Role      │
+├───────────────┼───────────────────┼───────────┤
+│ Alice Johnson │ alice@example.com │ Developer │
+├───────────────┼───────────────────┼───────────┤
+│ Bob Smith     │ bob@example.com   │ Designer  │
+├───────────────┼───────────────────┼───────────┤
+│ Carol White   │ carol@example.com │ Manager   │
+└───────────────┴───────────────────┴───────────┘

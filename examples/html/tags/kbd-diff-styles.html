@@ -30,8 +30,8 @@
 
   <h2>5. KBD - Custom Box Markers</h2>
 
-  <p>Find: <kbd data-cli-key-style="box" data-cli-prefix="〈 " data-cli-suffix=" 〉">Ctrl+F</kbd></p>
-  <p>Replace: <kbd data-cli-key-style="box" data-cli-prefix="⟨" data-cli-suffix="⟩">Ctrl+H</kbd></p>
+  <p>Find: <kbd data-cli-key-style="box" data-cli-prefix-marker="〈 " data-cli-suffix-marker=" 〉">Ctrl+F</kbd></p>
+  <p>Replace: <kbd data-cli-key-style="box" data-cli-prefix-marker="⟨" data-cli-suffix-marker="⟩">Ctrl+H</kbd></p>
 
   <h2>6. Del/Ins - Simple Style (Default)</h2>
 
@@ -40,24 +40,24 @@
 
   <h2>7. Del/Ins - Git Diff Style</h2>
 
-  <p><del data-cli-diff-style="git" data-cli-show-marker="true">Old line of text</del></p>
-  <p><ins data-cli-diff-style="git" data-cli-show-marker="true">New line of text</ins></p>
+  <p><del data-cli-diff-style="git">Old line of text</del></p>
+  <p><ins data-cli-diff-style="git">New line of text</ins></p>
 
   <h2>8. Del/Ins - Custom Markers</h2>
 
-  <p><del data-cli-diff-style="git" data-cli-show-marker="true" data-cli-del-marker="✗">Removed feature</del></p>
-  <p><ins data-cli-diff-style="git" data-cli-show-marker="true" data-cli-add-marker="✓">Added feature</ins></p>
+  <p><del data-cli-diff-style="git" data-cli-diff-marker="✗">Removed feature</del></p>
+  <p><ins data-cli-diff-style="git" data-cli-diff-marker="✓">Added feature</ins></p>
 
   <h2>9. Del/Ins - Custom Marker Colors</h2>
 
-  <p><del data-cli-diff-style="git" data-cli-show-marker="true" data-cli-del-marker-color="red bold">Critical error</del></p>
-  <p><ins data-cli-diff-style="git" data-cli-show-marker="true" data-cli-add-marker-color="green bold">Fixed!</ins></p>
+  <p><del data-cli-diff-style="git" data-cli-diff-color="red bold">Critical error</del></p>
+  <p><ins data-cli-diff-style="git" data-cli-diff-color="green bold">Fixed!</ins></p>
 
   <h2>10. Code Comparison</h2>
 
   <pre><code>function calculate(x, y) {
-<del data-cli-diff-style="git" data-cli-show-marker="true">  return x * y;</del>
-<ins data-cli-diff-style="git" data-cli-show-marker="true">  return x + y;</ins>
+<del data-cli-diff-style="git">  return x * y;</del>
+<ins data-cli-diff-style="git">  return x + y;</ins>
 }</code></pre>
 
   <h2>11. Mixed KBD Styles</h2>
@@ -71,7 +71,7 @@
   <h2>12. Documentation Example</h2>
 
   <p>To save your changes, press <kbd data-cli-key-style="box">Ctrl+S</kbd> or use the menu.</p>
-  <p>The old command <del data-cli-diff-style="git" data-cli-show-marker="true">npm run dev</del> has been replaced with <ins data-cli-diff-style="git" data-cli-show-marker="true">npm start</ins>.</p>
+  <p>The old command <del data-cli-diff-style="git">npm run dev</del> has been replaced with <ins data-cli-diff-style="git">npm start</ins>.</p>
 
 </body>
 </html>

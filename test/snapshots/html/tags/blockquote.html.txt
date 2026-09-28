@@ -1,0 +1,33 @@
+## Blockquote Examples with Custom Styles
+
+### Default Blockquote
+
+│ For 50 years, WWF has been protecting the future of nature. The world's
+│ leading conservation organization, WWF works in 100 countries and is supported
+│ by 1.2 million members in the United States and close to 5 million globally.
+
+### Custom Color
+
+│ Good design requires good constraints.
+
+│ This is a red bold blockquote with important information.
+
+│ This is a green italic blockquote with a tip.
+
+### Custom Marker
+
+▌ Blockquote with custom block marker.
+
+» Blockquote with double angle marker.
+
+### Combined Customization
+
+⚠ Warning blockquote with custom yellow color and warning marker.
+
+💡 Tip blockquote with cyan bold color and lightbulb marker.
+
+│ Nested quotes can highlight context:
+│ 
+│ ┃ Inner blockquote level 1
+│ ┃ 
+│ ┃ ┆ Inner blockquote level 2

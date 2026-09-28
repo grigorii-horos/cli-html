@@ -1,0 +1,75 @@
+# Open Source Project Reaches 10 Million Downloads
+
+By Alex Rivera · Published June 10, 2026
+
+────────────────────────────────────────────────────────────────────────────────
+
+The terminal HTML renderer cli-html has reached 10 million monthly downloads on
+npm, making it one of the most widely used CLI display libraries in the Node.js
+ecosystem.
+
+## The Numbers
+
+According to npm download statistics as of June 1, 2026:
+
+
+┌───────────────────┬───────┐
+│ Metric            │ Value │
+├───────────────────┼───────┤
+│ Monthly downloads │ 10.2M │
+├───────────────────┼───────┤
+│ Weekly downloads  │ 2.4M  │
+├───────────────────┼───────┤
+│ GitHub stars      │ 8,700 │
+├───────────────────┼───────┤
+│ Open issues       │ 23    │
+├───────────────────┼───────┤
+│ Contributors      │ 47    │
+└───────────────────┴───────┘
+
+The project has grown 340% since January 2025.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## What People Are Saying
+
+"We replaced our custom terminal formatting code with cli-html and reduced our
+renderer codebase by 60%."
+
+— comment from a popular CLI tool's release notes
+
+"The theming system is genuinely powerful. I configured a custom color scheme in
+about 10 minutes and it handles every edge case my content throws at it."
+
+— developer blog post
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Why Terminals?
+
+│ Note
+│ 
+│ Despite the prevalence of web UIs, terminal-based tools remain dominant for
+│ developer workflows: CI logs, deployment scripts, code review tools,
+│ monitoring dashboards.
+
+The maintainer John Smith (J. Smith) (John Smith) wrote in the project's 5th
+anniversary post:
+
+"The terminal is not going away. If anything, developers are more productive in
+the terminal now than they were five years ago. The tools have simply become
+better at displaying rich information."
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Looking Ahead
+
+The roadmap for 2026 includes:
+
+ • [ ] Screen reader accessibility improvements
+ • [ ] Right-to-left text support for Arabic and Hebrew
+ • [ ] Sixel graphics for terminals that support it
+ • [✓] Named <hr> styles (shipped in v6.0.0)
+ • [✓] <dialog> box border (shipped in v6.0.0)
+
+The project welcomes contributions. See the contributing guide for details.

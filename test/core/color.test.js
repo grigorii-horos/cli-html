@@ -24,7 +24,7 @@ describe('applyColor', () => {
   });
 
   it('returns empty string when text is undefined', () => {
-    assert.strictEqual(applyColor('red', undefined), '');
+    assert.strictEqual(applyColor('red'), '');
   });
 
   it('calls function spec with string text', () => {

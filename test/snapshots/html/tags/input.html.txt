@@ -1,0 +1,321 @@
+## Form Input Elements
+
+### Default Checkbox Inputs
+
+ • [✓] Checked checkbox
+ • [ ] Unchecked checkbox
+ • [✓] I agree to terms
+ • [ ] Subscribe to newsletter
+
+### Colored Checkboxes
+
+ • [✓] Green checked
+ • [✓] Blue bold checked
+ • [✓] Magenta checked
+ • [ ] Red unchecked
+ • [ ] Yellow unchecked
+
+### Custom Checkbox Markers
+
+ • [✓] Custom check mark
+ • [●] Custom circles
+ • [■] Custom squares
+ • [✔] Green with check
+
+### Combined Checkbox Customizations
+
+ • [★] Yellow star
+ • [♥] Red heart
+ • [○] Gray circle
+ • [✓] Cyan check
+
+### Default Radio Buttons
+
+Select your favorite color:
+
+ • (•) Red
+ • ( ) Blue
+ • ( ) Green
+
+### Colored Radio Buttons
+
+Choose a size:
+
+ • (•) Small
+ • ( ) Medium
+ • ( ) Large
+
+### Custom Radio Markers
+
+Select payment method:
+
+ • (●) Credit Card
+ • (○) PayPal
+ • (○) Bank Transfer
+
+### Combined Radio Customizations
+
+Priority level:
+
+ • (●) High
+ • (○) Medium
+ • (○) Low
+
+### Default Buttons
+
+[ Click Me ]
+
+[ Submit ]
+
+[ Cancel ]
+
+[ Reset Form ]
+
+### Colored Button Text
+
+[ Success ]
+
+[ Delete ]
+
+[ Warning ]
+
+[ Info ]
+
+### Custom Button Markers
+
+⟨ Download ⟩
+
+[ Execute ]
+
+[ ◆ Save ◆ ]
+
+### Custom Button Marker Colors
+
+[ Confirm ]
+
+[ Proceed ]
+
+### Combined Button Customizations
+
+〔 ✓ Accept 〕
+
+[ ✗ Reject ]
+
+[ ⚡ Power ]
+
+[ ⚙ Settings ]
+
+### Default Text Inputs
+
+Note: Text inputs display their value with cyan color by default (theme
+setting).
+
+Name: John Doe
+
+Email: @ user@example.com
+
+Password: ******
+
+Search: search query
+
+URL: https://example.com
+
+Tel: +1-555-0123
+
+Number: 42
+
+Date: # 2024-12-08
+
+### Colored Text Inputs
+
+Green (success): Operation successful
+
+Red (error): @ invalid@
+
+Yellow (warning): Warning message
+
+Magenta: https://special.com
+
+Blue: +1-800-EXAMPLE
+
+### Text Inputs with Background Colors
+
+White on red: Critical error
+
+Black on green: Success
+
+White on blue: Info
+
+### Hidden Input
+
+The following input is hidden (should not display):
+
+
+
+### Default Textarea
+
+Note: Textarea renders with yellowBright on bgBlack by default (same as inline
+code).
+
+Enter your message:
+
+Default text in textarea
+
+Comments:
+
+User feedback goes here
+Multiple lines supported
+With preserved formatting
+
+Biography:
+
+John Doe is a software developer with 10 years of experience.
+He specializes in web development and CLI tools.
+Passionate about open source and clean code.
+
+### Colored Textareas
+
+Green (success message):
+
+✓ All tests passed
+✓ Build completed successfully
+✓ Deployment finished
+
+Red (error log):
+
+✗ Error: Connection timeout
+✗ Failed to load resource
+✗ Build failed
+
+Cyan (info):
+
+Server started on port 3000
+Database connected
+Ready to accept connections
+
+Yellow (warning):
+
+⚠ High memory usage detected
+⚠ Deprecated API usage
+⚠ Security update available
+
+### Textarea with Background Colors
+
+Magenta with bgBlack:
+
+function hello() {
+console.log("Hello, World!");
+return true;
+}
+
+White on red background:
+
+CRITICAL ERROR
+System failure detected
+Immediate action required
+
+Black on green background:
+
+{
+"status": "success",
+"message": "Operation completed"
+}
+
+### Datalist - Autocomplete Options
+
+Choose a browser:
+
+Browser:
+
+Select a programming language:
+
+Language:
+
+Choose your country:
+
+Country:
+
+Email domain suggestions:
+
+Email: @
+
+Color picker with suggestions:
+
+Color:
+
+### Input type="range" - Sliders
+
+Range inputs display as visual sliders with filled/empty bars and a thumb
+marker.
+
+Volume (50%): █████████●░░░░░░░░░░ 50
+
+Brightness (25%): ████●░░░░░░░░░░░░░░░ 25
+
+Quality (75%): ██████████████●░░░░░ 75
+
+Rating (7/10): █████████████●░░░░░░ 7
+
+### Custom Range Colors
+
+Temperature: █████████████●░░░░░░ 70
+
+### Custom Range Markers
+
+Progress: ===========>-------- 60
+
+### Input type="color" - Color Picker
+
+Color inputs display as a colored circle (or custom prefix).
+
+Favorite color: ■ (#000000)
+
+Red: ■ (#ff0000)
+
+Green: ■ (#00ff00)
+
+Blue: ■ (#0000ff)
+
+### Color with Hex Display
+
+Brand color: ■ (#3498db)
+
+Accent: ■ ●#e74c3c)
+
+### Input type="file" - File Upload
+
+File inputs show an attachment icon and filename or placeholder.
+
+Upload document: @ No file chosen
+
+Avatar: @ profile-photo.jpg
+
+Resume: @ Click to select file
+
+### Custom File Prefix
+
+Attachment: 📄 document.pdf
+
+Image: @ vacation.png
+
+### Combined Form Example
+
+Name: Alice
+
+Email: @ alice@example.com
+
+Subscribe: [✓] Yes
+
+Gender: (•) Male ( ) Female
+
+Volume: ███████████████●░░░░ 80
+
+Theme color: ■ (#2ecc71)
+
+Profile picture: @ avatar.jpg
+
+Message:
+
+Hello, this is a test message.
+
+[ Submit ]

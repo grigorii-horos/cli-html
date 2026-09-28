@@ -1,0 +1,340 @@
+# User Authentication API
+
+This document provides comprehensive documentation for the User Authentication
+module. The authentication system supports multiple authentication methods and
+provides secure session management.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Table of Contents
+
+ 1. Installation
+ 2. Quick Start
+ 3. API Reference
+ 4. Configuration Options
+ 5. Examples
+ 6. Troubleshooting
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Installation
+
+Install the authentication module using npm:
+
+ 1 npm install @example/auth --save
+
+Or using yarn:
+
+ 1 yarn add @example/auth
+
+### System Requirements
+
+ • Node.js >= 16.0.0
+ • npm >= 8.0.0
+ • TypeScript >= 4.5 (optional)
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Quick Start
+
+Here's a minimal example to get you started:
+
+  1 import { AuthManager } from '@example/auth';
+  2 
+  3 const auth = new AuthManager({
+  4   provider: 'jwt',
+  5   secret: process.env.JWT_SECRET
+  6 });
+  7 
+  8 // Authenticate user
+  9 const token = await auth.login({
+ 10   email: 'user@example.com',
+ 11   password: 'secure-password'
+ 12 });
+ 13 
+ 14 console.log('Token:', token);
+
+│ Note: Always store sensitive credentials in environment variables, never in
+│ source code.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## API Reference
+
+### AuthManager Class
+
+The main class for managing authentication operations.
+
+#### Constructor
+
+new AuthManager(options) ::
+
+  Creates a new authentication manager instance.
+
+Parameters: ::
+
+  options Object - Configuration object
+
+#### Methods
+
+
+┌────────────────────┬────────────┬─────────────────┬──────────────────────────┐
+│ Method             │ Parameters │ Returns         │ Description              │
+├────────────────────┼────────────┼─────────────────┼──────────────────────────┤
+│ login(credentials) │ Object     │ Promise<string> │ Authenticates user and   │
+│                    │            │                 │ returns token            │
+├────────────────────┼────────────┼─────────────────┼──────────────────────────┤
+│ logout(token)      │ string     │ Promise<void>   │ Invalidates the given    │
+│                    │            │                 │ token                    │
+├────────────────────┼────────────┼─────────────────┼──────────────────────────┤
+│ verify(token)      │ string     │ Promise<User>   │ Verifies token and       │
+│                    │            │                 │ returns user data        │
+├────────────────────┼────────────┼─────────────────┼──────────────────────────┤
+│ refresh(token)     │ string     │ Promise<string> │ Refreshes an existing    │
+│                    │            │                 │ token                    │
+└────────────────────┴────────────┴─────────────────┴──────────────────────────┘
+
+#### Example Usage
+
+  1 // Login
+  2 const token = await auth.login({
+  3   email: 'user@example.com',
+  4   password: 'password123'
+  5 });
+  6 
+  7 // Verify token
+  8 const user = await auth.verify(token);
+  9 console.log('User ID:', user.id);
+ 10 
+ 11 // Refresh token
+ 12 const newToken = await auth.refresh(token);
+ 13 
+ 14 // Logout
+ 15 await auth.logout(newToken);
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Configuration Options
+
+The authentication module supports the following configuration options:
+
+provider ::
+
+  Authentication provider type. Supported values:
+
+   • 'jwt' - JSON Web Tokens (recommended)
+   • 'session' - Session-based authentication
+   • 'oauth' - OAuth 2.0 provider
+
+secret ::
+
+  Secret key for token signing. Required for JWT provider.
+  Type: string
+
+expiresIn ::
+
+  Token expiration time. Default: 24h
+  Type: string | number
+
+refreshTokenExpiry ::
+
+  Refresh token expiration time. Default: 7d
+  Type: string
+
+### Advanced Configuration
+
+  1 const auth = new AuthManager({
+  2   provider: 'jwt',
+  3   secret: process.env.JWT_SECRET,
+  4   expiresIn: '1h',
+  5   refreshTokenExpiry: '7d',
+  6 
+  7   // Password hashing options
+  8   bcrypt: {
+  9     rounds: 12
+ 10   },
+ 11 
+ 12   // Rate limiting
+ 13   rateLimit: {
+ 14     maxAttempts: 5,
+ 15     windowMs: 900000 // 15 minutes
+ 16   },
+ 17 
+ 18   // Custom validators
+ 19   validators: {
+ 20     email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+ 21     password: {
+ 22       minLength: 8,
+ 23       requireUppercase: true,
+ 24       requireNumbers: true,
+ 25       requireSpecialChars: true
+ 26     }
+ 27   }
+ 28 });
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Examples
+
+### User Registration
+
+  1 async function registerUser(userData) {
+  2   try {
+  3     const user = await auth.register({
+  4       email: userData.email,
+  5       password: userData.password,
+  6       name: userData.name
+  7     });
+  8 
+  9     console.log('User registered:', user.id);
+ 10     return user;
+ 11   } catch (error) {
+ 12     console.error('Registration failed:', error.message);
+ 13     throw error;
+ 14   }
+ 15 }
+
+### Protected Route Middleware
+
+  1 function authMiddleware(req, res, next) {
+  2   const token = req.headers.authorization?.split(' ')[1];
+  3 
+  4   if (!token) {
+  5     return res.status(401).json({
+  6       error: 'No token provided'
+  7     });
+  8   }
+  9 
+ 10   auth.verify(token)
+ 11     .then(user => {
+ 12       req.user = user;
+ 13       next();
+ 14     })
+ 15     .catch(error => {
+ 16       res.status(403).json({
+ 17         error: 'Invalid token'
+ 18       });
+ 19     });
+ 20 }
+
+### Password Reset Flow
+
+  1 // Step 1: Request password reset
+  2 const resetToken = await auth.requestPasswordReset({
+  3   email: 'user@example.com'
+  4 });
+  5 
+  6 // Step 2: Verify reset token (from email link)
+  7 const isValid = await auth.verifyResetToken(resetToken);
+  8 
+  9 // Step 3: Set new password
+ 10 if (isValid) {
+ 11   await auth.resetPassword({
+ 12     token: resetToken,
+ 13     newPassword: 'new-secure-password'
+ 14   });
+ 15 }
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Troubleshooting
+
+### Common Issues
+
+Error: "Invalid token" ::
+
+  This error occurs when the token has expired or is malformed.
+
+  Solution: Implement token refresh logic or prompt user to login again.
+
+Error: "Secret key not provided" ::
+
+  The JWT secret is missing from configuration.
+
+  Solution: Set the JWT_SECRET environment variable:
+
+   1 export JWT_SECRET=your-secret-key-here
+
+Error: "Rate limit exceeded" ::
+
+  Too many authentication attempts from the same IP.
+
+  Solution: Wait for the rate limit window to expire (default: 15 minutes) or
+  adjust rate limit settings.
+
+### Debug Mode
+
+Enable debug logging to troubleshoot issues:
+
+ 1 const auth = new AuthManager({
+ 2   provider: 'jwt',
+ 3   secret: process.env.JWT_SECRET,
+ 4   debug: true
+ 5 });
+
+│ Warning: Never enable debug mode in production as it may expose sensitive
+│ information.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Performance Metrics
+
+Typical performance characteristics:
+
+
+┌────────────────────┬──────────────┬─────────────────┐
+│ Operation          │ Average Time │ 99th Percentile │
+├────────────────────┼──────────────┼─────────────────┤
+│ Token Generation   │ 5ms          │ 12ms            │
+├────────────────────┼──────────────┼─────────────────┤
+│ Token Verification │ 2ms          │ 8ms             │
+├────────────────────┼──────────────┼─────────────────┤
+│ Password Hashing   │ 150ms        │ 300ms           │
+└────────────────────┴──────────────┴─────────────────┘
+
+Token verification: [█████████████████████████████░] 98/100 success rate
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Security Best Practices
+
+ • [✓] Use HTTPS for all authentication endpoints
+ • [✓] Store secrets in environment variables
+ • [✓] Implement rate limiting
+ • [ ] Enable two-factor authentication
+ • [ ] Regular security audits
+ • [ ] Monitor for suspicious activity
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Version History
+
+v2.1.0 ::
+
+  Added OAuth 2.0 provider support
+  Improved token refresh mechanism
+
+v2.0.0 ::
+
+  Removed legacy session support
+  Added TypeScript definitions
+  Breaking change: Updated configuration schema
+
+v1.5.0 ::
+
+  Added rate limiting
+  Password validation improvements
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Support
+
+For questions and support:
+
+ • GitHub Issues: github.com/example/auth/issues
+   [https://github.com/example/auth/issues]
+ • Documentation: docs.example.com/auth [https://docs.example.com/auth]
+ • Email: support@example.com [mailto:support@example.com]
+
+License: MIT (Massachusetts Institute of Technology) | Copyright © 2024 Example
+Inc.

@@ -69,7 +69,7 @@
 
 <h3>Select with Custom Label</h3>
 
-<select name="language" data-cli-select-label="Choose Language" data-cli-select-label-color="magenta bold">
+<select name="language" data-cli-label="Choose Language" data-cli-color="magenta bold">
   <option value="en" selected>English</option>
   <option value="es">Spanish</option>
   <option value="fr">French</option>
@@ -82,10 +82,10 @@
   data-cli-selected-marker="◉"
   data-cli-unselected-marker="○"
   data-cli-selected-color="green bold"
-  data-cli-group-prefix="▶ "
-  data-cli-group-label-color="blue bold"
-  data-cli-select-label="Select Framework"
-  data-cli-select-label-color="red bold">
+  data-cli-indicator-marker="▶ "
+  data-cli-label-color="blue bold"
+  data-cli-label="Select Framework"
+  data-cli-color="red bold">
   <optgroup label="JavaScript Frameworks">
     <option value="react" selected>React</option>
     <option value="vue">Vue.js</option>
@@ -133,7 +133,7 @@
 </select>
 
 <p>Select your plan:</p>
-<select name="plan" data-cli-select-label="Subscription Plan" data-cli-select-label-color="cyan bold">
+<select name="plan" data-cli-label="Subscription Plan" data-cli-color="cyan bold">
   <option value="free" selected>Free - $0/month</option>
   <option value="basic">Basic - $9/month</option>
   <option value="pro">Pro - $29/month</option>

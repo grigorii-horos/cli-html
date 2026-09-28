@@ -1,0 +1,114 @@
+## Preformatted Text Examples
+
+### Default Style
+
+ 1 
+ 2 zpm load @gist/user/hash,origin:https://another-site/file.zsh
+ 3 zpm load @gist/user/hash,origin:https://another-site/file.zsh
+ 4 zpm load @gist/user/hash,origin:https://another-site/file.zsh
+
+### Bash Script
+
+ 1 #!/usr/bin/env bash
+ 2 echo "Preserve spacing"
+ 3   echo "with indentation"
+ 4     echo "nested further"
+
+### Simple Pre Block
+
+ Pre without code wrapper keeps spacing too.
+   Indentation preserved
+     Multiple levels work fine
+
+### Colored Pre Blocks
+
+ 1 // Success output
+ 2 Build completed successfully
+ 3 All tests passed ✓
+
+ 1 // Error output
+ 2 Error: Module not found
+ 3   at require (internal/modules/cjs/loader.js:883:19)
+ 4   at Object. (/app/index.js:1:1)
+
+ 1 // Info output
+ 2 Server listening on http://localhost:3000
+ 3 Environment: development
+ 4 Database connected
+
+### ASCII Art with Colors
+
+   ╔═══════════════╗
+   ║  Hello CLI!   ║
+   ╚═══════════════╝
+ 
+
+     /\_/\
+    ( o.o )
+     > ^ <
+   ASCII Cat
+ 
+
+### Code with Line Numbers (styled)
+
+ 1   1 | function greet(name) {
+ 2   2 |   return `Hello, ${name}!`;
+ 3   3 | }
+ 4   4 |
+ 5   5 | console.log(greet("World"));
+
+### Configuration Files
+
+ 1 # config.yaml
+ 2 server:
+ 3   host: localhost
+ 4   port: 3000
+ 5 database:
+ 6   url: mongodb://localhost:27017
+ 7   name: myapp
+
+  1 {
+  2   "name": "my-package",
+  3   "version": "1.0.0",
+  4   "description": "A sample package",
+  5   "main": "index.js",
+  6   "scripts": {
+  7     "test": "jest",
+  8     "start": "node index.js"
+  9   }
+ 10 }
+
+### Log Output with Colors
+
+ 1 [2024-12-08 10:30:15] INFO Application started
+ 2 [2024-12-08 10:30:16] SUCCESS Database connected
+ 3 [2024-12-08 10:30:17] WARN High memory usage
+ 4 [2024-12-08 10:30:18] ERROR Connection timeout
+
+### Terminal Session
+
+  1 user@machine:~$ npm install
+  2 added 123 packages in 5s
+  3 
+  4 user@machine:~$ npm test
+  5 PASS tests/app.test.js
+  6 ✓ should work correctly
+  7 
+  8 user@machine:~$ git status
+  9 On branch main
+ 10 Your branch is up to date
+
+### Multi-language Code Examples
+
+ 1 // JavaScript
+ 2 const greeting = "Hello, World!";
+ 3 console.log(greeting);
+
+ 1 # Python
+ 2 greeting = "Hello, World!"
+ 3 print(greeting)
+
+ 1 // Rust
+ 2 fn main() {
+ 3     println!("Hello, World!");
+ 4 }

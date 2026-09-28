@@ -1,0 +1,53 @@
+# Abbreviations
+
+Abbreviations allow you to define expansions for acronyms and short forms.
+
+## Technical Abbreviations
+
+The HTML (Hyper Text Markup Language) specification is maintained by the W3C
+(World Wide Web Consortium).
+
+You can write CSS (Cascading Style Sheets) or use SCSS (Sassy CSS) for styling.
+
+API (Application Programming Interface) endpoints return JSON (JavaScript Object
+Notation) or XML (Extensible Markup Language) data.
+
+## Programming Abbreviations
+
+Use OOP (Object-Oriented Programming) principles with SOLID (Single
+Responsibility, Open-Closed, Liskov Substitution, Interface Segregation,
+Dependency Inversion) design patterns.
+
+Write DRY (Don't Repeat Yourself) code and avoid WET (Write Everything Twice)
+solutions.
+
+Follow TDD (Test-Driven Development) or BDD (Behavior-Driven Development) for
+testing.
+
+## Web Development
+
+Build SPAs with React, Vue, or Angular.
+
+Use REST (Representational State Transfer) or GraphQL (Graph Query Language)
+APIs.
+
+Deploy with CI/CD (Continuous Integration/Continuous Deployment) pipelines.
+
+## Protocols and Standards
+
+Access websites via HTTP (Hypertext Transfer Protocol) or HTTPS (Hypertext
+Transfer Protocol Secure).
+
+Use SSH (Secure Shell) for secure connections.
+
+Transfer files with FTP (File Transfer Protocol) or SFTP (Secure File Transfer
+Protocol).
+
+## Database Terms
+
+Use SQL (Structured Query Language) for RDBMS (Relational Database Management
+System) queries.
+
+Try NoSQL (Not Only SQL) for unstructured data.
+
+Implement CRUD (Create, Read, Update, Delete) operations.

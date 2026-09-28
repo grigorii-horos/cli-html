@@ -1,0 +1,100 @@
+# Typography Glossary
+
+A reference guide to typographic terms, with pronunciation guides and historical
+context.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## A
+
+Ascender ::
+
+  The portion of a lowercase letter that extends above the x-height. Found in
+  letters b, d, f, h, i, k, l, t. "Ascenders help distinguish lowercase
+  letters from capitals."
+
+Aperture ::
+
+  The partially enclosed, somewhat rounded negative space in some characters,
+  such as n, C, S, and the lower part of e. First described in typographic
+  literature around the 1680s.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## B
+
+Baseline ::
+
+  The imaginary line on which most letters and other characters sit.
+  Descenders (g, j, p, q, y) dip below the baseline. Fundamental to Typography
+  (Letterpress) (movable type) systems.
+
+Bezier curve ♪[Pronunciation: Bezier] ::
+
+  Named after engineer Pierre Bezier (pjɛʁ bezje) (1910–1999), who popularized
+  its use in CAD (Computer-Aided Design) systems. Used in PostScript and
+  OpenType to define glyph outlines.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## K
+
+Kerning ♪[Pronunciation: Kerning] ::
+
+  Adjustment of spacing between specific pairs of characters to achieve
+  visually consistent spacing. Differs from tracking, which adjusts spacing
+  uniformly across a range of text. "Kerning is the fine-tuning of space
+  between individual character pairs."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## L
+
+Leading ♪[Pronunciation: Leading (rhymes with heading, not feeding)] ::
+
+  Line spacing — the distance from one baseline to the next. Named after the
+  strips of lead used in hot-metal typesetting to increase space between lines
+  of type, practiced since the mid-1400s when Johannes Gutenberg (ˈjoːhanəs
+  ˈɡuːtənbɛʁk) introduced movable type to Europe.
+
+Ligature ::
+
+  A glyph representing two or more letters joined together. Common examples:
+  fi, fl, ff, ffi, ffl. In Arabic script (العربية (al-Arabiyya)), most
+  characters connect to adjacent letters.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## S
+
+Serif ::
+
+  Small decorative strokes at the ends of the main strokes of a letter.
+  Typefaces with serifs (Times New Roman, Georgia) are called serif typefaces.
+  Those without (Arial, Helvetica) are called sans-serif (sans (from French:
+  without)).
+
+Stem ::
+
+  The main vertical stroke of a letter. In letters like I, H, l, the entire
+  character may be considered a stem. Stem weight determines the apparent
+  boldness of a typeface. "The stem is the skeleton of the letterform."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## X
+
+x-height ::
+
+  The height of lowercase letters, specifically the letter x, which has no
+  ascender or descender. A large x-height (relative to cap height) improves
+  legibility at small sizes. First systematically measured in 1932 as part of
+  legibility research.
+
+╭──────────────────────────────────────────────────────────────────╮
+│ ### Further Resources                                            │
+│                                                                  │
+│  • Thinking with Type by Ellen Lupton — 2004                     │
+│  • The Elements of Typographic Style by Robert Bringhurst — 1992 │
+│  • Google Fonts Knowledge [https://fonts.google.com/knowledge]   │
+╰──────────────────────────────────────────────────────────────────╯

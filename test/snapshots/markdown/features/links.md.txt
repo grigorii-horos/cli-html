@@ -1,0 +1,61 @@
+# Links
+
+Different ways to create links in Markdown.
+
+## Inline Links
+
+This is an inline link [https://example.com].
+
+This is a link with a title [https://example.com].
+
+## Reference Links
+
+This is a reference link [https://example.com].
+
+This is another reference link [https://example.com/page].
+
+You can also use implicit references [https://example.com].
+
+## Automatic Links
+
+https://example.com [https://example.com]
+
+user@example.com [mailto:user@example.com]
+
+## URL Auto-linking
+
+GitHub Flavored Markdown automatically links URLs:
+
+https://github.com [https://github.com]
+
+www.example.com [http://www.example.com]
+
+## Links with Formatting
+
+This is a bold link [https://example.com].
+
+This is an italic link [https://example.com].
+
+This is a [code link](https://example.com).
+
+## Links in Lists
+
+ • First link [https://example.com]
+ • Second link [https://example.com]
+ • Third link [https://example.com]
+
+## Multiple Links in Text
+
+You can visit GitHub [https://github.com] for repositories, Stack Overflow
+[https://stackoverflow.com] for questions, or MDN
+[https://developer.mozilla.org] for documentation.
+
+## Internal Links
+
+Link to another section in the same document.
+
+Link to the top of this page.
+
+## Image Links
+
+![Alt text] [https://example.com]

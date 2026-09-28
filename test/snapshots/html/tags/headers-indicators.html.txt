@@ -1,0 +1,53 @@
+# Headers with Indicators
+
+## 1. Icons/Emojis as Indicators
+
+📚 Documentation
+
+🔧 Settings
+
+⚠️ Warning
+
+## 2. Badges as Indicators
+
+[BETA] New Feature
+
+[v2.0] Latest Version
+
+[DEPRECATED] Old API
+
+## 3. Status Indicators
+
+✓ Completed
+
+○ In Progress
+
+✗ Failed
+
+## 4. Combined with Custom Colors
+
+⭐ Featured Content
+
+[NEW] Fresh Updates
+
+## 5. Priority Indicators
+
+!!! Critical Issue
+
+!! Important
+
+! Notice
+
+## 6. Category Indicators
+
+[API] API Reference
+
+[UI] User Interface
+
+[DB] Database
+
+## 7. Custom Markers with Indicators
+
+[2024] Current Year Report
+
+🔥 Hot Topic

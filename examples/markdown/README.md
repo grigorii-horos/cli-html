@@ -86,7 +86,7 @@ Normal list:
 - Item 1
 - Item 2
 
-<ul data-cli-marker="→" data-cli-marker-color="red" data-cli-color="cyan">
+<ul data-cli-indicator-marker="→" data-cli-indicator-color="red" data-cli-color="cyan">
   <li>Custom list item</li>
   <li>With colored markers</li>
 </ul>
@@ -236,7 +236,7 @@ Regular markdown list:
 - Item 1
 - Item 2
 
-<ul data-cli-marker="▸" data-cli-marker-color="green">
+<ul data-cli-indicator-marker="▸" data-cli-indicator-color="green">
   <li>Custom HTML list</li>
   <li>With green markers</li>
 </ul>

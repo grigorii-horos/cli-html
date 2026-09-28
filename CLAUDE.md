@@ -45,9 +45,9 @@ node examples/library-usage/markdown-basic.js   # Markdown rendering example
 
 3. **Theme Configuration** (`lib/utils/get-theme.js`):
    - Loads base theme from `config.yaml`
-   - Merges user overrides from platform-specific config directory
-   - Parses theme entries into chalk-string color functions
-   - Handles type checking (functions vs strings) for color values
+   - Deep-merges user overrides (from the CLI config file or the library `theme` argument) onto it
+   - Expands color shorthands: `h1: "red"` becomes `h1: { color: "red" }` wherever the base entry has a `color` key
+   - Colors stay as given (chalk-string or function); tags apply them with `applyColor()` / `applyThemeColor()` from `lib/core/color.js`
 
 4. **Rendering Engine** (`lib/utils/render-tag.js`):
    - Recursive renderer with WeakMap caching for performance
@@ -58,8 +58,10 @@ node examples/library-usage/markdown-basic.js   # Markdown rendering example
 ### Critical Files
 
 - **`config.yaml`**: Single source of truth for all theme defaults. Always read this file before making theme-related changes.
-- **`lib/utilities.js`**: `getCustomAttributes()` function extracts all `data-cli-*` attributes. Add new custom attributes here.
-- **`lib/utils/get-theme.js`**: Theme parser. When adding new themed elements, add parsing logic here.
+- **`lib/core/attr.js`**: `getAttr(tag, 'dot.path')` reads a `data-cli-*` attribute (`'prefix.marker'` → `data-cli-prefix-marker`).
+- **`lib/utils/get-theme.js`**: Merges `config.yaml` with user overrides. New theme keys need no parser changes.
+- **`lib/tag-helpers/box.js`**: Shared border/padding settings and box drawing for boxed elements (figure, dialog, details, fieldset).
+- **`lib/cli.js`**: Argument parsing, config loading and output handling shared by the `html`, `markdown` and `jsx` commands.
 - **`lib/tags.js`**: Tag registry. Import and register all tag handlers here.
 - **`lib/markdown.js`**: Markdown-it configuration with all GFM plugins.
 
@@ -76,7 +78,7 @@ node examples/library-usage/markdown-basic.js   # Markdown rendering example
 
 2. **Inline Customization** (`data-cli-*` attributes):
    - Per-element overrides via HTML attributes
-   - Parsed by `getCustomAttributes()` in `lib/utilities.js`
+   - Read with `getAttr()` from `lib/core/attr.js`
    - Always takes precedence over global theme
 
 ### Theme Structure
@@ -85,7 +87,7 @@ Theme values are chalk-string compatible (e.g., `"red bold"`, `"bgBlue white und
 
 #### Standard Configuration Types
 
-The following standard structures are used throughout the configuration for consistency. These patterns are automatically handled by `parseStyleEntry()` which flattens nested structures (e.g., `prefix: {marker, color}` → `prefix` + `prefixColor`).
+The following standard structures are used throughout the configuration for consistency. Tags read them directly from `context.theme` (e.g. `context.theme.samp.prefix.marker`).
 
 **1. Prefix/Suffix/Indicator Pattern** - For markers that wrap or precede content:
 ```yaml
@@ -195,7 +197,6 @@ Used in: ul, ol
 **Important Rules:**
 - Always use `prefix/suffix` structure instead of `open/close` for wrapping elements
 - Use `indicator` for single leading markers (not wrapping)
-- `parseStyleEntry()` automatically flattens `{marker, color}` structures - don't add them to `extraKeys` unless you want to preserve the object
 - All color values can be chalk-string format or color functions
 - For simple elements, use `color` directly for the main text color (not `text.color`):
   - ✅ Correct: `button.color` (button text color), `input.file.color` (filename color), `img.alt.color` (alt text color)
@@ -324,25 +325,18 @@ theme:
     marker: "> "
 ```
 
-4. **Update theme parser** in `lib/utils/get-theme.js`:
-```javascript
-const yourTagStyle = parseStyleEntry(
-  customTheme.yourTag,
-  baseTheme.yourTag,
-  ["marker"]  // non-color fields
-);
-```
+4. **No theme parser changes are needed**: `lib/utils/get-theme.js` deep-merges `config.yaml` with user overrides, so new keys are available as `context.theme.yourTag.*`.
 
 5. **Update TypeScript types** in `index.d.ts`:
 ```typescript
 export interface YourTagStyle {
-  color?: ChalkString;
+  color?: Color;
   marker?: string;
 }
 
-export interface ThemeConfig {
+export interface Theme {
   // ... existing tags
-  yourTag?: ChalkString | YourTagStyle;
+  yourTag?: Styled<YourTagStyle>;  // also accepts the color shorthand
 }
 ```
 
@@ -376,80 +370,19 @@ const colorIndicator = getAttr(tag, 'color.indicator');
 const colorOpenBracket = getAttr(tag, 'color.open.bracket');
 ```
 
-### Theme Color Function Pattern
+### Applying Colors
 
-When adding new themed elements that need color functions:
-
-1. **Parse style entry** (extracts color and non-color fields):
-```javascript
-const emailStyle = parseStyleEntry(
-  customTheme.input?.email,
-  baseTheme.input?.email,
-  ["prefix"]  // Non-color fields - everything else becomes color functions
-);
-```
-
-2. **Extract raw values**:
-```javascript
-const emailPrefix = emailStyle.prefix;
-const emailPrefixColorValue = emailStyle.prefixColor;
-const emailColorValue = emailStyle.color;
-```
-
-3. **Create color functions with type checking**:
-```javascript
-const emailPrefixColorFn = emailPrefixColorValue
-  ? (typeof emailPrefixColorValue === 'function'
-      ? emailPrefixColorValue
-      : (text) => chalkString(emailPrefixColorValue, forceColor ? { colors: true } : undefined)(text))
-  : null;
-```
-
-This pattern handles both string color values and already-processed color functions.
-
-**IMPORTANT: When prefix/suffix are in extraKeys, colors must be converted to functions:**
-
-When you use `parseStyleEntry()` with prefix/suffix in `extraKeys`, they remain as objects `{marker, color}` but the color values are strings, not functions. You MUST convert them:
+Theme values and `data-cli-*` values can be chalk-strings or (from the library API) functions. Never call them directly; use the helpers from `lib/core/color.js`, which handle both, empty values and `NO_COLOR`:
 
 ```javascript
-// 1. Parse with prefix/suffix in extraKeys
-const buttonStyle = parseStyleEntry(
-  customTheme.button,
-  baseTheme.button,
-  ["prefix", "suffix", "disabled"],  // Keep these as objects
-);
+import { applyColor, applyThemeColor } from '../core/color.js';
 
-// 2. Convert prefix/suffix colors to functions
-const buttonPrefixColorFn = buttonStyle.prefix?.color
-  ? (typeof buttonStyle.prefix.color === 'function'
-      ? buttonStyle.prefix.color
-      : (text) => chalkString(buttonStyle.prefix.color, forceColor ? { colors: true } : undefined)(text))
-  : null;
-
-const buttonSuffixColorFn = buttonStyle.suffix?.color
-  ? (typeof buttonStyle.suffix.color === 'function'
-      ? buttonStyle.suffix.color
-      : (text) => chalkString(buttonStyle.suffix.color, forceColor ? { colors: true } : undefined)(text))
-  : null;
-
-// 3. Return with converted functions
-return {
-  button: {
-    color: buttonStyle.color,  // Already a function
-    prefix: {
-      marker: buttonStyle.prefix?.marker,
-      color: buttonPrefixColorFn,  // Now a function
-    },
-    suffix: {
-      marker: buttonStyle.suffix?.marker,
-      color: buttonSuffixColorFn,  // Now a function
-    },
-    disabled: buttonStyle.disabled,
-  },
-};
+// data-cli-* attribute first, then the theme
+const styledText = applyThemeColor(getAttr(tag, 'color'), context.theme.button.color, text);
+const styledPrefix = applyColor(getAttr(tag, 'prefix.color') ?? context.theme.button.prefix?.color, prefixMarker);
 ```
 
-Without this conversion, calling `context.theme.button.prefix.color(text)` will fail because it's a string, not a function.
+Empty strings in `config.yaml` mean "not set / inherit". When a value falls back to another element's color (e.g. `td` → `tr` → `table`), chain the theme values with `||`, not `??`.
 
 ## Important Patterns
 
@@ -487,9 +420,9 @@ function cachedFunction(value) {
 
 ### Custom Attribute Access
 
-Always use the pattern: `custom.attribute || context.theme.element?.property || fallback`
+Always use the pattern: `getAttr(tag, 'path') ?? context.theme.element?.property`
 ```javascript
-const prefix = custom.emailPrefix || context.theme.input?.email?.prefix || '✉ ';
+const prefix = getAttr(tag, 'email.prefix.marker') ?? context.theme.input?.email?.prefix?.marker;
 ```
 
 This ensures: custom attributes → theme → hardcoded fallback (in that order).
@@ -522,7 +455,7 @@ if (getAttribute(tag, 'type', 'text') === 'email') {
    - Never mix options like using `pre` options inside `code` handler or vice versa
    - This ensures clear separation of concerns and maintainability
 
-3. **All custom attributes go in `lib/utilities.js`** - Never extract attributes elsewhere. The `getCustomAttributes()` function is the single point for all `data-cli-*` attribute extraction.
+3. **Read custom attributes only through `getAttr()`** (`lib/core/attr.js`) - never read `data-cli-*` attributes with `getAttribute()` directly, so naming stays consistent with rule 13.
 
 4. **Use WeakMap for DOM node caching** - Prevents memory leaks by allowing garbage collection
 
@@ -595,7 +528,7 @@ if (getAttribute(tag, 'type', 'text') === 'email') {
     - **Keep ALL intermediate levels**: For clarity and consistency, include all nested object names
       - This makes mapping straightforward and predictable
 
-14. **Custom attributes access via getAttr()** - Instead of `getCustomAttributes()`, use `getAttr(tag, 'path.to.prop')` from `lib/core/attr.js`:
+14. **Custom attributes access via getAttr()** - Use `getAttr(tag, 'path.to.prop')` from `lib/core/attr.js`:
     - This automatically maps `getAttr(tag, 'numbers.enabled')` to reading `data-cli-numbers-enabled`.
     - Allows accessing nested attributes cleanly in code.
 
@@ -622,14 +555,21 @@ echo '<h1>Test</h1>' | node bin/html.js
 node bin/markdown.js examples/markdown/features/alerts.md
 ```
 
-For debugging, use `DEBUG=1` or `DEBUG_INPUT=1` environment variables.
+`test/rendering/examples-snapshot.test.js` renders every file in `examples/html` and `examples/markdown` at 80 columns and compares the plain text with `test/snapshots/`. It also fails if any line is wider than 80 columns. After an intended output change, review the diff and update the snapshots:
+
+```bash
+UPDATE_SNAPSHOTS=1 npm test
+git diff test/snapshots
+```
+
+For debugging, use `DEBUG=1` to print the stack trace of any tag that fails to render.
 
 ## Performance Optimizations
 
 The codebase includes several memory and performance optimizations:
 
 - **WeakMap caching** in `render-tag.js` for automatic garbage collection
-- **LRU eviction** for bounded caches (max 1000 entries for visual length, max 10 per node for render cache)
+- **Bounded caches** (max 10 entries per node for the render cache; theme cache cleared with the others every 10,000 render operations)
 - **Context-based cache keys** to prevent over-caching
 - **Depth limiting** (MAX_DEPTH = 100) to prevent stack overflow
 - **registerCache()** system for coordinated cache management
