@@ -562,7 +562,7 @@ For debugging, use `DEBUG=1` to print the stack trace of any tag that fails to r
 The codebase includes several memory and performance optimizations:
 
 - **WeakMap caching** in `render-tag.js` for automatic garbage collection
-- **LRU eviction** for bounded caches (max 1000 entries for visual length, max 10 per node for render cache)
+- **Bounded caches** (max 10 entries per node for the render cache; theme cache cleared with the others every 10,000 render operations)
 - **Context-based cache keys** to prevent over-caching
 - **Depth limiting** (MAX_DEPTH = 100) to prevent stack overflow
 - **registerCache()** system for coordinated cache management
