@@ -260,9 +260,9 @@ For `<samp>`, `<sub>`, `<sup>` and `<rt>`:
 |-----------|------|-------------|---------|
 | `data-cli-color` | string | Text color | `data-cli-color="yellow"` |
 | `data-cli-animation-enabled` | boolean | Show the animation indicator | `data-cli-animation-enabled="true"` |
-| `data-cli-animation-marker` | string | Indicator marker | `data-cli-animation-marker="*"` |
-| `data-cli-animation-color` | string | Indicator color | `data-cli-animation-color="red"` |
-| `data-cli-animation-position` | string | `before`, `after` or `both` | `data-cli-animation-position="before"` |
+| `data-cli-animation-indicator-marker` | string | Indicator marker (alias `data-cli-animation-marker`) | `data-cli-animation-indicator-marker="*"` |
+| `data-cli-animation-indicator-color` | string | Indicator color (alias `data-cli-animation-color`) | `data-cli-animation-indicator-color="red"` |
+| `data-cli-animation-indicator-position` | string | `before`, `after` or `both` (alias `data-cli-animation-position`) | `data-cli-animation-indicator-position="before"` |
 
 ### Marquee (`<marquee>`)
 

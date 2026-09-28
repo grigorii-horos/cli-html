@@ -1,0 +1,274 @@
+# Custom Code Examples
+
+## Inline Code with Custom Styles
+
+Default inline code: const x = 42;
+
+Custom color: function greet() {}
+
+Red bold: git commit -m "fix"
+
+Yellow background: process.env.NODE_ENV
+
+Green italic: docker run
+
+### Multiple Inline Codes
+
+Install with npm install package or yarn add package or pnpm add package
+
+## Code Blocks with Custom Colors
+
+### Custom Code Text Color
+
+ 1 function greenCode() {
+ 2   console.log("Green code text");
+ 3   return 42;
+ 4 }
+ 
+
+### Custom Line Numbers Color
+
+ 1 function magentaNumbers() {
+ 2   console.log("Magenta bold line numbers");
+ 3   return true;
+ 4 }
+ 
+
+### Disable Line Numbers
+
+ function noLineNumbers() {
+   console.log("Code without line numbers");
+   return "clean";
+ }
+ 
+
+### Combined Custom Attributes
+
+ 1 function combined() {
+ 2   console.log("Cyan code with red bold numbers");
+ 3   return {
+ 4     code: "cyan",
+ 5     numbers: "red bold"
+ 6   };
+ 7 }
+ 
+
+### Yellow Code Without Numbers
+
+ // Yellow code without numbers
+ const greeting = "Hello World";
+ console.log(greeting);
+ 
+
+## Syntax Highlighting with Custom Numbers
+
+### JavaScript with Blue Bold Numbers
+
+ 1 // JavaScript with custom number colors
+ 2 function factorial(n) {
+ 3   if (n <= 1) return 1;
+ 4   return n * factorial(n - 1);
+ 5 }
+ 6 
+ 7 console.log(factorial(5));
+ 
+
+### HTML with Green Numbers
+
+ 1 <section class="card">
+ 2   <h2>Card title</h2>
+ 3   <p>Body</p>
+ 4 </section>
+ 
+
+### Default Syntax Highlighting (No Custom Attributes)
+
+ 1 /* eslint-disable no-nested-ternary */
+ 2 const ansiStyles = require('ansi-colors');
+ 3 const languages = require('languages-aliases');
+ 4 const { highlight } = require('cli-highlight');
+ 5 const boxen = require('boxen');
+
+## Highlight Lines
+
+### Single Line Highlight
+
+ 1 const config = {
+ 2   port: 3000,
+ 3   host: 'localhost'
+ 4 };
+ 
+
+### Multiple Lines Highlight
+
+ 1 Line 1: Highlighted
+ 2 Line 2: Normal
+ 3 Line 3: Highlighted
+ 4 Line 4: Normal
+ 5 Line 5: Highlighted
+ 
+
+### Range Highlight
+
+ 1 function processData(data) {
+ 2   const filtered = data.filter(item => item.active);
+ 3   const mapped = filtered.map(item => item.value);
+ 4   const sum = mapped.reduce((a, b) => a + b, 0);
+ 5   return sum;
+ 6 }
+ 
+
+### Mixed Range and Single Lines
+
+ 1 Step 1: Initialize
+ 2 Step 2: Skip this
+ 3 Step 3: Process start
+ 4 Step 4: Process middle
+ 5 Step 5: Process end
+ 6 Step 6: Skip this too
+ 7 Step 7: Finalize
+ 8 Step 8: Done
+ 
+
+## Custom Gutter Separator
+
+### Arrow Separator
+
+ 1 First line
+ 2 Second line
+ 3 Third line
+ 
+
+### Pipe Separator with Color
+
+ 1 import React from 'react';
+ 2 import { useState } from 'react';
+ 3 
+ 4 export default function App() {
+ 5   return Hello;
+ 6 }
+ 
+
+### Custom Unicode Separator with Color
+
+ 1 const multiply = (a, b) => a * b;
+ 2 const add = (a, b) => a + b;
+ 3 const result = multiply(5, add(2, 3));
+ 
+
+## Highlight Lines with Custom Colors
+
+### Red Highlight
+
+ 1 const a = 1;
+ 2 const b = 2; // highlighted in red
+ 3 const c = 3;
+ 4 const d = 4; // highlighted in red
+ 5 const e = 5;
+ 
+
+### Green Highlight
+
+ 1 // green highlight
+ 2 const x = 10;
+ 3 // green highlight again
+ 4 const y = 20;
+ 
+
+### Blue Highlight
+
+ 1 function example() {
+ 2   console.log("Line 2 - highlighted");
+ 3   console.log("Line 3 - highlighted");
+ 4   console.log("Line 4 - highlighted");
+ 5   return true;
+ 6 }
+ 
+
+## Combined Features
+
+### Highlight + Custom Colors + Separator
+
+ 1 const x = 1;
+ 2 const y = 2;
+ 3 const z = 3;
+ 4 const sum = x + y + z;
+ 
+
+### All Features Combined
+
+ 1 function calculate(a, b) {
+ 2   const sum = a + b;
+ 3   const product = a * b;
+ 4   const difference = a - b;
+ 5   const quotient = a / b;
+ 6   return { sum, product, difference, quotient };
+ 7 }
+ 
+
+## Language Labels
+
+### Basic Language Label
+
+ [JavaScript]
+ 1 function greet(name) {
+ 2   return `Hello, ${name}!`;
+ 3 }
+ 
+
+### Bottom Position
+
+ 1 def factorial(n):
+ 2     if n <= 1:
+ 3         return 1
+ 4     return n * factorial(n - 1)
+ [PYTHON]
+ 
+
+### With Prefix and Suffix Markers
+
+ [ HTML ]
+ 1 <div class="card">
+ 2   <h2>Title</h2>
+ 3   <p>Content</p>
+ 4 </div>
+ 
+
+### Custom Language Label Color
+
+ [PYTHON]
+ 1 def factorial(n):
+ 2     if n <= 1:
+ 3         return 1
+ 4     return n * factorial(n - 1)
+ 
+
+### Custom Prefix/Suffix Colors
+
+ → CSS ←
+ 1 .container {
+ 2   display: flex;
+ 3   justify-content: center;
+ 4   align-items: center;
+ 5 }
+ 
+
+### With Custom Gutter Separator
+
+ 1 fn main() {
+ 2     let x = 42;
+ 3     println!("Answer: {}", x);
+ 4 }
+ 
+
+### Combined: Label + Gutter + Highlights
+
+ 「Go」
+ 1 package main
+ 2 
+ 3 import "fmt"
+ 4 
+ 5 func main() {
+ 6     fmt.Println("Hello Go!")
+ 7 }
+ 

@@ -1,0 +1,7 @@
+There is nothing no code either good or bad, but thinking running it makes it
+so.
+
+Use mark to highlight, underline for emphasis, and strikethrough to show
+removal.
+
+Nested styles: deprecated callback() preferred async/await

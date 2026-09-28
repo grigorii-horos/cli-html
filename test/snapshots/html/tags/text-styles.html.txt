@@ -1,0 +1,232 @@
+## Text Formatting and Styles
+
+### Basic Text Formatting
+
+This is bold text and strong text.
+
+This is italic text and emphasized text.
+
+This is underlined text.
+
+This is strikethrough text and strike text and deleted text.
+
+This is highlighted text.
+
+This is small text and big text.
+
+### Custom Colors (data-cli-color)
+
+Small gray note, large cyan emphasis, ⁽superscript⁾, ₍subscript₎, teletype,
+non-breaking text stays together.
+
+Bidirectional isolation with color: مرحبا, Hello, payload.
+
+### Subscript and Superscript
+
+H₍2₎O is water.
+
+E = mc⁽2⁾ is Einstein's formula.
+
+The 5⁽th⁾ element.
+
+Chemical formula: C₍6₎H₍12₎O₍6₎
+
+### Code and Technical Text
+
+Use console.log() to print output.
+
+Press [Ctrl+C] to copy.
+
+The output is: Hello, World!
+
+The variable x equals y plus z.
+
+The HTML <pre> tag preserves whitespace.
+
+### Quotations and Citations
+
+He said "Hello, World!" to everyone.
+
+The book 1984 by George Orwell.
+
+Time: 2024-01-15
+
+### Abbreviations and Definitions
+
+The HTML (HyperText Markup Language) specification.
+
+Use CSS (Cascading Style Sheets) for styling.
+
+JavaScript is a programming language.
+
+API (Application Programming Interface) documentation.
+
+### Insertions and Deletions
+
+The price is $100 $80.
+
+Old text New text
+
+Updated: Monday Tuesday
+
+### Bidirectional Text (BDI/BDO)
+
+The bdi (Bidirectional Isolation) and bdo (Bidirectional Override) elements are
+used for handling text in different directions.
+
+#### BDI - Bidirectional Isolation
+
+User مرحبا posted a comment.
+
+Welcome to العربية language support!
+
+The user שלום has joined the chat.
+
+#### BDI with Usernames
+
+Comment by alice123: Great post!
+
+Comment by محمد_أحمد: شكراً لك
+
+Comment by דוד_כהן: תודה רבה
+
+#### BDO - Bidirectional Override
+
+Left-to-right (default): Hello World
+
+Right-to-left override: Hello World
+
+Normal order: 1234567890
+
+Reversed order: 1234567890
+
+#### Mixed Content Examples
+
+English with Arabic: The word مرحبا means "hello" in Arabic.
+
+English with Hebrew: The word שלום means "hello" in Hebrew.
+
+#### Email Addresses with RTL Names
+
+Email: أحمد@example.com
+
+Email: דניאל@example.com
+
+Email: john.doe@example.com
+
+#### List with Mixed Directionality
+
+ • User: Alice - Score: 100
+ • User: محمد - Score: 95
+ • User: Bob - Score: 90
+ • User: דוד - Score: 85
+
+### Obsolete Tags (Compatibility)
+
+No break text: This text will not break onto multiple lines even if it is very
+long
+
+Marquee (scrolling): ⟵ Scrolling text
+
+Centered:
+
+                             This text is centered
+
+
+
+### Custom Styled Text Elements
+
+Bold with colors: Red bold, Green strong, Blue underlined bold
+
+Italic variations: Magenta italic, Cyan emphasis, Yellow dim italic
+
+Underline styles: Red underline, Green bold underline
+
+Strikethrough: Red strikethrough, Magenta dim deleted, Gray strike
+
+Mark/highlight: Yellow highlight, Green bold highlight, Magenta highlight
+
+Insertions: Green inserted, Cyan underlined insertion
+
+### Code Elements with Custom Colors
+
+Inline code: const x = 42;, function(), npm install
+
+Keyboard shortcuts: [Ctrl+C], [Alt+Tab], [Cmd+V]
+
+### Quote with Cite Attribute (data-cli-cite-enabled)
+
+Default — double quotes, no cite indicator:
+
+"To be or not to be, that is the question."
+
+Custom prefix/suffix markers:
+
+«Veni, vidi, vici.»
+
+With cite attr — disabled by default (no external marker):
+
+"All the world's a stage."
+
+With cite enabled (data-cli-cite-enabled="true"):
+
+"All the world's a stage. ↗"
+
+Cite enabled with custom link color:
+
+"The quick brown fox jumps over the lazy dog. ↗"
+
+Custom brackets + cite enabled:
+
+“Form follows function. ↗”
+
+### Time with Datetime Display (data-cli-datetime-enabled)
+
+Default — text only, datetime attr hidden:
+
+Published: June 10, 2026
+
+With datetime enabled (data-cli-datetime-enabled="true"):
+
+Published: June 10, 2026 (2026-06-10)
+
+ISO duration — cooking time:
+
+Prep time: 45 minutes (PT45M)
+
+Historical date:
+
+Founded: Moon landing day (1969-07-20)
+
+Custom prefix/suffix markers:
+
+Event: New Year's Eve [2026-12-31]
+
+Custom datetime color:
+
+Deadline: September 1 (2026-09-01)
+
+Full customization:
+
+Version: release day (2026-06-10T12:00:00Z)
+
+Sample output: Success!, Error: File not found, Warning: Low memory
+
+### Citations and Time with Colors
+
+Citations: "1984" by George Orwell, "The Great Gatsby"
+
+Time elements: 2024-01-15, 10:30 AM, December 25, 2024
+
+### Combined Example
+
+The quick brown fox jumps over the lazy dog. Use Array.map() to transform data.
+The WWW (World Wide Web) was invented in 1989. Price: $99 $79.
+
+### Advanced Custom Styling
+
+ERROR: The file /path/to/file.txt was deleted moved to /backup/file.txt at
+2024-12-08 15:30
+
+Press [Ctrl+S] to save or [Ctrl+Q] to quit. Output: Operation completed
+successfully

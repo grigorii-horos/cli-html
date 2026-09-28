@@ -1,0 +1,93 @@
+## Sample Output Tag Examples
+
+### Default Style
+
+ mike@interwebz:~$ [md5 -s "Hello world"]
+ MD5 ("Hello world") = 3e25960a79dbc69b674cd4ec67a72c62
+ 
+ mike@interwebz:~$ [node app.js]
+ Server listening on http://localhost:3000
+ 
+ mike@interwebz:~$ █
+
+### Colored Sample Outputs
+
+Success message: ✓ Build completed successfully
+
+Error message: ✗ Error: Module not found
+
+Warning: ⚠ Warning: Deprecated API usage
+
+Info: ℹ Server running on port 3000
+
+### Command Outputs with Colors
+
+Git status:
+
+ On branch master
+ Your branch is up to date with 'origin/master'.
+
+npm install output:
+
+ added 245 packages, and audited 246 packages in 12s
+
+Test results:
+
+ 
+ ✓ Should validate user input
+ ✓ Should handle errors gracefully
+ ✗ Should connect to database
+ ⊘ Should send email notifications (skipped)
+ 
+
+### Different Output Types
+
+Compilation output: Compiling TypeScript files...
+
+Deployment status: Deploying to production...
+
+Database query: Query executed in 42ms
+
+### Terminal Session with Custom Colors
+
+ 
+ user@hostname:~$ [ls -la]
+ total 48
+ drwxr-xr-x  6 user user 4096 Dec  8 10:30 .
+ drwxr-xr-x 18 user user 4096 Dec  1 09:15 ..
+ 
+ user@hostname:~$ [node --version]
+ v20.10.0
+ 
+ user@hostname:~$ [npm test]
+ PASS src/utils.test.js
+ ✓ All tests passed (8/8)
+ 
+
+### Log Levels
+
+Debug: [DEBUG] Variable x = 42
+
+Info: [INFO] Application started
+
+Warning: [WARN] High memory usage detected
+
+Error: [ERROR] Connection timeout
+
+Fatal: [FATAL] Critical system error
+
+### API Responses
+
+Success response:
+
+ {
+   "status": "success",
+   "data": { "id": 123, "name": "John Doe" }
+ }
+
+Error response:
+
+ {
+   "status": "error",
+   "message": "Invalid credentials"
+ }

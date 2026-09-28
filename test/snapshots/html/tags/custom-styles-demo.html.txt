@@ -1,0 +1,141 @@
+# Custom Style Attributes Demo
+
+This demo showcases inline customization using data-cli-color and
+data-cli-marker attributes.
+
+## Headers with Custom Colors
+
+# Magenta H1
+
+## Cyan H2
+
+### Yellow H3
+
+#### Green H4
+
+##### Blue H5
+
+###### Red H6
+
+## Headers with Combined Color and Style
+
+# Magenta Bold H1
+
+## Cyan Underlined H2
+
+### Yellow Italic H3
+
+#### Green Bold H4
+
+## Bright Colors
+
+# Bright Magenta H1
+
+## Bright Cyan H2
+
+### Bright Yellow H3
+
+#### Bright Green H4
+
+##### Bright Blue H5
+
+###### Bright Red H6
+
+## Text Styles with Custom Colors
+
+This paragraph contains: red bold, blue italic, green underlined, bright yellow
+mark, red deleted, and green inserted text.
+
+## Span with Custom Styles
+
+This is magenta span, cyan bold span, yellow underlined span, and bright green
+italic span.
+
+## Custom Markers
+
+► Custom Triangle Marker
+
+••• Triple Dot Marker
+
+⚡ Lightning Marker
+
+## Combined Attributes
+
+⚠ Warning Header
+
+→ Success Header
+
+## Blockquotes with Custom Markers
+
+│ This is a blue blockquote with default marker.
+
+▌ Yellow blockquote with custom block marker.
+
+» Magenta bold blockquote with double angle marker.
+
+## Technical Text with Custom Colors
+
+Use console.log() for debugging. Press [Ctrl+C] to copy. The output is Success!.
+The variable x equals 10.
+
+## Citations with Custom Styles
+
+The book 1984 by George Orwell. Time: 2025-12-07
+
+## Nested Custom Styles
+
+This is bold red with blue italic inside text.
+
+## All Available Colors
+
+Basic colors:
+
+ • black
+ • red
+ • green
+ • yellow
+ • blue
+ • magenta
+ • cyan
+ • white
+ • gray
+
+Bright colors:
+
+ • blackBright
+ • redBright
+ • greenBright
+ • yellowBright
+ • blueBright
+ • magentaBright
+ • cyanBright
+ • whiteBright
+
+## All Available Styles (in data-cli-color)
+
+ • bold
+ • italic
+ • underline
+ • dim
+ • inverse
+ • strikethrough
+
+## Combined Color and Styles
+
+ • red bold
+ • blue italic
+ • green underline
+ • yellow dim
+ • magenta bold italic
+ • cyan underline bold
+
+## Background Colors
+
+You can also use background colors in data-cli-color:
+
+ • bgRed with white text
+ • bgGreen with black text
+ • bgBlue with white text
+ • bgYellow with black text
+ • bgMagenta white bold
+ • bgCyan black italic

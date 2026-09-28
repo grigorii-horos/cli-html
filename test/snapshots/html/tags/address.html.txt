@@ -1,0 +1,29 @@
+## Address Examples with Custom Styles
+
+### Default Address
+
+John Doe
+123 Main Street
+New York, NY 10001
+Email: john@example.com
+
+### Custom Color (Cyan)
+
+Jane Smith
+456 Oak Avenue
+San Francisco, CA 94102
+Phone: (555) 123-4567
+
+### Custom Color with Style (Green Bold)
+
+Acme Corporation
+789 Business Blvd
+Chicago, IL 60601
+contact@acme.com
+
+### With Highlight
+
+Event Location
+Convention Center
+Downtown District
+Seattle, WA 98101

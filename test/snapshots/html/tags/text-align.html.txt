@@ -1,0 +1,15 @@
+# Text Alignment
+
+Default (left) aligned paragraph.
+
+                         Centered with CSS text-align.
+
+                                              Right-aligned with CSS text-align.
+
+                   Centered with the legacy align attribute.
+
+                        Alignment is inherited by the blocks inside a container.
+
+                                            This paragraph is right-aligned too.
+
+                             ## Centered heading

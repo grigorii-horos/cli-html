@@ -1,0 +1,142 @@
+# Web Development Glossary
+
+A quick reference for common terms in modern web development.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## A
+
+API ::
+
+  Application Programming Interface — A set of rules and protocols that allows
+  different software applications to communicate with each other. REST and
+  GraphQL are common API styles. "An API is a way for two or more computer
+  programs to communicate with each other."
+
+Async/Await ::
+
+  JavaScript syntax for working with Promises. async functions always return a
+  Promise; await pauses execution until a Promise resolves. Introduced in
+  ECMAScript (ES2017).
+
+────────────────────────────────────────────────────────────────────────────────
+
+## B
+
+Bundle ::
+
+  A single file (or small set of files) produced by a build tool that combines
+  many source modules into a deployable artifact. Common bundlers: webpack,
+  Rollup, esbuild, Vite.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## C
+
+CDN ::
+
+  Content Delivery Network — A geographically distributed group of servers
+  that caches content close to end users to improve load times. Examples:
+  Cloudflare, Fastly, Akamai.
+
+CI/CD ::
+
+  Continuous Integration / Continuous Deployment — Practices where code
+  changes are automatically tested (CI) and deployed (CD) on every push.
+
+  │ [!TIP] A good CI pipeline catches broken builds before they reach
+  │ production. At minimum: lint → test → build.
+
+CORS ::
+
+  Cross-Origin Resource Sharing — A browser security mechanism that controls
+  which domains can make requests to a server. Configured via HTTP headers.
+  Common source of errors when building APIs consumed by browsers.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## D
+
+DOM ::
+
+  Document Object Model — A tree-like in-memory representation of an HTML
+  document. JavaScript interacts with the page by manipulating the DOM.
+  Created when the browser parses HTML.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## H
+
+HTTP ::
+
+  HyperText Transfer Protocol — The foundation of data communication on the
+  web. HTTP/1.1 was standardized in 1997; HTTP/2 in 2015; HTTP/3 (based on
+  QUIC) in 2022.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## J
+
+JSON ::
+
+  JavaScript Object Notation — A lightweight text-based data interchange
+  format. Originally derived from JavaScript object syntax but is
+  language-independent. Replaced XML as the dominant data format for web APIs
+  around 2006.
+
+   1 {
+   2   "name": "example",
+   3   "version": "1.0.0",
+   4   "type": "module"
+   5 }
+
+────────────────────────────────────────────────────────────────────────────────
+
+## R
+
+REST ::
+
+  Representational State Transfer — An architectural style for building web
+  APIs defined by Roy Fielding in his doctoral dissertation in 2000. Key
+  constraints: stateless, uniform interface, client-server separation.
+
+  "REST is intended to evoke an image of how a well-designed Web application
+  behaves: a network of web pages (a virtual state-machine), where the user
+  progresses through the application by selecting links (state transitions)."
+  — Roy Fielding, 2000
+
+────────────────────────────────────────────────────────────────────────────────
+
+## S
+
+SSR ::
+
+  Server-Side Rendering — Generating HTML on the server for each request, as
+  opposed to client-side rendering where the browser builds the page from
+  JavaScript. Improves initial load performance and SEO.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## T
+
+TypeScript ::
+
+  A strongly-typed superset of JavaScript developed by Microsoft, first
+  released in 2012. Compiles to plain JavaScript. Adds static type checking,
+  interfaces, and enums.
+
+   1 interface User {
+   2   id: number;
+   3   name: string;
+   4   email?: string;
+   5 }
+
+────────────────────────────────────────────────────────────────────────────────
+
+## W
+
+WebSocket ::
+
+  A protocol providing full-duplex communication over a single TCP connection.
+  Unlike HTTP, the connection stays open, allowing the server to push data to
+  the client at any time. Standardized in 2011 (RFC 6455).

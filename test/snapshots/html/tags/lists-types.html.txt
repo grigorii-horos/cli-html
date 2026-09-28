@@ -1,0 +1,76 @@
+# Unordered Lists - HTML type Attribute
+
+## type="disc" (default)
+
+ • Disc marker (•)
+ • Default marker type
+ • Uses theme.ul.markers.disc configuration
+
+## type="square"
+
+ ▪ Square marker (▪)
+ ▪ Alternative marker type
+ ▪ Uses theme.ul.markers.square configuration
+
+## type="circle"
+
+ ◦ Circle marker (⚬)
+ ◦ Hollow circle marker
+ ◦ Uses theme.ul.markers.circle configuration
+
+## Nested Lists with Automatic Rotation
+
+ • Level 1 - disc (•)
+   ▪ Level 2 - square (▪)
+     ◦ Level 3 - circle (⚬)
+       • Level 4 - back to disc (•)
+
+## Combining type with data-cli-* Attributes
+
+Override marker color while keeping type:
+
+ ▪ Square marker with red color
+ ▪ Type defines marker, data-cli-marker-color defines color
+
+Override both marker and color:
+
+ → Completely custom arrow marker
+ → data-cli-marker overrides type attribute
+
+# Ordered Lists - HTML type Attribute
+
+## type="1" (default)
+
+ 1. Decimal numbers
+ 2. Default numbering
+ 3. 1, 2, 3...
+
+## type="A"
+
+ A. Uppercase letters
+ B. Alphabetical ordering
+ C. A, B, C...
+
+## type="a"
+
+ a. Lowercase letters
+ b. Alphabetical ordering
+ c. a, b, c...
+
+## type="I"
+
+   I. Uppercase Roman numerals
+  II. Roman numbering
+ III. I, II, III...
+
+## type="i"
+
+   i. Lowercase Roman numerals
+  ii. Roman numbering
+ iii. i, ii, iii...
+
+## Nested Ordered Lists with Rotation
+
+ 1. Level 1 - decimal (1, 2, 3...)
+    I. Level 2 - Roman uppercase (I, II, III...)
+       A. Level 3 - Alphabetic uppercase (A, B, C...)

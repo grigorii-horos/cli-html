@@ -1,0 +1,34 @@
+## Variable Tag Examples
+
+### Default Style
+
+The volume of a box is l × w × h, where l represents the length, w the width and
+h the height of the box.
+
+### Custom Colors
+
+Physics: F = m × a, and kinetic energy E = 1/2 m v⁽2⁾.
+
+### Different Color Styles
+
+Chemistry: H₂O represents water molecule.
+
+### Bold and Underline Variables
+
+Math equation: x⁽2⁾ + y⁽2⁾ = r⁽2⁾
+
+### Background Colors
+
+Temperature: T = T₀ + ΔT
+
+### Dim Style
+
+Optional parameters: config, options, settings
+
+### Mixed Styles in Code Context
+
+Function call: calculate(width, height)
+
+### Complex Mathematical Expression
+
+Quadratic formula: x = (-b ± √(b⁽2⁾ - 4ac)) / (2a)

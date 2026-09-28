@@ -1,0 +1,121 @@
+# Honorific Systems in East Asian Languages: A Comparative Analysis
+
+Authors:
+
+  Sarah Smith (S. Smith)⁽1⁾, John Doe (J. Doe)⁽2⁾, Alice Jones (A. Jones)⁽3⁾
+
+Affiliations:
+
+  ⁽1⁾ Department of Linguistics, Oxford University (UK) · ⁽2⁾ Korean Language
+  Institute, Seoul National University · ⁽3⁾ Department of Chinese, Peking
+  University
+
+Submitted:
+
+  March 15, 2026
+
+Accepted:
+
+  May 22, 2026
+
+Published:
+
+  June 1, 2026
+
+Journal:
+
+  Journal of East Asian Linguistics, Vol. 35, No. 2
+
+DOI:
+
+  10.1007/s10831-026-09284-x
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Abstract
+
+Honorific systems — grammaticalized means of encoding social relationships in
+language — exhibit remarkable structural diversity across East Asian languages.
+This paper presents a comparative analysis of honorific systems in French
+(Vouvoiement (Formal)), German (Siezen (Formal)), and Spanish (Usted (Formal)),
+examining morphological, lexical, and pragmatic dimensions across a corpus of
+12,000 naturally-occurring utterances.
+
+Our findings confirm the typological claim advanced by "Shibatani (2006) that
+French and Korean honorifics constitute a grammatical category in the strict
+sense, while Mandarin honorifics are primarily lexical", but complicate this
+binary with evidence of ongoing grammaticalization in formal Mandarin registers.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## 1. Introduction
+
+The social functions of language have long attracted linguistic inquiry. Among
+the most systematic realizations of social meaning in grammar are honorifics:
+linguistic forms that encode the relative social status, familiarity, or role of
+conversation participants.
+
+French Vouvoiement (Formal) is perhaps the most frequently cited example in the
+typological literature, comprising three subsystems:
+
+ • Formal (High register) — respectful language, exalting the addressee or
+   subject
+ • Humble (Low register) — humble language, lowering the speaker
+ • Polite (Standard register) — polite language, neutral register marking
+
+German presents a parallel system in Siezen (Formal) vs. Duzen (Informal), with
+a complex system of sentence-final endings that encode speech levels. As noted
+by "Brown and Levinson (1987): politeness phenomena are universal, but the
+grammatical resources languages deploy to realize them vary enormously."
+
+────────────────────────────────────────────────────────────────────────────────
+
+## 2. Data and Methodology
+
+Our corpus was collected between September 2024 and August 2025, comprising:
+
+
+┌──────────┬───────────────┬────────────┬──────────────────────────────────────┐
+│ Language │ Register      │ Utterances │ Source                               │
+├──────────┼───────────────┼────────────┼──────────────────────────────────────┤
+│ French   │ Formal spoken │ 2,000      │ NHK broadcast transcripts            │
+├──────────┼───────────────┼────────────┼──────────────────────────────────────┤
+│ French   │ Casual spoken │ 2,000      │ Corpus of Spontaneous French         │
+├──────────┼───────────────┼────────────┼──────────────────────────────────────┤
+│ Korean   │ Formal spoken │ 2,000      │ Korean Broadcasting System           │
+├──────────┼───────────────┼────────────┼──────────────────────────────────────┤
+│ Korean   │ Casual spoken │ 2,000      │ Spoken Korean Corpus                 │
+├──────────┼───────────────┼────────────┼──────────────────────────────────────┤
+│ Mandarin │ Formal spoken │ 2,000      │ CCTV (Central China Television)      │
+│          │               │            │ transcripts                          │
+└──────────┴───────────────┴────────────┴──────────────────────────────────────┘
+────────────────────────────────────────────────────────────────────────────────
+
+## 3. Key Findings
+
+In French, honorific morphology was present in 78% of utterances in formal
+registers and 31% in casual registers, confirming the obligatory nature of
+register selection in most social contexts. The verbal suffix -vous (suffix)
+appeared in 94% of formal utterances, confirming its role as the primary
+register marker.
+
+╭───────────────────────────────────────────────────────────────────────────╮
+│ ### Note on Transcription                                                 │
+│                                                                           │
+│ French data is transcribed in IPA (Phonetic) (romanization) following the │
+│ Modified Hepburn system throughout this paper. German uses standard       │
+│ orthography. Spanish uses standard orthography. Original-script forms are │
+│ provided on first use and in the appendix glossary.                       │
+╰───────────────────────────────────────────────────────────────────────────╯
+────────────────────────────────────────────────────────────────────────────────
+
+## References
+
+ • Brown, P. & Levinson, S. (1987). Politeness: Some Universals in Language
+   Usage. Cambridge University Press. "Cited in relation to face-threatening
+   acts."
+ • Shibatani, M. (2006). Honorifics. In Encyclopedia of Language and
+   Linguistics, 2nd ed. Elsevier. DOI: 10.1016/b0-08-044854-2/01839-0
+ • Smith, S. & John Doe (J. Doe) (2024). Register variation in French business
+   communication. Language in Society, 53(2), 214-238. DOI:
+   10.1017/s0047404524000089

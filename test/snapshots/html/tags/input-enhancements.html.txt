@@ -1,0 +1,71 @@
+# Input Enhancements
+
+## 1. Required Field Indicator
+
+Name: John Doe *
+
+Email: @ john@example.com *
+
+Password: ******
+
+## 2. Custom Required Marker
+
+Username: johndoe (required)
+
+Phone: +1234567890 !
+
+## 3. Placeholder Display
+
+First Name: Enter your first name
+
+Last Name: Enter your last name
+
+Email: @ user@example.com
+
+## 4. Custom Placeholder Color
+
+Search: Type to search...
+
+URL: https://example.com
+
+## 5. Combined: Placeholder + Required
+
+Username: Choose a username *
+
+Password: ******
+
+## 6. With Values (Required)
+
+Name: Alice Smith *
+
+Age: 25 *
+
+Website: https://alice.dev *
+
+## 7. Optional Fields (No Required)
+
+Middle Name: Marie
+
+Nickname: Optional nickname
+
+## 8. Disabled with Required
+
+Account ID: USER-12345 *
+
+Created Date: # 2024-01-15 *
+
+## 9. Various Input Types
+
+┌ User Registration Form ───────────┐
+│ Email: @ your.email@example.com * │
+│                                   │
+│ Password: ******                  │
+│                                   │
+│ Confirm Password: ******          │
+│                                   │
+│ Date of Birth: #  *               │
+│                                   │
+│ Phone: +1 (555) 123-4567          │
+│                                   │
+│ Website: https://your-site.com    │
+└───────────────────────────────────┘

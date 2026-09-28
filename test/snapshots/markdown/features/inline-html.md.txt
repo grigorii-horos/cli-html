@@ -1,0 +1,71 @@
+# Inline HTML Elements in Markdown
+
+Markdown supports inline HTML. These elements are passed through to the
+renderer, so all cli-html features work when embedded in markdown content.
+
+## Dialog Box
+
+Embed a dialog box directly in markdown:
+
+╭────────────────────────────────────────────────────────────────────────────╮
+│ **Important Notice**                                                       │
+│                                                                            │
+│ This is a dialog box rendered from inline HTML inside a markdown document. │
+│ The border style and colors are configured via config.yaml.                │
+╰────────────────────────────────────────────────────────────────────────────╯
+
+## Video and Audio
+
+Reference media files inline:
+
+The conference recording ▶[Opening Keynote 2026] is available alongside the
+audio-only version ♪[Keynote Audio Track].
+
+Or on their own lines:
+
+▶[Getting Started Tutorial]
+
+♪[Pronunciation Guide]
+
+## Ruby Annotations
+
+Ruby annotations work as inline HTML in markdown:
+
+The term WWW (World Wide Web) refers to the internet.
+
+Common Japanese phrases:
+
+ • ASAP (As Soon As Possible) — quickly
+ • FYI (For Your Information) — informational
+ • DIY (Do It Yourself) — self-made
+
+Example: ETA (Estimated Time of Arrival) (arrival)
+
+## Time with Datetime
+
+The datetime attribute is always present but display requires
+time.datetime.enabled: true in config:
+
+Published: June 10, 2026
+
+With display enabled via data attribute: June 10, 2026 (2026-06-10)
+
+ISO duration: 45 minutes (PT45M)
+
+## Quote with Cite
+
+The cite attribute is present but link display requires q.cite.enabled: true in
+config or per-element attribute:
+
+Default (no cite display): "The best way to predict the future is to invent it."
+
+With cite enabled via data attribute: "The best way to predict the future is to
+invent it. ↗"
+
+## Combined Example
+
+A paragraph mixing markdown and inline HTML:
+
+The researcher Alice Smith (A. Smith) stated: "The results exceeded our
+expectations. ↗" The announcement was made on June 10, 2026 (2026-06-10). A
+recording is available: ▶[Press Conference Recording]

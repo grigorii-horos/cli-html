@@ -1,0 +1,15 @@
+## Section header
+
+A short lead paragraph.
+
+Regular paragraph inside section.
+
+Generic <div> content.
+
+### Article title
+
+Article body with a nested block below.
+
+Block-level div inside article
+
+Footer text with a trailing inline span.

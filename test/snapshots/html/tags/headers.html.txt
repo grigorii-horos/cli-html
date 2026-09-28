@@ -1,0 +1,35 @@
+# Default H1 Header
+
+# Magenta H1 Header
+
+# Cyan Bold H1 Header
+
+# Underlined H1 Header
+
+## Default H2 Header
+
+## Blue H2 Header
+
+## Green Dim H2 Header
+
+### Default H3 Header
+
+### Yellow H3 Header
+
+### Red Italic H3 Header
+
+#### Default H4 Header
+
+#### Bright Magenta H4 Header
+
+##### Default H5 Header
+
+##### Cyan Bright Bold H5 Header
+
+###### Default H6 Header
+
+###### White Bright H6 Header
+
+► Custom Triangle Marker
+
+••• Blue with Triple Dots

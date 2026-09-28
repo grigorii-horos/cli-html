@@ -1,0 +1,70 @@
+# Researchers Achieve Human-Level Accuracy in Low-Resource Language Translation
+
+
+
+By Sarah Chen and Marcos Oliveira
+Published June 10, 2026, 09:30 UTC · Updated 14:15 UTC
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A team of researchers at the ICLI (International Computational Linguistics
+Institute) announced today a significant breakthrough in machine translation for
+low-resource languages — those with limited training data — achieving accuracy
+scores comparable to professional human translators for the first time.
+
+▶[Press conference: ICLI researchers present translation results]
+────────────────────────────────────────────────────────────────────────────────
+
+## The Research
+
+The new approach, called Cross-Lingual Transfer with Minimal Supervision (CTMS),
+was tested on 47 languages including nehiyawewin (Plains Cree), isiZulu (Zulu),
+and Nuosu Yi (Southwest China).
+
+Lead researcher Sarah Jenkins (S. Jenkins) stated: "We trained the model on
+fewer than 5,000 sentence pairs per language — a fraction of what was previously
+considered the minimum for useful neural translation. The results exceeded our
+expectations for every language in the test set."
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Implications
+
+The breakthrough has significant implications for the estimated 3,000 languages
+that currently have no digital translation support. Of the world's 7,000+
+languages, fewer than 100 are well-supported by existing translation services.
+
+│ "Approximately 40% of languages are at risk of disappearing by the end of the
+│ century. Digital tools that preserve and enable communication in these
+│ languages are critically needed."
+│ 
+│ — Endangered Languages Project, 2025 Report
+
+╭─────────────────────────────────────────────────────────────╮
+│ ### Related Stories                                         │
+│                                                             │
+│  • UNESCO Atlas of Endangered Languages updated for 2026    │
+│  • How machine translation changed global commerce          │
+│  • Interview: Preserving oral traditions in the digital age │
+╰─────────────────────────────────────────────────────────────╯
+────────────────────────────────────────────────────────────────────────────────
+
+## Expert Reaction
+
+Professor Muller (ˈmʏlɐ) of computational linguistics at ETH Zurich called the
+result "a genuine step change, not an incremental improvement. The field has
+been searching for a solution to the low-resource problem for a decade."
+
+The paper, Cross-Lingual Transfer with Minimal Supervision for Endangered
+Language Preservation, was published in Nature Language Processing on June 10,
+2026. A preprint has been available since May 28.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Audio & Video
+
+♪[Full press conference audio — 42 minutes]
+
+▶[Explainer: How CTMS works — 8 minute animation]

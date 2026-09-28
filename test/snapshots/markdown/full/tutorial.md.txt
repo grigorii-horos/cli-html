@@ -1,0 +1,523 @@
+# Building a Todo App with React: Complete Tutorial
+
+Learn to build a fully functional todo application from scratch.
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Introduction
+
+In this tutorial, we'll build a todo application with the following features:
+
+ • [✓] Add new todos
+ • [✓] Mark todos as complete
+ • [✓] Delete todos
+ • [✓] Filter todos (all, active, completed)
+ • [✓] Persist data to localStorage
+
+│ Note
+│ 
+│ This tutorial assumes you have Node.js and npm installed.
+
+## Prerequisites
+
+Before starting, make sure you have:
+
+
+┌─────────────┬─────────┬─────────────────────────────────────────┐
+│ Tool        │ Version │ Installation                            │
+├─────────────┼─────────┼─────────────────────────────────────────┤
+│ Node.js     │ 18+     │ https://nodejs.org [https://nodejs.org] │
+├─────────────┼─────────┼─────────────────────────────────────────┤
+│ npm         │ 8+      │ Included with Node.js                   │
+├─────────────┼─────────┼─────────────────────────────────────────┤
+│ Code Editor │ Any     │ VS Code recommended                     │
+└─────────────┴─────────┴─────────────────────────────────────────┘
+
+## Step 1: Project Setup
+
+### Create New Project
+
+ 1 npm create vite@latest todo-app -- --template react-ts
+ 2 cd todo-app
+ 3 npm install
+
+### Project Structure
+
+After setup, your project should look like this:
+
+ 1 todo-app/
+ 2 ├── src/
+ 3 │   ├── App.tsx
+ 4 │   ├── main.tsx
+ 5 │   └── index.css
+ 6 ├── package.json
+ 7 └── vite.config.ts
+
+│ Tip
+│ 
+│ Use Vite for faster development experience compared to Create React App.
+
+## Step 2: Define Types
+
+Create src/types.ts:
+
+ 1 export interface Todo {
+ 2   id: string;
+ 3   text: string;
+ 4   completed: boolean;
+ 5   createdAt: Date;
+ 6 }
+ 7 
+ 8 export type FilterType = 'all' | 'active' | 'completed';
+
+Why TypeScript?
+
+ • ✓ Catch errors early
+ • ✓ Better IDE support
+ • ✓ Self-documenting code
+ • ✓ Easier refactoring
+
+## Step 3: Create Todo Component
+
+Create src/components/TodoItem.tsx:
+
+  1 import { FC } from 'react';
+  2 import { Todo } from '../types';
+  3 
+  4 interface TodoItemProps {
+  5   todo: Todo;
+  6   onToggle: (id: string) => void;
+  7   onDelete: (id: string) => void;
+  8 }
+  9 
+ 10 export const TodoItem: FC<TodoItemProps> = ({ todo, onToggle, onDelete })
+  ↳ => {
+ 11   return (
+ 12     <div className="todo-item">
+ 13       <input
+ 14         type="checkbox"
+ 15         checked={todo.completed}
+ 16         onChange={() => onToggle(todo.id)}
+ 17       />
+ 18       <span className={todo.completed ? 'completed' : ''}>
+ 19         {todo.text}
+ 20       </span>
+ 21       <button onClick={() => onDelete(todo.id)}>Delete</button>
+ 22     </div>
+ 23   );
+ 24 };
+
+### Key Concepts
+
+Props Interface ::
+
+  Defines the shape of component props for type safety
+
+FC (FunctionComponent) ::
+
+  TypeScript type for functional components
+
+Event Handlers ::
+
+  Functions passed as props to handle user interactions
+
+## Step 4: Create Todo List Component
+
+Create src/components/TodoList.tsx:
+
+  1 import { FC } from 'react';
+  2 import { Todo } from '../types';
+  3 import { TodoItem } from './TodoItem';
+  4 
+  5 interface TodoListProps {
+  6   todos: Todo[];
+  7   onToggle: (id: string) => void;
+  8   onDelete: (id: string) => void;
+  9 }
+ 10 
+ 11 export const TodoList: FC<TodoListProps> = ({ todos, onToggle, onDelete })
+  ↳ => {
+ 12   if (todos.length === 0) {
+ 13     return <p>No todos yet. Add one above!</p>;
+ 14   }
+ 15 
+ 16   return (
+ 17     <div className="todo-list">
+ 18       {todos.map(todo => (
+ 19         <TodoItem
+ 20           key={todo.id}
+ 21           todo={todo}
+ 22           onToggle={onToggle}
+ 23           onDelete={onDelete}
+ 24         />
+ 25       ))}
+ 26     </div>
+ 27   );
+ 28 };
+
+│ Important
+│ 
+│ Always use unique keys when rendering lists to help React identify changed
+│ items.
+
+## Step 5: Create Add Todo Form
+
+Create src/components/AddTodo.tsx:
+
+  1 import { FC, useState, FormEvent } from 'react';
+  2 
+  3 interface AddTodoProps {
+  4   onAdd: (text: string) => void;
+  5 }
+  6 
+  7 export const AddTodo: FC<AddTodoProps> = ({ onAdd }) => {
+  8   const [text, setText] = useState('');
+  9 
+ 10   const handleSubmit = (e: FormEvent) => {
+ 11     e.preventDefault();
+ 12     if (text.trim()) {
+ 13       onAdd(text.trim());
+ 14       setText('');
+ 15     }
+ 16   };
+ 17 
+ 18   return (
+ 19     <form onSubmit={handleSubmit}>
+ 20       <input
+ 21         type="text"
+ 22         value={text}
+ 23         onChange={(e) => setText(e.target.value)}
+ 24         placeholder="What needs to be done?"
+ 25       />
+ 26       <button type="submit">Add</button>
+ 27     </form>
+ 28   );
+ 29 };
+
+### Form Handling Best Practices
+
+ • [✓] Prevent default form submission
+ • [✓] Validate input before processing
+ • [✓] Clear input after submission
+ • [✓] Trim whitespace from user input
+
+## Step 6: Create Filter Component
+
+Create src/components/FilterBar.tsx:
+
+  1 import { FC } from 'react';
+  2 import { FilterType } from '../types';
+  3 
+  4 interface FilterBarProps {
+  5   currentFilter: FilterType;
+  6   onFilterChange: (filter: FilterType) => void;
+  7   activeCount: number;
+  8 }
+  9 
+ 10 export const FilterBar: FC<FilterBarProps> = ({
+ 11   currentFilter,
+ 12   onFilterChange,
+ 13   activeCount
+ 14 }) => {
+ 15   return (
+ 16     <div className="filter-bar">
+ 17       <span>{activeCount} items left</span>
+ 18       <div className="filters">
+ 19         <button
+ 20           className={currentFilter === 'all' ? 'active' : ''}
+ 21           onClick={() => onFilterChange('all')}
+ 22         >
+ 23           All
+ 24         </button>
+ 25         <button
+ 26           className={currentFilter === 'active' ? 'active' : ''}
+ 27           onClick={() => onFilterChange('active')}
+ 28         >
+ 29           Active
+ 30         </button>
+ 31         <button
+ 32           className={currentFilter === 'completed' ? 'active' : ''}
+ 33           onClick={() => onFilterChange('completed')}
+ 34         >
+ 35           Completed
+ 36         </button>
+ 37       </div>
+ 38     </div>
+ 39   );
+ 40 };
+
+## Step 7: Implement Main App Logic
+
+Update src/App.tsx:
+
+  1 import { useState, useEffect } from 'react';
+  2 import { Todo, FilterType } from './types';
+  3 import { AddTodo } from './components/AddTodo';
+  4 import { TodoList } from './components/TodoList';
+  5 import { FilterBar } from './components/FilterBar';
+  6 import './App.css';
+  7 
+  8 function App() {
+  9   const [todos, setTodos] = useState<Todo[]>([]);
+ 10   const [filter, setFilter] = useState<FilterType>('all');
+ 11 
+ 12   // Load todos from localStorage on mount
+ 13   useEffect(() => {
+ 14     const saved = localStorage.getItem('todos');
+ 15     if (saved) {
+ 16       setTodos(JSON.parse(saved));
+ 17     }
+ 18   }, []);
+ 19 
+ 20   // Save todos to localStorage whenever they change
+ 21   useEffect(() => {
+ 22     localStorage.setItem('todos', JSON.stringify(todos));
+ 23   }, [todos]);
+ 24 
+ 25   const addTodo = (text: string) => {
+ 26     const newTodo: Todo = {
+ 27       id: crypto.randomUUID(),
+ 28       text,
+ 29       completed: false,
+ 30       createdAt: new Date()
+ 31     };
+ 32     setTodos([...todos, newTodo]);
+ 33   };
+ 34 
+ 35   const toggleTodo = (id: string) => {
+ 36     setTodos(todos.map(todo =>
+ 37       todo.id === id ? { ...todo, completed: !todo.completed } : todo
+ 38     ));
+ 39   };
+ 40 
+ 41   const deleteTodo = (id: string) => {
+ 42     setTodos(todos.filter(todo => todo.id !== id));
+ 43   };
+ 44 
+ 45   const filteredTodos = todos.filter(todo => {
+ 46     if (filter === 'active') return !todo.completed;
+ 47     if (filter === 'completed') return todo.completed;
+ 48     return true;
+ 49   });
+ 50 
+ 51   const activeCount = todos.filter(todo => !todo.completed).length;
+ 52 
+ 53   return (
+ 54     <div className="app">
+ 55       <h1>Todo App</h1>
+ 56       <AddTodo onAdd={addTodo} />
+ 57       <TodoList
+ 58         todos={filteredTodos}
+ 59         onToggle={toggleTodo}
+ 60         onDelete={deleteTodo}
+ 61       />
+ 62       <FilterBar
+ 63         currentFilter={filter}
+ 64         onFilterChange={setFilter}
+ 65         activeCount={activeCount}
+ 66       />
+ 67     </div>
+ 68   );
+ 69 }
+ 70 
+ 71 export default App;
+
+### State Management Explained
+
+useState ::
+
+  React hook for adding state to functional components
+
+useEffect ::
+
+  React hook for side effects like data fetching or localStorage
+
+Derived State ::
+
+  Values computed from existing state (like filteredTodos)
+
+## Step 8: Add Styling
+
+Create src/App.css:
+
+  1 .app {
+  2   max-width: 600px;
+  3   margin: 40px auto;
+  4   padding: 20px;
+  5   font-family: system-ui, sans-serif;
+  6 }
+  7 
+  8 h1 {
+  9   text-align: center;
+ 10   color: #333;
+ 11 }
+ 12 
+ 13 form {
+ 14   display: flex;
+ 15   gap: 8px;
+ 16   margin-bottom: 20px;
+ 17 }
+ 18 
+ 19 input[type="text"] {
+ 20   flex: 1;
+ 21   padding: 12px;
+ 22   border: 2px solid #ddd;
+ 23   border-radius: 4px;
+ 24   font-size: 16px;
+ 25 }
+ 26 
+ 27 button {
+ 28   padding: 12px 24px;
+ 29   background: #007bff;
+ 30   color: white;
+ 31   border: none;
+ 32   border-radius: 4px;
+ 33   cursor: pointer;
+ 34 }
+ 35 
+ 36 button:hover {
+ 37   background: #0056b3;
+ 38 }
+ 39 
+ 40 .todo-item {
+ 41   display: flex;
+ 42   align-items: center;
+ 43   gap: 12px;
+ 44   padding: 12px;
+ 45   border: 1px solid #ddd;
+ 46   border-radius: 4px;
+ 47   margin-bottom: 8px;
+ 48 }
+ 49 
+ 50 .todo-item span {
+ 51   flex: 1;
+ 52 }
+ 53 
+ 54 .todo-item span.completed {
+ 55   text-decoration: line-through;
+ 56   color: #999;
+ 57 }
+ 58 
+ 59 .filter-bar {
+ 60   display: flex;
+ 61   justify-content: space-between;
+ 62   align-items: center;
+ 63   padding-top: 20px;
+ 64   border-top: 1px solid #ddd;
+ 65 }
+ 66 
+ 67 .filters {
+ 68   display: flex;
+ 69   gap: 8px;
+ 70 }
+ 71 
+ 72 .filters button {
+ 73   background: transparent;
+ 74   color: #666;
+ 75   padding: 8px 16px;
+ 76 }
+ 77 
+ 78 .filters button.active {
+ 79   background: #007bff;
+ 80   color: white;
+ 81 }
+
+## Step 9: Testing
+
+### Manual Testing Checklist
+
+ • [ ] Add a new todo
+ • [ ] Mark todo as complete
+ • [ ] Unmark completed todo
+ • [ ] Delete a todo
+ • [ ] Filter todos (all/active/completed)
+ • [ ] Refresh page (data persists)
+ • [ ] Add empty todo (should not work)
+ • [ ] Add todo with whitespace only (should not work)
+
+│ Warning
+│ 
+│ Always test edge cases like empty inputs and rapid clicking.
+
+## Step 10: Run the Application
+
+ 1 npm run dev
+
+Open http://localhost:5173 [http://localhost:5173] in your browser.
+
+## Improvements and Next Steps
+
+### Enhancements to Consider
+
+ 1. Edit Todos
+
+    • Add inline editing capability
+    • Double-click to edit
+
+ 2. Categories/Tags
+
+    • Group todos by category
+    • Add color-coded tags
+
+ 3. Due Dates
+
+    • Add date picker
+    • Sort by due date
+    • Show overdue items
+
+ 4. Drag and Drop
+
+    • Reorder todos
+    • Use libraries like react-beautiful-dnd
+
+ 5. Backend Integration
+
+    • Connect to REST API
+    • Real-time sync with WebSockets
+    • User authentication
+
+### Testing
+
+ 1 npm install -D vitest @testing-library/react @testing-library/jest-dom
+
+Example test:
+
+  1 import { render, screen, fireEvent } from '@testing-library/react';
+  2 import { AddTodo } from './AddTodo';
+  3 
+  4 test('adds a new todo', () => {
+  5   const mockAdd = vi.fn();
+  6   render(<AddTodo onAdd={mockAdd} />);
+  7 
+  8   const input = screen.getByPlaceholderText('What needs to be done?');
+  9   const button = screen.getByText('Add');
+ 10 
+ 11   fireEvent.change(input, { target: { value: 'New todo' } });
+ 12   fireEvent.click(button);
+ 13 
+ 14   expect(mockAdd).toHaveBeenCalledWith('New todo');
+ 15 });
+
+## Conclusion
+
+Congratulations! You've built a fully functional todo application with:
+
+ • ✓ TypeScript for type safety
+ • ✓ React hooks for state management
+ • ✓ LocalStorage for data persistence
+ • ✓ Filtering and sorting features
+ • ✓ Clean, maintainable code structure
+
+│ Tip
+│ 
+│ Challenge yourself by implementing the suggested enhancements!
+
+## Resources
+
+ • React Documentation [https://react.dev]
+ • TypeScript Documentation [https://www.typescriptlang.org]
+ • Vite Documentation [https://vitejs.dev]
+
+────────────────────────────────────────────────────────────────────────────────
+
+Happy coding!

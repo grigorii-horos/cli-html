@@ -1,0 +1,92 @@
+# Select, Option, and Optgroup Customization
+
+## 1. Basic Select (Default Theme)
+
+basic:
+○ Option 1
+◉ Option 2
+○ Option 3
+
+## 2. Custom Select Name Color
+
+colored-name:
+○ First
+◉ Second
+
+## 3. Custom Select Prefix
+
+with-prefix:
+◉ Selected
+○ Not selected
+
+## 4. Custom Select Suffix
+
+with-suffix:
+◉ Item A
+○ Item B
+
+## 5. Custom Select Prefix and Suffix
+
+wrapped:
+◉ Wrapped
+
+## 6. Custom Option Text Colors
+
+option-colors:
+○ Yellow option
+◉ Magenta bold option
+○ Cyan option
+
+## 7. Custom Selected/Unselected Markers
+
+custom-markers:
+○ Unchecked
+◉ Checked
+○ Another unchecked
+
+## 8. Basic Optgroup
+
+with-groups:
+▸ Group A
+  ○ A1
+  ◉ A2
+▸ Group B
+  ○ B1
+  ○ B2
+
+## 9. Optgroup with Custom Marker
+
+custom-group-marker:
+▸ Frontend
+  ○ React
+  ◉ Vue
+▸ Backend
+  ○ Node.js
+  ○ Django
+
+## 10. Optgroup with Custom Label Color
+
+colored-groups:
+▸ Important
+  ○ Critical
+  ◉ High Priority
+▸ Normal
+  ○ Medium
+  ○ Low
+
+## 11. All Features Combined
+
+ultimate-select:
+▸ First Group
+  ○ White option
+  ◉ Magenta option
+▸ Second Group
+  ○ Normal option
+  ○ Another option
+
+## 12. Select with Custom Label Override
+
+Choose your country:
+○ USA
+◉ Canada
+○ Mexico

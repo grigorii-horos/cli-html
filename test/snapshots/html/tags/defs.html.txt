@@ -1,0 +1,147 @@
+## Definition List Examples
+
+### Default Style
+
+Coffee ::
+
+  Black hot drink
+
+Milk ::
+
+  White cold drink
+
+### Multiple Descriptions per Term
+
+Frontend ::
+
+  HTML
+
+  CSS
+
+  JavaScript
+
+Backend ::
+
+  Node.js
+
+  Python
+
+### Colored Terms and Descriptions
+
+HTTP ::
+
+  HyperText Transfer Protocol - foundation of data communication on the web
+
+API ::
+
+  Application Programming Interface - set of rules for building software
+
+JSON ::
+
+  JavaScript Object Notation - lightweight data interchange format
+
+### Technical Glossary
+
+Variable ::
+
+  A named storage location in memory that holds a value
+
+Function ::
+
+  A reusable block of code that performs a specific task
+
+Array ::
+
+  An ordered collection of elements, accessed by numeric index
+
+Object ::
+
+  A collection of key-value pairs representing an entity
+
+### Command Line Options
+
+-v, --version ::
+
+  Display version information
+
+-h, --help ::
+
+  Show help message
+
+-c, --config ::
+
+  Specify configuration file path
+
+-d, --debug ::
+
+  Enable debug mode
+
+### Status Codes
+
+200 OK ::
+
+  Request succeeded
+
+301 Moved Permanently ::
+
+  Resource has been moved to a new URL
+
+404 Not Found ::
+
+  Requested resource could not be found
+
+500 Internal Server Error ::
+
+  Server encountered an unexpected condition
+
+### Git Commands
+
+git init ::
+
+  Initialize a new Git repository
+
+git clone ::
+
+  Clone a repository into a new directory
+
+git commit ::
+
+  Record changes to the repository
+
+git push ::
+
+  Update remote refs along with associated objects
+
+### Programming Paradigms
+
+Imperative Programming ::
+
+  Programming paradigm that uses statements to change program state
+
+  Examples: C, Pascal, Fortran
+
+Functional Programming ::
+
+  Programming paradigm based on mathematical functions
+
+  Examples: Haskell, Lisp, Erlang
+
+Object-Oriented Programming ::
+
+  Programming paradigm based on objects containing data and code
+
+  Examples: Java, Python, C++
+
+### Environment Variables
+
+PATH ::
+
+  Directories searched for executable files
+
+HOME ::
+
+  User's home directory path
+
+NODE_ENV ::
+
+  Node.js environment (development, production, etc.)

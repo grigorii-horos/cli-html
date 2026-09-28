@@ -1,0 +1,695 @@
+# Tutorial: Building Your First REST API with Node.js
+
+Difficulty: [████████████░░░░░░░░░░░░░░░░░░] 2/5 Beginner | Duration: 45 minutes
+| Prerequisites: Basic JavaScript knowledge
+
+Last updated: January 15, 2024
+
+────────────────────────────────────────────────────────────────────────────────
+
+## What You'll Learn
+
+In this tutorial, you'll learn how to build a complete REST (Representational
+State Transfer) API (Application Programming Interface) from scratch using
+Node.js and Express. By the end, you'll have a working API that can:
+
+ • [ ] Handle HTTP requests (GET, POST, PUT, DELETE)
+ • [ ] Connect to a database
+ • [ ] Validate user input
+ • [ ] Implement error handling
+ • [ ] Test your endpoints
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Table of Contents
+
+ 1. Setting Up Your Project
+ 2. Installing Express
+ 3. Creating Your First Route
+ 4. Connecting to a Database
+ 5. Implementing CRUD Operations
+ 6. Adding Validation
+ 7. Error Handling
+ 8. Testing Your API
+ 9. Next Steps
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Step 1: Setting Up Your Project
+
+First, let's create a new directory for our project and initialize it with npm.
+
+### Create the Project Directory
+
+ 1 mkdir my-first-api
+ 2 cd my-first-api
+
+### Initialize npm
+
+ 1 npm init -y
+
+This creates a package.json file with default settings. Your file should look
+like this:
+
+  1 {
+  2   "name": "my-first-api",
+  3   "version": "1.0.0",
+  4   "description": "",
+  5   "main": "index.js",
+  6   "scripts": {
+  7     "test": "echo \"Error: no test specified\" && exit 1"
+  8   },
+  9   "keywords": [],
+ 10   "author": "",
+ 11   "license": "ISC"
+ 12 }
+
+│ Tip: The [-y] flag accepts all default options. You can run [npm init] without
+│ it to customize each field.
+
+Progress:  ███░░░░░░░░░░░░░░░░░░░░░
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Step 2: Installing Express
+
+Express is a minimal and flexible Node.js web application framework. Let's
+install it:
+
+ 1 npm install express
+
+This will add Express to your package.json dependencies:
+
+ 1 {
+ 2   "dependencies": {
+ 3     "express": "^4.18.2"
+ 4   }
+ 5 }
+
+### Additional Dependencies
+
+We'll also need a few more packages for our API:
+
+ 1 npm install dotenv mongoose joi cors
+
+dotenv ::
+
+  Loads environment variables from a .env file
+
+mongoose ::
+
+  MongoDB object modeling tool
+
+joi ::
+
+  Schema validation library
+
+cors ::
+
+  Enables Cross-Origin Resource Sharing
+
+### Development Dependencies
+
+ 1 npm install --save-dev nodemon
+
+nodemon automatically restarts your server when files change. Let's add a start
+script to package.json:
+
+ 1 {
+ 2   "scripts": {
+ 3     "start": "node server.js",
+ 4     "dev": "nodemon server.js"
+ 5   }
+ 6 }
+
+Progress:  ██████░░░░░░░░░░░░░░░░░░
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Step 3: Creating Your First Route
+
+Create a new file called server.js in your project root:
+
+  1 // server.js
+  2 const express = require('express');
+  3 const app = express();
+  4 const PORT = 3000;
+  5 
+  6 // Middleware to parse JSON
+  7 app.use(express.json());
+  8 
+  9 // Your first route!
+ 10 app.get('/', (req, res) => {
+ 11   res.json({ message: 'Hello, World!' });
+ 12 });
+ 13 
+ 14 // Start the server
+ 15 app.listen(PORT, () => {
+ 16   console.log(`Server is running on port ${PORT}`);
+ 17 });
+
+### Understanding the Code
+
+Let's break down what each part does:
+
+ 1. require('express') - Imports the Express module
+ 2. express() - Creates an Express application
+ 3. app.use(express.json()) - Adds middleware to parse JSON request bodies
+ 4. app.get('/', ...) - Defines a route that responds to GET requests
+ 5. app.listen(PORT, ...) - Starts the server on port 3000
+
+### Test Your Server
+
+Run the server:
+
+ 1 npm run dev
+
+You should see:
+
+ Server is running on port 3000
+
+Open your browser and visit http://localhost:3000. You should see:
+
+ {
+   "message": "Hello, World!"
+ }
+
+│ Success! Your first API endpoint is working.
+
+Progress:  █████████░░░░░░░░░░░░░░░
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Step 4: Connecting to a Database
+
+Let's connect to MongoDB using Mongoose. First, create a .env file:
+
+ 1 # .env
+ 2 PORT=3000
+ 3 MONGODB_URI=mongodb://localhost:27017/myapi
+
+│ Important: Add .env to your .gitignore file to keep your secrets safe!
+
+Create a new file config/database.js:
+
+  1 // config/database.js
+  2 const mongoose = require('mongoose');
+  3 
+  4 const connectDB = async () => {
+  5   try {
+  6     await mongoose.connect(process.env.MONGODB_URI, {
+  7       useNewUrlParser: true,
+  8       useUnifiedTopology: true
+  9     });
+ 10     console.log('MongoDB connected successfully');
+ 11   } catch (error) {
+ 12     console.error('MongoDB connection error:', error);
+ 13     process.exit(1);
+ 14   }
+ 15 };
+ 16 
+ 17 module.exports = connectDB;
+
+Update server.js to use the database connection:
+
+  1 // server.js
+  2 require('dotenv').config();
+  3 const express = require('express');
+  4 const connectDB = require('./config/database');
+  5 
+  6 const app = express();
+  7 const PORT = process.env.PORT || 3000;
+  8 
+  9 // Connect to database
+ 10 connectDB();
+ 11 
+ 12 // Middleware
+ 13 app.use(express.json());
+ 14 
+ 15 // Routes
+ 16 app.get('/', (req, res) => {
+ 17   res.json({ message: 'API is running' });
+ 18 });
+ 19 
+ 20 app.listen(PORT, () => {
+ 21   console.log(`Server is running on port ${PORT}`);
+ 22 });
+
+Progress:  ████████████░░░░░░░░░░░░
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Step 5: Implementing CRUD Operations
+
+CRUD (Create, Read, Update, Delete) operations are the foundation of any API.
+Let's build a simple user management system.
+
+### Create a User Model
+
+Create models/User.js:
+
+  1 // models/User.js
+  2 const mongoose = require('mongoose');
+  3 
+  4 const userSchema = new mongoose.Schema({
+  5   name: {
+  6     type: String,
+  7     required: true,
+  8     trim: true
+  9   },
+ 10   email: {
+ 11     type: String,
+ 12     required: true,
+ 13     unique: true,
+ 14     lowercase: true
+ 15   },
+ 16   age: {
+ 17     type: Number,
+ 18     min: 0,
+ 19     max: 120
+ 20   },
+ 21   createdAt: {
+ 22     type: Date,
+ 23     default: Date.now
+ 24   }
+ 25 });
+ 26 
+ 27 module.exports = mongoose.model('User', userSchema);
+
+### Create Routes
+
+Create routes/users.js:
+
+  1 // routes/users.js
+  2 const express = require('express');
+  3 const router = express.Router();
+  4 const User = require('../models/User');
+  5 
+  6 // CREATE - Add new user
+  7 router.post('/', async (req, res) => {
+  8   try {
+  9     const user = new User(req.body);
+ 10     await user.save();
+ 11     res.status(201).json(user);
+ 12   } catch (error) {
+ 13     res.status(400).json({ error: error.message });
+ 14   }
+ 15 });
+ 16 
+ 17 // READ - Get all users
+ 18 router.get('/', async (req, res) => {
+ 19   try {
+ 20     const users = await User.find();
+ 21     res.json(users);
+ 22   } catch (error) {
+ 23     res.status(500).json({ error: error.message });
+ 24   }
+ 25 });
+ 26 
+ 27 // READ - Get user by ID
+ 28 router.get('/:id', async (req, res) => {
+ 29   try {
+ 30     const user = await User.findById(req.params.id);
+ 31     if (!user) {
+ 32       return res.status(404).json({ error: 'User not found' });
+ 33     }
+ 34     res.json(user);
+ 35   } catch (error) {
+ 36     res.status(500).json({ error: error.message });
+ 37   }
+ 38 });
+ 39 
+ 40 // UPDATE - Update user by ID
+ 41 router.put('/:id', async (req, res) => {
+ 42   try {
+ 43     const user = await User.findByIdAndUpdate(
+ 44       req.params.id,
+ 45       req.body,
+ 46       { new: true, runValidators: true }
+ 47     );
+ 48     if (!user) {
+ 49       return res.status(404).json({ error: 'User not found' });
+ 50     }
+ 51     res.json(user);
+ 52   } catch (error) {
+ 53     res.status(400).json({ error: error.message });
+ 54   }
+ 55 });
+ 56 
+ 57 // DELETE - Delete user by ID
+ 58 router.delete('/:id', async (req, res) => {
+ 59   try {
+ 60     const user = await User.findByIdAndDelete(req.params.id);
+ 61     if (!user) {
+ 62       return res.status(404).json({ error: 'User not found' });
+ 63     }
+ 64     res.json({ message: 'User deleted successfully' });
+ 65   } catch (error) {
+ 66     res.status(500).json({ error: error.message });
+ 67   }
+ 68 });
+ 69 
+ 70 module.exports = router;
+
+Update server.js to use the routes:
+
+ 1 // Add this line with other requires
+ 2 const userRoutes = require('./routes/users');
+ 3 
+ 4 // Add this line after middleware
+ 5 app.use('/api/users', userRoutes);
+
+### CRUD Operations Summary
+
+
+┌───────────┬─────────────┬────────────────┬───────────────────┐
+│ Operation │ HTTP Method │ Endpoint       │ Description       │
+├───────────┼─────────────┼────────────────┼───────────────────┤
+│ Create    │ POST        │ /api/users     │ Create a new user │
+├───────────┼─────────────┼────────────────┼───────────────────┤
+│ Read      │ GET         │ /api/users     │ Get all users     │
+├───────────┼─────────────┼────────────────┼───────────────────┤
+│ Read      │ GET         │ /api/users/:id │ Get user by ID    │
+├───────────┼─────────────┼────────────────┼───────────────────┤
+│ Update    │ PUT         │ /api/users/:id │ Update user by ID │
+├───────────┼─────────────┼────────────────┼───────────────────┤
+│ Delete    │ DELETE      │ /api/users/:id │ Delete user by ID │
+└───────────┴─────────────┴────────────────┴───────────────────┘
+
+Progress:  ███████████████░░░░░░░░░
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Step 6: Adding Validation
+
+Input validation is crucial for API security and data integrity. Let's use Joi
+to validate requests.
+
+Create middleware/validation.js:
+
+  1 // middleware/validation.js
+  2 const Joi = require('joi');
+  3 
+  4 const userSchema = Joi.object({
+  5   name: Joi.string()
+  6     .min(3)
+  7     .max(50)
+  8     .required()
+  9     .messages({
+ 10       'string.min': 'Name must be at least 3 characters',
+ 11       'string.max': 'Name cannot exceed 50 characters',
+ 12       'any.required': 'Name is required'
+ 13     }),
+ 14 
+ 15   email: Joi.string()
+ 16     .email()
+ 17     .required()
+ 18     .messages({
+ 19       'string.email': 'Please provide a valid email',
+ 20       'any.required': 'Email is required'
+ 21     }),
+ 22 
+ 23   age: Joi.number()
+ 24     .min(0)
+ 25     .max(120)
+ 26     .optional()
+ 27     .messages({
+ 28       'number.min': 'Age must be at least 0',
+ 29       'number.max': 'Age cannot exceed 120'
+ 30     })
+ 31 });
+ 32 
+ 33 const validateUser = (req, res, next) => {
+ 34   const { error } = userSchema.validate(req.body);
+ 35 
+ 36   if (error) {
+ 37     return res.status(400).json({
+ 38       error: error.details[0].message
+ 39     });
+ 40   }
+ 41 
+ 42   next();
+ 43 };
+ 44 
+ 45 module.exports = { validateUser };
+
+Update routes/users.js to use validation:
+
+  1 const { validateUser } = require('../middleware/validation');
+  2 
+  3 // Apply validation to POST and PUT routes
+  4 router.post('/', validateUser, async (req, res) => {
+  5   // ... existing code
+  6 });
+  7 
+  8 router.put('/:id', validateUser, async (req, res) => {
+  9   // ... existing code
+ 10 });
+
+### Testing Validation
+
+Try creating a user with invalid data:
+
+ 1 POST /api/users
+ 2 Content-Type: application/json
+ 3 
+ 4 {
+ 5   "name": "AB",
+ 6   "email": "invalid-email"
+ 7 }
+
+Response:
+
+ {
+   "error": "Name must be at least 3 characters"
+ }
+
+Progress:  ██████████████████░░░░░░
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Step 7: Error Handling
+
+Proper error handling makes your API more robust and user-friendly.
+
+Create middleware/errorHandler.js:
+
+  1 // middleware/errorHandler.js
+  2 const errorHandler = (err, req, res, next) => {
+  3   console.error(err.stack);
+  4 
+  5   // Mongoose validation error
+  6   if (err.name === 'ValidationError') {
+  7     return res.status(400).json({
+  8       error: 'Validation Error',
+  9       details: Object.values(err.errors).map(e => e.message)
+ 10     });
+ 11   }
+ 12 
+ 13   // Mongoose duplicate key error
+ 14   if (err.code === 11000) {
+ 15     return res.status(400).json({
+ 16       error: 'Duplicate Error',
+ 17       message: 'A user with this email already exists'
+ 18     });
+ 19   }
+ 20 
+ 21   // Mongoose cast error (invalid ID)
+ 22   if (err.name === 'CastError') {
+ 23     return res.status(400).json({
+ 24       error: 'Invalid ID format'
+ 25     });
+ 26   }
+ 27 
+ 28   // Default error
+ 29   res.status(500).json({
+ 30     error: 'Internal Server Error',
+ 31     message: err.message
+ 32   });
+ 33 };
+ 34 
+ 35 module.exports = errorHandler;
+
+Add to server.js (at the end, after all routes):
+
+ 1 const errorHandler = require('./middleware/errorHandler');
+ 2 
+ 3 // Error handling middleware (must be last)
+ 4 app.use(errorHandler);
+
+### Common HTTP Status Codes
+
+
+┌──────┬───────────────────────┬───────────────────────────────┐
+│ Code │ Name                  │ When to Use                   │
+├──────┼───────────────────────┼───────────────────────────────┤
+│ 200  │ OK                    │ Request succeeded             │
+├──────┼───────────────────────┼───────────────────────────────┤
+│ 201  │ Created               │ Resource created successfully │
+├──────┼───────────────────────┼───────────────────────────────┤
+│ 400  │ Bad Request           │ Invalid request data          │
+├──────┼───────────────────────┼───────────────────────────────┤
+│ 404  │ Not Found             │ Resource not found            │
+├──────┼───────────────────────┼───────────────────────────────┤
+│ 500  │ Internal Server Error │ Server error occurred         │
+└──────┴───────────────────────┴───────────────────────────────┘
+
+Progress:  █████████████████████░░░
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Step 8: Testing Your API
+
+Let's test all our endpoints using [curl] or a tool like Postman.
+
+### Create a User
+
+ 1 curl -X POST http://localhost:3000/api/users \
+ 2   -H "Content-Type: application/json" \
+ 3   -d '{
+ 4     "name": "Alice Johnson",
+ 5     "email": "alice@example.com",
+ 6     "age": 28
+ 7   }'
+
+Response:
+
+ {
+   "_id": "65a1b2c3d4e5f6789abcdef0",
+   "name": "Alice Johnson",
+   "email": "alice@example.com",
+   "age": 28,
+   "createdAt": "2024-01-15T10:30:00.000Z"
+ }
+
+### Get All Users
+
+ 1 curl http://localhost:3000/api/users
+
+### Get User by ID
+
+ 1 curl http://localhost:3000/api/users/65a1b2c3d4e5f6789abcdef0
+
+### Update a User
+
+ 1 curl -X PUT http://localhost:3000/api/users/65a1b2c3d4e5f6789abcdef0 \
+ 2   -H "Content-Type: application/json" \
+ 3   -d '{
+ 4     "age": 29
+ 5   }'
+
+### Delete a User
+
+ 1 curl -X DELETE http://localhost:3000/api/users/65a1b2c3d4e5f6789abcdef0
+
+### Testing Checklist
+
+┌ Endpoints Tested ──────────────────────────────────────┐
+│  • [ ] Create user with valid data                     │
+│  • [ ] Create user with invalid data (should fail)     │
+│  • [ ] Get all users                                   │
+│  • [ ] Get user by valid ID                            │
+│  • [ ] Get user by invalid ID (should return 404)      │
+│  • [ ] Update user with valid data                     │
+│  • [ ] Update user with invalid ID (should return 404) │
+│  • [ ] Delete user by valid ID                         │
+│  • [ ] Delete user by invalid ID (should return 404)   │
+└────────────────────────────────────────────────────────┘
+
+Progress:  ████████████████████████
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Next Steps
+
+Congratulations! You've built a complete REST API. Here's what to learn next:
+
+### Recommended Improvements
+
+ 1. Authentication & Authorization
+    • Add JWT-based authentication
+    • Implement role-based access control
+    • Secure sensitive endpoints
+ 2. Advanced Features
+    • Pagination for list endpoints
+    • Search and filtering
+    • Rate limiting
+    • API versioning
+ 3. Testing
+    • Write unit tests with Jest
+    • Integration tests with Supertest
+    • Set up CI/CD pipeline
+ 4. Documentation
+    • Generate API docs with Swagger
+    • Add request/response examples
+    • Document error codes
+ 5. Deployment
+    • Deploy to cloud platforms (Heroku, AWS, etc.)
+    • Set up environment variables
+    • Configure logging and monitoring
+
+### Additional Resources
+
+• Express.js Official Documentation
+• Mongoose Documentation
+• REST API Best Practices Guide
+• Node.js Security Checklist
+• API Testing Tutorial
+
+### Complete Project Structure
+
+  1 my-first-api/
+  2 ├── config/
+  3 │   └── database.js
+  4 ├── middleware/
+  5 │   ├── errorHandler.js
+  6 │   └── validation.js
+  7 ├── models/
+  8 │   └── User.js
+  9 ├── routes/
+ 10 │   └── users.js
+ 11 ├── .env
+ 12 ├── .gitignore
+ 13 ├── package.json
+ 14 └── server.js
+
+────────────────────────────────────────────────────────────────────────────────
+
+### Tutorial Summary
+
+What you learned: ::
+
+   • Setting up a Node.js project with npm
+   • Creating Express routes and middleware
+   • Connecting to MongoDB with Mongoose
+   • Implementing CRUD operations
+   • Adding validation with Joi
+   • Handling errors properly
+   • Testing API endpoints
+
+Time invested: ::
+
+  [███████████████████████░░░░░░░] 45/60 ~45 minutes
+
+Skills gained: ::
+
+  [████████████████████████░░░░░░] 4/5 REST API Development
+  [██████████████████░░░░░░░░░░░░] 3/5 Node.js & Express
+  [██████████████████░░░░░░░░░░░░] 3/5 MongoDB & Mongoose
+
+────────────────────────────────────────────────────────────────────────────────
+
+### Feedback
+
+Was this tutorial helpful?
+
+( ) Very helpful ( ) Somewhat helpful ( ) Not helpful
+
+Comments:
+
+
+────────────────────────────────────────────────────────────────────────────────
+
+Tutorial by DevTutorials | Licensed under CC (Creative Commons) BY-SA 4.0
+
+Questions? Contact support [mailto:support@example.com] | Report an issue

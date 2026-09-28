@@ -1,0 +1,88 @@
+## Link Examples with Custom Styles
+
+### Default Links
+
+Default link: Example Website [https://example.com]
+
+Documentation: Read the Docs [https://docs.example.com]
+
+Local path: Local File [file:///path/to/file.html]
+
+### Colored Links
+
+Magenta bold: GitHub [https://github.com]
+
+Red underline: NPM Registry [https://npmjs.com]
+
+Green bold: Stack Overflow [https://stackoverflow.com]
+
+Cyan italic: Mozilla [https://mozilla.org]
+
+Yellow: Node.js [https://nodejs.org]
+
+### Bright Colors
+
+Blue bright: Twitter [https://twitter.com]
+
+Yellow bright: Wikipedia [https://wikipedia.org]
+
+Magenta bright: Reddit [https://reddit.com]
+
+Green bright: Medium [https://medium.com]
+
+### Background Colors
+
+Red background: Danger Zone [https://danger.example]
+
+Green background: Success Page [https://success.example]
+
+Blue background: Information [https://info.example]
+
+### Different Styles
+
+Dim style: Archive Link [https://archive.org]
+
+Bold italic: Important! [https://important.example]
+
+Underline bold: Emphasized Link [https://emphasis.example]
+
+### Link Lists
+
+#### Social Media
+
+ • Facebook [https://facebook.com]
+ • Twitter [https://twitter.com]
+ • Instagram [https://instagram.com]
+ • YouTube [https://youtube.com]
+
+#### Developer Resources
+
+ • GitHub [https://github.com]
+ • Stack Overflow [https://stackoverflow.com]
+ • MDN Web Docs [https://developer.mozilla.org]
+ • npm [https://npmjs.com]
+
+#### Search Engines
+
+ • Google [https://google.com]
+ • Bing [https://bing.com]
+ • DuckDuckGo [https://duckduckgo.com]
+
+### Contextual Links
+
+Visit our homepage [https://example.com], read the documentation
+[https://docs.example.com], or check out the source code
+[https://github.com/example].
+
+For support, please email us [mailto:support@example.com] or report an issue
+[https://github.com/example/issues].
+
+### Links with Icons/Symbols
+
+→ Documentation [https://docs.example.com]
+
+⚡ Fast Server [https://fast.example.com]
+
+🔗 External Link [https://link.example.com]
+
+📦 Packages [https://packages.example.com]

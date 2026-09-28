@@ -1,0 +1,51 @@
+## Embedded Content Examples
+
+Examples of iframe, object, canvas, svg, and other embedded content elements. In
+CLI, these are typically rendered as void tags (hidden or with fallback
+content).
+
+### Iframe Examples
+
+Embedded webpage:
+
+Embedded video:
+
+Embedded map:
+
+### Object Examples
+
+Embedded PDF:
+
+Embedded image:
+
+Embedded SVG:
+
+### Canvas Examples
+
+Drawing canvas:
+
+Chart canvas:
+
+### SVG Examples
+
+Inline SVG graphic:
+
+SVG icon:
+
+### Math Examples
+
+Mathematical formula:
+
+Simple equation:
+
+### Portal Example (experimental)
+
+Portal to another page:
+
+### Slot Example (Web Components)
+
+
+
+### Template Example
+
+Template defined above (hidden until instantiated)

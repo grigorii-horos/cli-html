@@ -1,0 +1,106 @@
+# Custom Lists Examples
+
+## Ordered List: Custom Text Color
+
+ 1. Item text in green
+ 2. Another item in green
+ 3. Third item in green
+
+## Ordered List: Custom Marker Color
+
+ 1. Item with magenta bold marker
+ 2. Another item with magenta bold marker
+
+## Ordered List: Custom Decimal Separator
+
+ 1) Item with ) instead of .
+ 2) Another item with )
+ 3) Third item with )
+
+## Ordered List: Combined Custom Attributes
+
+ 1: Cyan text with red bold marker and : separator
+ 2: Same styling for all items
+ 3: Third item
+
+## Unordered List: Custom Marker
+
+ ★ Star marker
+ ★ Another star
+ ★ Third star
+
+## Unordered List: Custom Marker Color
+
+ • Yellow bold bullet marker
+ • Another yellow bold bullet
+ • Third item
+
+## Unordered List: Combined Custom Attributes
+
+ ► Magenta text with green bold triangle marker
+ ► Same styling for all items
+ ► Third item
+
+## Nested Lists with Different Customizations
+
+ 1. Blue text, red marker
+    ★ Nested yellow text with cyan star
+    ★ Another nested item
+ 2. Back to blue text
+
+## Simple Lists (Default theme)
+
+Simple unordered list:
+
+ • Coffee
+ • Tea
+ • Milk
+
+Nested unordered lists (showing depth rotation):
+
+ • Level 1 - disc marker
+   ▪ Level 2 - dash marker
+     ◦ Level 3 - arrow marker
+       • Level 4 - rotates back to disc
+
+Simple ordered list:
+
+ 1. Coffee
+ 2. Tea
+ 3. Milk
+
+Nested ordered lists (showing depth rotation):
+
+ 1. Level 1 - numeric (1, 2, 3)
+    I. Level 2 - Roman (I, II, III)
+       A. Level 3 - Uppercase letters (A, B, C)
+          i. Level 4 - lowercase roman (i, ii, iii)
+             a. Level 5 - lowercase letters (a, b, c)
+
+## Ordered List with Type Attribute
+
+Type A (uppercase letters):
+
+ A. Coffee
+ B. Tea
+ C. Milk
+
+Type i (lowercase roman numerals):
+
+   i. Coffee
+  ii. Tea
+ iii. Milk
+
+## Unordered List with Type Attribute
+
+Type square:
+
+ ▪ Coffee
+ ▪ Tea
+ ▪ Milk
+
+Type circle:
+
+ ◦ Coffee
+ ◦ Tea
+ ◦ Milk

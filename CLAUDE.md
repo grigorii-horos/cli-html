@@ -555,6 +555,13 @@ echo '<h1>Test</h1>' | node bin/html.js
 node bin/markdown.js examples/markdown/features/alerts.md
 ```
 
+`test/rendering/examples-snapshot.test.js` renders every file in `examples/html` and `examples/markdown` at 80 columns and compares the plain text with `test/snapshots/`. It also fails if any line is wider than 80 columns. After an intended output change, review the diff and update the snapshots:
+
+```bash
+UPDATE_SNAPSHOTS=1 npm test
+git diff test/snapshots
+```
+
 For debugging, use `DEBUG=1` to print the stack trace of any tag that fails to render.
 
 ## Performance Optimizations

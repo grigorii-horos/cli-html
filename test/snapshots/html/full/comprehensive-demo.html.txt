@@ -1,0 +1,146 @@
+# Comprehensive HTML Demo
+
+## Headings
+
+### Level 3
+
+#### Level 4
+
+##### Level 5
+
+###### Level 6
+
+## Text Formatting
+
+Bold, Italic, Code, Marked, Deleted, Inserted, Strikethrough, Small, ABBR
+(Abbreviation), Citation, [Ctrl+C], Sample output, x, ₍subscript₎, ⁽superscript⁾
+
+## Links & Media
+
+GitHub Link [https://github.com]
+
+╭─────────────────╮
+│ ![Placeholder]  │
+│  Image caption  │
+╰─────────────────╯
+
+## Lists
+
+ • Unordered item 1
+ • Unordered item 2
+   ▪ Nested 2.1
+   ▪ Nested 2.2
+ • Unordered item 3
+
+ 1. Ordered item 1
+ 2. Ordered item 2
+     I. Nested 2.1
+    II. Nested 2.2
+ 3. Ordered item 3
+
+## Code Blocks
+
+ 1 function demo() {
+ 2   console.log("Hello, World!");
+ 3   return 42;
+ 4 }
+
+## Blockquotes
+
+│ Simple blockquote
+│ 
+│ ┃ Nested blockquote
+│ 
+│ More content
+
+## Tables
+
+
+┌─────────────┬─────────────┬─────────────┬─────────────┐
+│ Header 1    │ Header 2    │ Header 3    │ Header 4    │
+├─────────────┼─────────────┼─────────────┼─────────────┤
+│ Row 1 Col 1 │ Row 1 Col 2 │ Row 1 Col 3 │ Row 1 Col 4 │
+├─────────────┼─────────────┼─────────────┼─────────────┤
+│ Row 2 Col 1 │ Row 2 Col 2 │ Row 2 Col 3 │ Row 2 Col 4 │
+├─────────────┼─────────────┼─────────────┼─────────────┤
+│ Row 3 Col 1 │ Row 3 Col 2 │ Row 3 Col 3 │ Row 3 Col 4 │
+└─────────────┴─────────────┴─────────────┴─────────────┘
+
+## Forms & Inputs
+
+┌ User Information ──────────────┐
+│ Text: Sample                   │
+│                                │
+│ Email: @ email@example.com     │
+│                                │
+│ Password: ******               │
+│                                │
+│ Number: 42                     │
+│                                │
+│ Date: # 2025-01-01             │
+│                                │
+│ Checkbox: [✓]                  │
+│                                │
+│ Radio 1: ( ) Radio 2: (•)      │
+│                                │
+│ Range: █████████●░░░░░░░░░░ 50 │
+│                                │
+│ Color: ■ (#ff0000)             │
+└────────────────────────────────┘
+
+## Progress & Meter
+
+Progress:  █████████████████░░░░░░░
+
+Meter: [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 0.7/100
+
+## Details & Summary
+
+┌ ▶ Click to expand ─────────────────┐
+│ Hidden content revealed!           │
+│                                    │
+│ More details here with formatting. │
+└────────────────────────────────────┘
+
+## Definition List
+
+Term 1 ::
+
+  Definition for term 1
+
+Term 2 ::
+
+  First definition for term 2
+
+  Second definition for term 2
+
+HTML ::
+
+  Hyper Text Markup Language
+
+## Ruby Annotations
+
+WWW (World Wide Web) HTML (HyperText Markup Language)
+
+## Address
+
+Contact:
+123 Main Street
+City, State 12345
+contact@example.com [mailto:contact@example.com]
+
+## Horizontal Rule
+
+────────────────────────────────────────────────────────────────────────────────
+
+## Special Elements
+
+Time: December 6, 2025
+
+Math: x⁽2⁾ + y⁽2⁾ = z⁽2⁾
+
+Chemical: H₍2₎O
+
+────────────────────────────────────────────────────────────────────────────────
+
+End of Demo - This file contains 25+ different HTML elements!

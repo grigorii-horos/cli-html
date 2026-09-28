@@ -1,0 +1,95 @@
+# Dialog Box Border Examples
+
+## Default Dialog
+
+╭──────────────────────────────────────────────────────────────╮
+│ This is a default dialog with round border and cyan color.   │
+│                                                              │
+│ Content can include multiple paragraphs and inline elements. │
+╰──────────────────────────────────────────────────────────────╯
+
+## Border Styles
+
+### Single
+
+┌───────────────────────────┐
+│ Single-line border style. │
+└───────────────────────────┘
+
+### Double
+
+╔═══════════════════════════╗
+║ Double-line border style. ║
+╚═══════════════════════════╝
+
+### Bold
+
+┏━━━━━━━━━━━━━━━━━━━━┓
+┃ Bold border style. ┃
+┗━━━━━━━━━━━━━━━━━━━━┛
+
+### Classic
+
++-------------------------------+
+| Classic (ASCII) border style. |
++-------------------------------+
+
+## Border Colors
+
+╭───────────────╮
+│ Green border. │
+╰───────────────╯
+╭─────────────────╮
+│ Magenta border. │
+╰─────────────────╯
+╭────────────────╮
+│ Yellow border. │
+╰────────────────╯
+╭─────────────╮
+│ Red border. │
+╰─────────────╯
+
+## Dim Border
+
+╭────────────────────────────────────╮
+│ Dimmed border (subtle appearance). │
+╰────────────────────────────────────╯
+
+## Custom Padding
+
+╭──────────────────────────────────╮
+│   Extra left padding (3 spaces). │
+╰──────────────────────────────────╯
+
+## Content Color
+
+╭───────────────────────────────────╮
+│ Dialog with yellow content color. │
+╰───────────────────────────────────╯
+
+## Rich Content
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│ ### Further Reading                                                          │
+│                                                                              │
+│  • MDN: dialog element                                                       │
+│    [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog]        │
+│  • WHATWG: The dialog element                                                │
+│    [https://html.spec.whatwg.org/#the-dialog-element]                        │
+│                                                                              │
+│ The <dialog> element represents a dialog box or other interactive component. │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+## Combined Customization
+
+╔══════════════════════════════════════════════════════════════════════╗
+║  Notice                                                              ║
+║                                                                      ║
+║  This dialog combines double border style with cyan color and custom ║
+║  padding.                                                            ║
+╚══════════════════════════════════════════════════════════════════════╝
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Warning                                          ┃
+┃                                                  ┃
+┃ Bold red dimmed border for high-priority alerts. ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛

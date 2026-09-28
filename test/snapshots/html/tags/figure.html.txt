@@ -1,0 +1,147 @@
+# Custom Figure Examples
+
+## Border Colors
+
+### Default Figure
+
+╭─────────────╮
+│     /\_/\   │
+│    ( o.o )  │
+│     > ^ <   │
+│             │
+│  ASCII Cat  │
+╰─────────────╯
+
+### Cyan Border
+
+╭───────────────╮
+│      ___      │
+│     /   \     │
+│    |  o  |    │
+│     \___/     │
+│               │
+│  Simple Face  │
+╰───────────────╯
+
+### Magenta Border
+
+╭───────────────╮
+│    ┌─────┐    │
+│    │ Box │    │
+│    └─────┘    │
+│               │
+│  Box Drawing  │
+╰───────────────╯
+
+## Border Styles
+
+### Round Style (Default)
+
+╭──────────────────────╮
+│ Round border corners │
+│     Round Style      │
+╰──────────────────────╯
+
+### Single Style
+
+┌────────────────────┐
+│ Single line border │
+│    Single Style    │
+└────────────────────┘
+
+### Double Style
+
+╔════════════════════╗
+║ Double line border ║
+║    Double Style    ║
+╚════════════════════╝
+
+### Bold Style
+
+┏━━━━━━━━━━━━━━━━━━┓
+┃ Bold line border ┃
+┃    Bold Style    ┃
+┗━━━━━━━━━━━━━━━━━━┛
+
+### Classic Style
+
++-----------------------------------+
+| Classic ASCII border with +, -, | |
+|           Classic Style           |
++-----------------------------------+
+
+## Border Dim
+
+### Normal Border
+
+╭──────────────────────────╮
+│ Normal brightness border │
+│          Normal          │
+╰──────────────────────────╯
+
+### Dimmed Border
+
+╭─────────────────────────────────────╮
+│ Dimmed border for subtle appearance │
+│               Dimmed                │
+╰─────────────────────────────────────╯
+
+## Combined Custom Attributes
+
+### Blue Double with Dim
+
+╔════════════════════════════════════╗
+║ Blue double border with dim effect ║
+║          Combined Styles           ║
+╚════════════════════════════════════╝
+
+### Green Bold
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Green bold colored border with bold style ┃
+┃                Bold Green                 ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+### Magenta Classic
+
++-------------------+
+|    ASCII Art      |
+|    =========      |
+|    Looks great!   |
+|                   |
+|  Classic Magenta  |
++-------------------+
+
+## Real-World Examples
+
+### Code Snippet
+
+┌────────────────────────────────┐
+│  1 function greet(name) {      │
+│  2   return `Hello, ${name}!`; │
+│  3 }                           │
+│       Greeting Function        │
+└────────────────────────────────┘
+
+### Information Box
+
+╔═════════════════════════════════════════════════════════════════════════╗
+║ #### Important Notice                                                   ║
+║                                                                         ║
+║ This is an important message displayed in a figure with custom styling. ║
+║                                 Notice                                  ║
+╚═════════════════════════════════════════════════════════════════════════╝
+
+### ASCII Art Gallery
+
+╭───────────────────╮
+│       .--.        │
+│      |o_o |       │
+│      |:_/ |       │
+│     //   \ \      │
+│    (|     | )     │
+│   /'\_   _/`\     │
+│   \___)=(___/     │
+│                   │
+│  Robot Character  │
+╰───────────────────╯

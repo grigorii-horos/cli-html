@@ -1,0 +1,76 @@
+# Keyboard Shortcuts & Diff Styles
+
+## 1. KBD - Simple Style (Default)
+
+Save file: [Ctrl+S]
+
+Copy: [Ctrl+C]
+
+Paste: [Ctrl+V]
+
+## 2. KBD - Box Style
+
+Delete: [Ctrl] + [Alt] + [Delete]
+
+Screenshot: [Ctrl] + [Shift] + [S]
+
+Quit: [Ctrl] + [Q]
+
+## 3. KBD - Custom Box Colors
+
+Undo: [Ctrl] + [Z]
+
+Redo: [Ctrl] + [Y]
+
+## 4. KBD - Custom Separator
+
+Open file: [Ctrl] - [O]
+
+New window: [Ctrl] + [Shift] + [N]
+
+## 5. KBD - Custom Box Markers
+
+Find: 〈 Ctrl 〉 + 〈 F 〉
+
+Replace: ⟨Ctrl⟩ + ⟨H⟩
+
+## 6. Del/Ins - Simple Style (Default)
+
+The quick brown red fox.
+
+Price: $100 $80
+
+## 7. Del/Ins - Git Diff Style
+
+- Old line of text
+
++ New line of text
+
+## 8. Del/Ins - Custom Markers
+
+✗ Removed feature
+
+✓ Added feature
+
+## 9. Del/Ins - Custom Marker Colors
+
+- Critical error
+
++ Fixed!
+
+## 10. Code Comparison
+
+ 1 function calculate(x, y) {
+ 2 -   return x * y;
+ 3 +   return x + y;
+ 4 }
+
+## 11. Mixed KBD Styles
+
+Simple: [Esc] | Boxed: [Enter] | Colored: [Space]
+
+## 12. Documentation Example
+
+To save your changes, press [Ctrl] + [S] or use the menu.
+
+The old command - npm run dev has been replaced with + npm start.

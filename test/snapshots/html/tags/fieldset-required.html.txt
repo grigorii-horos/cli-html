@@ -1,0 +1,67 @@
+# Fieldset Required Indicator
+
+## 1. Basic Required Fieldset
+
+┌ Personal Information * ─────┐
+│ Name: John Doe *            │
+│                             │
+│ Email: @ john@example.com * │
+└─────────────────────────────┘
+
+## 2. Custom Required Marker
+
+┌ Contact Details (required) ┐
+│ Phone: +1234567890         │
+│                            │
+│ Address: 123 Main St       │
+└────────────────────────────┘
+
+## 3. Required Position: After
+
+┌ Account Settings * ─┐
+│ Username: johndoe * │
+│                     │
+│ Password: ******    │
+└─────────────────────┘
+
+## 4. Optional Fieldset (No Required)
+
+┌ Additional Information ──────┐
+│ Company: Acme Corp           │
+│                              │
+│ Website: https://example.com │
+└──────────────────────────────┘
+
+## 5. Disabled + Required
+
+┌ System Information * ─┐
+│ User ID: 12345        │
+│                       │
+│ Created: # 2024-01-15 │
+└───────────────────────┘
+
+## 6. With Custom Colors
+
+┌ Payment Information ⚠ ─────────────┐
+│ Card Number: **** **** **** **** * │
+│                                    │
+│ CVV: *** *                         │
+│                                    │
+│ Expiry: MM/YY *                    │
+└────────────────────────────────────┘
+
+## 7. Different Border Styles
+
+╔ Shipping Address * ═══╗
+║ Street: 456 Oak Ave * ║
+║                       ║
+║ City: New York *      ║
+║                       ║
+║ ZIP: 10001 *          ║
+╚═══════════════════════╝
+
+╭ Preferences ! ────╮
+│ Language: English │
+│                   │
+│ Timezone: UTC-5   │
+╰───────────────────╯

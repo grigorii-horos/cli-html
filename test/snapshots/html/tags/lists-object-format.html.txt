@@ -1,0 +1,148 @@
+# New Object-Based Configuration Format
+
+The new configuration format uses objects with explicit keys instead of arrays.
+
+## Unordered Lists - Object Format
+
+### Configuration Structure
+
+ ul:
+   markers:
+     disc:
+       color: redBright
+       marker: •
+     square:
+       color: yellowBright
+       marker: ▪
+     circle:
+       color: cyanBright
+       marker: ⚬
+   
+
+### Using HTML type Attribute
+
+type="disc" - uses markers.disc configuration:
+
+ • Red bullet marker (•)
+ • Default marker type
+
+type="square" - uses markers.square configuration:
+
+ ▪ Yellow square marker (▪)
+ ▪ Alternative marker type
+
+type="circle" - uses markers.circle configuration:
+
+ ◦ Cyan circle marker (⚬)
+ ◦ Third marker type
+
+### Automatic Rotation in Nested Lists
+
+Without explicit type, lists rotate through: disc → square → circle → disc...
+
+ • Level 1: disc (red •)
+   ▪ Level 2: square (yellow ▪)
+     ◦ Level 3: circle (cyan ⚬)
+       • Level 4: back to disc (red •)
+         ▪ Level 5: square again (yellow ▪)
+
+## Ordered Lists - Object Format
+
+### Configuration Structure
+
+ ol:
+   markers:
+     "1":
+       color: blueBright
+       marker: "1"
+       decimal: "."
+     I:
+       color: cyanBright
+       marker: "I"
+       decimal: "."
+     A:
+       color: magentaBright
+       marker: "A"
+       decimal: "."
+     i:
+       color: blueBright
+       marker: "i"
+       decimal: "."
+     a:
+       color: cyanBright
+       marker: "a"
+       decimal: "."
+   
+
+### Using HTML type Attribute
+
+type="1" - Decimal numbers (uses markers["1"]):
+
+ 1. First item (blue 1.)
+ 2. Second item (blue 2.)
+ 3. Third item (blue 3.)
+
+type="A" - Uppercase letters (uses markers.A):
+
+ A. First item (magenta A.)
+ B. Second item (magenta B.)
+ C. Third item (magenta C.)
+
+type="a" - Lowercase letters (uses markers.a):
+
+ a. First item (cyan a.)
+ b. Second item (cyan b.)
+ c. Third item (cyan c.)
+
+type="I" - Uppercase Roman numerals (uses markers.I):
+
+   I. First item (cyan I.)
+  II. Second item (cyan II.)
+ III. Third item (cyan III.)
+
+type="i" - Lowercase Roman numerals (uses markers.i):
+
+   i. First item (blue i.)
+  ii. Second item (blue ii.)
+ iii. Third item (blue iii.)
+
+### Automatic Rotation in Nested Lists
+
+Without explicit type, lists rotate through: 1 → I → A → i → a → 1...
+
+ 1. Level 1: decimal (blue 1.)
+    I. Level 2: Roman uppercase (cyan I.)
+       A. Level 3: Alphabetic uppercase (magenta A.)
+          i. Level 4: Roman lowercase (blue i.)
+             a. Level 5: Alphabetic lowercase (cyan a.)
+
+## Benefits of Object Format
+
+ • ✓ Direct mapping to HTML type attribute
+ • ✓ Explicit configuration keys (disc/square/circle, 1/A/a/I/i)
+ • ✓ Easy to customize specific marker types
+ • ✓ Consistent structure between ul and ol
+ • ✓ Backward compatible with array format
+
+## Overriding with data-cli-* Attributes
+
+data-cli-marker overrides the type attribute:
+
+ → Custom arrow instead of square
+
+data-cli-marker-color overrides theme color:
+
+ A. Red bold letters instead of magenta
+ B. Second item
+
+data-cli-decimal overrides decimal separator:
+
+ 1) Uses ) instead of .
+ 2) Second item
+
+## Mixed Nested Lists
+
+ • Unordered list (disc)
+   1. Nested ordered list (1.)
+      • Back to unordered (disc)
+        A. Ordered with explicit type="A"

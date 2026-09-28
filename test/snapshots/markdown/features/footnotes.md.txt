@@ -1,0 +1,74 @@
+# Footnotes
+
+Footnotes allow you to add notes and references without cluttering the main
+text.
+
+## Basic Footnotes
+
+This is a sentence with a footnote⁽1⁾.
+
+Here's another sentence with a different footnote⁽2⁾.
+
+## Named Footnotes
+
+You can use descriptive names for footnotes⁽3⁾.
+
+This makes the markdown more readable⁽4⁾.
+
+## Multi-line Footnotes
+
+This has a longer footnote⁽5⁾.
+
+## Inline Footnotes
+
+This is an inline footnote⁽6⁾.
+
+Inline footnotes are useful for short notes⁽7⁾.
+
+## Footnotes with Formatting
+
+This footnote contains formatting⁽8⁾.
+
+## Multiple References
+
+You can reference the same footnote multiple times⁽9⁾.
+
+See the previous footnote again⁽9:1⁾.
+
+## Footnotes in Context
+
+According to research⁽10⁾, the method is effective.
+
+The study⁽11⁾ showed significant results.
+
+Additional data⁽12⁾ supports the conclusion.
+
+────────────────────────────────────────────────────────────────────────────────
+
+  1. This is the content of the first footnote.
+
+  2. This is the content of the second footnote.
+
+  3. Descriptive names help identify footnotes in the source.
+
+  4. This is an important note about the topic.
+
+  5. This is a longer footnote that spans multiple lines.
+
+     You can even include multiple paragraphs by indenting them.
+
+     And continue with more content in the same footnote.
+
+  6. This content appears directly in the text
+
+  7. Like this one
+
+  8. This footnote has bold text, italic text, and code.
+
+  9. This footnote is referenced twice in the document.
+
+ 10. Smith, J. (2023). Research Methods. Academic Press.
+
+ 11. Johnson, A. (2023). Study Results. Science Journal, 45(3), 123-145.
+
+ 12. Brown, B. (2023). Data Analysis Report. Technical Report TR-2023-01.

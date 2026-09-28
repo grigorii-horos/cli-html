@@ -1,0 +1,136 @@
+# Comprehensive Markdown Demo
+
+## Text Formatting
+
+Bold, italic, bold and italic, strikethrough, inserted, marked, inline code.
+
+Subscript: H₍2₎O, Superscript: E=mc⁽2⁾
+
+## Links & Images
+
+GitHub [https://github.com] | https://example.com [https://example.com] | ![Alt]
+
+## Lists
+
+### Unordered
+
+ • Item 1
+   ▪ Nested 1.1
+   ▪ Nested 1.2
+ • Item 2
+
+### Ordered
+
+ 1. First
+ 2. Second
+     I. Nested 2.1
+    II. Nested 2.2
+ 3. Third
+
+### Task List
+
+ • [✓] Completed
+ • [ ] Pending
+ • [✓] Done with bold
+
+## Code
+
+Inline: const x = 42;
+
+ 1 function demo() {
+ 2   return "Hello, World!";
+ 3 }
+
+## Blockquotes
+
+│ Simple quote
+│ 
+│ ┃ Nested quote
+│ ┃ 
+│ ┃ ┆ Deep nested
+
+## Alerts
+
+│ Note
+│ 
+│ This is a note
+
+│ Tip
+│ 
+│ Helpful tip here
+
+│ Important
+│ 
+│ Critical information
+
+│ Warning
+│ 
+│ Warning message
+
+│ Caution
+│ 
+│ Be careful!
+
+## Tables
+
+
+┌───────────────────────────────────┬────────┬───────┬──────────┐
+│ Feature                           │ Status │ Type  │ Priority │
+├───────────────────────────────────┼────────┼───────┼──────────┤
+│ Markdown                          │ ✓      │ Core  │ High     │
+├───────────────────────────────────┼────────┼───────┼──────────┤
+│ HTML (Hyper Text Markup Language) │ ✓      │ Core  │ High     │
+├───────────────────────────────────┼────────┼───────┼──────────┤
+│ CSS (Cascading Style Sheets)      │ ○      │ Extra │ Low      │
+├───────────────────────────────────┼────────┼───────┼──────────┤
+│ JS                                │ ○      │ Extra │ Medium   │
+└───────────────────────────────────┴────────┴───────┴──────────┘
+
+## Horizontal Rules
+
+────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────
+
+## Footnotes
+
+This has a footnote⁽1⁾, and another⁽2⁾.
+
+## Definition Lists
+
+Term 1 ::
+
+  Definition for term 1
+
+Term 2 ::
+
+  First definition for term 2
+
+  Second definition for term 2
+
+Complex Term ::
+
+  A definition with bold, italic, and code
+
+## Abbreviations
+
+The HTML (Hyper Text Markup Language) and CSS (Cascading Style Sheets) specs are
+maintained by W3C (World Wide Web Consortium) and WHATWG (Web Hypertext
+Application Technology Working Group).
+
+## Mixed Content
+
+Here's a paragraph with bold, italic, strikethrough, code, link
+[https://example.com], and a footnote⁽3⁾.
+
+────────────────────────────────────────────────────────────────────────────────
+
+End of Demo - This file contains 15+ different Markdown elements!
+
+────────────────────────────────────────────────────────────────────────────────
+
+ 1. First footnote content
+
+ 2. Second footnote content
+
+ 3. Mixed content footnote

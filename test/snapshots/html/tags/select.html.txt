@@ -1,0 +1,106 @@
+## Select Element Examples
+
+### Basic Select
+
+colors:
+○ Red
+◉ Green
+○ Blue
+
+### Select with Optgroups
+
+programming:
+▸ Frontend
+  ○ HTML
+  ○ CSS
+  ◉ JavaScript
+▸ Backend
+  ○ Python
+  ○ Node.js
+  ○ Ruby
+
+### Select with Disabled Options
+
+status:
+◉ Active
+○ Pending
+○ Archived
+○ Deleted
+
+### Custom Marker Colors
+
+custom:
+◉ Selected Option
+○ Option 2
+○ Option 3
+
+### Custom Markers
+
+markers:
+◉ Yes
+○ No
+○ Maybe
+
+### Select with Custom Label
+
+Choose Language:
+◉ English
+○ Spanish
+○ French
+○ German
+
+### Complex Example with All Features
+
+Select Framework:
+▸ JavaScript Frameworks
+  ◉ React
+  ○ Vue.js
+  ○ Angular
+▸ CSS Frameworks
+  ○ Tailwind CSS
+  ○ Bootstrap
+  ○ Bulma
+
+### Disabled Optgroup
+
+disabled-group:
+▸ Available
+  ◉ Option 1
+  ○ Option 2
+▸ Unavailable
+  ○ Option 3
+  ○ Option 4
+
+### Practical Examples
+
+Choose your country:
+
+country:
+▸ North America
+  ○ United States
+  ◉ Canada
+  ○ Mexico
+▸ Europe
+  ○ United Kingdom
+  ○ Germany
+  ○ France
+▸ Asia
+  ○ Japan
+  ○ China
+  ○ India
+
+Select your plan:
+
+Subscription Plan:
+◉ Free - $0/month
+○ Basic - $9/month
+○ Pro - $29/month
+○ Enterprise - Custom pricing
+
+Priority level:
+
+priority:
+○ Low
+◉ Medium
+○ High
+○ Critical
