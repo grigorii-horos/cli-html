@@ -400,6 +400,7 @@ theme:
 
   details:
     color: gray
+    collapse: { enabled: false }   # true: closed <details> show only the summary
     indicator:
       open: { marker: "▼ ", color: gray }
       closed: { marker: "▶ ", color: gray }
@@ -548,6 +549,7 @@ theme:
 theme:
   table:
     color: ''               # Default color (inherited by sections, rows, cells)
+    padding: { left: 1, right: 1 }  # Spaces around the text of every cell
     responsive:
       enabled: true         # List view on narrow terminals
       threshold: 60         # Width below which list view is used

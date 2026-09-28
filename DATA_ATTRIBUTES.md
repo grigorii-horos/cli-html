@@ -99,7 +99,7 @@ All data attributes follow a consistent naming pattern that maps directly to `co
   - `data-cli-block-numbers-enabled="true"`
   - `data-cli-href-enabled="false"`
 
-- **Known exceptions**: a few older attributes use flat names that do not follow the `config.yaml` path exactly. They are documented in their sections: `<details>` (`data-cli-open-marker`, not `-indicator-open-marker`), `<input type="range">` (`data-cli-range-filled`, `data-cli-range-filled-color`), `<input type="color">` (`data-cli-color-indicator`), `<figcaption>` (`data-cli-prefix` / `data-cli-suffix`), and the table layout attributes (`data-cli-show-row-numbers`, `data-cli-col-colors`, ...).
+- **Known exceptions**: a few older attributes use flat names that do not follow the `config.yaml` path exactly. They are documented in their sections: `<details>` (`data-cli-open-marker`, not `-indicator-open-marker`), `<input type="range">` (`data-cli-range-filled`, `data-cli-range-filled-color`), `<figcaption>` (`data-cli-prefix` / `data-cli-suffix`), and the table layout attributes (`data-cli-show-row-numbers`, `data-cli-col-colors`, ...).
 
 ### Visual Mapping Guide
 
@@ -505,7 +505,7 @@ The required indicator is shown for text-like inputs, `checkbox`, `radio`, `emai
 | `data-cli-color-suffix-color` | string | Closing bracket color | `data-cli-color-suffix-color="gray"` |
 | `data-cli-color-value-color` | string | Hex value color | `data-cli-color-value-color="white"` |
 | `data-cli-hex-enabled` | boolean | Show hex value (default `true`) | `data-cli-hex-enabled="false"` |
-| `data-cli-color-indicator` | string | Fallback swatch marker. Currently has no visible effect: the swatch is always drawn as two spaces in the input's color | `data-cli-color-indicator="■"` |
+| `data-cli-color-indicator-marker` | string | Marker drawn in the input's own color (`input.color.indicator.marker`); alias `data-cli-color-indicator` | `data-cli-color-indicator-marker="●"` |
 
 ### Password (`<input type="password">`)
 
@@ -656,7 +656,12 @@ Highlighted rows are not striped or alternated.
 - `<td>` / `<th>`: custom cell → custom `<tr>` → custom section (`<thead>`/`<tbody>`/`<tfoot>`) → custom `<table>` → theme `td`/`th` → theme `tr` → theme section → theme `table`
 - `<caption>`: custom caption → theme `caption`
 
-Tables have no padding attributes.
+**Cell padding** (`table.padding` in `config.yaml`, left/right only):
+
+| Attribute | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `data-cli-padding-left` | number | Spaces before the text of every cell | `data-cli-padding-left="2"` |
+| `data-cli-padding-right` | number | Spaces after the text of every cell | `data-cli-padding-right="0"` |
 
 ---
 
@@ -721,6 +726,7 @@ Set these on `<details>` (together with the [container attributes](#container-el
 | `data-cli-open-color` | string | Marker color when open | `data-cli-open-color="green"` |
 | `data-cli-closed-marker` | string | Marker when closed | `data-cli-closed-marker="▶ "` |
 | `data-cli-closed-color` | string | Marker color when closed | `data-cli-closed-color="gray"` |
+| `data-cli-collapse-enabled` | boolean | Show only the summary line of a closed `<details>` (`details.collapse.enabled`, off by default because terminals can't expand it) | `data-cli-collapse-enabled="true"` |
 
 ---
 

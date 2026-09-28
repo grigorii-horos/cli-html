@@ -369,6 +369,8 @@ export interface TableAlignmentStyle {
 /** `<table>` (cell/section colors are the top-level th/td/tr/... keys) */
 export interface TableStyle {
   color?: Color;
+  /** Cell padding (spaces) */
+  padding?: { left?: number; right?: number };
   responsive?: TableResponsiveStyle;
   striping?: TableStripingStyle;
   alignment?: TableAlignmentStyle;
@@ -404,7 +406,7 @@ export interface RangeStyle {
 
 /** `<input type="color">` */
 export interface ColorInputStyle {
-  /** Indicator is colored with the input's value */
+  /** Indicator marker, drawn in the input's own color */
   indicator?: { marker?: string };
   prefix?: Styled<MarkerStyle>;
   suffix?: Styled<MarkerStyle>;
@@ -477,6 +479,8 @@ export interface OptgroupStyle extends DisabledStyle {
 
 /** `<details>` */
 export interface DetailsStyle extends BoxStyle {
+  /** Show only the summary of a closed `<details>` (default false) */
+  collapse?: { enabled?: boolean };
   indicator?: {
     open?: Styled<MarkerStyle>;
     closed?: Styled<MarkerStyle>;

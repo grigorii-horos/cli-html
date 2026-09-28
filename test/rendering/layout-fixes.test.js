@@ -145,6 +145,27 @@ describe('Layout fixes', () => {
     });
   });
 
+  describe('leftovers', () => {
+    it('shows closed details content by default and hides it with collapse', () => {
+      assert.ok(render('<details><summary>S</summary>body</details>').includes('body'));
+      const collapsed = render('<details data-cli-collapse-enabled="true"><summary>S</summary>body</details>');
+      assert.ok(collapsed.includes('S') && !collapsed.includes('body'), collapsed);
+      assert.ok(render('<details open data-cli-collapse-enabled="true"><summary>S</summary>body</details>').includes('body'));
+    });
+
+    it('draws the color input indicator marker', () => {
+      assert.ok(render('<input type="color" value="#ff0000">').includes('■ (#ff0000)'));
+      assert.ok(render('<input type="color" value="#ff0000" data-cli-color-indicator-marker="●">').includes('●'));
+    });
+
+    it('applies table cell padding and still fits the line', () => {
+      const output = render('<table data-cli-padding-left="3" data-cli-padding-right="0"><tr><td>a</td></tr></table>');
+      assert.ok(output.includes('│   a│'), output);
+      const wide = render(`<table data-cli-padding-left="3"><tr><td>x</td><td>${LONG} ${LONG} ${LONG}</td></tr></table>`, 70);
+      assert.ok(widest(wide) <= 70, wide);
+    });
+  });
+
   describe('other elements', () => {
     it('renders footnote references without brackets', () => {
       const output = stripAnsi(renderMarkdown('Text[^1].\n\n[^1]: Note.\n'));

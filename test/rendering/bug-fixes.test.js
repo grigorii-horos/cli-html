@@ -114,6 +114,22 @@ describe('Regression fixes', () => {
     });
   });
 
+  describe('nesting limit', () => {
+    it('warns once when content is nested too deeply', () => {
+      const warnings = [];
+      const onWarning = (warning) => warnings.push(warning.message);
+      process.on('warning', onWarning);
+      const deep = `${'<div>'.repeat(120)}deep${'</div>'.repeat(120)}`;
+      const output = renderHTML(`${deep}${deep}<p>after</p>`);
+      return new Promise((resolve) => setImmediate(() => {
+        process.off('warning', onWarning);
+        assert.ok(output.includes('after'));
+        assert.strictEqual(warnings.filter((message) => message.includes('nested deeper')).length, 1);
+        resolve();
+      }));
+    });
+  });
+
   describe('CLI', () => {
     const run = (args, input) => spawnSync('node', [join(PROJECT_ROOT, 'bin/html.js'), ...args], {
       input,
