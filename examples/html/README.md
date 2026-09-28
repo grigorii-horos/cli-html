@@ -7,7 +7,6 @@ Complete examples of HTML rendering in the terminal with customization.
 ```
 html/
 ├── tags/           # Individual tag examples (abbr, code, input, etc.)
-├── tags-custom/    # Tags with extensive customization examples
 ├── full/           # Complete HTML documents
 ├── screenshots/    # Generated terminal screenshots
 └── README.md       # This file
@@ -18,36 +17,36 @@ html/
 ### By Category
 
 #### Text & Formatting
-- [Headers](./tags-custom/headers.html) - h1-h6 with colors and custom markers
-- [Text Styles](./tags-custom/text-styles.html) - bold, italic, underline, strike, mark, code
-- [Abbreviations](./tags-custom/abbr.html) - <abbr> with custom title styles
-- [Variables](./tags-custom/var.html) - <var> for programming variables
-- [Sample Output](./tags-custom/samp.html) - <samp> for terminal/program output
-- [Code](./tags-custom/code.html) - Inline <code> with colors
-- [Preformatted](./tags-custom/pre.html) - <pre> blocks with syntax highlighting
+- [Headers](./tags/headers.html) - h1-h6 with colors and custom markers
+- [Text Styles](./tags/text-styles.html) - bold, italic, underline, strike, mark, code
+- [Abbreviations](./tags/abbr.html) - <abbr> with custom title styles
+- [Variables](./tags/var.html) - <var> for programming variables
+- [Sample Output](./tags/samp.html) - <samp> for terminal/program output
+- [Code](./tags/code.html) - Inline <code> with colors
+- [Preformatted](./tags/pre.html) - <pre> blocks with syntax highlighting
 
 #### Structure
-- [Lists](./tags-custom/lists.html) - ul, ol with custom markers and colors
-- [Definitions](./tags-custom/defs.html) - dl, dt, dd for glossaries
-- [Tables](./tags-custom/table.html) - Tables with headers, captions, styling
-- [Blockquotes](./tags-custom/blockquote.html) - Quotes with custom markers
-- [Horizontal Rules](./tags-custom/hr.html) - Dividers with custom symbols
+- [Lists](./tags/lists.html) - ul, ol with custom markers and colors
+- [Definitions](./tags/defs.html) - dl, dt, dd for glossaries
+- [Tables](./tags/table.html) - Tables with headers, captions, styling
+- [Blockquotes](./tags/blockquote.html) - Quotes with custom markers
+- [Horizontal Rules](./tags/hr.html) - Dividers with custom symbols
 
 #### Forms
-- [Inputs](./tags-custom/input.html) - All input types (checkbox, radio, text, button, textarea)
-- [Fieldset](./tags-custom/fieldset.html) - Form grouping with legends and borders
-- [Progress](./tags-custom/progress.html) - Progress bars and meters
+- [Inputs](./tags/input.html) - All input types (checkbox, radio, text, button, textarea)
+- [Fieldset](./tags/fieldset.html) - Form grouping with legends and borders
+- [Progress](./tags/progress.html) - Progress bars and meters
 
 #### Containers
-- [Figure](./tags-custom/figure.html) - Images with captions and borders
-- [Details](./tags-custom/details.html) - Collapsible sections with custom styling
-- [Address](./tags-custom/address.html) - Contact information
-- [Block Elements](./tags-custom/block.html) - div, section, article
+- [Figure](./tags/figure.html) - Images with captions and borders
+- [Details](./tags/details.html) - Collapsible sections with custom styling
+- [Address](./tags/address.html) - Contact information
+- [Block Elements](./tags/block.html) - div, section, article
 
 #### Special
-- [Links](./tags-custom/links.html) - Hyperlinks with custom colors
-- [Del/Ins](./tags-custom/del-ins.html) - Deleted and inserted text
-- [Ruby](./tags-custom/ruby.html) - Asian language annotations
+- [Links](./tags/links.html) - Hyperlinks with custom colors
+- [Del/Ins](./tags/del-ins.html) - Deleted and inserted text
+- [Ruby](./tags/ruby.html) - Asian language annotations
 
 #### Complete Examples
 - [Blog Post](./full/blog.html) - Full blog article with rich content
@@ -55,7 +54,7 @@ html/
 
 ## 🎨 Customization
 
-All examples in `tags-custom/` demonstrate the full customization API using `data-cli-*` attributes.
+All examples in `tags/` demonstrate the full customization API using `data-cli-*` attributes.
 
 ### Universal Attributes
 
@@ -65,7 +64,7 @@ All examples in `tags-custom/` demonstrate the full customization API using `dat
 <p data-cli-color="bgBlue white">White on blue background</p>
 
 <!-- Marker (for elements that have markers) -->
-<h2 data-cli-marker="►">Custom marker</h2>
+<h2 data-cli-indicator-marker="►">Custom marker</h2>
 <hr data-cli-marker="═" />
 ```
 
@@ -74,7 +73,7 @@ All examples in `tags-custom/` demonstrate the full customization API using `dat
 #### Headers (h1-h6)
 ```html
 <h1 data-cli-color="red bold underline">Underlined header</h1>
-<h2 data-cli-marker="▶" data-cli-color="cyan">Custom marker</h2>
+<h2 data-cli-indicator-marker="▶" data-cli-color="cyan">Custom marker</h2>
 ```
 
 #### Lists (ul, ol)
@@ -93,11 +92,11 @@ All examples in `tags-custom/` demonstrate the full customization API using `dat
 </ul>
 
 <!-- Custom markers with data-cli-* attributes -->
-<ul data-cli-marker="→" data-cli-marker-color="green" data-cli-color="blue">
+<ul data-cli-indicator-marker="→" data-cli-indicator-color="green" data-cli-color="blue">
   <li>Colored text with custom markers</li>
 </ul>
 
-<ol data-cli-marker-color="red" data-cli-decimal=")">
+<ol data-cli-indicator-color="red" data-cli-decimal=")">
   <li>Custom decimal separator</li>
 </ol>
 ```
@@ -117,15 +116,15 @@ All examples in `tags-custom/` demonstrate the full customization API using `dat
        data-cli-radio-checked-marker="●" />
 
 <!-- Button -->
-<button data-cli-button-text-color="green bold"
-        data-cli-button-open-marker="〔 "
-        data-cli-button-close-marker=" 〕">Click</button>
+<button data-cli-button-color="green bold"
+        data-cli-button-prefix-marker="〔 "
+        data-cli-button-suffix-marker=" 〕">Click</button>
 
 <!-- Text inputs -->
 <input type="text" value="Success" data-cli-text-input-color="green bold" />
 
 <!-- Textarea -->
-<textarea data-cli-textarea-color="cyan">Content</textarea>
+<textarea data-cli-color="cyan">Content</textarea>
 ```
 
 #### Progress & Meter
@@ -163,7 +162,7 @@ All examples in `tags-custom/` demonstrate the full customization API using `dat
 
 <!-- Details -->
 <details data-cli-border="cyan"
-         data-cli-marker="▶ "
+         data-cli-closed-marker="▶ "
          data-cli-border-style="round">
   <summary>Summary</summary>
 </details>
@@ -193,27 +192,27 @@ All examples in `tags-custom/` demonstrate the full customization API using `dat
 ## 📊 Examples by Use Case
 
 ### Documentation & Technical Writing
-- `tags-custom/code.html` - Code snippets
-- `tags-custom/pre.html` - Code blocks with line numbers
-- `tags-custom/samp.html` - Terminal output
-- `tags-custom/var.html` - Programming variables
-- `tags-custom/defs.html` - Glossaries
-- `tags-custom/abbr.html` - Technical abbreviations
-- `tags-custom/table.html` - Data tables
+- `tags/code.html` - Code snippets
+- `tags/pre.html` - Code blocks with line numbers
+- `tags/samp.html` - Terminal output
+- `tags/var.html` - Programming variables
+- `tags/defs.html` - Glossaries
+- `tags/abbr.html` - Technical abbreviations
+- `tags/table.html` - Data tables
 - `full/blog.html` - Complete article
 
 ### User Interfaces & Forms
-- `tags-custom/input.html` - All form controls
-- `tags-custom/fieldset.html` - Form organization
-- `tags-custom/progress.html` - Progress indicators
-- `tags-custom/lists.html` - Menus and navigation
+- `tags/input.html` - All form controls
+- `tags/fieldset.html` - Form organization
+- `tags/progress.html` - Progress indicators
+- `tags/lists.html` - Menus and navigation
 
 ### Content Organization
-- `tags-custom/headers.html` - Document structure
-- `tags-custom/lists.html` - Hierarchical content
-- `tags-custom/blockquote.html` - Quotations
-- `tags-custom/figure.html` - Images with captions
-- `tags-custom/details.html` - Collapsible sections
+- `tags/headers.html` - Document structure
+- `tags/lists.html` - Hierarchical content
+- `tags/blockquote.html` - Quotations
+- `tags/figure.html` - Images with captions
+- `tags/details.html` - Collapsible sections
 
 ## 🎨 Color Format
 
@@ -233,13 +232,13 @@ All `*-color` attributes use chalk-string format:
 
 ```bash
 # Basic tag example
-node bin/html.js examples/html/tags-custom/headers.html
+node bin/html.js examples/html/tags/headers.html
 
 # Full document
 node bin/html.js examples/html/full/blog.html
 
 # With custom theme
-node bin/html.js examples/html/tags-custom/input.html
+node bin/html.js examples/html/tags/input.html
 ```
 
 ## 📸 Screenshots
@@ -247,7 +246,7 @@ node bin/html.js examples/html/tags-custom/input.html
 For visual examples of rendered HTML, see:
 
 - [Tags Screenshots](tags/README.md#screenshots) - Individual HTML tags
-- [Tags Custom Screenshots](tags-custom/README.md#screenshots) - Custom styled tags
+- [Tags Custom Screenshots](tags/README.md#screenshots) - Custom styled tags
 - [Full Examples Screenshots](full/README.md#screenshots) - Complete HTML documents
 
 ## 📖 See Also

@@ -120,8 +120,8 @@ console.log(renderMarkdown(markdown));
 import { renderHTML } from 'cli-html';
 
 const html = `
-<h1 data-cli-color="magenta bold" data-cli-marker="►">Custom Styled Header</h1>
-<h2 data-cli-color="cyan" data-cli-marker="•••">Header with Dots</h2>
+<h1 data-cli-color="magenta bold" data-cli-indicator-marker="►">Custom Styled Header</h1>
+<h2 data-cli-color="cyan" data-cli-indicator-marker="•••">Header with Dots</h2>
 
 <p>
   This paragraph has <span data-cli-color="red">red text</span>,
@@ -129,7 +129,7 @@ const html = `
   and <span data-cli-color="green italic">green italic text</span>.
 </p>
 
-<blockquote data-cli-color="yellow" data-cli-marker="▌ ">
+<blockquote data-cli-color="yellow" data-cli-indicator-marker="▌ ">
   Yellow blockquote with custom marker
 </blockquote>
 `;
@@ -159,8 +159,8 @@ import { renderHTML } from 'cli-html';
 const theme = {
   h1: 'magenta bold',
   code: {
-    color: 'yellowBright',
-    inline: 'bgBlack yellow'
+    color: 'bgBlack yellow',              // inline code
+    block: { color: 'yellowBright' }      // <pre><code> blocks
   }
 };
 
@@ -205,9 +205,9 @@ You can customize these style keys:
 - **Headings:** `h1`, `h2`, `h3`, `h4`, `h5`, `h6`
 - **Text:** `bold`, `italic`, `underline`, `strikethrough`, `mark`
 - **Links:** `a`
-- **Code:** `code` (object with `color`, `inline`, `numbers`)
-- **Lists:** `ul`, `ol` (with `color` and `markers`)
-- **Tables:** `table` (object with `header`, `caption`, `cell`)
+- **Code:** `code` (`color` for inline code, `block.color`, `block.numbers`, `block.gutter`, `block.label`, ...)
+- **Lists:** `ul`, `ol`, `li` (with `color` and `indicators`)
+- **Tables:** `table`, `caption`, `thead`, `tbody`, `tfoot`, `tr`, `th`, `td`
 - **Blocks:** `blockquote`, `hr`
 
 Values use [chalk-string](https://www.npmjs.com/package/chalk-string) format:

@@ -95,6 +95,25 @@ describe('Regression fixes', () => {
     });
   });
 
+  describe('attribute names', () => {
+    it('accepts full-path code block attributes and the short aliases', () => {
+      const code = (attribute) => plain(renderHTML(`<pre><code class="language-js" ${attribute}>a\n</code></pre>`));
+      assert.ok(!code('data-cli-block-numbers-enabled="false"').includes('1 '));
+      assert.ok(!code('data-cli-numbers-enabled="false"').includes('1 '));
+    });
+
+    it('accepts data-cli-checkbox-checked-marker and data-cli-checked-marker', () => {
+      assert.ok(plain(renderHTML('<input type="checkbox" checked data-cli-checkbox-checked-marker="X">')).includes('X'));
+      assert.ok(plain(renderHTML('<input type="checkbox" checked data-cli-checked-marker="Y">')).includes('Y'));
+    });
+
+    it('reads kbd key and del/ins diff attributes', () => {
+      const output = plain(renderHTML('<kbd data-cli-key-style="box" data-cli-prefix-marker="<" data-cli-suffix-marker=">">Ctrl+S</kbd> <del data-cli-diff-style="git" data-cli-diff-marker="X">a</del>'));
+      assert.ok(output.includes('<Ctrl> + <S>'), output);
+      assert.ok(output.includes('X a'), output);
+    });
+  });
+
   describe('CLI', () => {
     const run = (args, input) => spawnSync('node', [join(PROJECT_ROOT, 'bin/html.js'), ...args], {
       input,
@@ -115,6 +134,12 @@ describe('Regression fixes', () => {
       const result = run(['-h'], '');
       assert.strictEqual(result.status, 0);
       assert.ok(result.stdout.startsWith('Usage: html'));
+    });
+
+    it('warns about but accepts the never-implemented --streaming/--verbose flags', () => {
+      const result = run(['--streaming', '--verbose'], '<p>x</p>');
+      assert.strictEqual(result.status, 0);
+      assert.ok(result.stderr.includes('--streaming is not supported'));
     });
 
     it('rejects unknown options and a missing --config value', () => {

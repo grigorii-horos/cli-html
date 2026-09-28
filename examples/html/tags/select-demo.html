@@ -74,13 +74,13 @@
   <select name="custom-group-marker">
     <optgroup label="Frontend"
       data-cli-marker="→ "
-      data-cli-marker-color="blue bold">
+      data-cli-indicator-color="blue bold">
       <option>React</option>
       <option selected>Vue</option>
     </optgroup>
     <optgroup label="Backend"
       data-cli-marker="* "
-      data-cli-marker-color="green">
+      data-cli-indicator-color="green">
       <option>Node.js</option>
       <option>Django</option>
     </optgroup>
@@ -107,7 +107,7 @@
     data-cli-suffix-color="green bold">
     <optgroup label="First Group"
       data-cli-marker="▸ "
-      data-cli-marker-color="yellow bold"
+      data-cli-indicator-color="yellow bold"
       data-cli-color="cyan">
       <option data-cli-color="white">White option</option>
       <option selected data-cli-color="magenta bold">Magenta option</option>
@@ -120,7 +120,7 @@
   </select>
 
   <h2>12. Select with Custom Label Override</h2>
-  <select name="country" data-cli-select-label="Choose your country">
+  <select name="country" data-cli-label="Choose your country">
     <option>USA</option>
     <option selected>Canada</option>
     <option>Mexico</option>

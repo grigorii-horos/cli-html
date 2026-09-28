@@ -9,7 +9,8 @@
 
 import { renderHTML, renderMarkdown } from '../../index.js';
 
-// Define custom themes
+// Define custom themes. Keys mirror config.yaml; a plain string is shorthand
+// for { color: "..." }.
 const darkTheme = {
   h1: 'magenta bold',
   h2: 'cyan bold',
@@ -17,33 +18,33 @@ const darkTheme = {
   a: 'cyan underline',
   blockquote: 'gray italic',
   code: {
-    color: 'yellowBright',
-    inline: 'bgBlack yellow',
-    numbers: 'blackBright dim'
+    color: 'bgBlack yellow',  // inline code
+    block: {
+      color: 'yellowBright',
+      numbers: { color: 'blackBright dim' },
+    },
   },
-  table: {
-    header: 'magenta bold',
-    caption: 'bold cyan',
-    cell: 'white'
-  },
+  th: 'magenta bold',
+  caption: 'bold cyan',
+  td: 'white',
   ul: {
     color: 'green',
-    markers: [
-      { marker: '◆', color: 'green' },
-      { marker: '■', color: 'greenBright' },
-      { marker: '▸', color: 'cyan' }
-    ]
+    indicators: {
+      disc: { marker: '◆', color: 'green' },
+      circle: { marker: '■', color: 'greenBright' },
+      square: { marker: '▸', color: 'cyan' },
+    },
   },
   ol: {
     color: 'blueBright',
-    markers: [
-      { marker: '1', color: 'blueBright' },
-      { marker: 'A', color: 'cyanBright' },
-      { marker: 'a', color: 'magentaBright' },
-      { marker: 'I', color: 'greenBright' },
-      { marker: 'i', color: 'yellowBright' }
-    ]
-  }
+    indicators: {
+      1: { color: 'blueBright' },
+      A: { color: 'cyanBright' },
+      a: { color: 'magentaBright' },
+      I: { color: 'greenBright' },
+      i: { color: 'yellowBright' },
+    },
+  },
 };
 
 const lightTheme = {
@@ -53,15 +54,15 @@ const lightTheme = {
   a: 'blue underline',
   blockquote: 'blackBright italic',
   code: {
-    color: 'blue',
-    inline: 'bgWhite black',
-    numbers: 'gray dim'
+    color: 'bgWhite black',
+    block: {
+      color: 'blue',
+      numbers: { color: 'gray dim' },
+    },
   },
-  table: {
-    header: 'blue bold',
-    caption: 'bold green',
-    cell: 'black'
-  }
+  th: 'blue bold',
+  caption: 'bold green',
+  td: 'black',
 };
 
 const vibrantTheme = {
@@ -71,23 +72,23 @@ const vibrantTheme = {
   a: 'cyanBright underline',
   blockquote: 'magentaBright italic',
   code: {
-    color: 'greenBright',
-    inline: 'bgBlack greenBright',
-    numbers: 'gray'
+    color: 'bgBlack greenBright',
+    block: {
+      color: 'greenBright',
+      numbers: { color: 'gray' },
+    },
   },
-  table: {
-    header: 'redBright bold',
-    caption: 'bold yellowBright',
-    cell: 'whiteBright'
-  },
+  th: 'redBright bold',
+  caption: 'bold yellowBright',
+  td: 'whiteBright',
   ul: {
     color: 'cyanBright',
-    markers: [
-      { marker: '★', color: 'yellowBright' },
-      { marker: '✦', color: 'cyanBright' },
-      { marker: '✧', color: 'magentaBright' }
-    ]
-  }
+    indicators: {
+      disc: { marker: '★', color: 'yellowBright' },
+      circle: { marker: '✦', color: 'cyanBright' },
+      square: { marker: '✧', color: 'magentaBright' },
+    },
+  },
 };
 
 // Example content

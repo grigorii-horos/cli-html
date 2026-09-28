@@ -19,7 +19,7 @@
     "test:watch": "FORCE_COLOR=1 node --test --watch",
     "test:coverage": "c8 --reporter=lcov --reporter=text node --test",
     "screenshots": "node scripts/generate-screenshots.js --force && node scripts/generate-markdown-screenshots.js --force",
-    "precommit": "npm run lint && npm test",
+    "precommit": "npm run lint -- --quiet && npm test -- --test-reporter=dot",
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {

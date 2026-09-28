@@ -69,7 +69,6 @@ cli-html/
 ├── examples/             # Example HTML/Markdown files
 │   ├── html/
 │   │   ├── tags/         # Standard HTML examples
-│   │   └── tags-custom/  # Custom attribute examples
 │   ├── markdown/
 │   └── library-usage/    # JS library usage examples
 └── README.md
@@ -83,7 +82,7 @@ Each HTML tag has a corresponding implementation in `lib/tags/`:
 - Tags use either `blockTag()` or `inlineTag()` helpers
 - Each tag function receives `(tag, context)` parameters
 - Context contains theme, line width, and other rendering settings
-- Tags support custom attributes via `getCustomAttributes(tag)`
+- Tags read custom attributes via `getAttr(tag, 'dot.path')` from `lib/core/attr.js` (`'prefix.marker'` → `data-cli-prefix-marker`)
 
 #### 2. Configuration System
 
@@ -105,8 +104,10 @@ Each HTML tag has a corresponding implementation in `lib/tags/`:
 
 **`lib/utilities.js`:**
 - `getAttribute(tag, name, default)` - Get HTML attribute value
-- `getCustomAttributes(tag)` - Extract all data-cli-* attributes
-- `applyCustomColor(custom, theme, value, chalkString)` - Apply color with fallback
+
+**`lib/core/attr.js` / `lib/core/color.js`:**
+- `getAttr(tag, 'dot.path')` - Read a `data-cli-*` attribute
+- `applyColor(spec, text)` / `applyThemeColor(customSpec, themeSpec, text)` - Apply a chalk-string or function color
 - `indentify(indent, skipFirst)` - Add indentation to text
 
 **`lib/utils/list.js`:**
@@ -913,7 +914,7 @@ const styledText = chalkString('red bold')('Hello');  // Missing { colors: true 
 ```
 
 3. **Add examples:**
-- Create example in `examples/html/tags-custom/`
+- Create example in `examples/html/tags/`
 - Update README.md documentation
 - Update `DATA_ATTRIBUTES.md` documentation
 
@@ -1033,7 +1034,7 @@ cat config.yaml
 
 # 3. Update AGENTS.md with the exact YAML structure
 # 4. Test all examples still work
-node bin/html.js examples/html/tags-custom/*.html
+node bin/html.js examples/html/tags/*.html
 ```
 
 ### Modifying List Structure
@@ -1091,7 +1092,7 @@ ul:
 **Manual testing:**
 ```bash
 # Test HTML rendering
-node bin/html.js examples/html/tags-custom/lists.html
+node bin/html.js examples/html/tags/lists.html
 
 # Test Markdown rendering
 node bin/markdown.js examples/markdown/full/gfm-features.md
@@ -1102,7 +1103,6 @@ node bin/html.js your-test-file.html
 
 **Test file locations:**
 - `examples/html/tags/` - Standard tag examples
-- `examples/html/tags-custom/` - Custom attribute examples
 - `/tmp/test-*.html` - Temporary test files
 
 ## Common Patterns
@@ -1115,13 +1115,8 @@ import { getAttr } from '../core/attr.js';
 export const myTag = (tag, context) => {
   return blockTag(
     (value) => {
-      const styledValue = applyCustomColor(
-        getAttr(tag, 'color'),
-        context.theme.myTag.color,
-        value,
-        chalkString
-      );
-      return styledValue;
+      // applyThemeColor: data-cli-color first, then the theme (strings or functions)
+      return applyThemeColor(getAttr(tag, 'color'), context.theme.myTag.color, value);
     }
   )(tag, context);
 };
@@ -1129,51 +1124,31 @@ export const myTag = (tag, context) => {
 
 ### Pattern 2: Nested Configuration (like code blocks)
 
+Attribute names keep every config level (`code.block.numbers.color` → `data-cli-block-numbers-color`), see `blockAttr()` in `lib/tags/code.js`:
+
 ```javascript
 import { getAttr } from '../core/attr.js';
 
-export const pre = (tag, context) => {
-  // Also check for attributes on child <code> tag
-  const codeTag = tag.childNodes?.find(child => child.nodeName === 'code');
-  
-  // Helper to check both tags
-  const getProp = (prop) => getAttr(tag, prop) ?? (codeTag ? getAttr(codeTag, prop) : null);
+// Canonical full-path name first, older short name as an alias
+const blockAttr = (tag, path, legacyPath = path) => getAttr(tag, `block.${path}`) ?? getAttr(tag, legacyPath);
 
-  const newContext = {
-    ...context,
-    customCodeColor: getProp('color'),
-    customNumbersEnabled: getProp('numbers.enabled'),
-    customNumbersColor: getProp('numbers.color'),
-    customHighlightLines: getProp('highlight-lines'),
-    customHighlightColor: getProp('highlight-color'),
-    customGutterEnabled: getProp('gutter.enabled'),
-    customGutterSeparatorMarker: getProp('gutter-separator.marker'),
-    customGutterSeparatorColor: getProp('gutter-separator.color'),
-    customLangLabelEnabled: getProp('lang-label.enabled'),
-    customLangLabelPosition: getProp('lang-label.position'),
-    customLangLabelColor: getProp('lang-label.color'),
-    customLangLabelPrefixMarker: getProp('lang-label.prefix.marker'),
-    customLangLabelPrefixColor: getProp('lang-label.prefix.color'),
-    customLangLabelSuffixMarker: getProp('lang-label.suffix.marker'),
-    customLangLabelSuffixColor: getProp('lang-label.suffix.color'),
-  };
-
-  return blockTag(...)(tag, newContext);
-};
+const numbersEnabledRaw = blockAttr(tag, 'numbers.enabled');
+const numbersEnabled = numbersEnabledRaw === null
+  ? context.theme.code.block.numbers?.enabled
+  : numbersEnabledRaw === 'true';
 ```
 
 ### Pattern 3: Border Elements
 
 ```javascript
+import { boxContentWidth, getBoxSettings, renderBox } from '../tag-helpers/box.js';
+
 export const myBorderElement = (tag, context) => {
-  const custom = getCustomAttributes(tag);
+  // data-cli-border-color/-style/-dim and data-cli-padding-* first, then context.theme.myElement
+  const settings = getBoxSettings(tag, context.theme.myElement);
 
-  const borderColor = custom.border || context.theme.myElement.border.color;
-  const borderStyle = custom.borderStyle || context.theme.myElement.border.style;
-  const dimBorder = custom.borderDim !== null
-    ? custom.borderDim
-    : context.theme.myElement.border.dim;
-
-  // Use in boxen() or similar
+  // Render the content to fit inside the box, then draw a box that fits lineWidth
+  const content = blockTag()(tag, { ...context, lineWidth: boxContentWidth(context.lineWidth, settings.padding) });
+  return { type: 'block', marginTop: 1, marginBottom: 1, value: renderBox(content?.value ?? '', { ...settings, lineWidth: context.lineWidth }) };
 };
 ```

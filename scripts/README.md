@@ -112,7 +112,7 @@ You can customize by editing the script files.
 
 By default, screenshots are saved to:
 ```
-examples/html/tags-custom/screenshots/
+examples/html/tags/screenshots/
 ```
 
 Each screenshot is named after the HTML file:
@@ -212,7 +212,7 @@ node scripts/generate-screenshots.js --verbose
 
 Test the HTML file directly:
 ```bash
-node bin/html.js examples/html/tags-custom/code.html
+node bin/html.js examples/html/tags/code.html
 ```
 
 ---
@@ -258,7 +258,7 @@ name: Generate Screenshots
 on:
   push:
     paths:
-      - 'examples/html/tags-custom/*.html'
+      - 'examples/html/tags/*.html'
       - 'lib/**/*.js'
 
 jobs:
@@ -290,7 +290,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add examples/html/tags-custom/screenshots/*.png
+          git add examples/html/tags/screenshots/*.png
           git commit -m "Update screenshots" || exit 0
           git push
 ```
@@ -311,7 +311,7 @@ jobs:
 
 - [termshot GitHub](https://github.com/homeport/termshot)
 - [Main README](../README.md)
-- [Examples Documentation](../examples/html/tags-custom/README.md)
+- [Examples Documentation](../examples/html/tags/README.md)
 - [Issues and Improvements](../ISSUES_AND_IMPROVEMENTS.md)
 
 ---

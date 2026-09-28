@@ -111,12 +111,16 @@ const customTheme = {
   h1: 'cyanBright bold',
   h2: 'greenBright bold',
   code: {
-    color: 'yellowBright',
-    inline: 'bgBlack yellow'
+    color: 'bgBlack yellow',  // inline code
+    block: { color: 'yellowBright' }
   },
   ul: {
     color: 'magenta',
-    markers: ['→', '•', '◦']
+    indicators: {
+      disc: { marker: '→' },
+      circle: { marker: '•' },
+      square: { marker: '◦' }
+    }
   }
 };
 

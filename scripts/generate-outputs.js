@@ -38,7 +38,7 @@ const colors = {
 
 // Configuration
 const config = {
-  examplesDir: join(PROJECT_ROOT, 'examples/html/tags-custom'),
+  examplesDir: join(PROJECT_ROOT, 'examples/html/tags'),
   outputDir: null,
   force: false,
   filter: null,
