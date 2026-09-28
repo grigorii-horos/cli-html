@@ -372,6 +372,10 @@ You can customize individual elements using `data-cli-*` attributes without modi
   <li>Item with yellow text and cyan star marker</li>
   <li>Another item</li>
 </ul>
+
+<!-- Alignment: CSS text-align (left/center/right/start/end) or the align attribute -->
+<p style="text-align: center">Centered paragraph</p>
+<div align="right"><p>Right-aligned block</p></div>
 ```
 
 **Available Attributes:**
@@ -463,6 +467,15 @@ jsx demo.jsx --config ./theme.yaml
 
 # with stdin
 cat page.html | html --config ./theme.yaml
+```
+
+#### `--width <n>`
+
+Wrap output at `n` columns instead of the terminal width (overrides `lineWidth` from the config):
+
+```sh
+md README.md --width 80
+cat page.html | html --width 60
 ```
 
 #### `--help`

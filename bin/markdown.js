@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-import { loadConfig, parseArgs, readInput, writeOutput } from '../lib/cli.js';
+import {
+  applyOptions, loadConfig, OPTIONS_HELP, parseArgs, readInput, writeOutput,
+} from '../lib/cli.js';
 import { renderMarkdown } from '../index.js';
 
-const usage = `Usage: markdown [file.md] [--config <path>]
+const usage = `Usage: markdown [file.md] [--config <path>] [--width <n>]
 
 Render Markdown to the terminal. Reads stdin when no file (or "-") is given.
 
-Options:
-  --config <path>  Use this config file instead of the one in the config directory
-  -h, --help       Show this help`;
+${OPTIONS_HELP}`;
 
-const { inputPath, configPath } = parseArgs(process.argv.slice(2), usage);
-const config = loadConfig('cli-markdown', configPath);
+const options = parseArgs(process.argv.slice(2), usage);
+const config = applyOptions(loadConfig('cli-markdown', options.configPath), options);
 
-writeOutput(renderMarkdown(await readInput(inputPath), config));
+writeOutput(renderMarkdown(await readInput(options.inputPath), config));

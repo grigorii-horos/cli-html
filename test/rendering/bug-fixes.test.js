@@ -114,6 +114,23 @@ describe('Regression fixes', () => {
     });
   });
 
+  describe('text-align', () => {
+    const at = (html) => plain(renderHTML(html, { lineWidth: { value: 20 } })).split('\n').find((line) => line.trim());
+
+    it('centers and right-aligns blocks from style or align attribute', () => {
+      assert.strictEqual(at('<p style="text-align: center">abcd</p>'), `${' '.repeat(8)}abcd`);
+      assert.strictEqual(at('<p align="right">abcd</p>'), `${' '.repeat(16)}abcd`);
+      assert.strictEqual(at('<div style="text-align:end"><p>abcd</p></div>'), `${' '.repeat(16)}abcd`);
+    });
+
+    it('leaves left, unknown and table cell alignment alone', () => {
+      assert.strictEqual(at('<p style="text-align:left">abcd</p>'), 'abcd');
+      assert.strictEqual(at('<p style="text-align:justify">abcd</p>'), 'abcd');
+      const table = plain(renderHTML('<table><tr><td style="text-align:right">a</td></tr></table>', { lineWidth: { value: 80 } }));
+      assert.ok(table.includes('│ a │'), table);
+    });
+  });
+
   describe('nesting limit', () => {
     it('warns once when content is nested too deeply', () => {
       const warnings = [];
@@ -156,6 +173,13 @@ describe('Regression fixes', () => {
       const result = run(['--streaming', '--verbose'], '<p>x</p>');
       assert.strictEqual(result.status, 0);
       assert.ok(result.stderr.includes('--streaming is not supported'));
+    });
+
+    it('sets the line width with --width', () => {
+      const result = run(['--width', '10'], '<p>one two three four</p>');
+      assert.strictEqual(result.status, 0);
+      assert.ok(plain(result.stdout).split('\n').every((line) => line.length <= 10), result.stdout);
+      assert.strictEqual(run(['--width=abc'], '').status, 2);
     });
 
     it('rejects unknown options and a missing --config value', () => {

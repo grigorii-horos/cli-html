@@ -6,18 +6,19 @@ import { resolve } from 'node:path';
 import process from 'node:process';
 import vm from 'node:vm';
 
-import { loadConfig, parseArgs, writeOutput } from '../lib/cli.js';
+import {
+  applyOptions, loadConfig, OPTIONS_HELP, parseArgs, writeOutput,
+} from '../lib/cli.js';
 import { renderJSX } from '../index.js';
 
-const usage = `Usage: jsx <file.jsx> [--config <path>]
+const usage = `Usage: jsx <file.jsx> [--config <path>] [--width <n>]
 
 Render a JSX file (default export: element or component) to the terminal.
 
-Options:
-  --config <path>  Use this config file instead of the one in the config directory
-  -h, --help       Show this help`;
+${OPTIONS_HELP}`;
 
-const { inputPath, configPath } = parseArgs(process.argv.slice(2), usage);
+const options = parseArgs(process.argv.slice(2), usage);
+const { inputPath } = options;
 
 if (!inputPath) {
   console.error(usage);
@@ -31,7 +32,7 @@ if (!fs.existsSync(jsxFile)) {
   process.exit(1);
 }
 
-const theme = loadConfig('cli-html', configPath);
+const theme = applyOptions(loadConfig('cli-html', options.configPath), options);
 
 // Babel, react and react-dom are optional peer dependencies of cli-html
 let babel;

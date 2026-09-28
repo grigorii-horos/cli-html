@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-import { loadConfig, parseArgs, readInput, writeOutput } from '../lib/cli.js';
+import {
+  applyOptions, loadConfig, OPTIONS_HELP, parseArgs, readInput, writeOutput,
+} from '../lib/cli.js';
 import { renderHTML } from '../index.js';
 
-const usage = `Usage: html [file.html] [--config <path>]
+const usage = `Usage: html [file.html] [--config <path>] [--width <n>]
 
 Render HTML to the terminal. Reads stdin when no file (or "-") is given.
 
-Options:
-  --config <path>  Use this config file instead of the one in the config directory
-  -h, --help       Show this help`;
+${OPTIONS_HELP}`;
 
-const { inputPath, configPath } = parseArgs(process.argv.slice(2), usage);
-const config = loadConfig('cli-html', configPath);
+const options = parseArgs(process.argv.slice(2), usage);
+const config = applyOptions(loadConfig('cli-html', options.configPath), options);
 
-writeOutput(renderHTML(await readInput(inputPath), config));
+writeOutput(renderHTML(await readInput(options.inputPath), config));
